@@ -17,13 +17,14 @@ export class FilterCardsPipe implements PipeTransform {
 
     if (filter.searchValue === ''
       && filter.superTypes.length === 0
-      && filter.cardTypes.length === 0) {
+      && filter.cardTypes.length === 0
+      && filter.sets.length === 0) {
       return items;
     }
 
     return items.filter(item => {
       const card = item.card;
-      if (filter.searchValue !== '' && card.name.indexOf(filter.searchValue) === -1) {
+      if (filter.searchValue !== '' && !card.name.match(new RegExp(filter.searchValue, 'ig'))) {
         return false;
       }
 
@@ -32,6 +33,10 @@ export class FilterCardsPipe implements PipeTransform {
       }
 
       if (filter.cardTypes.length && !filter.cardTypes.includes(this.getCardType(card))) {
+        return false;
+      }
+
+      if (filter.sets.length && !filter.sets.includes(card.set)) {
         return false;
       }
 

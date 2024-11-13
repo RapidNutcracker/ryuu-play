@@ -4,4 +4,5 @@ export interface DeckEditToolbarFilter {
   superTypes: SuperType[];
   cardTypes: CardType[];
   searchValue: string;
+  sets: string;
 }

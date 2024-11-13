@@ -41,6 +41,14 @@
       </mat-select>
     </mat-form-field>
 
+    <mat-form-field floatLabel="never" appearance="legacy">
+      <mat-select multiple [placeholder]="'DECK_EDIT_ALL_SETS' | translate" (selectionChange)="onSetChange($event)">
+        <mat-option *ngFor="let set of sets" [value]="set.value">
+          {{ set.label | translate }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <span class="ptcg-u-spacer"></span>
 
     <ptcg-search-box (search)="onSearch($event)"></ptcg-search-box>
