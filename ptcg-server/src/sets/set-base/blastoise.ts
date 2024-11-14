@@ -53,14 +53,12 @@ function* useRainDance(next: Function, store: StoreLike, state: State, effect: P
       store.reduceEffect(state, attachEnergyEffect);
     }
   });
-
-  return state;
 }
 
 export class Blastoise extends PokemonCard {
 
   public id: number = 2;
-  
+
   public stage: Stage = Stage.STAGE_2;
 
   public evolvesFrom = 'Wartortle';
@@ -104,19 +102,24 @@ export class Blastoise extends PokemonCard {
     }
 
     // Hydro Pump
-    if (effect instanceof AttackEffect && effect.attack === this.attacks[0]) {
+    if (effect instanceof AttackEffect && effect.attack === this.attacks[1]) {
       const player = effect.player;
 
       const checkProvidedEnergyEffect = new CheckProvidedEnergyEffect(player);
       store.reduceEffect(state, checkProvidedEnergyEffect);
 
-      let energyCount = 0;
+      let additionalWaterEnergyCount = 0;
       checkProvidedEnergyEffect.energyMap.forEach(em => {
-        energyCount = em.provides.filter(cardType => {
+        const attachedWaterEnergy = em.provides.filter(cardType => {
           return cardType === CardType.WATER;
         }).length;
+        const requiredWaterEnergy = effect.attack.cost.filter(cardType =>
+          cardType === CardType.WATER
+        ).length;
+
+        additionalWaterEnergyCount = Math.max(attachedWaterEnergy - requiredWaterEnergy, 0);
       });
-      effect.damage += Math.min(energyCount, 2) * 20;
+      effect.damage += Math.min(additionalWaterEnergyCount, 2) * 20;
     }
 
     return state;

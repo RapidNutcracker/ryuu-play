@@ -1,6 +1,6 @@
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Stage, CardType } from '../../game/store/card/card-types';
-import { PowerType, StoreLike, State, GameError, GameMessage, PokemonCardList, StateUtils, Card, ChooseEnergyPrompt } from '../../game';
+import { PowerType, StoreLike, State, GameError, GameMessage, PokemonCardList, StateUtils, Card, ChooseEnergyPrompt, PlayerType } from '../../game';
 import { Effect } from '../../game/store/effects/effect';
 import { AttackEffect, PowerEffect } from '../../game/store/effects/game-effects';
 import { CheckProvidedEnergyEffect } from '../../game/store/effects/check-effects';
@@ -45,24 +45,21 @@ export class Charizard extends PokemonCard {
 
   public readonly ENERGY_BURN_MARKER = 'ENERGY_BURN_MARKER';
 
+  public readonly CLEAR_ENERGY_BURN_MARKER = 'CLEAR_ENERGY_BURN_MARKER';
+
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     // Energy Burn
     if (effect instanceof PowerEffect && effect.power === this.powers[0]) {
       const player = effect.player;
-      const cardList = StateUtils.findCardList(state, this) as PokemonCardList;
-
-      if (cardList.specialConditions.length > 0) {
-        throw new GameError(GameMessage.CANNOT_USE_POWER);
+      const cardList = StateUtils.findCardList(state, this);
+      if (!(cardList instanceof PokemonCardList)) {
+        return state;
       }
-
-      player.active.marker.addMarker(this.ENERGY_BURN_MARKER, this);
-
-      const checkProvidedEnergyEffect = new CheckProvidedEnergyEffect(player);
-      store.reduceEffect(state, checkProvidedEnergyEffect);
-
-      checkProvidedEnergyEffect.energyMap.forEach(em => {
-        em.provides.forEach(p => p = CardType.FIRE);
-      });
+      if (cardList.marker.hasMarker(this.ENERGY_BURN_MARKER, this)) {
+        throw new GameError(GameMessage.POWER_ALREADY_USED);
+      }
+      player.marker.addMarker(this.CLEAR_ENERGY_BURN_MARKER, this);
+      cardList.marker.addMarker(this.ENERGY_BURN_MARKER, this);
 
       return state;
     }
@@ -88,11 +85,20 @@ export class Charizard extends PokemonCard {
       });
     }
 
-    // TODO: Turn off Energy Burn? Do we need to revert the energy provided? What about from discarded cards if Fire Spin was used?
-    if (effect instanceof EndTurnEffect && effect.player.active.marker.hasMarker(this.ENERGY_BURN_MARKER, this)) {
-      const player = effect.player;
+    if (effect instanceof CheckProvidedEnergyEffect && effect.source.marker.hasMarker(this.ENERGY_BURN_MARKER, this)) {
+      effect.energyMap.forEach(em => {
+        em.provides.forEach(p => p = CardType.FIRE);
+      });
+      return state;
+    }
 
-      player.active.marker.removeMarker(this.ENERGY_BURN_MARKER, this);
+    if (effect instanceof EndTurnEffect
+      && effect.player.marker.hasMarker(this.CLEAR_ENERGY_BURN_MARKER, this)) {
+      const player = effect.player;
+      player.marker.removeMarker(this.CLEAR_ENERGY_BURN_MARKER, this);
+      player.forEachPokemon(PlayerType.BOTTOM_PLAYER, (cardList) => {
+        cardList.marker.removeMarker(this.ENERGY_BURN_MARKER, this);
+      });
     }
 
     return state;

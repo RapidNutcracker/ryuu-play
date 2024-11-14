@@ -40,6 +40,7 @@ export class Machamp extends PokemonCard {
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
 
     // Strikes Back
+    /// TODO: Is this good?
     if (effect instanceof AfterDamageEffect && effect.target.getPokemonCard() === this) {
       const player = effect.player;
       const targetPlayer = StateUtils.findOwner(state, effect.target);

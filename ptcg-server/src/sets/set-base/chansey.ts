@@ -56,6 +56,7 @@ export class Chansey extends PokemonCard {
       return state;
     }
 
+    // Scrunch
     if (effect instanceof AttackEffect && effect.attack === this.attacks[0]) {
       const player = effect.player;
       const opponent = StateUtils.getOpponent(state, player);
@@ -73,6 +74,7 @@ export class Chansey extends PokemonCard {
       return state;
     }
 
+    // Double-edge
     if (effect instanceof AttackEffect && effect.attack === this.attacks[1]) {
       const player = effect.player;
 
