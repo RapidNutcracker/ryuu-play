@@ -17,6 +17,7 @@ import { Metapod } from './metapod';
 import { Pidgeot } from './pidgeot';
 import { Pidgeotto } from './pidgeotto';
 import { Pidgey } from './pidgey';
+import { Pikachu } from './pikachu';
 import { Raticate } from './raticate';
 import { Rattata } from './rattata';
 import { Spearow } from './spearow';
@@ -51,4 +52,5 @@ export const set151: Card[] = [
     new Fearow(),
     new Ekans(),
     new ArbokEX(),
+    new Pikachu(),
 ]
