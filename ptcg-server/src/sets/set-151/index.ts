@@ -14,6 +14,8 @@ import { Metapod } from './metapod';
 import { Pidgeot } from './pidgeot';
 import { Pidgeotto } from './pidgeotto';
 import { Pidgey } from './pidgey';
+import { Raticate } from './raticate';
+import { Rattata } from './rattata';
 import { Squirtle } from './squirtle';
 import { VenusaurEX } from './venusaur-ex';
 import { Wartortle } from './wartortle';
@@ -39,5 +41,6 @@ export const set151: Card[] = [
     new Pidgey(),
     new Pidgeotto(),
     new Pidgeot(),
-    
+    new Rattata(),
+    new Raticate(),
 ]
