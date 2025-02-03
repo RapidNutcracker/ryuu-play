@@ -13,6 +13,7 @@ import { Clefable } from './clefable';
 import { Clefairy } from './clefairy';
 import { Ekans } from './ekans';
 import { Fearow } from './fearow';
+import { Golbat } from './golbat';
 import { Ivysaur } from './ivysaur';
 import { Jigglypuff } from './jigglypuff';
 import { Kakuna } from './kakuna';
@@ -39,6 +40,7 @@ import { Vulpix } from './vulpix';
 import { Wartortle } from './wartortle';
 import { Weedle } from './weedle';
 import { WigglytuffEX } from './wigglytuff-ex';
+import { Zubat } from './zubat';
 
 
 export const set151: Card[] = [
@@ -81,4 +83,6 @@ export const set151: Card[] = [
     new NinetalesEX(),
     new Jigglypuff(),
     new WigglytuffEX(),
+    new Zubat(),
+    new Golbat(),
 ]
