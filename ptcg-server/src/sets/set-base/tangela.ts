@@ -31,7 +31,7 @@ export class Tangela extends PokemonCard {
       name: 'Poisonpowder',
       cost: [CardType.GRASS, CardType.GRASS, CardType.GRASS],
       damage: 20,
-      text: ' The Defending Pokémon is now Poisoned.'
+      text: 'The Defending Pokémon is now Poisoned.'
     }
   ];
 

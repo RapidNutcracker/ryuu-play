@@ -52,7 +52,7 @@ export class Raticate extends PokemonCard {
       const opponent = StateUtils.getOpponent(state, player);
 
       const checkHpEffect = new CheckHpEffect(opponent, opponent.active);
-      store.reduceEffect(state, checkHpEffect);
+      state = store.reduceEffect(state, checkHpEffect);
       const remainingHP = checkHpEffect.hp - opponent.active.damage;
 
       effect.damage = Math.ceil((remainingHP / 2) / 10) * 10;

@@ -33,8 +33,10 @@ export class Gastly extends PokemonCard {
     {
       name: 'Destiny Bond',
       cost: [CardType.PSYCHIC, CardType.COLORLESS],
-      damage: 50,
-      text: ' Discard 1 {P} Energy card attached to Gastly in order to use this attack. If a Pokémon Knocks Out Gastly during your opponent\'s next turn, Knock Out that Pokémon.'
+      damage: 0,
+      text:
+        'Discard 1 {P} Energy card attached to Gastly in order to use this attack. ' +
+        'If a Pokémon Knocks Out Gastly during your opponent\'s next turn, Knock Out that Pokémon.'
     }
   ];
 

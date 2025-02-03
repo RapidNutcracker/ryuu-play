@@ -25,7 +25,7 @@ export class Koffing extends PokemonCard {
       name: 'Foul Gas',
       cost: [CardType.GRASS, CardType.GRASS],
       damage: 10,
-      text: ' Flip a coin. If heads, the Defending Pokémon is now Poisoned; if tails, it is now Confused.'
+      text: 'Flip a coin. If heads, the Defending Pokémon is now Poisoned; if tails, it is now Confused.'
     }
   ];
 

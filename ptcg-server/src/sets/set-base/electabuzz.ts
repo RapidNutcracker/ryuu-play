@@ -24,13 +24,13 @@ export class Electabuzz extends PokemonCard {
     {
       name: 'Thundershock',
       cost: [CardType.LIGHTNING],
-      damage: 30,
+      damage: 10,
       text: 'Flip a coin. If heads, the Defending Pokémon is now Paralyzed.'
     },
     {
       name: 'Thunderpunch',
       cost: [CardType.LIGHTNING, CardType.COLORLESS],
-      damage: 20,
+      damage: 30,
       text: 'Flip a coin. If heads, this attack does 30 damage plus 10 more damage; if tails, this attack does 30 damage plus Electabuzz does 10 damage to itself.'
     }
   ];

@@ -58,7 +58,6 @@ export class Jynx extends PokemonCard {
     // Meditate
     if (effect instanceof AttackEffect && effect.attack === this.attacks[1]) {
       effect.damage += effect.opponent.active.damage;
-      return state;
     }
 
     return state;

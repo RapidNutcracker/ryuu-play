@@ -75,11 +75,22 @@ export class Blastoise extends PokemonCard {
     name: 'Rain Dance',
     useWhenInPlay: true,
     powerType: PowerType.POKEPOWER,
-    text: 'As often as you like during your turn (before your attack), you may attach 1 {W} Energy card to 1 of your {W} Pokémon. (This doesn\'t use up your 1 Energy card attachment for the turn.) This power can\'t be used if Blastoise is Asleep, Confused, or Paralyzed.'
+    text:
+      'As often as you like during your turn (before your attack), ' +
+      'you may attach 1 {W} Energy card to 1 of your {W} Pokémon. ' +
+      '(This doesn\'t use up your 1 Energy card attachment for the turn.) ' +
+      'This power can\'t be used if Blastoise is Asleep, Confused, or Paralyzed.'
   }];
 
-  public attacks = [
-    { name: 'Hydro Pump', cost: [CardType.WATER, CardType.WATER, CardType.WATER], damage: 40, text: 'Does 40 damage plus 10 more damage for each {W} Energy attached to Blastoise but not used to pay for this attack\'s Energy cost. Extra {W} Energy after the 2nd doesn\'t count.' },
+  public attacks = [{
+    name: 'Hydro Pump',
+    cost: [CardType.WATER, CardType.WATER, CardType.WATER],
+    damage: 40,
+    text:
+      'Does 40 damage plus 10 more damage for each {W} Energy attached to Blastoise ' +
+      'but not used to pay for this attack\'s Energy cost. ' +
+      'Extra {W} Energy after the 2nd doesn\'t count.'
+  },
   ];
 
   public set: string = 'BS';
@@ -102,24 +113,19 @@ export class Blastoise extends PokemonCard {
     }
 
     // Hydro Pump
-    if (effect instanceof AttackEffect && effect.attack === this.attacks[1]) {
+    if (effect instanceof AttackEffect && effect.attack === this.attacks[0]) {
       const player = effect.player;
 
       const checkProvidedEnergyEffect = new CheckProvidedEnergyEffect(player);
-      store.reduceEffect(state, checkProvidedEnergyEffect);
+      state = store.reduceEffect(state, checkProvidedEnergyEffect);
 
       let additionalWaterEnergyCount = 0;
-      checkProvidedEnergyEffect.energyMap.forEach(em => {
-        const attachedWaterEnergy = em.provides.filter(cardType => {
-          return cardType === CardType.WATER;
-        }).length;
-        const requiredWaterEnergy = effect.attack.cost.filter(cardType =>
-          cardType === CardType.WATER
-        ).length;
+      const attachedWaterEnergy = checkProvidedEnergyEffect.energyMap.reduce(
+        (left, p) => left + p.provides.filter(cardType => cardType == CardType.WATER).length, 0);
 
-        additionalWaterEnergyCount = Math.max(attachedWaterEnergy - requiredWaterEnergy, 0);
-      });
-      effect.damage += Math.min(additionalWaterEnergyCount, 2) * 20;
+      additionalWaterEnergyCount = Math.max(attachedWaterEnergy - 3, 0);
+
+      effect.damage += Math.min(additionalWaterEnergyCount, 2) * 10;
     }
 
     return state;

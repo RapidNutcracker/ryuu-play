@@ -4,7 +4,7 @@ import { Stage, CardType } from '../../game/store/card/card-types';
 import { Effect } from '../../game/store/effects/effect';
 import { AttackEffect } from '../../game/store/effects/game-effects';
 import { GameMessage } from '../../game/game-message';
-import { DiscardCardsEffect } from '../../game/store/effects/attack-effects';
+import { AbstractAttackEffect, DiscardCardsEffect } from '../../game/store/effects/attack-effects';
 import { CheckProvidedEnergyEffect } from '../../game/store/effects/check-effects';
 import { EndTurnEffect } from '../../game/store/effects/game-phase-effects';
 
@@ -84,6 +84,12 @@ export class Mewtwo extends PokemonCard {
         opponent.marker.addMarker(this.CLEAR_BARRIER_MARKER, this);
       });
 
+      return state;
+    }
+
+    // Has Barrier Up
+    if (effect instanceof AbstractAttackEffect && effect.target.marker.hasMarker(this.BARRIER_MARKER)) {
+      effect.preventDefault = true;
       return state;
     }
 

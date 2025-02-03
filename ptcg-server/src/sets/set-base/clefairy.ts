@@ -79,7 +79,7 @@ export class Clefairy extends PokemonCard {
       text: 'Flip a coin. If heads, the Defending Pokémon is now Asleep.'
     },
     {
-      name: 'Double-edge',
+      name: 'Metronome',
       cost: [CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS],
       damage: 0,
       text: 'Choose 1 of the Defending Pokémon\'s attacks. Metronome copies that attack except for its Energy costs and anything else required in order to use that attack, such as discarding Energy cards. (No matter what type the Defending Pokémon is, Clefairy\'s type is still Colorless.)'

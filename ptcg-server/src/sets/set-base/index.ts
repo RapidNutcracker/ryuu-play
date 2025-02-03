@@ -70,6 +70,34 @@ import { Wartortle } from './wartortle';
 import { Weedle } from './weedle';
 import { Zapdos } from './zapdos';
 
+import { Bill } from './bill';
+import { ComputerSearch } from './computer-search';
+import { EnergyRemoval } from './energy-removal';
+import { EnergyRetrieval } from './energy-retrieval';
+import { GustOfWind } from './gust-of-wind';
+import { ItemFinder } from './item-finder';
+import { Lass } from './lass';
+import { Maintenance } from './maintenance';
+import { PlusPower } from './pluspower';
+import { PokemonBreeder } from './pokemon-breeder';
+import { Potion } from './potion';
+import { ProfessorOak } from './professor-oak';
+import { ScoopUp } from './scoop-up';
+import { SuperEnergyRemoval } from './super_energy_removal';
+import { SuperPotion } from './super-potion';
+import { Switch } from './switch';
+
+import { FightingEnergy } from './fighting-energy';
+import { FireEnergy } from './fire-energy';
+import { GrassEnergy } from './grass-energy';
+import { LightningEnergy } from './lightning-energy';
+import { PsychicEnergy } from './psychic-energy';
+import { WaterEnergy } from './water-energy';
+import { Revive } from './revive';
+import { Defender } from './defender';
+import { ImpostorProfessorOak } from './impostor-professor-oak';
+import { PokemonTrader } from './pokemon-trader';
+
 export const setBase: Card[] = [
   new Alakazam(),
   new Blastoise(),
@@ -140,4 +168,32 @@ export const setBase: Card[] = [
   new Voltorb(),
   new Vulpix(),
   new Weedle(),
+
+  new Bill(),
+  new ComputerSearch(),
+  new Defender(),
+  new GustOfWind(),
+  new EnergyRemoval(),
+  new EnergyRetrieval(),
+  new ImpostorProfessorOak(),
+  new ItemFinder(),
+  new Lass(),
+  new Maintenance(),
+  new PlusPower(),
+  new PokemonBreeder(),
+  new PokemonTrader(),
+  new Potion(),
+  new ProfessorOak(),
+  new Revive(),
+  new ScoopUp(),
+  new SuperEnergyRemoval(),
+  new SuperPotion(),
+  new Switch(),
+
+  new FightingEnergy(),
+  new FireEnergy(),
+  new GrassEnergy(),
+  new LightningEnergy(),
+  new PsychicEnergy(),
+  new WaterEnergy(),
 ];
