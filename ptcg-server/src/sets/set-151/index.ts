@@ -11,6 +11,9 @@ import { Charmeleon } from './charmeleon';
 import { Ivysaur } from './ivysaur';
 import { Kakuna } from './kakuna';
 import { Metapod } from './metapod';
+import { Pidgeot } from './pidgeot';
+import { Pidgeotto } from './pidgeotto';
+import { Pidgey } from './pidgey';
 import { Squirtle } from './squirtle';
 import { VenusaurEX } from './venusaur-ex';
 import { Wartortle } from './wartortle';
@@ -33,4 +36,8 @@ export const set151: Card[] = [
     new Weedle(),
     new Kakuna(),
     new Beedrill(),
+    new Pidgey(),
+    new Pidgeotto(),
+    new Pidgeot(),
+    
 ]
