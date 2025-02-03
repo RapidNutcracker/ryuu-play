@@ -13,6 +13,7 @@ import { Clefable } from './clefable';
 import { Clefairy } from './clefairy';
 import { Ekans } from './ekans';
 import { Fearow } from './fearow';
+import { Gloom } from './gloom';
 import { Golbat } from './golbat';
 import { Ivysaur } from './ivysaur';
 import { Jigglypuff } from './jigglypuff';
@@ -25,6 +26,7 @@ import { NidoranMale } from './nidoran-male';
 import { Nidorina } from './nidorina';
 import { Nidorino } from './nidorino';
 import { NinetalesEX } from './ninetales-ex';
+import { Oddish } from './oddish';
 import { Pidgeot } from './pidgeot';
 import { Pidgeotto } from './pidgeotto';
 import { Pidgey } from './pidgey';
@@ -36,6 +38,7 @@ import { Sandslash } from './sandslash';
 import { Spearow } from './spearow';
 import { Squirtle } from './squirtle';
 import { VenusaurEX } from './venusaur-ex';
+import { Vileplume } from './vileplume';
 import { Vulpix } from './vulpix';
 import { Wartortle } from './wartortle';
 import { Weedle } from './weedle';
@@ -85,4 +88,7 @@ export const set151: Card[] = [
     new WigglytuffEX(),
     new Zubat(),
     new Golbat(),
+    new Oddish(),
+    new Gloom(),
+    new Vileplume(),
 ]
