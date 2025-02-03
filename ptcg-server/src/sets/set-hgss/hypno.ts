@@ -48,12 +48,12 @@ export class Hypno extends PokemonCard {
 
   public fullName: string = 'Hypno HGSS';
 
-  public readonly SLEEP_PENDULUM_MAREKER = 'SLEEP_PENDULUM_MAREKER';
+  public readonly SLEEP_PENDULUM_MARKER = 'SLEEP_PENDULUM_MARKER';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof PlayPokemonEffect && effect.pokemonCard === this) {
       const player = effect.player;
-      player.marker.removeMarker(this.SLEEP_PENDULUM_MAREKER, this);
+      player.marker.removeMarker(this.SLEEP_PENDULUM_MARKER, this);
     }
 
     if (effect instanceof PowerEffect && effect.power === this.powers[0]) {
@@ -64,10 +64,10 @@ export class Hypno extends PokemonCard {
       if (cardList.specialConditions.length > 0) {
         throw new GameError(GameMessage.CANNOT_USE_POWER);
       }
-      if (player.marker.hasMarker(this.SLEEP_PENDULUM_MAREKER, this)) {
+      if (player.marker.hasMarker(this.SLEEP_PENDULUM_MARKER, this)) {
         throw new GameError(GameMessage.POWER_ALREADY_USED);
       }
-      player.marker.addMarker(this.SLEEP_PENDULUM_MAREKER, this);
+      player.marker.addMarker(this.SLEEP_PENDULUM_MARKER, this);
 
       if (opponent.active.specialConditions.includes(SpecialCondition.ASLEEP)) {
         return state;
@@ -113,7 +113,7 @@ export class Hypno extends PokemonCard {
     }
 
     if (effect instanceof EndTurnEffect) {
-      effect.player.marker.removeMarker(this.SLEEP_PENDULUM_MAREKER, this);
+      effect.player.marker.removeMarker(this.SLEEP_PENDULUM_MARKER, this);
     }
 
     return state;

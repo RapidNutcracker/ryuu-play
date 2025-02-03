@@ -7,8 +7,8 @@ import { GameMessage } from '../../game-message';
 import { RetreatEffect, UseAttackEffect, UsePowerEffect, UseStadiumEffect } from '../effects/game-effects';
 import { EndTurnEffect } from '../effects/game-phase-effects';
 import { StateUtils } from '../state-utils';
-import {SlotType} from '../actions/play-card-action';
-import {PokemonCard} from '../card/pokemon-card';
+import { SlotType } from '../actions/play-card-action';
+import { PokemonCard } from '../card/pokemon-card';
 
 export function playerTurnReducer(store: StoreLike, state: State, action: Action): State {
 
@@ -105,6 +105,10 @@ export function playerTurnReducer(store: StoreLike, state: State, action: Action
       const slot = action.target.slot;
       if (slot === SlotType.ACTIVE || slot === SlotType.BENCH) {
         if (!power.useWhenInPlay) {
+          throw new GameError(GameMessage.CANNOT_USE_POWER);
+        }
+
+        if (slot === SlotType.BENCH && !power.useFromBench) {
           throw new GameError(GameMessage.CANNOT_USE_POWER);
         }
       }

@@ -317,8 +317,6 @@ export function checkState(store: StoreLike, state: State, onComplete?: () => vo
 
 
 export function checkStateReducer(store: StoreLike, state: State, effect: Effect): State {
-
-
   if (effect instanceof CheckProvidedEnergyEffect) {
     effect.source.cards.forEach(c => {
       if (c instanceof EnergyCard && !effect.energyMap.some(e => e.card === c)) {

@@ -88,13 +88,13 @@ export class BoardCardComponent {
 
     for (const card of cardList.cards) {
       switch (card.superType) {
-      case SuperType.ENERGY:
-        if (this.energyCards.length < MAX_ENERGY_CARDS) {
-          this.energyCards.push(card);
-        } else {
-          this.moreEnergies++;
-        }
-        break;
+        case SuperType.ENERGY:
+          if (this.energyCards.length < MAX_ENERGY_CARDS) {
+            this.energyCards.push(card);
+          } else {
+            this.moreEnergies++;
+          }
+          break;
       }
     }
   }
@@ -102,5 +102,4 @@ export class BoardCardComponent {
   public onCardClick(card: Card) {
     this.cardClick.next(card);
   }
-
 }

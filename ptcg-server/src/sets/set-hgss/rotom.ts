@@ -49,12 +49,12 @@ export class Rotom extends PokemonCard {
 
   public fullName: string = 'Rotom UND';
 
-  public readonly MISCHIEVOUS_TRICK_MAREKER = 'MISCHIEVOUS_TRICK_MAREKER';
+  public readonly MISCHIEVOUS_TRICK_MARKER = 'MISCHIEVOUS_TRICK_MARKER';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof PlayPokemonEffect && effect.pokemonCard === this) {
       const player = effect.player;
-      player.marker.removeMarker(this.MISCHIEVOUS_TRICK_MAREKER, this);
+      player.marker.removeMarker(this.MISCHIEVOUS_TRICK_MARKER, this);
     }
 
     if (effect instanceof PowerEffect && effect.power === this.powers[0]) {
@@ -64,10 +64,10 @@ export class Rotom extends PokemonCard {
       if (cardList.specialConditions.length > 0) {
         throw new GameError(GameMessage.CANNOT_USE_POWER);
       }
-      if (player.marker.hasMarker(this.MISCHIEVOUS_TRICK_MAREKER, this)) {
+      if (player.marker.hasMarker(this.MISCHIEVOUS_TRICK_MARKER, this)) {
         throw new GameError(GameMessage.POWER_ALREADY_USED);
       }
-      player.marker.addMarker(this.MISCHIEVOUS_TRICK_MAREKER, this);
+      player.marker.addMarker(this.MISCHIEVOUS_TRICK_MARKER, this);
 
       state = store.prompt(state, new ChoosePrizePrompt(
         player.id,
@@ -112,7 +112,7 @@ export class Rotom extends PokemonCard {
     }
 
     if (effect instanceof EndTurnEffect) {
-      effect.player.marker.removeMarker(this.MISCHIEVOUS_TRICK_MAREKER, this);
+      effect.player.marker.removeMarker(this.MISCHIEVOUS_TRICK_MARKER, this);
     }
 
     return state;

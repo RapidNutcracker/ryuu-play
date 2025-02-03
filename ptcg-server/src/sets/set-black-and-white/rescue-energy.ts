@@ -19,7 +19,7 @@ export class RescueEnergy extends EnergyCard {
 
   public fullName = 'Rescue Energy TRM';
 
-  public readonly RESCUE_ENERGY_MAREKER = 'RESCUE_ENERGY_MAREKER';
+  public readonly RESCUE_ENERGY_MARKER = 'RESCUE_ENERGY_MARKER';
 
   public text =
     'Rescue Energy provides C Energy. If the Pokemon this card is attached ' +
@@ -38,23 +38,23 @@ export class RescueEnergy extends EnergyCard {
       const target = effect.target;
       const cards = target.getPokemons();
       cards.forEach(card => {
-        player.marker.addMarker(this.RESCUE_ENERGY_MAREKER, card);
+        player.marker.addMarker(this.RESCUE_ENERGY_MARKER, card);
       });
     }
 
     if (effect instanceof BetweenTurnsEffect) {
       state.players.forEach(player => {
 
-        if (!player.marker.hasMarker(this.RESCUE_ENERGY_MAREKER)) {
+        if (!player.marker.hasMarker(this.RESCUE_ENERGY_MARKER)) {
           return;
         }
 
         const rescued: Card[] = player.marker.markers
-          .filter(m => m.name === this.RESCUE_ENERGY_MAREKER)
+          .filter(m => m.name === this.RESCUE_ENERGY_MARKER)
           .map(m => m.source);
 
         player.discard.moveCardsTo(rescued, player.hand);
-        player.marker.removeMarker(this.RESCUE_ENERGY_MAREKER);
+        player.marker.removeMarker(this.RESCUE_ENERGY_MARKER);
       });
     }
 

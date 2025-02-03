@@ -40,7 +40,7 @@ function* useAquaJet(next: Function, store: StoreLike, state: State,
     player.id,
     GameMessage.CHOOSE_POKEMON_TO_DAMAGE,
     PlayerType.TOP_PLAYER,
-    [ SlotType.BENCH ],
+    [SlotType.BENCH],
     { allowCancel: false }
   ), targets => {
     if (!targets || targets.length === 0) {
@@ -68,17 +68,17 @@ export class Floatzel extends PokemonCard {
     value: 20
   }];
 
-  public retreat = [ CardType.COLORLESS ];
+  public retreat = [CardType.COLORLESS];
 
   public attacks = [{
     name: 'Agility',
-    cost: [ CardType.COLORLESS, CardType.COLORLESS ],
+    cost: [CardType.COLORLESS, CardType.COLORLESS],
     damage: 20,
     text: 'Flip a coin. If heads, prevent all effects of an attack, ' +
       'including damage, done to Floatzel during your opponent\'s next turn.'
   }, {
     name: 'Aqua Jet',
-    cost: [ CardType.WATER, CardType.WATER, CardType.COLORLESS ],
+    cost: [CardType.WATER, CardType.WATER, CardType.COLORLESS],
     damage: 60,
     text: 'Flip a coin. If heads, this attack does 10 damage to 1 ' +
       'of your opponent\'s Benched Pokemon. (Don\'t apply Weakness ' +
@@ -97,6 +97,7 @@ export class Floatzel extends PokemonCard {
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
 
+    // Agility
     if (effect instanceof AttackEffect && effect.attack === this.attacks[0]) {
       const player = effect.player;
       const opponent = StateUtils.getOpponent(state, player);
@@ -112,19 +113,18 @@ export class Floatzel extends PokemonCard {
       return state;
     }
 
+    // Aqua Jet
     if (effect instanceof AttackEffect && effect.attack === this.attacks[1]) {
       const generator = useAquaJet(() => generator.next(), store, state, effect);
       return generator.next().value;
     }
 
-    if (effect instanceof AbstractAttackEffect
-      && effect.target.marker.hasMarker(this.AGILITY_MARKER)) {
+    if (effect instanceof AbstractAttackEffect && effect.target.marker.hasMarker(this.AGILITY_MARKER)) {
       effect.preventDefault = true;
       return state;
     }
 
-    if (effect instanceof EndTurnEffect
-      && effect.player.marker.hasMarker(this.CLEAR_AGILITY_MARKER, this)) {
+    if (effect instanceof EndTurnEffect && effect.player.marker.hasMarker(this.CLEAR_AGILITY_MARKER, this)) {
 
       effect.player.marker.removeMarker(this.CLEAR_AGILITY_MARKER, this);
 

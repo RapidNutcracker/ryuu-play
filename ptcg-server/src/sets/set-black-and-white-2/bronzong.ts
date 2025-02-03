@@ -51,13 +51,13 @@ export class Bronzong extends PokemonCard {
 
   public fullName: string = 'Bronzong PFO';
 
-  public readonly METAL_LINKS_MAREKER = 'METAL_LINKS_MAREKER';
+  public readonly METAL_LINKS_MARKER = 'METAL_LINKS_MARKER';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
 
     if (effect instanceof PlayPokemonEffect && effect.pokemonCard === this) {
       const player = effect.player;
-      player.marker.removeMarker(this.METAL_LINKS_MAREKER, this);
+      player.marker.removeMarker(this.METAL_LINKS_MARKER, this);
     }
 
     if (effect instanceof PowerEffect && effect.power === this.powers[0]) {
@@ -73,10 +73,10 @@ export class Bronzong extends PokemonCard {
       if (!hasEnergyInDiscard) {
         throw new GameError(GameMessage.CANNOT_USE_POWER);
       }
-      if (player.marker.hasMarker(this.METAL_LINKS_MAREKER, this)) {
+      if (player.marker.hasMarker(this.METAL_LINKS_MARKER, this)) {
         throw new GameError(GameMessage.POWER_ALREADY_USED);
       }
-      player.marker.addMarker(this.METAL_LINKS_MAREKER, this);
+      player.marker.addMarker(this.METAL_LINKS_MARKER, this);
 
       const blocked: number[] = [];
       player.discard.cards.forEach((card, index) => {
@@ -105,7 +105,7 @@ export class Bronzong extends PokemonCard {
     }
 
     if (effect instanceof EndTurnEffect) {
-      effect.player.marker.removeMarker(this.METAL_LINKS_MAREKER, this);
+      effect.player.marker.removeMarker(this.METAL_LINKS_MARKER, this);
     }
 
     return state;

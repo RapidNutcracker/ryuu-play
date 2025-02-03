@@ -22,17 +22,17 @@ export class Cobalion extends PokemonCard {
 
   public resistance = [{ type: CardType.PSYCHIC, value: -20 }];
 
-  public retreat = [ CardType.COLORLESS, CardType.COLORLESS ];
+  public retreat = [CardType.COLORLESS, CardType.COLORLESS];
 
   public attacks = [{
     name: 'Energy Press',
-    cost: [ CardType.METAL, CardType.COLORLESS ],
+    cost: [CardType.METAL, CardType.COLORLESS],
     damage: 20,
     text: 'Does 20 more damage for each Energy attached to ' +
       'the Defending Pokemon.'
   }, {
     name: 'Iron Breaker',
-    cost: [ CardType.METAL, CardType.METAL, CardType.COLORLESS ],
+    cost: [CardType.METAL, CardType.METAL, CardType.COLORLESS],
     damage: 80,
     text: 'The Defending Pokemon can\'t attack during your opponent\'s ' +
       'next turn.'
@@ -44,7 +44,7 @@ export class Cobalion extends PokemonCard {
 
   public fullName: string = 'Cobalion LT';
 
-  public readonly METAL_LINKS_MAREKER = 'IRON_BREAKER_MAREKER';
+  public readonly METAL_LINKS_MARKER = 'IRON_BREAKER_MARKER';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
 
@@ -63,15 +63,15 @@ export class Cobalion extends PokemonCard {
     if (effect instanceof AttackEffect && effect.attack === this.attacks[1]) {
       const player = effect.player;
       const opponent = StateUtils.getOpponent(state, player);
-      opponent.active.marker.addMarker(this.METAL_LINKS_MAREKER, this);
+      opponent.active.marker.addMarker(this.METAL_LINKS_MARKER, this);
     }
 
-    if (effect instanceof UseAttackEffect && effect.player.active.marker.hasMarker(this.METAL_LINKS_MAREKER, this)) {
+    if (effect instanceof UseAttackEffect && effect.player.active.marker.hasMarker(this.METAL_LINKS_MARKER, this)) {
       throw new GameError(GameMessage.BLOCKED_BY_EFFECT);
     }
 
     if (effect instanceof EndTurnEffect) {
-      effect.player.active.marker.removeMarker(this.METAL_LINKS_MAREKER, this);
+      effect.player.active.marker.removeMarker(this.METAL_LINKS_MARKER, this);
     }
 
     return state;

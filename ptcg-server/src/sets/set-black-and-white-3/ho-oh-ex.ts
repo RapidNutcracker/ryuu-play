@@ -22,11 +22,11 @@ function* useRebirth(next: Function, store: StoreLike, state: State,
   }
 
   // Power already used
-  if (player.marker.hasMarker(self.REBIRTH_MAREKER, self)) {
+  if (player.marker.hasMarker(self.REBIRTH_MARKER, self)) {
     throw new GameError(GameMessage.POWER_ALREADY_USED);
   }
 
-  player.marker.addMarker(self.REBIRTH_MAREKER, self);
+  player.marker.addMarker(self.REBIRTH_MARKER, self);
 
   let flipResult = false;
   yield store.prompt(state, [
@@ -113,7 +113,7 @@ export class HoOhEx extends PokemonCard {
 
   public fullName: string = 'Ho-Oh EX DGE';
 
-  public readonly REBIRTH_MAREKER = 'REBIRTH_MAREKER';
+  public readonly REBIRTH_MARKER = 'REBIRTH_MARKER';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
 
@@ -142,7 +142,7 @@ export class HoOhEx extends PokemonCard {
     }
 
     if (effect instanceof EndTurnEffect) {
-      effect.player.marker.removeMarker(this.REBIRTH_MAREKER, this);
+      effect.player.marker.removeMarker(this.REBIRTH_MARKER, this);
     }
 
     return state;

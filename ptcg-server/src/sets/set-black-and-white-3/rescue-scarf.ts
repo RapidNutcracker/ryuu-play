@@ -22,7 +22,7 @@ export class RescueScarf extends TrainerCard {
     'an attack, put that Pokemon into your hand. (Discard all cards ' +
     'attached to that Pokemon.)';
 
-  public readonly RESCUE_SCARF_MAREKER = 'RESCUE_SCARF_MAREKER';
+  public readonly RESCUE_SCARF_MARKER = 'RESCUE_SCARF_MARKER';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof KnockOutEffect && effect.target.cards.includes(this)) {
@@ -36,23 +36,23 @@ export class RescueScarf extends TrainerCard {
       const target = effect.target;
       const cards = target.getPokemons();
       cards.forEach(card => {
-        player.marker.addMarker(this.RESCUE_SCARF_MAREKER, card);
+        player.marker.addMarker(this.RESCUE_SCARF_MARKER, card);
       });
     }
 
     if (effect instanceof BetweenTurnsEffect) {
       state.players.forEach(player => {
 
-        if (!player.marker.hasMarker(this.RESCUE_SCARF_MAREKER)) {
+        if (!player.marker.hasMarker(this.RESCUE_SCARF_MARKER)) {
           return;
         }
 
         const rescued: Card[] = player.marker.markers
-          .filter(m => m.name === this.RESCUE_SCARF_MAREKER)
+          .filter(m => m.name === this.RESCUE_SCARF_MARKER)
           .map(m => m.source);
 
         player.discard.moveCardsTo(rescued, player.hand);
-        player.marker.removeMarker(this.RESCUE_SCARF_MAREKER);
+        player.marker.removeMarker(this.RESCUE_SCARF_MARKER);
       });
     }
 

@@ -45,12 +45,12 @@ export class Empoleon extends PokemonCard {
 
   public fullName: string = 'Empoleon DEX';
 
-  public readonly DIVING_DRAW_MAREKER = 'DIVING_DRAW_MAREKER';
+  public readonly DIVING_DRAW_MARKER = 'DIVING_DRAW_MARKER';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof PlayPokemonEffect && effect.pokemonCard === this) {
       const player = effect.player;
-      player.marker.removeMarker(this.DIVING_DRAW_MAREKER, this);
+      player.marker.removeMarker(this.DIVING_DRAW_MARKER, this);
     }
 
     if (effect instanceof PowerEffect && effect.power === this.powers[0]) {
@@ -58,7 +58,7 @@ export class Empoleon extends PokemonCard {
       if (player.hand.cards.length === 0) {
         throw new GameError(GameMessage.CANNOT_USE_POWER);
       }
-      if (player.marker.hasMarker(this.DIVING_DRAW_MAREKER, this)) {
+      if (player.marker.hasMarker(this.DIVING_DRAW_MARKER, this)) {
         throw new GameError(GameMessage.POWER_ALREADY_USED);
       }
       state = store.prompt(state, new ChooseCardsPrompt(
@@ -72,7 +72,7 @@ export class Empoleon extends PokemonCard {
         if (cards.length === 0) {
           return;
         }
-        player.marker.addMarker(this.DIVING_DRAW_MAREKER, this);
+        player.marker.addMarker(this.DIVING_DRAW_MARKER, this);
         player.hand.moveCardsTo(cards, player.discard);
         player.deck.moveTo(player.hand, 2);
       });
@@ -90,7 +90,7 @@ export class Empoleon extends PokemonCard {
     }
 
     if (effect instanceof EndTurnEffect) {
-      effect.player.marker.removeMarker(this.DIVING_DRAW_MAREKER, this);
+      effect.player.marker.removeMarker(this.DIVING_DRAW_MARKER, this);
     }
 
     return state;

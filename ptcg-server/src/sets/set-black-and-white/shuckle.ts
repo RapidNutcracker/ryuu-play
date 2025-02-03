@@ -43,9 +43,9 @@ export class Shuckle extends PokemonCard {
 
   public fullName: string = 'Shuckle PR';
 
-  public readonly SHELL_STUNNER_MAREKER = 'SHELL_STUNNER_MAREKER';
+  public readonly SHELL_STUNNER_MARKER = 'SHELL_STUNNER_MARKER';
 
-  public readonly CLEAR_SHELL_STUNNER_MAREKER = 'CLEAR_SHELL_STUNNER_MAREKER';
+  public readonly CLEAR_SHELL_STUNNER_MARKER = 'CLEAR_SHELL_STUNNER_MARKER';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
 
@@ -70,7 +70,7 @@ export class Shuckle extends PokemonCard {
     }
 
     if (effect instanceof PutDamageEffect
-      && effect.target.marker.hasMarker(this.SHELL_STUNNER_MAREKER)) {
+      && effect.target.marker.hasMarker(this.SHELL_STUNNER_MARKER)) {
       effect.preventDefault = true;
       return state;
     }
@@ -84,8 +84,8 @@ export class Shuckle extends PokemonCard {
         GameMessage.COIN_FLIP
       ), flipResult => {
         if (flipResult) {
-          player.active.marker.addMarker(this.SHELL_STUNNER_MAREKER, this);
-          opponent.marker.addMarker(this.CLEAR_SHELL_STUNNER_MAREKER, this);
+          player.active.marker.addMarker(this.SHELL_STUNNER_MARKER, this);
+          opponent.marker.addMarker(this.CLEAR_SHELL_STUNNER_MARKER, this);
         }
       });
 
@@ -93,13 +93,13 @@ export class Shuckle extends PokemonCard {
     }
 
     if (effect instanceof EndTurnEffect
-      && effect.player.marker.hasMarker(this.CLEAR_SHELL_STUNNER_MAREKER, this)) {
+      && effect.player.marker.hasMarker(this.CLEAR_SHELL_STUNNER_MARKER, this)) {
 
-      effect.player.marker.removeMarker(this.CLEAR_SHELL_STUNNER_MAREKER, this);
+      effect.player.marker.removeMarker(this.CLEAR_SHELL_STUNNER_MARKER, this);
 
       const opponent = StateUtils.getOpponent(state, effect.player);
       opponent.forEachPokemon(PlayerType.TOP_PLAYER, (cardList) => {
-        cardList.marker.removeMarker(this.SHELL_STUNNER_MAREKER, this);
+        cardList.marker.removeMarker(this.SHELL_STUNNER_MARKER, this);
       });
     }
 

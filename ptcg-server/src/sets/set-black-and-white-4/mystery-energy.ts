@@ -22,7 +22,7 @@ export class MysteryEnergy extends EnergyCard {
 
   public fullName = 'Mystery Energy PFO';
 
-  public readonly STRONG_ENERGY_MAREKER = 'STRONG_ENERGY_MAREKER';
+  public readonly STRONG_ENERGY_MARKER = 'STRONG_ENERGY_MARKER';
 
   public text =
     'This card can only be attached to P Pokemon. This card provides P ' +

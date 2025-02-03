@@ -45,12 +45,12 @@ export class Eelektrik extends PokemonCard {
 
   public fullName: string = 'Eelektrik NV';
 
-  public readonly DYNAMOTOR_MAREKER = 'DYNAMOTOR_MAREKER';
+  public readonly DYNAMOTOR_MARKER = 'DYNAMOTOR_MARKER';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof PlayPokemonEffect && effect.pokemonCard === this) {
       const player = effect.player;
-      player.marker.removeMarker(this.DYNAMOTOR_MAREKER, this);
+      player.marker.removeMarker(this.DYNAMOTOR_MARKER, this);
     }
 
     if (effect instanceof PowerEffect && effect.power === this.powers[0]) {
@@ -68,7 +68,7 @@ export class Eelektrik extends PokemonCard {
       if (!hasEnergyInDiscard) {
         throw new GameError(GameMessage.CANNOT_USE_POWER);
       }
-      if (player.marker.hasMarker(this.DYNAMOTOR_MAREKER, this)) {
+      if (player.marker.hasMarker(this.DYNAMOTOR_MARKER, this)) {
         throw new GameError(GameMessage.POWER_ALREADY_USED);
       }
 
@@ -86,7 +86,7 @@ export class Eelektrik extends PokemonCard {
         if (transfers.length === 0) {
           return;
         }
-        player.marker.addMarker(this.DYNAMOTOR_MAREKER, this);
+        player.marker.addMarker(this.DYNAMOTOR_MARKER, this);
         for (const transfer of transfers) {
           const target = StateUtils.getTarget(state, player, transfer.to);
           player.discard.moveCardTo(transfer.card, target);
@@ -97,7 +97,7 @@ export class Eelektrik extends PokemonCard {
     }
 
     if (effect instanceof EndTurnEffect) {
-      effect.player.marker.removeMarker(this.DYNAMOTOR_MAREKER, this);
+      effect.player.marker.removeMarker(this.DYNAMOTOR_MARKER, this);
     }
 
     return state;

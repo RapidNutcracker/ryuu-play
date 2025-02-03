@@ -70,7 +70,7 @@ export class BoardComponent implements OnDestroy {
     player: PlayerType,
     slot: SlotType,
     index: number = 0
-  ): [DropTargetType, Observable<boolean>]  {
+  ): [DropTargetType, Observable<boolean>] {
 
     const target = { player, slot, index };
     let dropTarget: DropTargetType;
@@ -118,7 +118,7 @@ export class BoardComponent implements OnDestroy {
 
     highlight$ = dropState.pipe(map(state => state.canDrop && state.isOver));
 
-    return [ dropTarget, highlight$ ];
+    return [dropTarget, highlight$];
   }
 
   private handlePlayFromHand(item: HandItem, target: CardTarget): void {
@@ -283,7 +283,7 @@ export class BoardComponent implements OnDestroy {
         if (result.ability) {
           this.gameService.ability(gameId, result.ability, target);
 
-        // Use attack from the card
+          // Use attack from the card
         } else if (result.attack) {
           this.gameService.attack(gameId, result.attack);
         }

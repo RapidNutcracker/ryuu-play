@@ -79,8 +79,7 @@ export class Gabite extends PokemonCard {
       return state;
     }
 
-    if (effect instanceof EndTurnEffect
-      && effect.player.marker.hasMarker(this.CLEAR_BURROW_MARKER, this)) {
+    if (effect instanceof EndTurnEffect && effect.player.marker.hasMarker(this.CLEAR_BURROW_MARKER, this)) {
 
       effect.player.marker.removeMarker(this.CLEAR_BURROW_MARKER, this);
 

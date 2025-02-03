@@ -44,7 +44,7 @@ export class Exeggcute extends PokemonCard {
 
   public fullName: string = 'Exeggcute PLF';
 
-  public readonly PROPAGATION_MAREKER = 'PROPAGATION_MAREKER';
+  public readonly PROPAGATION_MARKER = 'PROPAGATION_MARKER';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
 
@@ -57,17 +57,17 @@ export class Exeggcute extends PokemonCard {
       }
 
       // Power already used
-      if (player.marker.hasMarker(this.PROPAGATION_MAREKER, this)) {
+      if (player.marker.hasMarker(this.PROPAGATION_MARKER, this)) {
         throw new GameError(GameMessage.POWER_ALREADY_USED);
       }
 
-      player.marker.addMarker(this.PROPAGATION_MAREKER, this);
+      player.marker.addMarker(this.PROPAGATION_MARKER, this);
       player.discard.moveCardTo(this, player.hand);
       return state;
     }
 
     if (effect instanceof EndTurnEffect) {
-      effect.player.marker.removeMarker(this.PROPAGATION_MAREKER, this);
+      effect.player.marker.removeMarker(this.PROPAGATION_MARKER, this);
     }
 
     return state;

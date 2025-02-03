@@ -23,7 +23,7 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     player.id,
     GameMessage.CHOOSE_POKEMON_TO_SWITCH,
     PlayerType.BOTTOM_PLAYER,
-    [ SlotType.BENCH ],
+    [SlotType.BENCH],
     { allowCancel: true }
   ), results => {
     targets = results || [];

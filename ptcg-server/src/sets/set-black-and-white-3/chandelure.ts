@@ -53,12 +53,12 @@ export class Chandelure extends PokemonCard {
 
   public fullName: string = 'Chandelure NV';
 
-  public readonly CURSED_SHADOW_MAREKER = 'CURSED_SHADOW_MAREKER';
+  public readonly CURSED_SHADOW_MARKER = 'CURSED_SHADOW_MARKER';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof PlayPokemonEffect && effect.pokemonCard === this) {
       const player = effect.player;
-      player.marker.removeMarker(this.CURSED_SHADOW_MAREKER, this);
+      player.marker.removeMarker(this.CURSED_SHADOW_MARKER, this);
     }
 
     if (effect instanceof PowerEffect && effect.power === this.powers[0]) {
@@ -69,7 +69,7 @@ export class Chandelure extends PokemonCard {
         throw new GameError(GameMessage.CANNOT_USE_POWER);
       }
 
-      if (player.marker.hasMarker(this.CURSED_SHADOW_MAREKER, this)) {
+      if (player.marker.hasMarker(this.CURSED_SHADOW_MARKER, this)) {
         throw new GameError(GameMessage.POWER_ALREADY_USED);
       }
 
@@ -98,7 +98,7 @@ export class Chandelure extends PokemonCard {
         if (results.length === 0) {
           return;
         }
-        player.marker.addMarker(this.CURSED_SHADOW_MAREKER, this);
+        player.marker.addMarker(this.CURSED_SHADOW_MARKER, this);
         for (const result of results) {
           const target = StateUtils.getTarget(state, player, result.target);
           target.damage += result.damage;
@@ -115,7 +115,7 @@ export class Chandelure extends PokemonCard {
     }
 
     if (effect instanceof EndTurnEffect) {
-      effect.player.marker.removeMarker(this.CURSED_SHADOW_MAREKER, this);
+      effect.player.marker.removeMarker(this.CURSED_SHADOW_MARKER, this);
     }
 
     return state;

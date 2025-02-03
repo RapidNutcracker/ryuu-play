@@ -12,7 +12,7 @@ export class Charmander2 extends PokemonCard {
 
   public weakness = [{ type: CardType.WATER }];
 
-  public retreat = [ CardType.COLORLESS ];
+  public retreat = [CardType.COLORLESS];
 
   public attacks = [
     { name: 'Gnaw', cost: [CardType.FIRE], damage: 10, text: '' },

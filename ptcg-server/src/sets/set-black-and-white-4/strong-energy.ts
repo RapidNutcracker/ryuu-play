@@ -24,7 +24,7 @@ export class StrongEnergy extends EnergyCard {
 
   public fullName = 'Strong Energy FFI';
 
-  public readonly STRONG_ENERGY_MAREKER = 'STRONG_ENERGY_MAREKER';
+  public readonly STRONG_ENERGY_MARKER = 'STRONG_ENERGY_MARKER';
 
   public text =
     'This card can only be attached to F Pokemon. This card provides F ' +
