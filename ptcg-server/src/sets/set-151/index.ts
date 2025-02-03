@@ -9,11 +9,21 @@ import { Caterpie } from './caterpie';
 import { CharizardEX } from './charizard-ex';
 import { Charmander } from './charmander';
 import { Charmeleon } from './charmeleon';
+import { Clefable } from './clefable';
+import { Clefairy } from './clefairy';
 import { Ekans } from './ekans';
 import { Fearow } from './fearow';
 import { Ivysaur } from './ivysaur';
+import { Jigglypuff } from './jigglypuff';
 import { Kakuna } from './kakuna';
 import { Metapod } from './metapod';
+import { Nidoking } from './nidoking';
+import { Nidoqueen } from './nidoqueen';
+import { NidoranFemale } from './nidoran-female';
+import { NidoranMale } from './nidoran-male';
+import { Nidorina } from './nidorina';
+import { Nidorino } from './nidorino';
+import { NinetalesEX } from './ninetales-ex';
 import { Pidgeot } from './pidgeot';
 import { Pidgeotto } from './pidgeotto';
 import { Pidgey } from './pidgey';
@@ -25,8 +35,10 @@ import { Sandslash } from './sandslash';
 import { Spearow } from './spearow';
 import { Squirtle } from './squirtle';
 import { VenusaurEX } from './venusaur-ex';
+import { Vulpix } from './vulpix';
 import { Wartortle } from './wartortle';
 import { Weedle } from './weedle';
+import { WigglytuffEX } from './wigglytuff-ex';
 
 
 export const set151: Card[] = [
@@ -57,4 +69,16 @@ export const set151: Card[] = [
     new Pikachu(),
     new Sandshrew(),
     new Sandslash(),
+    new NidoranFemale(),
+    new Nidorina(),
+    new Nidoqueen(),
+    new NidoranMale(),
+    new Nidorino(),
+    new Nidoking(),
+    new Clefairy(),
+    new Clefable(),
+    new Vulpix(),
+    new NinetalesEX(),
+    new Jigglypuff(),
+    new WigglytuffEX(),
 ]
