@@ -7,3 +7,4 @@ export * from './set-hgss';
 export * from './set-op9';
 export * from './set-sword-and-shield';
 export * from './set-base';
+export * from './set-151';

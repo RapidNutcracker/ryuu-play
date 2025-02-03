@@ -50,7 +50,7 @@ export class DeckEditToolbarComponent {
 
   public sets = [
     { value: 'BS', label: 'LABEL_BASE' },
-    { value: '151', label: '151' },
+    { value: 'MEW', label: '151' },
     { value: 'HGSS', label: 'LABEL_HGSS' }
   ];
 
