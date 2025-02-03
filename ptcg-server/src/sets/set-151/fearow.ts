@@ -14,14 +14,13 @@ import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Stage, CardType } from '../../game/store/card/card-types';
 
 
-function* useBeakCatch(next: Function, store: StoreLike, state: State,
-  effect: AttackEffect): IterableIterator<State> {
+function* useBeakCatch(next: Function, store: StoreLike, state: State, effect: AttackEffect): IterableIterator<State> {
   const player = effect.player;
 
   let cards: Card[] = [];
   yield store.prompt(state, new ChooseCardsPrompt(
     player.id,
-    GameMessage.CHOOSE_CARD_TO_PUT_ONTO_BENCH,
+    GameMessage.CHOOSE_CARD_TO_HAND,
     player.deck,
     {},
     { min: 0, max: 3, allowCancel: true }

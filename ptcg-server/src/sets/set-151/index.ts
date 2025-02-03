@@ -1,6 +1,7 @@
 import { Card } from '../../game/store/card/card';
-import { Beedrill } from './beedrill';
 
+import { ArbokEX } from './arbok-ex';
+import { Beedrill } from './beedrill';
 import { BlastoiseEX } from './blastoise-ex';
 import { Bulbasaur } from './bulbasaur';
 import { Butterfree } from './butterfree';
@@ -8,6 +9,7 @@ import { Caterpie } from './caterpie';
 import { CharizardEX } from './charizard-ex';
 import { Charmander } from './charmander';
 import { Charmeleon } from './charmeleon';
+import { Ekans } from './ekans';
 import { Fearow } from './fearow';
 import { Ivysaur } from './ivysaur';
 import { Kakuna } from './kakuna';
@@ -47,4 +49,6 @@ export const set151: Card[] = [
     new Raticate(),
     new Spearow(),
     new Fearow(),
+    new Ekans(),
+    new ArbokEX(),
 ]
