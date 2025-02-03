@@ -20,6 +20,8 @@ import { Pidgey } from './pidgey';
 import { Pikachu } from './pikachu';
 import { Raticate } from './raticate';
 import { Rattata } from './rattata';
+import { Sandshrew } from './sandshrew';
+import { Sandslash } from './sandslash';
 import { Spearow } from './spearow';
 import { Squirtle } from './squirtle';
 import { VenusaurEX } from './venusaur-ex';
@@ -53,4 +55,6 @@ export const set151: Card[] = [
     new Ekans(),
     new ArbokEX(),
     new Pikachu(),
+    new Sandshrew(),
+    new Sandslash(),
 ]
