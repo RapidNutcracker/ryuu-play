@@ -285,7 +285,7 @@ export class BoardComponent implements OnDestroy {
 
           // Use attack from the card
         } else if (result.attack) {
-          this.gameService.attack(gameId, result.attack);
+          this.gameService.attack(gameId, result.attack, target);
         }
       });
   }
@@ -312,6 +312,10 @@ export class BoardComponent implements OnDestroy {
         // Use ability from the card
         if (result.ability) {
           this.gameService.ability(this.gameState.gameId, result.ability, target);
+
+          // Use attack from the card
+        } else if (result.attack) {
+          this.gameService.attack(this.gameState.gameId, result.attack, target);
         }
       });
   }
@@ -337,5 +341,4 @@ export class BoardComponent implements OnDestroy {
         }
       });
   }
-
 }

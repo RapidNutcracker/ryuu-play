@@ -46,7 +46,8 @@ export function playerTurnReducer(store: StoreLike, state: State, action: Action
         throw new GameError(GameMessage.NOT_YOUR_TURN);
       }
 
-      const pokemonCard = player.active.getPokemonCard();
+      const target = StateUtils.getTarget(state, player, action.target);
+      const pokemonCard = target.getPokemonCard();
       if (pokemonCard === undefined) {
         throw new GameError(GameMessage.UNKNOWN_ATTACK);
       }
@@ -56,7 +57,11 @@ export function playerTurnReducer(store: StoreLike, state: State, action: Action
         throw new GameError(GameMessage.UNKNOWN_ATTACK);
       }
 
-      const useAttackEffect = new UseAttackEffect(player, attack);
+      if (action.target.slot === SlotType.BENCH && !attack.useFromBench) {
+        throw new GameError(GameMessage.CANNOT_USE_ATTACK);
+      }
+
+      const useAttackEffect = new UseAttackEffect(player, attack, pokemonCard);
       state = store.reduceEffect(state, useAttackEffect);
       return state;
     }

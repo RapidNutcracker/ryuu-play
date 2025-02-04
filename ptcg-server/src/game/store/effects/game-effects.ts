@@ -62,10 +62,12 @@ export class UseAttackEffect implements Effect {
   public preventDefault = false;
   public player: Player;
   public attack: Attack;
+  public card: PokemonCard;
 
-  constructor(player: Player, attack: Attack) {
+  constructor(player: Player, attack: Attack, card: PokemonCard) {
     this.player = player;
     this.attack = attack;
+    this.card = card;
   }
 }
 

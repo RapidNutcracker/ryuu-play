@@ -1,5 +1,7 @@
 import { Card } from '../../game/store/card/card';
 
+import { Abra } from './abra';
+import { AlakazamEX } from './alakazam-ex';
 import { ArbokEX } from './arbok-ex';
 import { Arcanine } from './arcanine';
 import { Beedrill } from './beedrill';
@@ -22,6 +24,7 @@ import { Golduck } from './golduck';
 import { Growlithe } from './growlithe';
 import { Ivysaur } from './ivysaur';
 import { Jigglypuff } from './jigglypuff';
+import { Kadabra } from './kadabra';
 import { Kakuna } from './kakuna';
 import { Mankey } from './mankey';
 import { Meowth } from './meowth';
@@ -125,4 +128,7 @@ export const set151: Card[] = [
     new Poliwag(),
     new Poliwhirl(),
     new Poliwrath(),
+    new Abra(),
+    new Kadabra(),
+    new AlakazamEX(),
 ]

@@ -132,8 +132,8 @@ export class GameSocket {
     this.dispatch(params.gameId, action, response);
   }
 
-  private attack(params: { gameId: number, attack: string }, response: Response<void>) {
-    const action = new AttackAction(this.client.id, params.attack);
+  private attack(params: { gameId: number, attack: string, target: CardTarget }, response: Response<void>) {
+    const action = new AttackAction(this.client.id, params.attack, params.target);
     this.dispatch(params.gameId, action, response);
   }
 

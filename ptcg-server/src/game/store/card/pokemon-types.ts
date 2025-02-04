@@ -1,4 +1,4 @@
-import {CardType} from './card-types';
+import { CardType } from './card-types';
 
 export interface Weakness {
   type: CardType;
@@ -15,6 +15,7 @@ export interface Attack {
   damage: number;
   name: string;
   text: string;
+  useFromBench?: boolean;
 }
 
 export enum PowerType {
