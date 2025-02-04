@@ -1,6 +1,7 @@
 import { Card } from '../../game/store/card/card';
 
 import { ArbokEX } from './arbok-ex';
+import { Arcanine } from './arcanine';
 import { Beedrill } from './beedrill';
 import { BlastoiseEX } from './blastoise-ex';
 import { Bulbasaur } from './bulbasaur';
@@ -18,9 +19,11 @@ import { Fearow } from './fearow';
 import { Gloom } from './gloom';
 import { Golbat } from './golbat';
 import { Golduck } from './golduck';
+import { Growlithe } from './growlithe';
 import { Ivysaur } from './ivysaur';
 import { Jigglypuff } from './jigglypuff';
 import { Kakuna } from './kakuna';
+import { Mankey } from './mankey';
 import { Meowth } from './meowth';
 import { Metapod } from './metapod';
 import { Nidoking } from './nidoking';
@@ -38,6 +41,10 @@ import { Pidgeot } from './pidgeot';
 import { Pidgeotto } from './pidgeotto';
 import { Pidgey } from './pidgey';
 import { Pikachu } from './pikachu';
+import { Poliwag } from './poliwag';
+import { Poliwhirl } from './poliwhirl';
+import { Poliwrath } from './poliwrath';
+import { Primeape } from './primeape';
 import { Psyduck } from './psyduck';
 import { Raticate } from './raticate';
 import { Rattata } from './rattata';
@@ -111,4 +118,11 @@ export const set151: Card[] = [
     new Persian(),
     new Psyduck(),
     new Golduck(),
+    new Mankey(),
+    new Primeape(),
+    new Growlithe(),
+    new Arcanine(),
+    new Poliwag(),
+    new Poliwhirl(),
+    new Poliwrath(),
 ]

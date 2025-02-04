@@ -8,7 +8,7 @@ import { EndTurnEffect } from '../../game/store/effects/game-phase-effects';
 
 export class Psyduck extends PokemonCard {
 
-  public id: number = 55;
+  public id: number = 54;
 
   public stage: Stage = Stage.BASIC;
 

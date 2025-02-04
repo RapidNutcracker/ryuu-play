@@ -6,7 +6,7 @@ import { AttackEffect } from '../../game/store/effects/game-effects';
 
 export class Golduck extends PokemonCard {
 
-  public id: number = 56;
+  public id: number = 55;
 
   public stage: Stage = Stage.STAGE_1;
 
