@@ -39,6 +39,8 @@ import { Sandshrew } from './sandshrew';
 import { Sandslash } from './sandslash';
 import { Spearow } from './spearow';
 import { Squirtle } from './squirtle';
+import { Venomoth } from './venomoth';
+import { Venonat } from './venonat';
 import { VenusaurEX } from './venusaur-ex';
 import { Vileplume } from './vileplume';
 import { Vulpix } from './vulpix';
@@ -95,4 +97,6 @@ export const set151: Card[] = [
     new Vileplume(),
     new Paras(),
     new Parasect(),
+    new Venonat(),
+    new Venomoth(),
 ]
