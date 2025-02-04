@@ -27,6 +27,8 @@ import { Nidorina } from './nidorina';
 import { Nidorino } from './nidorino';
 import { NinetalesEX } from './ninetales-ex';
 import { Oddish } from './oddish';
+import { Paras } from './paras';
+import { Parasect } from './parasect';
 import { Pidgeot } from './pidgeot';
 import { Pidgeotto } from './pidgeotto';
 import { Pidgey } from './pidgey';
@@ -91,4 +93,6 @@ export const set151: Card[] = [
     new Oddish(),
     new Gloom(),
     new Vileplume(),
+    new Paras(),
+    new Parasect(),
 ]
