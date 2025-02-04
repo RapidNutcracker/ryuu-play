@@ -11,6 +11,8 @@ import { Charmander } from './charmander';
 import { Charmeleon } from './charmeleon';
 import { Clefable } from './clefable';
 import { Clefairy } from './clefairy';
+import { Diglett } from './diglett';
+import { Dugtrio } from './dugtrio';
 import { Ekans } from './ekans';
 import { Fearow } from './fearow';
 import { Gloom } from './gloom';
@@ -18,6 +20,7 @@ import { Golbat } from './golbat';
 import { Ivysaur } from './ivysaur';
 import { Jigglypuff } from './jigglypuff';
 import { Kakuna } from './kakuna';
+import { Meowth } from './meowth';
 import { Metapod } from './metapod';
 import { Nidoking } from './nidoking';
 import { Nidoqueen } from './nidoqueen';
@@ -29,6 +32,7 @@ import { NinetalesEX } from './ninetales-ex';
 import { Oddish } from './oddish';
 import { Paras } from './paras';
 import { Parasect } from './parasect';
+import { Persian } from './persian';
 import { Pidgeot } from './pidgeot';
 import { Pidgeotto } from './pidgeotto';
 import { Pidgey } from './pidgey';
@@ -99,4 +103,8 @@ export const set151: Card[] = [
     new Parasect(),
     new Venonat(),
     new Venomoth(),
+    new Diglett(),
+    new Dugtrio(),
+    new Meowth(),
+    new Persian(),
 ]
