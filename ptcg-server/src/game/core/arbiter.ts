@@ -5,7 +5,7 @@ import { ShuffleDeckPrompt } from '../store/prompts/shuffle-prompt';
 import { StateLog } from '../store/state/state-log';
 import { State } from '../store/state/state';
 import { ResolvePromptAction } from '../store/actions/resolve-prompt-action';
-import {GameLog} from '../game-message';
+import { GameLog } from '../game-message';
 
 
 export class Arbiter {
@@ -25,7 +25,12 @@ export class Arbiter {
     }
 
     if (prompt instanceof CoinFlipPrompt) {
-      const result = Math.round(Math.random()) === 0;
+      let result: boolean = true;
+      if (player.marker.hasMarker('OVERTHINK_MARKER')) {
+        result = false;
+      } else {
+        result = Math.round(Math.random()) === 0;
+      }
       const message = result
         ? GameLog.LOG_PLAYER_FLIPS_HEADS
         : GameLog.LOG_PLAYER_FLIPS_TAILS;

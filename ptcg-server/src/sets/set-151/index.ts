@@ -17,6 +17,7 @@ import { Ekans } from './ekans';
 import { Fearow } from './fearow';
 import { Gloom } from './gloom';
 import { Golbat } from './golbat';
+import { Golduck } from './golduck';
 import { Ivysaur } from './ivysaur';
 import { Jigglypuff } from './jigglypuff';
 import { Kakuna } from './kakuna';
@@ -37,6 +38,7 @@ import { Pidgeot } from './pidgeot';
 import { Pidgeotto } from './pidgeotto';
 import { Pidgey } from './pidgey';
 import { Pikachu } from './pikachu';
+import { Psyduck } from './psyduck';
 import { Raticate } from './raticate';
 import { Rattata } from './rattata';
 import { Sandshrew } from './sandshrew';
@@ -107,4 +109,6 @@ export const set151: Card[] = [
     new Dugtrio(),
     new Meowth(),
     new Persian(),
+    new Psyduck(),
+    new Golduck(),
 ]
