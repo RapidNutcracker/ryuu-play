@@ -7,7 +7,7 @@ import { AttackEffect } from '../../game/store/effects/game-effects';
 import { GameMessage, GameLog } from '../../game/game-message';
 import { StateUtils } from '../../game/store/state-utils';
 import { ChooseCardsPrompt } from '../../game/store/prompts/choose-cards-prompt';
-import { ShuffleDeckPrompt } from '../../game/store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 import { Card } from '../../game/store/card/card';
 import { ChooseAttackPrompt } from '../../game/store/prompts/choose-attack-prompt';
 import { Attack } from '../../game/store/card/pokemon-types';
@@ -35,7 +35,7 @@ function* useNastyPlot(next: Function, store: StoreLike, state: State,
 
   player.deck.moveCardsTo(cards, player.hand);
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }

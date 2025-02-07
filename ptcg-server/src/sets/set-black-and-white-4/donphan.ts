@@ -1,9 +1,10 @@
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Stage, CardType } from '../../game/store/card/card-types';
-import { StoreLike, State, StateUtils, ChoosePokemonPrompt, PlayerType, SlotType} from '../../game';
+import { StoreLike, State, StateUtils, ChoosePokemonPrompt, PlayerType, SlotType } from '../../game';
 import { AttackEffect } from '../../game/store/effects/game-effects';
 import { Effect } from '../../game/store/effects/effect';
 import { GameMessage } from '../../game/game-message';
+import { AfterDamageEffect } from '../../game/store/effects/attack-effects';
 
 
 export class Donphan extends PokemonCard {
@@ -20,17 +21,17 @@ export class Donphan extends PokemonCard {
 
   public resistance = [{ type: CardType.LIGHTNING, value: -20 }];
 
-  public retreat = [ CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS ];
+  public retreat = [CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS];
 
   public attacks = [
     {
       name: 'Spinning Turn',
-      cost: [ CardType.COLORLESS, CardType.COLORLESS ],
+      cost: [CardType.COLORLESS, CardType.COLORLESS],
       damage: 40,
       text: 'Switch this Pokemon with 1 of your Benched Pokemon.'
     }, {
       name: 'Wreck',
-      cost: [ CardType.FIGHTING, CardType.FIGHTING, CardType.COLORLESS, CardType.COLORLESS ],
+      cost: [CardType.FIGHTING, CardType.FIGHTING, CardType.COLORLESS, CardType.COLORLESS],
       damage: 80,
       text: 'If there is any Stadium card in play, this attack does ' +
         '60 more damage. Discard that Stadium card.'
@@ -45,7 +46,7 @@ export class Donphan extends PokemonCard {
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
 
-    if (effect instanceof AttackEffect && effect.attack === this.attacks[0]) {
+    if (effect instanceof AfterDamageEffect && effect.attack === this.attacks[0]) {
       const player = effect.player;
 
       const hasBenched = player.bench.some(b => b.cards.length > 0);
@@ -57,7 +58,7 @@ export class Donphan extends PokemonCard {
         player.id,
         GameMessage.CHOOSE_NEW_ACTIVE_POKEMON,
         PlayerType.BOTTOM_PLAYER,
-        [ SlotType.BENCH ],
+        [SlotType.BENCH],
         { allowCancel: false },
       ), selected => {
         if (!selected || selected.length === 0) {

@@ -9,7 +9,7 @@ import { StateUtils } from '../../game/store/state-utils';
 import { TrainerEffect } from '../../game/store/effects/play-card-effects';
 import { ChooseCardsPrompt } from '../../game/store/prompts/choose-cards-prompt';
 import { ShowCardsPrompt } from '../../game/store/prompts/show-cards-prompt';
-import { ShuffleDeckPrompt } from '../../game/store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 
 function* playCard(next: Function, store: StoreLike, state: State,
@@ -61,7 +61,7 @@ function* playCard(next: Function, store: StoreLike, state: State,
     ), () => next());
   }
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }
@@ -77,7 +77,7 @@ export class Korrina extends TrainerCard {
   public fullName: string = 'Korrina FFI';
 
   public text: string =
-    'Search your deck for a F Pokemon and an Item card, reveal them, ' +
+    'Search your deck for a {F} Pokemon and an Item card, reveal them, ' +
     'and put them into your hand. Shuffle your deck afterward.';
 
 

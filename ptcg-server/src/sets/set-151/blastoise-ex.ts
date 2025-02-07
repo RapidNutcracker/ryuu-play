@@ -5,7 +5,7 @@ import { Effect } from '../../game/store/effects/effect';
 import { AttackEffect } from '../../game/store/effects/game-effects';
 import { PutDamageEffect } from '../../game/store/effects/attack-effects';
 
-export class BlastoiseEX extends PokemonCard {
+export class BlastoiseEx extends PokemonCard {
 
   public id: number = 9;
 
@@ -43,9 +43,9 @@ export class BlastoiseEX extends PokemonCard {
 
   public set: string = 'MEW';
 
-  public name: string = 'Blastoise EX';
+  public name: string = 'Blastoise ex';
 
-  public fullName: string = 'Blastoise EX MEW';
+  public fullName: string = 'Blastoise ex MEW';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
 

@@ -10,7 +10,7 @@ import { StateUtils } from '../../game/store/state-utils';
 import { TrainerEffect } from '../../game/store/effects/play-card-effects';
 import { ChooseCardsPrompt } from '../../game/store/prompts/choose-cards-prompt';
 import { ShowCardsPrompt } from '../../game/store/prompts/show-cards-prompt';
-import { ShuffleDeckPrompt } from '../../game/store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 
 function* playCard(next: Function, store: StoreLike, state: State, effect: TrainerEffect): IterableIterator<State> {
@@ -50,7 +50,7 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     ), () => next());
   }
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }

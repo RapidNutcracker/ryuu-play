@@ -19,18 +19,17 @@ export class Zubat extends PokemonCard {
 
   public resistance = [{ type: CardType.FIGHTING, value: -20 }];
 
-  public retreat = [ CardType.COLORLESS ];
+  public retreat = [CardType.COLORLESS];
 
   public powers = [{
     name: 'Free Flight',
     powerType: PowerType.ABILITY,
-    text: 'If this Pokemon has no Energy attached to it, this Pokemon has ' +
-      'no Retreat Cost.'
+    text: 'If this Pokemon has no Energy attached to it, this Pokemon has no Retreat Cost.'
   }];
 
   public attacks = [{
     name: 'Wing Attack',
-    cost: [ CardType.PSYCHIC, CardType.COLORLESS ],
+    cost: [CardType.PSYCHIC, CardType.COLORLESS],
     damage: 20,
     text: ''
   }];

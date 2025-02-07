@@ -1,12 +1,14 @@
 import { Effect } from '../../game/store/effects/effect';
 import { PokemonCard } from '../../game/store/card/pokemon-card';
-import { PowerType, StoreLike, State, ChoosePokemonPrompt, PlayerType, SlotType,
-  StateUtils } from '../../game';
+import {
+  PowerType, StoreLike, State, ChoosePokemonPrompt, PlayerType, SlotType,
+  StateUtils
+} from '../../game';
 import { Stage, CardType } from '../../game/store/card/card-types';
 import { PlayPokemonEffect } from '../../game/store/effects/play-card-effects';
 import { GameMessage } from '../../game/game-message';
 import { AttackEffect, PowerEffect } from '../../game/store/effects/game-effects';
-import { PutDamageEffect } from '../../game/store/effects/attack-effects';
+import { DealDamageEffect, PutDamageEffect } from '../../game/store/effects/attack-effects';
 
 
 export class Golbat extends PokemonCard {
@@ -23,7 +25,7 @@ export class Golbat extends PokemonCard {
 
   public resistance = [{ type: CardType.FIGHTING, value: -20 }];
 
-  public retreat = [ ];
+  public retreat = [];
 
   public powers = [{
     name: 'Sneaky Bite',
@@ -35,7 +37,7 @@ export class Golbat extends PokemonCard {
   public attacks = [
     {
       name: 'Swoop Across',
-      cost: [ CardType.COLORLESS ],
+      cost: [CardType.COLORLESS],
       damage: 0,
       text: 'This attack does 10 damage to each of your opponent\'s Pokemon. ' +
         '(Don\'t apply Weakness and Resistance for Benched Pokemon.)'
@@ -65,7 +67,7 @@ export class Golbat extends PokemonCard {
         player.id,
         GameMessage.CHOOSE_POKEMON_TO_DAMAGE,
         PlayerType.TOP_PLAYER,
-        [ SlotType.ACTIVE, SlotType.BENCH ],
+        [SlotType.ACTIVE, SlotType.BENCH],
         { allowCancel: true },
       ), selected => {
         const targets = selected || [];
@@ -76,16 +78,15 @@ export class Golbat extends PokemonCard {
     }
 
     if (effect instanceof AttackEffect && effect.attack === this.attacks[0]) {
-      const player = effect.player;
-      const opponent = StateUtils.getOpponent(state, player);
-      effect.damage = 10;
+      const opponent = effect.opponent;
+      const benched = opponent.bench.filter(b => b.cards.length > 0);
 
-      opponent.forEachPokemon(PlayerType.TOP_PLAYER, (cardList, card) => {
-        if (cardList === opponent.active) {
-          return;
-        }
+      const activeDamageEffect = new DealDamageEffect(effect, 10);
+      store.reduceEffect(state, activeDamageEffect);
+
+      benched.forEach(target => {
         const damageEffect = new PutDamageEffect(effect, 10);
-        damageEffect.target = cardList;
+        damageEffect.target = target;
         store.reduceEffect(state, damageEffect);
       });
     }

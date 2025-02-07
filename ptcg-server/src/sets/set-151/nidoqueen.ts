@@ -53,9 +53,9 @@ export class Nidoqueen extends PokemonCard {
 
   public fullName: string = 'Nidoqueen MEW';
 
-  public readonly QUEEN_PRESS: string = 'QUEEN_PRESS';
+  public readonly QUEEN_PRESS_MARKER: string = 'QUEEN_PRESS_MARKER';
 
-  public readonly CLEAR_QUEEN_PRESS: string = 'CLEAR_QUEEN_PRESS';
+  public readonly CLEAR_QUEEN_PRESS_MARKER: string = 'CLEAR_QUEEN_PRESS_MARKER';
 
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
@@ -65,12 +65,13 @@ export class Nidoqueen extends PokemonCard {
       const player = effect.player;
       const opponent = StateUtils.getOpponent(state, player);
 
-      player.active.marker.addMarker(this.QUEEN_PRESS, this);
-      opponent.marker.addMarker(this.CLEAR_QUEEN_PRESS, this);
+      player.active.marker.addMarker(this.QUEEN_PRESS_MARKER, this);
+      opponent.marker.addMarker(this.CLEAR_QUEEN_PRESS_MARKER, this);
 
       return state;
     }
 
+    // Queen Press is Active
     if (effect instanceof PutDamageEffect && effect.target.cards.includes(this)) {
       const pokemonCard = effect.target.getPokemonCard();
       const sourceCard = effect.source.getPokemonCard();
@@ -99,13 +100,13 @@ export class Nidoqueen extends PokemonCard {
     }
 
     // Clear Queen Press
-    if (effect instanceof EndTurnEffect && effect.player.marker.hasMarker(this.CLEAR_QUEEN_PRESS, this)) {
+    if (effect instanceof EndTurnEffect && effect.player.marker.hasMarker(this.CLEAR_QUEEN_PRESS_MARKER, this)) {
 
-      effect.player.marker.removeMarker(this.CLEAR_QUEEN_PRESS, this);
+      effect.player.marker.removeMarker(this.CLEAR_QUEEN_PRESS_MARKER, this);
 
       const opponent = StateUtils.getOpponent(state, effect.player);
       opponent.forEachPokemon(PlayerType.TOP_PLAYER, (cardList) => {
-        cardList.marker.removeMarker(this.QUEEN_PRESS, this);
+        cardList.marker.removeMarker(this.QUEEN_PRESS_MARKER, this);
       });
     }
 

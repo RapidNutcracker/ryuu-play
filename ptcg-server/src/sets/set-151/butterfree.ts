@@ -1,17 +1,17 @@
-import { AttackEffect } from '../../game/store/effects/game-effects';
 import { ChoosePokemonPrompt } from '../../game/store/prompts/choose-pokemon-prompt';
 import { Effect } from '../../game/store/effects/effect';
 import { GameMessage } from '../../game/game-message';
 import { PlayerType, SlotType } from '../../game/store/actions/play-card-action';
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Resistance, Weakness } from '../../game/store/card/pokemon-types';
-import { ShuffleDeckPrompt } from '../../game/store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 import { Stage, CardType } from '../../game/store/card/card-types';
 import { State } from '../../game/store/state/state';
 import { StateUtils } from '../../game/store/state-utils';
 import { StoreLike } from '../../game/store/store-like';
+import { AfterDamageEffect } from '../../game/store/effects/attack-effects';
 
-function* useWhirlwind(next: Function, store: StoreLike, state: State, effect: AttackEffect): IterableIterator<State> {
+function* useWhirlwind(next: Function, store: StoreLike, state: State, effect: AfterDamageEffect): IterableIterator<State> {
   const player = effect.player;
   const opponent = StateUtils.getOpponent(state, player);
 
@@ -39,7 +39,7 @@ function* useWhirlwind(next: Function, store: StoreLike, state: State, effect: A
   return state;
 }
 
-function* useByeByeFlight(next: Function, store: StoreLike, state: State, effect: AttackEffect): IterableIterator<State> {
+function* useByeByeFlight(next: Function, store: StoreLike, state: State, effect: AfterDamageEffect): IterableIterator<State> {
   const player = effect.player;
   const opponent = StateUtils.getOpponent(state, player);
 
@@ -64,13 +64,13 @@ function* useByeByeFlight(next: Function, store: StoreLike, state: State, effect
     next();
   });
 
-  yield store.prompt(state, new ShuffleDeckPrompt(opponent.id), order => {
+  yield store.prompt(state, new ShufflePrompt(opponent.id), order => {
     opponent.deck.applyOrder(order);
   });
 
   player.active.moveTo(player.deck);
 
-  yield store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  yield store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 
@@ -123,13 +123,13 @@ export class Butterfree extends PokemonCard {
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
 
     // Whirlwind
-    if (effect instanceof AttackEffect && effect.attack === this.attacks[0]) {
+    if (effect instanceof AfterDamageEffect && effect.attack === this.attacks[0]) {
       const generator = useWhirlwind(() => generator.next(), store, state, effect);
       return generator.next().value;
     }
 
     // Bye-Bye Flight
-    if (effect instanceof AttackEffect && effect.attack === this.attacks[1]) {
+    if (effect instanceof AfterDamageEffect && effect.attack === this.attacks[1]) {
       const generator = useByeByeFlight(() => generator.next(), store, state, effect);
       return generator.next().value;
     }

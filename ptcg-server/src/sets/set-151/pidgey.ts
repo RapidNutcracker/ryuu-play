@@ -6,13 +6,12 @@ import { GameMessage } from '../../game/game-message';
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { PokemonCardList } from '../../game/store/state/pokemon-card-list';
 import { Resistance, Weakness } from '../../game/store/card/pokemon-types';
-import { ShuffleDeckPrompt } from '../../game/store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 import { Stage, CardType, SuperType } from '../../game/store/card/card-types';
 import { State } from '../../game/store/state/state';
 import { StoreLike } from '../../game/store/store-like';
 
-function* useCallForFamily(next: Function, store: StoreLike, state: State,
-  effect: AttackEffect): IterableIterator<State> {
+function* useCallForFamily(next: Function, store: StoreLike, state: State, effect: AttackEffect): IterableIterator<State> {
   const player = effect.player;
   const slots: PokemonCardList[] = player.bench.filter(b => b.cards.length === 0);
   const max = Math.min(slots.length, 2);
@@ -38,7 +37,7 @@ function* useCallForFamily(next: Function, store: StoreLike, state: State,
     slots[index].pokemonPlayedTurn = state.turn;
   });
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }

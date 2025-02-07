@@ -8,7 +8,7 @@ import { AttackEffect } from '../../game/store/effects/game-effects';
 import { StateUtils } from '../../game/store/state-utils';
 import { ChooseCardsPrompt } from '../../game/store/prompts/choose-cards-prompt';
 import { ShowCardsPrompt } from '../../game/store/prompts/show-cards-prompt';
-import { ShuffleDeckPrompt } from '../../game/store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 import { GameMessage } from '../../game/game-message';
 
 
@@ -39,7 +39,7 @@ function* useFindAFriend(next: Function, store: StoreLike, state: State,
     ), () => next());
   }
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }
@@ -54,16 +54,16 @@ export class Oddish extends PokemonCard {
 
   public weakness = [{ type: CardType.PSYCHIC }];
 
-  public retreat = [ CardType.COLORLESS ];
+  public retreat = [CardType.COLORLESS];
 
   public attacks = [{
     name: 'Ram',
-    cost: [ CardType.COLORLESS ],
+    cost: [CardType.COLORLESS],
     damage: 10,
     text: ''
   }, {
     name: 'Find a Friend',
-    cost: [ CardType.GRASS ],
+    cost: [CardType.GRASS],
     damage: 0,
     text: 'Flip a coin. If heads, search your deck for a G Pokemon, ' +
       'show it to your opponent, and put it into your hand. ' +
@@ -82,6 +82,7 @@ export class Oddish extends PokemonCard {
       const generator = useFindAFriend(() => generator.next(), store, state, effect);
       return generator.next().value;
     }
+
     return state;
   }
 

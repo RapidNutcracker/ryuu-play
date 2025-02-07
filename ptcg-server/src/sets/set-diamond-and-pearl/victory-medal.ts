@@ -9,7 +9,7 @@ import { StoreLike } from '../../game/store/store-like';
 import { State } from '../../game/store/state/state';
 import { Effect } from '../../game/store/effects/effect';
 import { TrainerEffect } from '../../game/store/effects/play-card-effects';
-import { ShuffleDeckPrompt } from '../../game/store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 
 function* playCard(next: Function, store: StoreLike, state: State, effect: TrainerEffect): IterableIterator<State> {
   const player = effect.player;
@@ -44,7 +44,7 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     player.deck.moveCardsTo(cards, player.hand);
 
     // Shuffle the deck
-    yield store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+    yield store.prompt(state, new ShufflePrompt(player.id), order => {
       player.deck.applyOrder(order);
       next();
     });

@@ -1,7 +1,7 @@
 import { CardList } from '../store/state/card-list';
 import { CoinFlipPrompt } from '../store/prompts/coin-flip-prompt';
 import { Prompt } from '../store/prompts/prompt';
-import { ShuffleDeckPrompt } from '../store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../store/prompts/shuffle-prompt';
 import { StateLog } from '../store/state/state-log';
 import { State } from '../store/state/state';
 import { ResolvePromptAction } from '../store/actions/resolve-prompt-action';
@@ -19,8 +19,8 @@ export class Arbiter {
       return;
     }
 
-    if (prompt instanceof ShuffleDeckPrompt) {
-      const result = this.shuffle(player.deck);
+    if (prompt instanceof ShufflePrompt) {
+      const result = this.shuffle(prompt.cardList || player.deck);
       return new ResolvePromptAction(prompt.id, result);
     }
 
@@ -39,8 +39,8 @@ export class Arbiter {
     }
   }
 
-  private shuffle(cards: CardList): number[] {
-    const len = cards.cards.length;
+  private shuffle(cardList: CardList): number[] {
+    const len = cardList.cards.length;
     const order: number[] = [];
 
     for (let i = 0; i < len; i++) {

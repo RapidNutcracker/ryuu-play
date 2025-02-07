@@ -10,7 +10,7 @@ import { UseStadiumEffect } from '../../game/store/effects/game-effects';
 import { ChooseCardsPrompt } from '../../game/store/prompts/choose-cards-prompt';
 import { Card } from '../../game/store/card/card';
 import { ShowCardsPrompt } from '../../game/store/prompts/show-cards-prompt';
-import { ShuffleDeckPrompt } from '../../game/store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 
 function* useStadium(next: Function, store: StoreLike, state: State, effect: UseStadiumEffect): IterableIterator<State> {
   const player = effect.player;
@@ -61,7 +61,7 @@ function* useStadium(next: Function, store: StoreLike, state: State, effect: Use
     ), () => next());
   }
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }

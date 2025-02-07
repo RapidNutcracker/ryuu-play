@@ -11,7 +11,7 @@ import { StateUtils } from '../../game/store/state-utils';
 import { TrainerEffect } from '../../game/store/effects/play-card-effects';
 import { ChooseCardsPrompt } from '../../game/store/prompts/choose-cards-prompt';
 import { ShowCardsPrompt } from '../../game/store/prompts/show-cards-prompt';
-import { ShuffleDeckPrompt } from '../../game/store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { KnockOutEffect } from '../../game/store/effects/game-effects';
 import { EndTurnEffect } from '../../game/store/effects/game-phase-effects';
@@ -43,6 +43,7 @@ function* playCard(next: Function, store: StoreLike, state: State,
   // We will discard this card after prompt confirmation
   // This will prevent unblocked supporter to appear in the discard pile
   effect.preventDefault = true;
+  player.hand.moveCardTo(self, player.supporter);
 
   const maxPokemons = 1;
   const maxEnergies = 1;
@@ -53,14 +54,14 @@ function* playCard(next: Function, store: StoreLike, state: State,
     player.id,
     GameMessage.CHOOSE_CARD_TO_HAND,
     player.deck,
-    { },
+    {},
     { min: 0, max: 3, allowCancel: true, blocked, maxPokemons, maxEnergies, maxTrainers }
   ), selected => {
     cards = selected || [];
     next();
   });
 
-  player.hand.moveCardTo(self, player.supporter);
+  player.supporter.moveCardTo(self, player.discard);
   player.deck.moveCardsTo(cards, player.hand);
 
   if (cards.length > 0) {
@@ -71,7 +72,7 @@ function* playCard(next: Function, store: StoreLike, state: State,
     ), () => next());
   }
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }

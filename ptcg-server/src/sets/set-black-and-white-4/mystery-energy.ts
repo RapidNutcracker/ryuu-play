@@ -3,8 +3,10 @@ import { EnergyCard } from '../../game/store/card/energy-card';
 import { StoreLike } from '../../game/store/store-like';
 import { State } from '../../game/store/state/state';
 import { Effect } from '../../game/store/effects/effect';
-import { CheckProvidedEnergyEffect, CheckPokemonTypeEffect, CheckTableStateEffect,
-  CheckRetreatCostEffect } from '../../game/store/effects/check-effects';
+import {
+  CheckProvidedEnergyEffect, CheckPokemonTypeEffect, CheckTableStateEffect,
+  CheckRetreatCostEffect
+} from '../../game/store/effects/check-effects';
 import { PlayerType } from '../../game/store/actions/play-card-action';
 import { AttachEnergyEffect } from '../../game/store/effects/play-card-effects';
 import { GameError } from '../../game/game-error';
@@ -12,7 +14,7 @@ import { GameMessage } from '../../game/game-message';
 
 export class MysteryEnergy extends EnergyCard {
 
-  public provides: CardType[] = [ ];
+  public provides: CardType[] = [];
 
   public energyType = EnergyType.SPECIAL;
 
@@ -48,7 +50,7 @@ export class MysteryEnergy extends EnergyCard {
       const checkPokemonType = new CheckPokemonTypeEffect(effect.source);
       store.reduceEffect(state, checkPokemonType);
       if (checkPokemonType.cardTypes.includes(CardType.PSYCHIC)) {
-        effect.energyMap.push({ card: this, provides: [ CardType.PSYCHIC ] });
+        effect.energyMap.push({ card: this, provides: [CardType.PSYCHIC] });
       }
       return state;
     }

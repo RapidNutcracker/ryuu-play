@@ -1,7 +1,7 @@
 import { CardList } from '../store/state/card-list';
 import { CoinFlipPrompt } from '../store/prompts/coin-flip-prompt';
 import { Prompt } from '../store/prompts/prompt';
-import { ShuffleDeckPrompt } from '../store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../store/prompts/shuffle-prompt';
 import { State } from '../store/state/state';
 import { ResolvePromptAction } from '../store/actions/resolve-prompt-action';
 
@@ -41,19 +41,23 @@ export class BotArbiter {
       return;
     }
 
-    if (prompt instanceof ShuffleDeckPrompt) {
+    if (prompt instanceof ShufflePrompt) {
+      if (prompt.cardList === undefined) {
+        prompt.cardList = player.deck;
+      }
+
       let result: number[] = [];
       switch (this.options.shuffleMode) {
         case BotShuffleMode.RANDOM:
-          result = this.shuffle(player.deck);
+          result = this.shuffle(prompt.cardList);
           return new ResolvePromptAction(prompt.id, result);
         case BotShuffleMode.REVERSE:
-          for (let i = player.deck.cards.length - 1; i >= 0; i--) {
+          for (let i = prompt.cardList.cards.length - 1; i >= 0; i--) {
             result.push(i);
           }
           return new ResolvePromptAction(prompt.id, result);
         default:
-          for (let i = 0; i < player.deck.cards.length; i++) {
+          for (let i = 0; i < prompt.cardList.cards.length; i++) {
             result.push(i);
           }
           return new ResolvePromptAction(prompt.id, result);

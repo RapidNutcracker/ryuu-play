@@ -10,7 +10,7 @@ import { InvitePlayerAction } from '../actions/invite-player-action';
 import { InvitePlayerPrompt } from '../prompts/invite-player-prompt';
 import { Player } from '../state/player';
 import { ShowCardsPrompt } from '../prompts/show-cards-prompt';
-import { ShuffleDeckPrompt } from '../prompts/shuffle-prompt';
+import { ShufflePrompt } from '../prompts/shuffle-prompt';
 import { State, GamePhase, GameWinner } from '../state/state';
 import { GameError } from '../../game-error';
 import { GameMessage, GameLog } from '../../game-message';
@@ -21,15 +21,18 @@ import { SuperType, Stage } from '../card/card-types';
 import { WhoBeginsEffect } from '../effects/game-phase-effects';
 import { endGame } from '../effect-reducers/check-effect';
 import { initNextTurn } from '../effect-reducers/game-phase-effect';
+import { PlayPokemonEffect } from '../effects/play-card-effects';
+import { PokemonCard } from '../card/pokemon-card';
 
 
-function putStartingPokemonsAndPrizes(player: Player, cards: Card[]): void {
+function putStartingPokemonsAndPrizes(player: Player, cards: Card[], store: StoreLike, state: State): void {
   if (cards.length === 0) {
     return;
   }
-  player.hand.moveCardTo(cards[0], player.active);
+
+  state = store.reduceEffect(state, new PlayPokemonEffect(player, cards[0] as PokemonCard, player.active));
   for (let i = 1; i < cards.length; i++) {
-    player.hand.moveCardTo(cards[i], player.bench[i - 1]);
+    state = store.reduceEffect(state, new PlayPokemonEffect(player, cards[i] as PokemonCard, player.bench[i - 1]));
   }
   for (let i = 0; i < 6; i++) {
     player.deck.moveTo(player.prizes[i], 1);
@@ -37,7 +40,7 @@ function putStartingPokemonsAndPrizes(player: Player, cards: Card[]): void {
 }
 
 function* setupGame(next: Function, store: StoreLike, state: State): IterableIterator<State> {
-  const basicPokemon = {superType: SuperType.POKEMON, stage: Stage.BASIC};
+  const basicPokemon = { superType: SuperType.POKEMON, stage: Stage.BASIC };
   const chooseCardsOptions = { min: 1, max: 6, allowCancel: false };
   const player = state.players[0];
   const opponent = state.players[1];
@@ -48,7 +51,7 @@ function* setupGame(next: Function, store: StoreLike, state: State): IterableIte
   while (!playerHasBasic || !opponentHasBasic) {
     if (!playerHasBasic) {
       player.hand.moveTo(player.deck);
-      yield store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+      yield store.prompt(state, new ShufflePrompt(player.id), order => {
         player.deck.applyOrder(order);
         player.deck.moveTo(player.hand, 7);
         playerHasBasic = player.hand.count(basicPokemon) > 0;
@@ -58,7 +61,7 @@ function* setupGame(next: Function, store: StoreLike, state: State): IterableIte
 
     if (!opponentHasBasic) {
       opponent.hand.moveTo(opponent.deck);
-      yield store.prompt(state, new ShuffleDeckPrompt(opponent.id), order => {
+      yield store.prompt(state, new ShufflePrompt(opponent.id), order => {
         opponent.deck.applyOrder(order);
         opponent.deck.moveTo(opponent.hand, 7);
         opponentHasBasic = opponent.hand.count(basicPokemon) > 0;
@@ -101,8 +104,8 @@ function* setupGame(next: Function, store: StoreLike, state: State): IterableIte
     new ChooseCardsPrompt(opponent.id, GameMessage.CHOOSE_STARTING_POKEMONS,
       opponent.hand, basicPokemon, chooseCardsOptions)
   ], choice => {
-    putStartingPokemonsAndPrizes(player, choice[0]);
-    putStartingPokemonsAndPrizes(opponent, choice[1]);
+    putStartingPokemonsAndPrizes(player, choice[0], store, state);
+    putStartingPokemonsAndPrizes(opponent, choice[1], store, state);
     next();
   });
 

@@ -1,4 +1,4 @@
-import { Action, Player, State, SpecialCondition, AttackAction } from '../../game';
+import { Action, Player, State, SpecialCondition, AttackAction, PlayerType, SlotType } from '../../game';
 import { SimpleTactic } from './simple-tactics';
 
 export class AttackTactic extends SimpleTactic {
@@ -19,7 +19,7 @@ export class AttackTactic extends SimpleTactic {
     let attackAction: AttackAction | undefined;
 
     active.attacks.forEach(attack => {
-      const action = new AttackAction(player.id, attack.name);
+      const action = new AttackAction(player.id, attack.name, { player: PlayerType.BOTTOM_PLAYER, slot: SlotType.ACTIVE, index: 0 });
       const score = this.evaluateAction(state, player.id, action);
 
       if (score !== undefined && bestScore < score) {

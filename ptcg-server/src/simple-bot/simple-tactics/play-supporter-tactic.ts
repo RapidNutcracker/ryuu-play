@@ -1,11 +1,19 @@
-import { Action, Player, State, TrainerCard, TrainerType, PlayCardAction,
-  PlayerType, SlotType } from '../../game';
+import {
+  Action,
+  PlayCardAction,
+  Player,
+  PlayerType,
+  SlotType,
+  State,
+  TrainerCard,
+  TrainerType,
+} from '../../game';
 import { SimpleTactic } from './simple-tactics';
 
 export class PlaySupporterTactic extends SimpleTactic {
 
   public useTactic(state: State, player: Player): Action | undefined {
-    if (player.supporter.cards.length > 0) {
+    if (player.supporterPlayedTurn >= state.turn) {
       return;
     }
 

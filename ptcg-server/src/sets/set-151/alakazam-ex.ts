@@ -5,7 +5,7 @@ import { Effect } from '../../game/store/effects/effect';
 import { AttackEffect } from '../../game/store/effects/game-effects';
 
 
-export class AlakazamEX extends PokemonCard {
+export class AlakazamEx extends PokemonCard {
 
   public id: number = 65;
 
@@ -40,9 +40,9 @@ export class AlakazamEX extends PokemonCard {
 
   public set: string = 'MEW';
 
-  public name: string = 'Alakazam EX';
+  public name: string = 'Alakazam ex';
 
-  public fullName: string = 'Alakazam EX MEW';
+  public fullName: string = 'Alakazam ex MEW';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     // Mind Jack

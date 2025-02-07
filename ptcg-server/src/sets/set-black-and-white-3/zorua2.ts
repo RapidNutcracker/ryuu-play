@@ -7,7 +7,7 @@ import { AttackEffect } from '../../game/store/effects/game-effects';
 import { GameMessage } from '../../game/game-message';
 import { Card } from '../../game/store/card/card';
 import { ChooseCardsPrompt } from '../../game/store/prompts/choose-cards-prompt';
-import { ShuffleDeckPrompt } from '../../game/store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 
 function* useAscension(next: Function, store: StoreLike, state: State,
   effect: AttackEffect): IterableIterator<State> {
@@ -36,7 +36,7 @@ function* useAscension(next: Function, store: StoreLike, state: State,
     player.active.pokemonPlayedTurn = state.turn;
   }
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }

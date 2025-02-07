@@ -66,6 +66,7 @@ export class Nidoking extends PokemonCard {
       const specialCondition = new AddSpecialConditionsEffect(effect, [SpecialCondition.POISONED]);
       return store.reduceEffect(state, specialCondition);
     }
+    
     return state;
   }
 

@@ -1,6 +1,6 @@
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Stage, CardType, SuperType, EnergyType } from '../../game/store/card/card-types';
-import { StoreLike, State, StateUtils, ChooseCardsPrompt, ShuffleDeckPrompt } from '../../game';
+import { StoreLike, State, StateUtils, ChooseCardsPrompt, ShufflePrompt } from '../../game';
 import { Effect } from '../../game/store/effects/effect';
 import { AttackEffect } from '../../game/store/effects/game-effects';
 import { GameMessage } from '../../game/game-message';
@@ -29,7 +29,7 @@ function* useCharge(self: Pikachu, next: Function, store: StoreLike, state: Stat
     next();
   });
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }

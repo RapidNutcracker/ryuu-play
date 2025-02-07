@@ -4,7 +4,7 @@ import { State } from '../../game/store/state/state';
 import { StoreLike } from '../../game/store/store-like';
 import { TrainerCard } from '../../game/store/card/trainer-card';
 import { TrainerType } from '../../game/store/card/card-types';
-import { ShuffleDeckPrompt } from '../../game/store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 
 function* playCard(next: Function, store: StoreLike, state: State,
   self: ProfessorOaksNewTheory, effect: TrainerEffect): IterableIterator<State> {
@@ -15,7 +15,7 @@ function* playCard(next: Function, store: StoreLike, state: State,
   if (cards.length > 0) {
     player.hand.moveCardsTo(cards, player.deck);
 
-    yield store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+    yield store.prompt(state, new ShufflePrompt(player.id), order => {
       player.deck.applyOrder(order);
       next();
     });

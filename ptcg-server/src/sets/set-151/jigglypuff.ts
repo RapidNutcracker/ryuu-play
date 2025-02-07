@@ -5,7 +5,7 @@ import { Effect } from '../../game/store/effects/effect';
 import { GameMessage } from '../../game/game-message';
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Resistance, Weakness } from '../../game/store/card/pokemon-types';
-import { ShuffleDeckPrompt } from '../../game/store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 import { Stage, CardType, SuperType, TrainerType } from '../../game/store/card/card-types';
 import { State } from '../../game/store/state/state';
 import { StoreLike } from '../../game/store/store-like';
@@ -42,7 +42,7 @@ function* useLead(next: Function, store: StoreLike, state: State, effect: Attack
     player.deck.moveCardsTo(cards, player.hand);
   }
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }

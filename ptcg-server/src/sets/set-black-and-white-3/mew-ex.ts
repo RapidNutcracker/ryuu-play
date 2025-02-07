@@ -69,7 +69,7 @@ export class MewEx extends PokemonCard {
         { allowCancel: true, blocked }
       ), attack => {
         if (attack !== null) {
-          const useAttackEffect = new UseAttackEffect(player, attack);
+          const useAttackEffect = new UseAttackEffect(player, attack, this);
           store.reduceEffect(state, useAttackEffect);
         }
       });

@@ -5,12 +5,24 @@ import { Effect } from '../effects/effect';
 import { State, GamePhase } from '../state/state';
 import { StoreLike } from '../store-like';
 import { StateUtils } from '../state-utils';
-import { CheckPokemonTypeEffect, CheckPokemonStatsEffect,
-  CheckProvidedEnergyEffect, CheckAttackCostEffect } from '../effects/check-effects';
+import {
+  CheckPokemonTypeEffect,
+  CheckPokemonStatsEffect,
+  CheckProvidedEnergyEffect,
+  CheckAttackCostEffect
+} from '../effects/check-effects';
 import { Weakness, Resistance } from '../card/pokemon-types';
 import { CardType, SpecialCondition, CardTag } from '../card/card-types';
-import { AttackEffect, UseAttackEffect, HealEffect, KnockOutEffect,
-  UsePowerEffect, PowerEffect, UseStadiumEffect, EvolveEffect } from '../effects/game-effects';
+import {
+  AttackEffect,
+  UseAttackEffect,
+  HealEffect,
+  KnockOutEffect,
+  UsePowerEffect,
+  PowerEffect,
+  UseStadiumEffect,
+  EvolveEffect
+} from '../effects/game-effects';
 import { CoinFlipPrompt } from '../prompts/coin-flip-prompt';
 import { DealDamageEffect, ApplyWeaknessEffect } from '../effects/attack-effects';
 
@@ -69,10 +81,10 @@ function* useAttack(next: Function, store: StoreLike, state: State, effect: UseA
     yield store.prompt(state, new CoinFlipPrompt(
       player.id,
       GameMessage.FLIP_CONFUSION),
-    result => {
-      flip = result;
-      next();
-    });
+      result => {
+        flip = result;
+        next();
+      });
 
     if (flip === false) {
       store.log(state, GameLog.LOG_HURTS_ITSELF);
@@ -121,15 +133,16 @@ export function gameReducer(store: StoreLike, state: State, effect: Effect): Sta
   }
 
   if (effect instanceof ApplyWeaknessEffect) {
-    const checkPokemonType = new CheckPokemonTypeEffect(effect.source);
-    state = store.reduceEffect(state, checkPokemonType);
-    const checkPokemonStats = new CheckPokemonStatsEffect(effect.target);
-    state = store.reduceEffect(state, checkPokemonStats);
+    const checkAttackerTypes = new CheckPokemonTypeEffect(effect.source);
+    state = store.reduceEffect(state, checkAttackerTypes);
+    const checkDefenderTypes = new CheckPokemonStatsEffect(effect.target);
+    state = store.reduceEffect(state, checkDefenderTypes);
 
-    const cardType = checkPokemonType.cardTypes;
-    const weakness = effect.ignoreWeakness ? [] : checkPokemonStats.weakness;
-    const resistance = effect.ignoreResistance ? [] : checkPokemonStats.resistance;
-    effect.damage = applyWeaknessAndResistance(effect.damage, cardType, weakness, resistance);
+    const attackType = checkAttackerTypes.cardTypes;
+    const weakness = effect.ignoreWeakness ? [] : checkDefenderTypes.weakness;
+    const resistance = effect.ignoreResistance ? [] : checkDefenderTypes.resistance;
+    effect.damage = applyWeaknessAndResistance(effect.damage, attackType, weakness, resistance);
+
     return state;
   }
 

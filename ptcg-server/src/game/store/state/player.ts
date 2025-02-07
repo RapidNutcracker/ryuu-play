@@ -29,6 +29,8 @@ export class Player {
   retreatedTurn: number = 0;
 
   energyPlayedTurn: number = 0;
+
+  supporterPlayedTurn: number = 0;
   
   stadiumPlayedTurn: number = 0;
 

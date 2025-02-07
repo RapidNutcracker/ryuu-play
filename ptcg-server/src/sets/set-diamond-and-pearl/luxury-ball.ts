@@ -4,7 +4,7 @@ import { StoreLike } from '../../game/store/store-like';
 import { State } from '../../game/store/state/state';
 import { Effect } from '../../game/store/effects/effect';
 import { TrainerEffect } from '../../game/store/effects/play-card-effects';
-import { ChooseCardsPrompt, Card, StateUtils, ShowCardsPrompt, ShuffleDeckPrompt,
+import { ChooseCardsPrompt, Card, StateUtils, ShowCardsPrompt, ShufflePrompt,
   PokemonCard, GameError } from '../../game';
 import { GameMessage } from '../../game/game-message';
 
@@ -42,7 +42,7 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     ), () => next());
   }
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }

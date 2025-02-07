@@ -3,14 +3,20 @@ import { Effect } from '../../game/store/effects/effect';
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Stage, CardType, CardTag, SuperType, TrainerType, SpecialCondition } from '../../game/store/card/card-types';
 import { PlayPokemonEffect } from '../../game/store/effects/play-card-effects';
-import { PowerType, StoreLike, State, GameMessage, ChooseCardsPrompt,
-  ShuffleDeckPrompt } from '../../game';
-import {AddSpecialConditionsEffect} from '../../game/store/effects/attack-effects';
+import {
+  PowerType, StoreLike, State, GameMessage, ChooseCardsPrompt,
+  ShufflePrompt,
+  Card,
+  StateUtils,
+  ShowCardsPrompt
+} from '../../game';
+import { AddSpecialConditionsEffect } from '../../game/store/effects/attack-effects';
 
 
 function* useStellarGuidance(next: Function, store: StoreLike, state: State,
   self: JirachiEx, effect: PlayPokemonEffect): IterableIterator<State> {
   const player = effect.player;
+  const opponent = StateUtils.getOpponent(state, player);
 
   if (player.deck.cards.length === 0) {
     return state;
@@ -24,6 +30,7 @@ function* useStellarGuidance(next: Function, store: StoreLike, state: State,
     return state;
   }
 
+  let cards: Card[] = [];
   yield store.prompt(state, new ChooseCardsPrompt(
     player.id,
     GameMessage.CHOOSE_CARD_TO_HAND,
@@ -31,19 +38,29 @@ function* useStellarGuidance(next: Function, store: StoreLike, state: State,
     { superType: SuperType.TRAINER, trainerType: TrainerType.SUPPORTER },
     { min: 1, max: 1, allowCancel: true }
   ), selected => {
-    const cards = selected || [];
+    cards = selected || [];
     player.deck.moveCardsTo(cards, player.hand);
     next();
   });
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  if (cards.length > 0) {
+    yield store.prompt(state, new ShowCardsPrompt(
+      opponent.id,
+      GameMessage.CARDS_SHOWED_BY_THE_OPPONENT,
+      cards
+    ), () => next());
+
+    player.deck.moveCardsTo(cards, player.hand);
+  }
+
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }
 
 export class JirachiEx extends PokemonCard {
 
-  public tags = [ CardTag.POKEMON_EX ];
+  public tags = [CardTag.POKEMON_EX];
 
   public stage: Stage = Stage.BASIC;
 
@@ -55,7 +72,7 @@ export class JirachiEx extends PokemonCard {
 
   public resistance = [{ type: CardType.PSYCHIC, value: -20 }];
 
-  public retreat = [ CardType.COLORLESS ];
+  public retreat = [CardType.COLORLESS];
 
   public powers = [{
     name: 'Stellar Guidance',
@@ -68,7 +85,7 @@ export class JirachiEx extends PokemonCard {
   public attacks = [
     {
       name: 'Hypnostrike',
-      cost: [ CardType.METAL, CardType.COLORLESS, CardType.COLORLESS ],
+      cost: [CardType.METAL, CardType.COLORLESS, CardType.COLORLESS],
       damage: 60,
       text: 'Both this Pokemon and the Defending Pokemon are now Asleep.'
     }

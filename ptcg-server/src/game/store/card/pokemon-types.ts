@@ -8,6 +8,7 @@ export interface Weakness {
 export interface Resistance {
   type: CardType;
   value: number;
+  operator?: string;
 }
 
 export interface Attack {
@@ -30,7 +31,6 @@ export interface Power {
   powerType: PowerType;
   text: string;
   useWhenInPlay?: boolean;
-  useFromBench?: boolean;
   useFromHand?: boolean;
   useFromDiscard?: boolean;
 }

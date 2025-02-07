@@ -35,7 +35,7 @@ function* useSpeedDive(next: Function, store: StoreLike, state: State, effect: A
   return state;
 }
 
-export class ArbokEX extends PokemonCard {
+export class ArbokEx extends PokemonCard {
 
   public id: number = 24;
 
@@ -69,9 +69,9 @@ export class ArbokEX extends PokemonCard {
 
   public set: string = 'MEW';
 
-  public name: string = 'Arbok EX';
+  public name: string = 'Arbok ex';
 
-  public fullName: string = 'Arbok EX MEW';
+  public fullName: string = 'Arbok ex MEW';
 
   public readonly BIND_DOWN_MARKER = 'BIND_DOWN_MARKER';
 

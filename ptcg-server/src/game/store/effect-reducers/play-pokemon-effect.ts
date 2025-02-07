@@ -19,7 +19,7 @@ export function playPokemonReducer(store: StoreLike, state: State, effect: Effec
     if (isBasic && effect.target.cards.length === 0) {
       store.log(state, GameLog.LOG_PLAYER_PLAYS_BASIC_POKEMON, {
         name: effect.player.name,
-        card: effect.pokemonCard.name
+        card: effect.pokemonCard.name,
       });
       effect.player.hand.moveCardTo(effect.pokemonCard, effect.target);
       effect.target.pokemonPlayedTurn = state.turn;

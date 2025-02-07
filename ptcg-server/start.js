@@ -10,6 +10,10 @@ const sets = require('./output/sets');
 const process = require('process');
 
 const cardManager = CardManager.getInstance();
+cardManager.defineSet(sets.baseSet);
+cardManager.defineSet(sets.fossil);
+cardManager.defineSet(sets.jungle);
+
 cardManager.defineSet(sets.setDiamondAndPearl);
 cardManager.defineSet(sets.setOp9);
 cardManager.defineSet(sets.setHgss);
@@ -18,8 +22,23 @@ cardManager.defineSet(sets.setBlackAndWhite2);
 cardManager.defineSet(sets.setBlackAndWhite3);
 cardManager.defineSet(sets.setBlackAndWhite4);
 cardManager.defineSet(sets.setSwordAndShield);
-cardManager.defineSet(sets.setBase);
+
+/* Scarlet & Violet */
+cardManager.defineSet(sets.scarletAndVioletPromos);
+cardManager.defineSet(sets.scarletAndViolet);
+cardManager.defineSet(sets.scarletAndVioletEnergy);
+cardManager.defineSet(sets.paldeaEvolved);
+cardManager.defineSet(sets.obsidianFlames);
+cardManager.defineSet(sets.mcDonaldsMatchBattle2023);
 cardManager.defineSet(sets.set151);
+cardManager.defineSet(sets.paradoxRift);
+cardManager.defineSet(sets.paldeanFates);
+cardManager.defineSet(sets.temporalForces);
+cardManager.defineSet(sets.twilightMasquerade);
+cardManager.defineSet(sets.shroudedFable);
+cardManager.defineSet(sets.stellarCrown);
+cardManager.defineSet(sets.surgingSparks);
+cardManager.defineSet(sets.prismaticEvolutions);
 
 StateSerializer.setKnownCards(cardManager.getAllCards());
 

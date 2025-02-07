@@ -1,6 +1,6 @@
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Stage, CardType } from '../../game/store/card/card-types';
-import { PowerType, StoreLike, State, ShuffleDeckPrompt, GameError, GameMessage, CoinFlipPrompt } from '../../game';
+import { PowerType, StoreLike, State, ShufflePrompt, GameError, GameMessage, CoinFlipPrompt } from '../../game';
 import { PowerEffect } from '../../game/store/effects/game-effects';
 import { Effect } from '../../game/store/effects/effect';
 import { EndTurnEffect } from '../../game/store/effects/game-phase-effects';
@@ -23,7 +23,7 @@ function* useExcitableDraw(next: Function, store: StoreLike, state: State,
 
   if (flipResult) {
     player.hand.moveTo(player.deck);
-    yield store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+    yield store.prompt(state, new ShufflePrompt(player.id), order => {
       player.deck.applyOrder(order);
       player.deck.moveTo(player.hand, 6);
       next();

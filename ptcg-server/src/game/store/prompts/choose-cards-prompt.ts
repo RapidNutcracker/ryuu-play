@@ -16,6 +16,7 @@ export interface ChooseCardsOptions {
   blocked: number[];
   isSecret: boolean;
   differentTypes: boolean;
+  cardMap?: Partial<FilterType>[],
   maxPokemons: number | undefined;
   maxEnergies: number | undefined;
   maxTrainers: number | undefined;
@@ -26,7 +27,7 @@ export type FilterType = Partial<PokemonCard | TrainerCard | EnergyCard>;
 export class ChooseCardsPrompt extends Prompt<Card[]> {
 
   readonly type: string = ChooseCardsPromptType;
-  
+
   public options: ChooseCardsOptions;
 
   constructor(
@@ -34,7 +35,7 @@ export class ChooseCardsPrompt extends Prompt<Card[]> {
     public message: GameMessage,
     public cards: CardList,
     public filter: FilterType,
-    options?: Partial<ChooseCardsOptions>
+    options?: Partial<ChooseCardsOptions>,
   ) {
     super(playerId);
 
@@ -70,7 +71,7 @@ export class ChooseCardsPrompt extends Prompt<Card[]> {
 
     // Check if 'different types' restriction is valid
     if (this.options.differentTypes) {
-      const typeMap: {[key: number]: boolean} = {};
+      const typeMap: { [key: number]: boolean } = {};
       for (const card of result) {
         const cardType = ChooseCardsPrompt.getCardType(card);
         if (typeMap[cardType] === true) {
@@ -82,7 +83,7 @@ export class ChooseCardsPrompt extends Prompt<Card[]> {
     }
 
     // Check if 'max' restrictions are valid
-    const countMap: {[key: number]: number} = {};
+    const countMap: { [key: number]: number } = {};
     for (const card of result) {
       const count = countMap[card.superType] || 0;
       countMap[card.superType] = count + 1;

@@ -10,7 +10,7 @@ import {
   Weakness,
   Card,
   ChooseCardsPrompt,
-  ShuffleDeckPrompt,
+  ShufflePrompt,
   ShowCardsPrompt,
   StateUtils
 } from '../../game';
@@ -24,9 +24,9 @@ function* useFetchFamily(next: Function, store: StoreLike, state: State,
   let cards: Card[] = [];
   yield store.prompt(state, new ChooseCardsPrompt(
     player.id,
-    GameMessage.CHOOSE_CARD_TO_PUT_ONTO_BENCH,
+    GameMessage.CHOOSE_CARD_TO_HAND,
     player.deck,
-    { superType: SuperType.POKEMON, stage: Stage.BASIC },
+    { superType: SuperType.POKEMON },
     { min: 0, max: 3, allowCancel: true }
   ), selected => {
     cards = selected || [];
@@ -43,7 +43,7 @@ function* useFetchFamily(next: Function, store: StoreLike, state: State,
 
   player.deck.moveCardsTo(cards, player.hand);
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }

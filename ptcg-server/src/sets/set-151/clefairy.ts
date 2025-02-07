@@ -6,7 +6,7 @@ import { GameMessage } from '../../game/game-message';
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { PokemonCardList } from '../../game/store/state/pokemon-card-list';
 import { Resistance, Weakness } from '../../game/store/card/pokemon-types';
-import { ShuffleDeckPrompt } from '../../game/store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 import { Stage, CardType } from '../../game/store/card/card-types';
 import { State } from '../../game/store/state/state';
 import { StoreLike } from '../../game/store/store-like';
@@ -38,7 +38,7 @@ function* useMoonViewingInvitation(next: Function, store: StoreLike, state: Stat
     slots[index].pokemonPlayedTurn = state.turn;
   });
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }

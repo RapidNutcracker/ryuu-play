@@ -1,6 +1,6 @@
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Stage, CardType, SpecialCondition, SuperType } from '../../game/store/card/card-types';
-import { PowerType, StoreLike, State, ShuffleDeckPrompt, StateUtils,
+import { PowerType, StoreLike, State, ShufflePrompt, StateUtils,
   PokemonCardList, Card, ChooseCardsPrompt, GameMessage } from '../../game';
 import { AttackEffect, PowerEffect } from '../../game/store/effects/game-effects';
 import { Effect } from '../../game/store/effects/effect';
@@ -65,11 +65,11 @@ function* usePlayground(next: Function, store: StoreLike, state: State,
   });
 
   // Shuffle decks
-  store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 
-  store.prompt(state, new ShuffleDeckPrompt(opponent.id), order => {
+  store.prompt(state, new ShufflePrompt(opponent.id), order => {
     opponent.deck.applyOrder(order);
   });
 

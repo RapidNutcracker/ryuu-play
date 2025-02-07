@@ -2,8 +2,8 @@ import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Stage, CardType } from '../../game/store/card/card-types';
 import { StoreLike, State, ChoosePokemonPrompt, PlayerType, SlotType } from '../../game';
 import { Effect } from '../../game/store/effects/effect';
-import { AttackEffect } from '../../game/store/effects/game-effects';
 import { GameMessage } from '../../game/game-message';
+import { AfterDamageEffect } from '../../game/store/effects/attack-effects';
 
 export class Kadabra extends PokemonCard {
 
@@ -39,7 +39,7 @@ export class Kadabra extends PokemonCard {
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
 
     // Teleportation Attack
-    if (effect instanceof AttackEffect && effect.attack === this.attacks[0]) {
+    if (effect instanceof AfterDamageEffect && effect.attack === this.attacks[0]) {
       const player = effect.player;
 
       const hasBenched = player.bench.some(b => b.cards.length > 0);

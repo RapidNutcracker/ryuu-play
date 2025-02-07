@@ -4,7 +4,7 @@ import {
   ChooseCardsPrompt,
   GameMessage,
   Resistance,
-  ShuffleDeckPrompt,
+  ShufflePrompt,
   State,
   StoreLike,
   Weakness
@@ -31,7 +31,7 @@ function* useBeakCatch(next: Function, store: StoreLike, state: State, effect: A
 
   player.deck.moveCardsTo(cards, player.hand);
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }

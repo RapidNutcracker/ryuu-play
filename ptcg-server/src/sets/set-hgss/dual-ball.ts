@@ -4,7 +4,7 @@ import { StoreLike } from '../../game/store/store-like';
 import { State } from '../../game/store/state/state';
 import { Effect } from '../../game/store/effects/effect';
 import { CoinFlipPrompt, ChooseCardsPrompt, Card, StateUtils, ShowCardsPrompt,
-  ShuffleDeckPrompt, GameError} from '../../game';
+  ShufflePrompt, GameError} from '../../game';
 import { GameMessage } from '../../game/game-message';
 import { TrainerEffect } from '../../game/store/effects/play-card-effects';
 
@@ -51,7 +51,7 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     ), () => next());
   }
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }

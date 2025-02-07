@@ -1,6 +1,6 @@
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Stage, CardType, SuperType } from '../../game/store/card/card-types';
-import { StoreLike, State, ChooseCardsPrompt, Card, ShuffleDeckPrompt,
+import { StoreLike, State, ChooseCardsPrompt, Card, ShufflePrompt,
   CoinFlipPrompt, ShowCardsPrompt, StateUtils, PowerType, GameError,
   GameMessage, PokemonCardList } from '../../game';
 import { AttackEffect, PowerEffect, EvolveEffect } from '../../game/store/effects/game-effects';
@@ -82,7 +82,7 @@ function* useFindAFriend(next: Function, store: StoreLike, state: State,
 
   player.deck.moveCardsTo(cards, player.hand);
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }

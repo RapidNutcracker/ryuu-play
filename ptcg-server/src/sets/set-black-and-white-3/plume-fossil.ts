@@ -9,7 +9,7 @@ import { CardList } from '../../game/store/state/card-list';
 import { ChooseCardsPrompt } from '../../game/store/prompts/choose-cards-prompt';
 import { GameError } from '../../game/game-error';
 import { GameMessage } from '../../game/game-message';
-import { ShuffleDeckPrompt } from '../../game/store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 import { PokemonCardList } from '../../game/store/state/pokemon-card-list';
 
 function* playCard(next: Function, store: StoreLike, state: State, effect: TrainerEffect): IterableIterator<State> {
@@ -49,7 +49,7 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     slots[index].pokemonPlayedTurn = state.turn;
   });
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }

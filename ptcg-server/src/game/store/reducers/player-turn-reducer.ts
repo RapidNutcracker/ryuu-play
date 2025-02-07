@@ -3,7 +3,7 @@ import { PassTurnAction, RetreatAction, AttackAction, UseAbilityAction, UseStadi
 import { State, GamePhase } from '../state/state';
 import { StoreLike } from '../store-like';
 import { GameError } from '../../game-error';
-import { GameMessage } from '../../game-message';
+import { GameLog, GameMessage } from '../../game-message';
 import { RetreatEffect, UseAttackEffect, UsePowerEffect, UseStadiumEffect } from '../effects/game-effects';
 import { EndTurnEffect } from '../effects/game-phase-effects';
 import { StateUtils } from '../state-utils';
@@ -47,9 +47,22 @@ export function playerTurnReducer(store: StoreLike, state: State, action: Action
       }
 
       const target = StateUtils.getTarget(state, player, action.target);
-      const pokemonCard = target.getPokemonCard();
+      const pokemonCard = target.getPokemons().find(pokemon => {
+        return pokemon.attacks.some(attack => attack.name === action.name);
+      });
+
+      store.log(state, GameLog.LOG_TEXT, {
+        text: JSON.stringify(player.marker)
+      });
+
+      // const pokemonCard = player.marker.hasMarker('MEMORY_DIVE_MARKER') ?
+      //   target.getPokemons().find(pokemon => {
+      //     return pokemon.attacks.some(attack => attack.name === action.name);
+      //   }) :
+      //   target.getPokemonCard();
+
       if (pokemonCard === undefined) {
-        throw new GameError(GameMessage.UNKNOWN_ATTACK);
+        throw new GameError(GameMessage.UNKNOWN_CARD);
       }
 
       const attack = pokemonCard.attacks.find(a => a.name === action.name);
@@ -110,10 +123,6 @@ export function playerTurnReducer(store: StoreLike, state: State, action: Action
       const slot = action.target.slot;
       if (slot === SlotType.ACTIVE || slot === SlotType.BENCH) {
         if (!power.useWhenInPlay) {
-          throw new GameError(GameMessage.CANNOT_USE_POWER);
-        }
-
-        if (slot === SlotType.BENCH && !power.useFromBench) {
           throw new GameError(GameMessage.CANNOT_USE_POWER);
         }
       }

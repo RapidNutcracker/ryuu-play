@@ -13,7 +13,7 @@ import { EnergyCard } from '../../game/store/card/energy-card';
 import { AttachEnergyPrompt } from '../../game/store/prompts/attach-energy-prompt';
 import { PlayerType, SlotType } from '../../game/store/actions/play-card-action';
 import { StateUtils } from '../../game/store/state-utils';
-import { ShowCardsPrompt, ShuffleDeckPrompt } from '../../game';
+import { ShowCardsPrompt, ShufflePrompt } from '../../game';
 
 
 function* useSemiBloomingEnergy(next: Function, store: StoreLike, state: State,
@@ -84,7 +84,7 @@ function* useSemiBloomingEnergy(next: Function, store: StoreLike, state: State,
 
   deckTop.moveTo(player.deck);
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }

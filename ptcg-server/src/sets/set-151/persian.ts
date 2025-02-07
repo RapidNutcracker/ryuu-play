@@ -6,7 +6,7 @@ import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Power, PowerType, Resistance, Weakness } from '../../game/store/card/pokemon-types';
 import { PowerEffect } from '../../game/store/effects/game-effects';
 import { ShowCardsPrompt } from '../../game/store/prompts/show-cards-prompt';
-import { ShuffleDeckPrompt } from '../../game/store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 import { Stage, CardType, SuperType, TrainerType } from '../../game/store/card/card-types';
 import { State } from '../../game/store/state/state';
 import { StateUtils } from '../../game/store/state-utils';
@@ -49,7 +49,7 @@ function* useRocketCall(next: Function, store: StoreLike, state: State, self: Pe
     player.deck.moveCardsTo(cards, player.hand);
   }
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }

@@ -1,6 +1,6 @@
 import { Effect } from '../../game/store/effects/effect';
 import { PokemonCard } from '../../game/store/card/pokemon-card';
-import { PowerType, StoreLike, State, CoinFlipPrompt, ChooseCardsPrompt, ShuffleDeckPrompt } from '../../game';
+import { PowerType, StoreLike, State, CoinFlipPrompt, ChooseCardsPrompt, ShufflePrompt } from '../../game';
 import { Stage, CardType, SpecialCondition } from '../../game/store/card/card-types';
 import { PlayPokemonEffect } from '../../game/store/effects/play-card-effects';
 import { AttackEffect, PowerEffect } from '../../game/store/effects/game-effects';
@@ -35,7 +35,7 @@ function* useLeParfum(next: Function, store: StoreLike, state: State,
     next();
   });
 
-  return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
   });
 }

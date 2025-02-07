@@ -5,7 +5,7 @@ import { StoreLike } from '../../game/store/store-like';
 import { TrainerCard } from '../../game/store/card/trainer-card';
 import { TrainerType } from '../../game/store/card/card-types';
 import { StateUtils } from '../../game/store/state-utils';
-import { ShuffleDeckPrompt } from '../../game/store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 
 function* playCard(next: Function, store: StoreLike, state: State,
   self: LysandresTrumpCard, effect: TrainerEffect): IterableIterator<State> {
@@ -16,7 +16,7 @@ function* playCard(next: Function, store: StoreLike, state: State,
   let cards = player.discard.cards.filter(c => c.name !== self.name);
   player.discard.moveCardsTo(cards, player.deck);
 
-  yield store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+  yield store.prompt(state, new ShufflePrompt(player.id), order => {
     player.deck.applyOrder(order);
     next();
   });
@@ -24,7 +24,7 @@ function* playCard(next: Function, store: StoreLike, state: State,
   cards = opponent.discard.cards.filter(c => c.name !== self.name);
   opponent.discard.moveCardsTo(cards, opponent.deck);
 
-  return store.prompt(state, new ShuffleDeckPrompt(opponent.id), order => {
+  return store.prompt(state, new ShufflePrompt(opponent.id), order => {
     opponent.deck.applyOrder(order);
   });
 }

@@ -5,7 +5,7 @@ import { StoreLike } from '../../game/store/store-like';
 import { State } from '../../game/store/state/state';
 import { Effect } from '../../game/store/effects/effect';
 import { AttackEffect } from '../../game/store/effects/game-effects';
-import { ShuffleDeckPrompt } from '../../game/store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 
 
 export class Accelgor extends PokemonCard {
@@ -54,7 +54,7 @@ export class Accelgor extends PokemonCard {
       player.active.moveTo(player.deck);
       player.active.clearEffects();
 
-      return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+      return store.prompt(state, new ShufflePrompt(player.id), order => {
         player.deck.applyOrder(order);
       });
     }

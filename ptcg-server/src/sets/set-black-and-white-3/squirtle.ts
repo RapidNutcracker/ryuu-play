@@ -20,7 +20,7 @@ export class Squirtle extends PokemonCard {
 
   public weakness = [{ type: CardType.GRASS }];
 
-  public retreat = [ CardType.COLORLESS ];
+  public retreat = [CardType.COLORLESS];
 
   public powers = [{
     name: 'Shell Shield',
@@ -31,7 +31,7 @@ export class Squirtle extends PokemonCard {
 
   public attacks = [{
     name: 'Water Splash',
-    cost: [ CardType.WATER, CardType.COLORLESS ],
+    cost: [CardType.WATER, CardType.COLORLESS],
     damage: 10,
     text: 'Flip a coin. If heads, this attack does 20 more damage.'
   }];
@@ -62,14 +62,6 @@ export class Squirtle extends PokemonCard {
 
       // Target is not Active
       if (effect.target === player.active || effect.target === opponent.active) {
-        return state;
-      }
-
-      // Try to reduce PowerEffect, to check if something is blocking our ability
-      try {
-        const powerEffect = new PowerEffect(player, this.powers[0], this);
-        store.reduceEffect(state, powerEffect);
-      } catch {
         return state;
       }
 

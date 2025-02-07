@@ -18,7 +18,7 @@ import { Prompt } from '../store/prompts/prompt';
 import { PutDamagePrompt } from '../store/prompts/put-damage-prompt';
 import { SelectPrompt } from '../store/prompts/select-prompt';
 import { ShowCardsPrompt } from '../store/prompts/show-cards-prompt';
-import { ShuffleDeckPrompt } from '../store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../store/prompts/shuffle-prompt';
 
 export class PromptSerializer implements Serializer<Prompt<any>> {
 
@@ -42,7 +42,7 @@ export class PromptSerializer implements Serializer<Prompt<any>> {
     { classValue: PutDamagePrompt, type: 'PutDamagePrompt' },
     { classValue: SelectPrompt, type: 'SelectPrompt' },
     { classValue: ShowCardsPrompt, type: 'ShowCardsPrompt' },
-    { classValue: ShuffleDeckPrompt, type: 'ShuffleDeckPrompt' },
+    { classValue: ShufflePrompt, type: 'ShufflePrompt' },
   ];
 
   constructor () {

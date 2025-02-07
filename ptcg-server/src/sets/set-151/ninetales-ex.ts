@@ -5,7 +5,7 @@ import { Effect } from '../../game/store/effects/effect';
 import { AttackEffect } from '../../game/store/effects/game-effects';
 import { AddSpecialConditionsEffect } from '../../game/store/effects/attack-effects';
 
-export class NinetalesEX extends PokemonCard {
+export class NinetalesEx extends PokemonCard {
 
   public id: number = 38;
 
@@ -37,9 +37,9 @@ export class NinetalesEX extends PokemonCard {
 
   public set: string = 'MEW';
 
-  public name: string = 'Ninetales EX';
+  public name: string = 'Ninetales ex';
 
-  public fullName: string = 'Ninetales EX MEW';
+  public fullName: string = 'Ninetales ex MEW';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
 

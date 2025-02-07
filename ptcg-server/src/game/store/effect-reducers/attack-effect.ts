@@ -3,10 +3,12 @@ import { GameMessage } from '../../game-message';
 import { Effect } from '../effects/effect';
 import { State } from '../state/state';
 import { StoreLike } from '../store-like';
-import { PutDamageEffect, DealDamageEffect, DiscardCardsEffect,
+import {
+  PutDamageEffect, DealDamageEffect, DiscardCardsEffect,
   AddMarkerEffect, HealTargetEffect, AddSpecialConditionsEffect,
   RemoveSpecialConditionsEffect, ApplyWeaknessEffect, AfterDamageEffect,
-  PutCountersEffect } from '../effects/attack-effects';
+  PutCountersEffect
+} from '../effects/attack-effects';
 import { HealEffect } from '../effects/game-effects';
 import { StateUtils } from '../state-utils';
 
@@ -22,11 +24,11 @@ export function attackReducer(store: StoreLike, state: State, effect: Effect): S
     const damage = Math.max(0, effect.damage);
     target.damage += damage;
 
-    if (damage > 0) {
-      const afterDamageEffect = new AfterDamageEffect(effect.attackEffect, damage);
-      afterDamageEffect.target = effect.target;
-      store.reduceEffect(state, afterDamageEffect);
-    }
+    // if (damage > 0) {
+    const afterDamageEffect = new AfterDamageEffect(effect.attackEffect, damage);
+    afterDamageEffect.target = effect.target;
+    store.reduceEffect(state, afterDamageEffect);
+    // }
   }
 
   if (effect instanceof DealDamageEffect) {

@@ -10,7 +10,7 @@ import { Stage, CardType, CardTag } from '../../game/store/card/card-types';
 import { State } from '../../game/store/state/state';
 import { StoreLike } from '../../game/store/store-like';
 
-export class CharizardEX extends PokemonCard {
+export class CharizardEx extends PokemonCard {
 
   public id: number = 6;
 
@@ -49,9 +49,9 @@ export class CharizardEX extends PokemonCard {
 
   public set: string = 'MEW';
 
-  public name: string = 'Charizard EX';
+  public name: string = 'Charizard ex';
 
-  public fullName: string = 'Charizard EX MEW';
+  public fullName: string = 'Charizard ex MEW';
 
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {

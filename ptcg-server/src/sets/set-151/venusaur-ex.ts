@@ -10,7 +10,6 @@ import { PokemonCardList } from '../../game/store/state/pokemon-card-list';
 import { PowerType } from '../../game/store/card/pokemon-types';
 import { Stage, CardType, CardTag, SpecialCondition } from '../../game/store/card/card-types';
 import { State } from '../../game/store/state/state';
-import { StateUtils } from '../../game/store/state-utils';
 import { StoreLike } from '../../game/store/store-like';
 
 function* useTranquilFlower(next: Function, store: StoreLike, state: State, effect: PowerEffect): IterableIterator<State> {
@@ -55,7 +54,7 @@ function* useTranquilFlower(next: Function, store: StoreLike, state: State, effe
   return state;
 }
 
-export class VenusaurEX extends PokemonCard {
+export class VenusaurEx extends PokemonCard {
 
   public id: number = 3;
 
@@ -76,7 +75,6 @@ export class VenusaurEX extends PokemonCard {
   public powers = [{
     name: 'Tranquil Flower',
     useWhenInPlay: true,
-    useFromBench: false,
     powerType: PowerType.ABILITY,
     text: 'Once during your turn, if this Pokémon is in the Active Spot, you may heal 60 damage from 1 of your Pokémon.'
   }];
@@ -92,16 +90,18 @@ export class VenusaurEX extends PokemonCard {
 
   public set: string = 'MEW';
 
-  public name: string = 'Venusaur EX';
+  public name: string = 'Venusaur ex';
 
-  public fullName: string = 'Venusaur EX MEW';
+  public fullName: string = 'Venusaur ex MEW';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
+
     // Tranquil Flower
     if (effect instanceof PowerEffect && effect.power === this.powers[0]) {
-      const cardList = StateUtils.findCardList(state, this) as PokemonCardList;
+      const player = effect.player;
 
-      if (cardList.specialConditions.length > 0) {
+      // Venusaur ex is not Active
+      if (player.active.getPokemonCard() !== this) {
         throw new GameError(GameMessage.CANNOT_USE_POWER);
       }
 

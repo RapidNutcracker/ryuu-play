@@ -11,7 +11,7 @@ import { PlaySupporterEffect } from '../../game/store/effects/play-card-effects'
 import { DealDamageEffect } from '../../game/store/effects/attack-effects';
 import { EndTurnEffect } from '../../game/store/effects/game-phase-effects';
 
-export class WigglytuffEX extends PokemonCard {
+export class WigglytuffEx extends PokemonCard {
 
   public id: number = 40;
 
@@ -47,9 +47,9 @@ export class WigglytuffEX extends PokemonCard {
 
   public set: string = 'MEW';
 
-  public name: string = 'Wigglytuff EX';
+  public name: string = 'Wigglytuff ex';
 
-  public fullName: string = 'Wigglytuff EX MEW';
+  public fullName: string = 'Wigglytuff ex MEW';
 
   public readonly FRIEND_TACKLE_MARKER = 'FRIEND_TACKLE_MARKER';
 

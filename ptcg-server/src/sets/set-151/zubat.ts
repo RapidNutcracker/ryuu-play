@@ -29,7 +29,6 @@ export class Zubat extends PokemonCard {
   public powers: Power[] = [{
     name: 'Revealing Echo',
     useWhenInPlay: true,
-    useFromBench: false,
     powerType: PowerType.ABILITY,
     text:
       'Once during your turn, if this Pokémon is in the Active Spot, ' +
@@ -58,6 +57,7 @@ export class Zubat extends PokemonCard {
 
       const opponent = StateUtils.getOpponent(state, player);
 
+      // Zubat is not Active
       if (player.active.getPokemonCard() !== this) {
         throw new GameError(GameMessage.CANNOT_USE_POWER);
       }

@@ -25,7 +25,7 @@ export class Caterpie extends PokemonCard {
       name: 'Leaf Munch',
       cost: [CardType.GRASS],
       damage: 10,
-      text: 'If your opponent’s Active Pokémon is a {G} Pokémon, this attack does 30 more damage.'
+      text: 'If your opponent\'s Active Pokémon is a {G} Pokémon, this attack does 30 more damage.'
     }
   ];
 

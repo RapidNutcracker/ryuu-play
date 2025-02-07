@@ -6,7 +6,7 @@ import { State } from '../../game/store/state/state';
 import { StoreLike } from '../../game/store/store-like';
 import { TrainerCard } from '../../game/store/card/trainer-card';
 import { TrainerType } from '../../game/store/card/card-types';
-import {ShuffleDeckPrompt} from '../../game/store/prompts/shuffle-prompt';
+import {ShufflePrompt} from '../../game/store/prompts/shuffle-prompt';
 import {StateUtils} from '../../game/store/state-utils';
 
 export class Colress extends TrainerCard {
@@ -39,7 +39,7 @@ export class Colress extends TrainerCard {
 
       player.hand.moveCardsTo(cards, player.deck);
 
-      return store.prompt(state, new ShuffleDeckPrompt(player.id), order => {
+      return store.prompt(state, new ShufflePrompt(player.id), order => {
         player.deck.applyOrder(order);
         player.deck.moveTo(player.hand, benchCount);
       });

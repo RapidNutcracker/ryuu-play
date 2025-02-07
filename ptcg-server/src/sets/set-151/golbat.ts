@@ -1,14 +1,14 @@
+import { AttackEffect } from '../../game/store/effects/game-effects';
+import { ChoosePokemonPrompt, PlayerType, SlotType } from '../../game';
 import { Effect } from '../../game/store/effects/effect';
 import { GameMessage } from '../../game/game-message';
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Power, Resistance, Weakness } from '../../game/store/card/pokemon-types';
-import { AttackEffect } from '../../game/store/effects/game-effects';
+import { PutDamageEffect } from '../../game/store/effects/attack-effects';
 import { Stage, CardType } from '../../game/store/card/card-types';
 import { State } from '../../game/store/state/state';
 import { StateUtils } from '../../game/store/state-utils';
 import { StoreLike } from '../../game/store/store-like';
-import { ChoosePokemonPrompt, PlayerType, SlotType } from '../../game';
-import { PutDamageEffect } from '../../game/store/effects/attack-effects';
 
 export class Golbat extends PokemonCard {
 
@@ -33,7 +33,7 @@ export class Golbat extends PokemonCard {
   public attacks = [{
     name: 'Skill Dive',
     cost: [CardType.COLORLESS],
-    damage: 40,
+    damage: 0,
     text:
       'This attack does 40 damage to 1 of your opponent\'s Pokémon. ' +
       '(Don\'t apply Weakness and Resistance for Benched Pokémon.)'
@@ -53,26 +53,26 @@ export class Golbat extends PokemonCard {
       const player = effect.player;
       const opponent = StateUtils.getOpponent(state, player);
 
-      const hasBenched = opponent.bench.some(b => b.cards.length > 0);
-      if (!hasBenched) {
-        return state;
-      }
-
       return store.prompt(state, new ChoosePokemonPrompt(
         player.id,
         GameMessage.CHOOSE_POKEMON_TO_DAMAGE,
         PlayerType.TOP_PLAYER,
-        [SlotType.BENCH],
+        [SlotType.ACTIVE, SlotType.BENCH],
         { allowCancel: false }
-      ), targets => {
-        if (!targets || targets.length === 0) {
+      ), selected => {
+        const targets = selected || [];
+        if (targets.includes(opponent.active)) {
+          effect.damage = 40;
           return;
         }
-        const damageEffect = new PutDamageEffect(effect, 40);
-        damageEffect.target = targets[0];
-        store.reduceEffect(state, damageEffect);
+        targets.forEach(target => {
+          const damageEffect = new PutDamageEffect(effect, 40);
+          damageEffect.target = target;
+          store.reduceEffect(state, damageEffect);
+        });
       });
     }
+
     return state;
   }
 

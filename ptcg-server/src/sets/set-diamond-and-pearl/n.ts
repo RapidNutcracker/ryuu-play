@@ -1,6 +1,6 @@
 import { Effect } from '../../game/store/effects/effect';
 import { TrainerEffect } from '../../game/store/effects/play-card-effects';
-import { ShuffleDeckPrompt } from '../../game/store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 import { State } from '../../game/store/state/state';
 import { StateUtils } from '../../game/store/state-utils';
 import { StoreLike } from '../../game/store/store-like';
@@ -32,8 +32,8 @@ export class N extends TrainerCard {
       opponent.hand.moveTo(opponent.deck);
 
       store.prompt(state, [
-        new ShuffleDeckPrompt(player.id),
-        new ShuffleDeckPrompt(opponent.id)
+        new ShufflePrompt(player.id),
+        new ShufflePrompt(opponent.id)
       ], deckOrder => {
         player.deck.applyOrder(deckOrder[0]);
         opponent.deck.applyOrder(deckOrder[1]);

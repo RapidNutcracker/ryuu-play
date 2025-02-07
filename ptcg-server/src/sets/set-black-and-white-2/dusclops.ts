@@ -8,7 +8,7 @@ import { AttackEffect } from '../../game/store/effects/game-effects';
 import { StateUtils } from '../../game/store/state-utils';
 import { ChooseCardsPrompt } from '../../game/store/prompts/choose-cards-prompt';
 import { ShowCardsPrompt } from '../../game/store/prompts/show-cards-prompt';
-import { ShuffleDeckPrompt } from '../../game/store/prompts/shuffle-prompt';
+import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 import { GameMessage } from '../../game/game-message';
 
 
@@ -45,7 +45,7 @@ function* useAstonish(next: Function, store: StoreLike, state: State,
 
   opponent.hand.moveCardsTo(cards, opponent.deck);
 
-  return store.prompt(state, new ShuffleDeckPrompt(opponent.id), order => {
+  return store.prompt(state, new ShufflePrompt(opponent.id), order => {
     player.deck.applyOrder(order);
   });
 }

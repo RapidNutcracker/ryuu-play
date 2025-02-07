@@ -1,6 +1,6 @@
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Stage, CardType, SpecialCondition } from '../../game/store/card/card-types';
-import { PowerType, StoreLike, State, ShuffleDeckPrompt } from '../../game';
+import { PowerType, StoreLike, State, ShufflePrompt } from '../../game';
 import { AttackEffect, PowerEffect } from '../../game/store/effects/game-effects';
 import { Effect } from '../../game/store/effects/effect';
 import { PutDamageEffect, AddSpecialConditionsEffect } from '../../game/store/effects/attack-effects';
@@ -51,7 +51,7 @@ export class Cleffa extends PokemonCard {
       store.reduceEffect(state, specialCondition);
 
       return store.prompt(state, [
-        new ShuffleDeckPrompt(player.id)
+        new ShufflePrompt(player.id)
       ], deckOrder => {
         player.deck.applyOrder(deckOrder);
         player.deck.moveTo(player.hand, 6);
