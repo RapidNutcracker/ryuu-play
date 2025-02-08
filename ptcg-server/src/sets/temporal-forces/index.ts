@@ -6,6 +6,7 @@ import { Relicanth } from './relicanth';
 import { Totodile } from './totodile';
 
 import { BuddyBuddyPoffin } from './buddy-buddy-poffin';
+import { PrimeCatcher } from './prime-catcher';
 
 export const temporalForces: Card[] = [
     new Totodile(),
@@ -14,4 +15,6 @@ export const temporalForces: Card[] = [
     new Relicanth(),
 
     new BuddyBuddyPoffin(),
+
+    new PrimeCatcher(),
 ];

@@ -82,7 +82,7 @@ export class Arcanine extends PokemonCard {
         for (const transfer of transfers) {
           const target = StateUtils.getTarget(state, player, transfer.to);
           const energyCard = transfer.card as EnergyCard;
-          const attachEnergyEffect = new AttachEnergyEffect(player, energyCard, target);
+          const attachEnergyEffect = new AttachEnergyEffect(player, energyCard, target, player.discard);
           store.reduceEffect(state, attachEnergyEffect);
         }
       });

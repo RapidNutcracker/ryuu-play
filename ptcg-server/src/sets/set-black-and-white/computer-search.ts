@@ -6,16 +6,17 @@ import { Effect } from '../../game/store/effects/effect';
 import { TrainerEffect } from '../../game/store/effects/play-card-effects';
 import { GameError } from '../../game/game-error';
 import { GameMessage } from '../../game/game-message';
-import { Card} from '../../game/store/card/card';
+import { Card } from '../../game/store/card/card';
 import { ChooseCardsPrompt } from '../../game/store/prompts/choose-cards-prompt';
 import { CardList } from '../../game/store/state/card-list';
+import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 
 
 function* playCard(next: Function, store: StoreLike, state: State,
   self: ComputerSearch, effect: TrainerEffect): IterableIterator<State> {
   const player = effect.player;
   let cards: Card[] = [];
-  
+
   cards = player.hand.cards.filter(c => c !== self);
   if (cards.length < 2) {
     throw new GameError(GameMessage.CANNOT_PLAY_THIS_CARD);
@@ -36,7 +37,7 @@ function* playCard(next: Function, store: StoreLike, state: State,
     player.id,
     GameMessage.CHOOSE_CARD_TO_DISCARD,
     handTemp,
-    { },
+    {},
     { min: 2, max: 2, allowCancel: true }
   ), selected => {
     cards = selected || [];
@@ -55,7 +56,7 @@ function* playCard(next: Function, store: StoreLike, state: State,
     player.id,
     GameMessage.CHOOSE_CARD_TO_HAND,
     player.deck,
-    { },
+    {},
     { min: 1, max: 1, allowCancel: false }
   ), selected => {
     cards = selected || [];
@@ -63,14 +64,17 @@ function* playCard(next: Function, store: StoreLike, state: State,
   });
 
   player.deck.moveCardsTo(cards, player.hand);
-  return state;
+
+  return store.prompt(state, new ShufflePrompt(player.id), order => {
+    player.deck.applyOrder(order);
+  });
 }
 
 export class ComputerSearch extends TrainerCard {
 
   public trainerType: TrainerType = TrainerType.ITEM;
 
-  public tags = [ CardTag.ACE_SPEC ];
+  public tags = [CardTag.ACE_SPEC];
 
   public set: string = 'BW';
 

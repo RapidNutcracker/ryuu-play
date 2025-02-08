@@ -18,7 +18,7 @@ export class Pidgeot extends PokemonCard {
 
   public stage: Stage = Stage.STAGE_2;
 
-  public evolvesFrom: string = 'Pidgeot';
+  public evolvesFrom: string = 'Pidgeotto';
 
   public cardType: CardType = CardType.COLORLESS;
 
@@ -36,7 +36,7 @@ export class Pidgeot extends PokemonCard {
     damage: 40,
     text: ''
   }, {
-    name: 'Flap',
+    name: 'Fly',
     cost: [CardType.COLORLESS],
     damage: 150,
     text:

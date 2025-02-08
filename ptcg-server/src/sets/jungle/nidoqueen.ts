@@ -49,9 +49,11 @@ export class Nidoqueen extends PokemonCard {
     if (effect instanceof AttackEffect && effect.attack === this.attacks[0]) {
       const player = effect.player;
 
-      const numberOfNidokings = player.bench.filter(b => b.getPokemonCard()?.name === 'Nidoking').length;
+      const numberOfNidokingOnBench = player.bench.filter(benchSlot =>
+        benchSlot.cards.length > 0 && benchSlot.getPokemonCard()?.name === 'Nidoking'
+      ).length;
 
-      effect.damage += numberOfNidokings * 20;
+      effect.damage += numberOfNidokingOnBench * 20;
     }
 
     return state;

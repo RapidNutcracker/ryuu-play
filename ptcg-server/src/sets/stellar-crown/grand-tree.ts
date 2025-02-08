@@ -47,6 +47,8 @@ function* useStadium(next: Function, store: StoreLike, state: State, effect: Use
       } else {
         basicPokemonThatCannotEvolve.push(target);
       }
+    } else {
+      basicPokemonThatCannotEvolve.push(target);
     }
   });
 
@@ -126,6 +128,10 @@ function* useStadium(next: Function, store: StoreLike, state: State, effect: Use
   const stage1EvolveEffect = new EvolveEffect(player, selectedPokemonSlot[0], stage1PokemonCard);
   state = store.reduceEffect(state, stage1EvolveEffect);
 
+  if (store.hasPrompts()) {
+    yield store.waitPrompt(state, () => next());
+  }
+
   // Find if there are Stage 2 Pokemon in the Deck that are from the same line
   let hasStage2Pokemon: boolean = stage2.some(s => s.evolvesFrom === stage1PokemonCard.name);
 
@@ -194,6 +200,10 @@ function* useStadium(next: Function, store: StoreLike, state: State, effect: Use
 
   const stage2EvolveEffect = new EvolveEffect(player, selectedPokemonSlot[0], stage2PokemonCard);
   state = store.reduceEffect(state, stage2EvolveEffect);
+
+  if (store.hasPrompts()) {
+    yield store.waitPrompt(state, () => next());
+  }
 
   // We're done. Shuffle Deck
   return store.prompt(state, new ShufflePrompt(player.id), order => {

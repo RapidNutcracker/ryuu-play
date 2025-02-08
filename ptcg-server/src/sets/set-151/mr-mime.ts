@@ -9,17 +9,6 @@ import { CheckHpEffect, CheckProvidedEnergyEffect } from '../../game/store/effec
 
 export class MrMime extends PokemonCard {
 
-  /**
-   * Mr. Mime · 90 HP · {P}
-Pokémon (Mr. Mime) › Basic
-
-Ability ⇢ Mimic Barrier
-If this Pokémon and your opponent\'s Active Pokémon have the same amount of Energy attached, prevent all damage done to this Pokémon by attacks from your opponent\'s Pokémon.
-
-{C} → Psypower
-Put 3 damage counters on your opponent\'s Pokémon in any way you like.
-weak: {D}×2 | resist: {F}-30 | retreat: 1
-   */
   public id: number = 122;
 
   public stage: Stage = Stage.BASIC;

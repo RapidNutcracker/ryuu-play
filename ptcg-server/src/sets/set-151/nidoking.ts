@@ -1,6 +1,6 @@
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Stage, CardType, SpecialCondition } from '../../game/store/card/card-types';
-import { StoreLike, State, Power, PowerType, PlayerType } from '../../game';
+import { StoreLike, State, Power, PowerType } from '../../game';
 import { Effect } from '../../game/store/effects/effect';
 import { AttackEffect } from '../../game/store/effects/game-effects';
 import { AddSpecialConditionsEffect } from '../../game/store/effects/attack-effects';
@@ -47,12 +47,9 @@ export class Nidoking extends PokemonCard {
     if (effect instanceof CheckAttackCostEffect && effect.attack === this.attacks[0]) {
       const player = effect.player;
 
-      let isNidoqueenInPlay = false;
-      player.forEachPokemon(PlayerType.BOTTOM_PLAYER, (cardList, card) => {
-        if (card.name === 'Nidoqueen') {
-          isNidoqueenInPlay = true;
-        }
-      });
+      let isNidoqueenInPlay = player.bench.some(benchSlot =>
+        benchSlot.cards.length > 0 && benchSlot.getPokemonCard()?.name === 'Nidoqueen'
+      );
 
       if (!isNidoqueenInPlay) {
         return state;
@@ -66,7 +63,7 @@ export class Nidoking extends PokemonCard {
       const specialCondition = new AddSpecialConditionsEffect(effect, [SpecialCondition.POISONED]);
       return store.reduceEffect(state, specialCondition);
     }
-    
+
     return state;
   }
 

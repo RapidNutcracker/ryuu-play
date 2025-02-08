@@ -26,7 +26,9 @@ export class Kakuna extends PokemonCard {
     name: 'Cocoon Cover',
     useWhenInPlay: true,
     powerType: PowerType.ABILITY,
-    text: 'Prevent all effects of attacks used by your opponent\'s Pokémon done to this Pokémon. (Damage is not an effect.)'
+    text:
+      'Prevent all effects of attacks used by your opponent\'s Pokémon ' +
+      'done to this Pokémon. (Damage is not an effect.)'
   }];
 
   public attacks = [

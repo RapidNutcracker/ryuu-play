@@ -8,7 +8,7 @@ import { AttachEnergyEffect } from '../../game/store/effects/play-card-effects';
 
 export class RainbowEnergy extends EnergyCard {
 
-  public provides: CardType[] = [ CardType.COLORLESS ];
+  public provides: CardType[] = [CardType.COLORLESS];
 
   public energyType = EnergyType.SPECIAL;
 
@@ -25,12 +25,15 @@ export class RainbowEnergy extends EnergyCard {
     'on that Pokemon.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
+
     if (effect instanceof CheckProvidedEnergyEffect && effect.source.cards.includes(this)) {
-      effect.energyMap.push({ card: this, provides: [ CardType.ANY ] });
+      effect.energyMap.push({ card: this, provides: [CardType.ANY] });
     }
+
     if (effect instanceof AttachEnergyEffect && effect.energyCard === this) {
       effect.target.damage += 10;
     }
+
     return state;
   }
 

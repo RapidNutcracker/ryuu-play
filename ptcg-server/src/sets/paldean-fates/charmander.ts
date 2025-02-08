@@ -6,7 +6,7 @@ import { AttackEffect } from '../../game/store/effects/game-effects';
 
 export class Charmander extends PokemonCard {
 
-  public id: number = 4;
+  public id: number = 7;
 
   public stage: Stage = Stage.BASIC;
 
@@ -22,7 +22,7 @@ export class Charmander extends PokemonCard {
     {
       name: 'Blazing Destruction',
       cost: [CardType.FIRE],
-      damage: 10,
+      damage: 0,
       text: 'Discard a Stadium in play.'
     },
     {

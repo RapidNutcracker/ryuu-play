@@ -1,20 +1,23 @@
-import { CardType, EnergyType } from '../../game/store/card/card-types';
-import { EnergyCard } from '../../game/store/card/energy-card';
-import { StoreLike } from '../../game/store/store-like';
-import { State } from '../../game/store/state/state';
-import { Effect } from '../../game/store/effects/effect';
-import { DealDamageEffect } from '../../game/store/effects/attack-effects';
-import { CheckProvidedEnergyEffect, CheckPokemonTypeEffect,
-  CheckTableStateEffect } from '../../game/store/effects/check-effects';
-import { PlayerType } from '../../game/store/actions/play-card-action';
-import { AttachEnergyEffect } from '../../game/store/effects/play-card-effects';
 import { GameError } from '../../game/game-error';
 import { GameMessage } from '../../game/game-message';
-import {StateUtils} from '../../game/store/state-utils';
+import { PlayerType } from '../../game/store/actions/play-card-action';
+import { CardType, EnergyType } from '../../game/store/card/card-types';
+import { EnergyCard } from '../../game/store/card/energy-card';
+import { Effect } from '../../game/store/effects/effect';
+import { DealDamageEffect } from '../../game/store/effects/attack-effects';
+import { AttachEnergyEffect } from '../../game/store/effects/play-card-effects';
+import { State } from '../../game/store/state/state';
+import { StoreLike } from '../../game/store/store-like';
+import { StateUtils } from '../../game/store/state-utils';
+import {
+  CheckProvidedEnergyEffect,
+  CheckPokemonTypeEffect,
+  CheckTableStateEffect
+} from '../../game/store/effects/check-effects';
 
 export class StrongEnergy extends EnergyCard {
 
-  public provides: CardType[] = [ ];
+  public provides: CardType[] = [];
 
   public energyType = EnergyType.SPECIAL;
 
@@ -51,7 +54,7 @@ export class StrongEnergy extends EnergyCard {
       const checkPokemonType = new CheckPokemonTypeEffect(effect.source);
       store.reduceEffect(state, checkPokemonType);
       if (checkPokemonType.cardTypes.includes(CardType.FIGHTING)) {
-        effect.energyMap.push({ card: this, provides: [ CardType.FIGHTING ] });
+        effect.energyMap.push({ card: this, provides: [CardType.FIGHTING] });
       }
       return state;
     }

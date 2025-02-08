@@ -66,11 +66,10 @@ function* useFullBloomingEnergy(next: Function, store: StoreLike, state: State,
       for (const transfer of transfers) {
         const target = StateUtils.getTarget(state, player, transfer.to);
         const energyCard = transfer.card as EnergyCard;
-        const attachEnergyEffect = new AttachEnergyEffect(player, energyCard, target);
+        const attachEnergyEffect = new AttachEnergyEffect(player, energyCard, target, deckTop);
         state = store.reduceEffect(state, attachEnergyEffect);
-
-        next();
       }
+      next();
     });
   } else {
     yield store.prompt(state, new ShowCardsPrompt(

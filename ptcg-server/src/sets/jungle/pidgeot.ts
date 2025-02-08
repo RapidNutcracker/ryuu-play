@@ -11,6 +11,8 @@ export class Pidgeot extends PokemonCard {
 
   public stage: Stage = Stage.STAGE_2;
 
+  public evolvesFrom: string = 'Pidgeotto';
+
   public cardType: CardType = CardType.COLORLESS;
 
   public hp: number = 80;

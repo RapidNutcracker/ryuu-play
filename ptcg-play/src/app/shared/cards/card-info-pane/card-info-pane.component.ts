@@ -33,7 +33,7 @@ export class CardInfoPaneComponent implements OnChanges {
   @Input() options: CardInfoPaneOptions = {};
   @Output() action = new EventEmitter<any>();
 
-  public enabledAbilities: {[name: string]: boolean} = {};
+  public enabledAbilities: { [name: string]: boolean } = {};
   public SuperType = SuperType;
   public Stage = Stage;
   public PowerType = PowerType;
@@ -56,8 +56,8 @@ export class CardInfoPaneComponent implements OnChanges {
     }
   }
 
-  private buildEnabledAbilities(): {[name: string]: boolean} {
-    const enabledAbilities: {[name: string]: boolean} = {};
+  private buildEnabledAbilities(): { [name: string]: boolean } {
+    const enabledAbilities: { [name: string]: boolean } = {};
     if (this.card && this.card.superType === SuperType.POKEMON) {
       const pokemonCard = this.card as PokemonCard;
       pokemonCard.powers.forEach(power => {

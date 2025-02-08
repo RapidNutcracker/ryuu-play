@@ -8,7 +8,6 @@ import { StoreLike } from '../store-like';
 
 export function playEnergyReducer(store: StoreLike, state: State, effect: Effect): State {
 
-
   /* Play energy card */
   if (effect instanceof AttachEnergyEffect) {
     const pokemonCard = effect.target.getPokemonCard();
@@ -21,7 +20,8 @@ export function playEnergyReducer(store: StoreLike, state: State, effect: Effect
       card: effect.energyCard.name,
       pokemon: pokemonCard.name
     });
-    effect.player.hand.moveCardTo(effect.energyCard, effect.target);
+
+    effect.from.moveCardTo(effect.energyCard, effect.target);
     return state;
   }
 

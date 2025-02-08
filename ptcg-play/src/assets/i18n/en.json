@@ -377,7 +377,8 @@
     "WANT_TO_SHUFFLE_POKEMON_INTO_DECK": "Do you want to shuffle the Pokémon into the deck?",
     "WANT_TO_SWITCH_POKEMON": "Do you want to switch Pokémon?",
     "WANT_TO_USE_ABILITY": "Do you want to use Ability?",
-    "WANT_TO_EVOLVE_AGAIN": "Do you want to evolve again?"
+    "WANT_TO_EVOLVE_AGAIN": "Do you want to evolve again?",
+    "WANT_TO_DISCARD_STADIUM": "Do you want to discard the Stadium in play?"
   },
   "GAME_LOGS": {
     "LOG_BANNED_BY_ARBITER": "{{name}} made an invalid move multiple times and was banned by the arbiter.'",

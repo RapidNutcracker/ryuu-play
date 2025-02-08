@@ -4,7 +4,7 @@ import { Player } from '../state/player';
 import { PokemonCard } from '../card/pokemon-card';
 import { PokemonCardList } from '../state/pokemon-card-list';
 import { TrainerCard } from '../card/trainer-card';
-import {CardList} from '../state/card-list';
+import { CardList } from '../state/card-list';
 
 export enum PlayCardEffects {
   ATTACH_ENERGY_EFFECT = 'ATTACH_ENERGY_EFFECT',
@@ -21,11 +21,14 @@ export class AttachEnergyEffect implements Effect {
   public preventDefault = false;
   public player: Player;
   public energyCard: EnergyCard;
+  public from: CardList;
   public target: PokemonCardList;
 
-  constructor(player: Player, energyCard: EnergyCard, target: PokemonCardList) {
+
+  constructor(player: Player, energyCard: EnergyCard, target: PokemonCardList, from?: CardList) {
     this.player = player;
     this.energyCard = energyCard;
+    this.from = from || player.hand;
     this.target = target;
   }
 }

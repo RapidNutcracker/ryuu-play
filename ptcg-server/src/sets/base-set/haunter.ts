@@ -1,6 +1,6 @@
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Stage, CardType, SpecialCondition } from '../../game/store/card/card-types';
-import { StoreLike, State, Resistance, StateUtils } from '../../game';
+import { StoreLike, State, Resistance, StateUtils, GameError, GameMessage } from '../../game';
 import { Effect } from '../../game/store/effects/effect';
 import { AttackEffect } from '../../game/store/effects/game-effects';
 import { AddSpecialConditionsEffect } from '../../game/store/effects/attack-effects';
@@ -57,10 +57,10 @@ export class Haunter extends PokemonCard {
       const player = effect.player;
       const opponent = StateUtils.getOpponent(state, player);
 
-      const isAsleep = opponent.active.specialConditions.includes(SpecialCondition.ASLEEP);
+      const isOpponentAsleep = opponent.active.specialConditions.includes(SpecialCondition.ASLEEP);
 
-      if (!isAsleep) {
-        return state;
+      if (!isOpponentAsleep) {
+        throw new GameError(GameMessage.CANNOT_USE_ATTACK);
       }
     }
 
