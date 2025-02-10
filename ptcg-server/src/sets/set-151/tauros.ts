@@ -10,6 +10,7 @@ import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 import { Stage, CardType, SuperType } from '../../game/store/card/card-types';
 import { State } from '../../game/store/state/state';
 import { StoreLike } from '../../game/store/store-like';
+import { GameError } from '../../game';
 
 function* useGatherTheCrew(next: Function, store: StoreLike, state: State,
   effect: AttackEffect): IterableIterator<State> {
@@ -18,7 +19,7 @@ function* useGatherTheCrew(next: Function, store: StoreLike, state: State,
   const max = Math.min(slots.length, 1);
 
   if (max === 0) {
-    return state;
+    throw new GameError(GameMessage.CANNOT_USE_ATTACK);
   }
 
   let cards: Card[] = [];

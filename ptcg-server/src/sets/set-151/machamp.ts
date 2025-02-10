@@ -49,9 +49,9 @@ export class Machamp extends PokemonCard {
 
   public set: string = 'MEW';
 
-  public name: string = 'Machoke';
+  public name: string = 'Machamp';
 
-  public fullName: string = 'Machoke MEW';
+  public fullName: string = 'Machamp MEW';
 
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {

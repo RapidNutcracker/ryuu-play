@@ -3,9 +3,6 @@ import { Card } from '../../game/store/card/card';
 import { Abra } from './abra';
 import { Aerodactyl } from './aerodactyl';
 import { AlakazamEx } from './alakazam-ex';
-import { AntiqueDomeFossil } from './antique-dome-fossil';
-import { AntiqueHelixFossil } from './antique-helix-fossil';
-import { AntiqueOldAmber } from './antique-old-amber';
 import { ArbokEx } from './arbok-ex';
 import { Arcanine } from './arcanine';
 import { Articuno } from './articuno';
@@ -149,6 +146,21 @@ import { Weezing } from './weezing';
 import { WigglytuffEx } from './wigglytuff-ex';
 import { ZapdosEx } from './zapdos-ex';
 import { Zubat } from './zubat';
+
+import { AntiqueDomeFossil } from './antique-dome-fossil';
+import { AntiqueHelixFossil } from './antique-helix-fossil';
+import { AntiqueOldAmber } from './antique-old-amber';
+import { BigAirBallon } from './big-air-balloon';
+import { BillsTransfer } from './bills-transfer';
+import { CyclingRoad } from './cycling-road';
+import { DaisysHelp } from './daisys-help';
+import { EnergySticker } from './energy-sticker';
+import { ErikasInvitation } from './erikas-invitation';
+import { GiovannisCharisma } from './giovannis-charisma';
+import { Grabber } from './grabber';
+import { Leftovers } from './leftovers';
+import { ProtectiveGoggles } from './protective-goggles';
+import { RigidBand } from './rigid-band';
 
 
 export const set151: Card[] = [
@@ -302,4 +314,15 @@ export const set151: Card[] = [
     new AntiqueDomeFossil(),
     new AntiqueHelixFossil(),
     new AntiqueOldAmber(),
+    new BigAirBallon(),
+    new BillsTransfer(),
+    new CyclingRoad(),
+    new DaisysHelp(),
+    new EnergySticker(),
+    new ErikasInvitation(),
+    new GiovannisCharisma(),
+    new Grabber(),
+    new Leftovers(),
+    new ProtectiveGoggles(),
+    new RigidBand(),
 ]

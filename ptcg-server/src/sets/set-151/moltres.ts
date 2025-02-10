@@ -11,17 +11,6 @@ import { CheckProvidedEnergyEffect, CheckRetreatCostEffect } from '../../game/st
 
 export class Moltres extends PokemonCard {
 
-  /**
-   * Moltres · 120 HP · {R}
-Pokémon (Moltres) › Basic
-
-Ability ⇢ Flare Float
-If this Pokémon has any {R} Energy attached, it has no Retreat Cost.
-
-{R}{R}{R} → Blazing Flight
-Discard 2 {R} Energy from this Pokémon. This attack does 120 damage to 1 of your opponent\'s Benched Pokémon. (Don\'t apply Weakness and Resistance for Benched Pokémon.)
-weak: {L}×2 | resist: {F}-30 | retreat: 2
-   */
   public id: number = 146;
 
   public stage: Stage = Stage.BASIC;
@@ -93,7 +82,7 @@ weak: {L}×2 | resist: {F}-30 | retreat: 2
     }
 
     // Blazing Flight
-    if (effect instanceof AttackEffect && effect.attack === this.attacks[1]) {
+    if (effect instanceof AttackEffect && effect.attack === this.attacks[0]) {
       const player = effect.player;
 
       const checkProvidedEnergy = new CheckProvidedEnergyEffect(player);
