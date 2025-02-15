@@ -23,7 +23,7 @@ export class MrMime extends PokemonCard {
 
   public powers = [{
     name: 'Invisible Wall',
-    powerType: PowerType.POKEPOWER,
+    powerType: PowerType.POKEMON_POWER,
     text:
       'Whenever an attack (including your own) does 30 or more damage to Mr. Mime ' +
       '(after applying Weakness and Resistance), prevent that damage. ' +
@@ -35,7 +35,7 @@ export class MrMime extends PokemonCard {
     {
       name: 'Meditate',
       cost: [CardType.PSYCHIC, CardType.COLORLESS],
-      damage: 20,
+      damage: 10,
       text: 'Does 10 damage plus 10 more damage for each damage counter on the Defending Pokémon.'
     }
   ];

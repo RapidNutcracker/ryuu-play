@@ -12,6 +12,8 @@ export class Flareon extends PokemonCard {
 
   public stage: Stage = Stage.STAGE_1;
 
+  public evolvesFrom: string = 'Eevee';
+
   public cardType: CardType = CardType.FIRE;
 
   public hp: number = 70;

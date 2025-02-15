@@ -20,20 +20,17 @@ export class Electrode extends PokemonCard {
 
   public retreat = [CardType.COLORLESS];
 
-  public attacks = [
-    {
-      name: 'Tackle',
-      cost: [CardType.COLORLESS, CardType.COLORLESS],
-      damage: 20,
-      text: ''
-    },
-    {
-      name: 'Chain Lightning',
-      cost: [CardType.LIGHTNING, CardType.LIGHTNING, CardType.LIGHTNING],
-      damage: 20,
-      text: 'If the Defending Pokémon isn\'t Colorless, this attack does 10 damage to each Benched Pokémon of the same type as the Defending Pokémon (including your own).'
-    }
-  ];
+  public attacks = [{
+    name: 'Tackle',
+    cost: [CardType.COLORLESS, CardType.COLORLESS],
+    damage: 20,
+    text: ''
+  }, {
+    name: 'Chain Lightning',
+    cost: [CardType.LIGHTNING, CardType.LIGHTNING, CardType.LIGHTNING],
+    damage: 20,
+    text: 'If the Defending Pokémon isn\'t Colorless, this attack does 10 damage to each Benched Pokémon of the same type as the Defending Pokémon (including your own).'
+  }];
 
   public set: string = 'JU';
 

@@ -30,7 +30,7 @@ export class Kangaskhan extends PokemonCard {
     {
       name: 'Comet Punch',
       cost: [CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS],
-      damage: 0,
+      damage: 20,
       text: 'Flip 4 coins. This attack does 20 damage times the number of heads.'
     }
   ];
