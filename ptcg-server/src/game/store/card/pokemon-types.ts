@@ -20,10 +20,11 @@ export interface Attack {
 }
 
 export enum PowerType {
+  POKEMON_POWER,
   POKEBODY,
   POKEPOWER,
   ABILITY,
-  ANCIENT_TRAIT
+  ANCIENT_TRAIT,
 }
 
 export interface Power {

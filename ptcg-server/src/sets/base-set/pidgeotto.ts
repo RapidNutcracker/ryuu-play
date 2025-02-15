@@ -1,10 +1,10 @@
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Stage, CardType } from '../../game/store/card/card-types';
-import { StoreLike, State, Resistance, ChoosePokemonPrompt, PlayerType, SlotType, StateUtils, GamePhase } from '../../game';
+import { StoreLike, State, Resistance, ChoosePokemonPrompt, PlayerType, SlotType, StateUtils, GamePhase, Attack, GameError } from '../../game';
 import { Effect } from '../../game/store/effects/effect';
 import { AttackEffect } from '../../game/store/effects/game-effects';
 import { GameMessage } from '../../game/game-message';
-import { AfterDamageEffect, DealDamageEffect } from '../../game/store/effects/attack-effects';
+import { AfterDamageEffect } from '../../game/store/effects/attack-effects';
 import { EndTurnEffect } from '../../game/store/effects/game-phase-effects';
 
 export class Pidgeotto extends PokemonCard {
@@ -46,7 +46,11 @@ export class Pidgeotto extends PokemonCard {
 
   public fullName: string = 'Pidgeotto BS';
 
-  private mirrorMoveDamage: number = 0;
+  private readonly MIRROR_MOVE_MARKER = 'MIRROR_MOVE_MARKER';
+
+  private readonly CLEAR_MIRROR_MOVE_MARKER = 'CLEAR_MIRROR_MOVE_MARKER';
+
+  private mirrorMoveAttack: Attack | undefined;
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
 
@@ -78,29 +82,37 @@ export class Pidgeotto extends PokemonCard {
       const player = effect.player;
       const opponent = StateUtils.getOpponent(state, player);
 
-      const dealDamage = new DealDamageEffect(effect, this.mirrorMoveDamage);
-      dealDamage.target = opponent.active;
-      return store.reduceEffect(state, dealDamage);
+      if (this.mirrorMoveAttack === undefined) {
+        throw new GameError(GameMessage.CANNOT_USE_ATTACK);
+      }
+
+      const attackEffect = new AttackEffect(player, opponent, this.mirrorMoveAttack);
+      return store.reduceEffect(state, attackEffect);
     }
 
-    // Set Mirror Move Damage to Last Received Attack
-    /// TODO: Is this good?
-    if (effect instanceof AfterDamageEffect && effect.target.getPokemonCard() === this) {
-      const player = effect.player;
-      const targetPlayer = StateUtils.findOwner(state, effect.target);
+    // Set Mirror Move Attack to Received Attack
+    if (effect instanceof AttackEffect && effect.opponent.active.getPokemonCard() === this) {
+      const attackerCard = effect.player.active.getPokemonCard();
 
-      if (effect.damage <= 0 || player === targetPlayer) {
-        return state;
+      if (attackerCard === undefined) {
+        throw new GameError(GameMessage.UNKNOWN_CARD);
       }
 
       if (state.phase === GamePhase.ATTACK) {
-        this.mirrorMoveDamage = effect.damage;
+        effect.opponent.marker.addMarker(this.CLEAR_MIRROR_MOVE_MARKER, this);
+        effect.opponent.active.marker.addMarker(this.MIRROR_MOVE_MARKER, attackerCard);
+        this.mirrorMoveAttack = effect.attack;
       }
+
+      return state;
     }
 
-    // Clear Mirror Move Damage
-    if (effect instanceof EndTurnEffect && this.mirrorMoveDamage > 0) {
-      this.mirrorMoveDamage = 0;
+    // Clear Mirror Move
+    if (effect instanceof EndTurnEffect && effect.player.marker.hasMarker(this.CLEAR_MIRROR_MOVE_MARKER, this)) {
+      effect.player.marker.removeMarker(this.CLEAR_MIRROR_MOVE_MARKER, this);
+      effect.player.forEachPokemon(PlayerType.BOTTOM_PLAYER, (cardList) => {
+        cardList.marker.removeMarker(this.MIRROR_MOVE_MARKER);
+      })
     }
 
     return state;

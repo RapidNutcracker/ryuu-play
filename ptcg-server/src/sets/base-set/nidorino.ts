@@ -23,20 +23,17 @@ export class Nidorino extends PokemonCard {
 
   public retreat = [CardType.COLORLESS];
 
-  public attacks = [
-    {
-      name: 'Double Kick',
-      cost: [CardType.GRASS, CardType.COLORLESS, CardType.COLORLESS],
-      damage: 30,
-      text: 'Flip 2 coins. This attack does 30 damage times the number of heads.'
-    },
-    {
-      name: 'Horn Drill',
-      cost: [CardType.GRASS, CardType.GRASS, CardType.COLORLESS, CardType.COLORLESS],
-      damage: 50,
-      text: ''
-    }
-  ];
+  public attacks = [{
+    name: 'Double Kick',
+    cost: [CardType.GRASS, CardType.COLORLESS, CardType.COLORLESS],
+    damage: 30,
+    text: 'Flip 2 coins. This attack does 30 damage times the number of heads.'
+  }, {
+    name: 'Horn Drill',
+    cost: [CardType.GRASS, CardType.GRASS, CardType.COLORLESS, CardType.COLORLESS],
+    damage: 50,
+    text: ''
+  }];
 
   public set: string = 'BS';
 

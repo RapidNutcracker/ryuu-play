@@ -59,8 +59,12 @@ export class Alakazam extends PokemonCard {
   public powers = [{
     name: 'Damage Swap',
     useWhenInPlay: true,
-    powerType: PowerType.POKEPOWER,
-    text: 'As often as you like during your turn (before your attack), you may move 1 damage counter from 1 of your Pokémon to another as long as you don\'t Knock Out that Pokémon. This power can\'t be used if Alakazam is Asleep, Confused, or Paralyzed.'
+    powerType: PowerType.POKEMON_POWER,
+    text:
+      'As often as you like during your turn (before your attack), ' +
+      'you may move 1 damage counter from 1 of your Pokémon to another ' +
+      'as long as you don\'t Knock Out that Pokémon. ' +
+      'This power can\'t be used if Alakazam is Asleep, Confused, or Paralyzed.'
   }];
 
   public attacks = [{

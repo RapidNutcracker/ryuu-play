@@ -20,20 +20,17 @@ export class Pikachu extends PokemonCard {
 
   public retreat = [CardType.COLORLESS];
 
-  public attacks = [
-    {
-      name: 'Gnaw',
-      cost: [CardType.COLORLESS],
-      damage: 10,
-      text: ''
-    },
-    {
-      name: 'Thunder Jolt',
-      cost: [CardType.LIGHTNING, CardType.COLORLESS],
-      damage: 30,
-      text: 'Flip a coin. If tails, Pikachu does 10 damage to itself.'
-    }
-  ];
+  public attacks = [{
+    name: 'Gnaw',
+    cost: [CardType.COLORLESS],
+    damage: 10,
+    text: ''
+  }, {
+    name: 'Thunder Jolt',
+    cost: [CardType.LIGHTNING, CardType.COLORLESS],
+    damage: 30,
+    text: 'Flip a coin. If tails, Pikachu does 10 damage to itself.'
+  }];
 
   public set: string = 'BS';
 

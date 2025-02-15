@@ -25,7 +25,7 @@ export class Doduo extends PokemonCard {
     {
       name: 'Fury Attack',
       cost: [CardType.COLORLESS],
-      damage: 30,
+      damage: 10,
       text: 'Flip 2 coins. This attack does 10 damage times the number of heads.'
     }
   ];

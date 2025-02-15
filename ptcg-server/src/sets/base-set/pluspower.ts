@@ -3,9 +3,10 @@ import { TrainerType } from '../../game/store/card/card-types';
 import { StoreLike } from '../../game/store/store-like';
 import { State } from '../../game/store/state/state';
 import { Effect } from '../../game/store/effects/effect';
-import { DealDamageEffect } from '../../game/store/effects/attack-effects';
-import { TrainerEffect } from '../../game/store/effects/play-card-effects';
+import { PutDamageEffect } from '../../game/store/effects/attack-effects';
+import { PlayItemEffect } from '../../game/store/effects/play-card-effects';
 import { EndTurnEffect } from '../../game/store/effects/game-phase-effects';
+import { GameError, GameMessage, PlayerType, PokemonCardList } from '../../game';
 
 export class PlusPower extends TrainerCard {
 
@@ -24,23 +25,41 @@ export class PlusPower extends TrainerCard {
     '(after applying Weakness and Resistance), ' +
     'the attack does 10 more damage to the Defending Pokémon.';
 
-  private readonly PLUS_POWER_MARKER = 'PLUS_POWER_MARKER';
+  private readonly PLUSPOWER_MARKER = 'PLUSPOWER_MARKER';
+
+  private readonly CLEAR_PLUSPOWER_MARKER = 'CLEAR_PLUSPOWER_MARKER';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
-    if (effect instanceof TrainerEffect && effect.trainerCard === this) {
+    if (effect instanceof PlayItemEffect && effect.trainerCard === this) {
       const player = effect.player;
-      player.marker.addMarker(this.PLUS_POWER_MARKER, this);
+
+      effect.preventDefault = true;
+
+      const targetSlot = effect.target as PokemonCardList;
+
+      if (targetSlot.getPokemonCard() === undefined) {
+        throw new GameError(GameMessage.INVALID_TARGET);
+      }
+
+      player.hand.moveCardTo(this, effect.target as PokemonCardList);
+      targetSlot.marker.addMarker(this.PLUSPOWER_MARKER, this);
+      player.marker.addMarker(this.CLEAR_PLUSPOWER_MARKER, this);
     }
 
-    if (effect instanceof DealDamageEffect) {
-      const marker = effect.player.marker;
-      if (marker.hasMarker(this.PLUS_POWER_MARKER, this) && effect.damage > 0) {
+    if (effect instanceof PutDamageEffect && effect.source.marker.hasMarker(this.PLUSPOWER_MARKER, this)) {
+      if (effect.damage > 0) {
         effect.damage += 10;
       }
     }
 
-    if (effect instanceof EndTurnEffect) {
-      effect.player.marker.removeMarker(this.PLUS_POWER_MARKER, this);
+    if (effect instanceof EndTurnEffect && effect.player.marker.hasMarker(this.CLEAR_PLUSPOWER_MARKER, this)) {
+
+      effect.player.marker.removeMarker(this.CLEAR_PLUSPOWER_MARKER, this);
+
+      effect.player.forEachPokemon(PlayerType.BOTTOM_PLAYER, (cardList) => {
+        cardList.marker.removeMarker(this.PLUSPOWER_MARKER, this);
+        cardList.moveCardTo(this, effect.player.discard);
+      });
     }
 
     return state;

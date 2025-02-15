@@ -49,8 +49,6 @@ export class Porygon extends PokemonCard {
       const player = effect.player;
       const opponent = StateUtils.getOpponent(state, player);
 
-
-
       const checkPokemonStatsEffect = new CheckPokemonStatsEffect(opponent.active);
       store.reduceEffect(state, checkPokemonStatsEffect);
 
@@ -74,7 +72,7 @@ export class Porygon extends PokemonCard {
         { message: 'LABEL_WATER', value: CardType.WATER },
         { message: 'LABEL_LIGHTNING', value: CardType.LIGHTNING },
         { message: 'LABEL_METAL', value: CardType.METAL },
-        { message: 'LABEL_DARK', value: CardType.DARK },
+        { message: 'LABEL_DARKNESS', value: CardType.DARKNESS },
         { message: 'LABEL_DRAGON', value: CardType.DRAGON },
         { message: 'LABEL_FAIRY', value: CardType.FAIRY },
       ];
@@ -105,7 +103,7 @@ export class Porygon extends PokemonCard {
         { message: 'LABEL_WATER', value: CardType.WATER },
         { message: 'LABEL_LIGHTNING', value: CardType.LIGHTNING },
         { message: 'LABEL_METAL', value: CardType.METAL },
-        { message: 'LABEL_DARK', value: CardType.DARK },
+        { message: 'LABEL_DARKNESS', value: CardType.DARKNESS },
         { message: 'LABEL_DRAGON', value: CardType.DRAGON },
         { message: 'LABEL_FAIRY', value: CardType.FAIRY },
       ];

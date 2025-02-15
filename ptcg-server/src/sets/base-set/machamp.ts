@@ -23,7 +23,7 @@ export class Machamp extends PokemonCard {
   public powers = [{
     name: 'Strikes Back',
     useWhenInPlay: true,
-    powerType: PowerType.POKEPOWER,
+    powerType: PowerType.POKEMON_POWER,
     text:
       'Whenever your opponent\'s attack damages Machamp (even if Machamp is Knocked Out), ' +
       'this power does 10 damage to the attacking Pokémon. ' +

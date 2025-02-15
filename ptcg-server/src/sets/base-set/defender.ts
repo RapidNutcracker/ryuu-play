@@ -3,10 +3,10 @@ import { TrainerType } from '../../game/store/card/card-types';
 import { StoreLike } from '../../game/store/store-like';
 import { State } from '../../game/store/state/state';
 import { Effect } from '../../game/store/effects/effect';
-import { DealDamageEffect } from '../../game/store/effects/attack-effects';
-import { TrainerEffect } from '../../game/store/effects/play-card-effects';
+import { PutDamageEffect } from '../../game/store/effects/attack-effects';
+import { PlayItemEffect } from '../../game/store/effects/play-card-effects';
 import { EndTurnEffect } from '../../game/store/effects/game-phase-effects';
-import { PlayerType, StateUtils } from '../../game';
+import { GameError, GameLog, GameMessage, PlayerType, PokemonCardList, StateUtils } from '../../game';
 
 export class Defender extends TrainerCard {
 
@@ -28,27 +28,42 @@ export class Defender extends TrainerCard {
   private readonly CLEAR_DEFENDER_MARKER = 'CLEAR_DEFENDER_MARKER';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
-    if (effect instanceof TrainerEffect && effect.trainerCard === this) {
+    if (effect instanceof PlayItemEffect && effect.trainerCard === this) {
       const player = effect.player;
       const opponent = StateUtils.getOpponent(state, player);
+      const targetSlot = effect.target as PokemonCardList;
 
-      player.marker.addMarker(this.DEFENDER_MARKER, this);
+      effect.preventDefault = true;
+
+      const pokemonCard = targetSlot.getPokemonCard();
+      if (pokemonCard === undefined) {
+        throw new GameError(GameMessage.INVALID_TARGET);
+      }
+
+      store.log(state, GameLog.LOG_PLAYER_ATTACHES_CARD, {
+        name: effect.player.name,
+        card: effect.trainerCard.name,
+        pokemon: pokemonCard.name
+      });
+
+      player.hand.moveCardTo(this, effect.target as PokemonCardList);
+      targetSlot.marker.addMarker(this.DEFENDER_MARKER, this);
       opponent.marker.addMarker(this.CLEAR_DEFENDER_MARKER, this);
     }
 
-    if (effect instanceof DealDamageEffect) {
-      if (effect.target.marker.hasMarker(this.DEFENDER_MARKER, this) && effect.damage > 0) {
-        effect.damage = Math.max(effect.damage - 20, 0);
-      }
+    if (effect instanceof PutDamageEffect && effect.source.marker.hasMarker(this.DEFENDER_MARKER, this)) {
+      effect.damage = Math.max(effect.damage - 20, 0);
     }
 
     if (effect instanceof EndTurnEffect && effect.player.marker.hasMarker(this.CLEAR_DEFENDER_MARKER, this)) {
+      const player = effect.player;
+      const opponent = StateUtils.getOpponent(state, player);
 
-      effect.player.marker.removeMarker(this.CLEAR_DEFENDER_MARKER, this);
+      player.marker.removeMarker(this.CLEAR_DEFENDER_MARKER, this);
 
-      const opponent = StateUtils.getOpponent(state, effect.player);
-      opponent.forEachPokemon(PlayerType.TOP_PLAYER, (cardList) => {
+      opponent.forEachPokemon(PlayerType.BOTTOM_PLAYER, (cardList) => {
         cardList.marker.removeMarker(this.DEFENDER_MARKER, this);
+        cardList.moveCardTo(this, opponent.discard);
       });
     }
 

@@ -1,6 +1,6 @@
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Stage, CardType } from '../../game/store/card/card-types';
-import { PowerType, StoreLike, State, GameError, GameMessage, PokemonCardList, StateUtils, Card, ChooseEnergyPrompt, PlayerType } from '../../game';
+import { PowerType, StoreLike, State, GameMessage, PokemonCardList, StateUtils, Card, ChooseEnergyPrompt, PlayerType } from '../../game';
 import { Effect } from '../../game/store/effects/effect';
 import { AttackEffect, PowerEffect } from '../../game/store/effects/game-effects';
 import { CheckProvidedEnergyEffect } from '../../game/store/effects/check-effects';
@@ -29,7 +29,7 @@ export class Charizard extends PokemonCard {
   public powers = [{
     name: 'Energy Burn',
     useWhenInPlay: true,
-    powerType: PowerType.POKEPOWER,
+    powerType: PowerType.POKEMON_POWER,
     text: 'As often as you like during your turn (before your attack), you may turn all Energy attached to Charizard into {R} Energy for the rest of the turn. This power can\'t be used if Charizard is Asleep, Confused, or Paralyzed.'
   }];
 
@@ -55,9 +55,7 @@ export class Charizard extends PokemonCard {
       if (!(cardList instanceof PokemonCardList)) {
         return state;
       }
-      if (cardList.marker.hasMarker(this.ENERGY_BURN_MARKER, this)) {
-        throw new GameError(GameMessage.POWER_ALREADY_USED);
-      }
+
       player.marker.addMarker(this.CLEAR_ENERGY_BURN_MARKER, this);
       cardList.marker.addMarker(this.ENERGY_BURN_MARKER, this);
 
@@ -87,7 +85,7 @@ export class Charizard extends PokemonCard {
 
     if (effect instanceof CheckProvidedEnergyEffect && effect.source.marker.hasMarker(this.ENERGY_BURN_MARKER, this)) {
       effect.energyMap.forEach(em => {
-        em.provides.forEach(p => p = CardType.FIRE);
+        em.provides.forEach(p => { p = CardType.FIRE });
       });
       return state;
     }

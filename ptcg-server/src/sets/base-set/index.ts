@@ -97,6 +97,13 @@ import { Revive } from './revive';
 import { Defender } from './defender';
 import { ImpostorProfessorOak } from './impostor-professor-oak';
 import { PokemonTrader } from './pokemon-trader';
+import { FullHeal } from './full-heal';
+import { ClefairyDoll } from './clefairy-doll';
+import { DevolutionSpray } from './devolution-spray';
+import { PokemonCenter } from './pokemon-center';
+import { PokemonFlute } from './pokemon-flute';
+import { Pokedex } from './pokedex';
+import { DoubleColorlessEnergy } from './double-colorless-energy';
 
 export const baseSet: Card[] = [
   new Alakazam(),
@@ -169,27 +176,34 @@ export const baseSet: Card[] = [
   new Vulpix(),
   new Weedle(),
 
-  new Bill(),
+  new ClefairyDoll(),
   new ComputerSearch(),
-  new Defender(),
-  new GustOfWind(),
-  new EnergyRemoval(),
-  new EnergyRetrieval(),
+  new DevolutionSpray(),
   new ImpostorProfessorOak(),
   new ItemFinder(),
   new Lass(),
-  new Maintenance(),
-  new PlusPower(),
   new PokemonBreeder(),
   new PokemonTrader(),
-  new Potion(),
-  new ProfessorOak(),
-  new Revive(),
   new ScoopUp(),
   new SuperEnergyRemoval(),
+  new Defender(),
+  new EnergyRetrieval(),
+  new FullHeal(),
+  new Maintenance(),
+  new PlusPower(),
+  new PokemonCenter(),
+  new PokemonFlute(),
+  new Pokedex(),
+  new ProfessorOak(),
+  new Revive(),
   new SuperPotion(),
+  new Bill(),
+  new EnergyRemoval(),
+  new GustOfWind(),
+  new Potion(),
   new Switch(),
 
+  new DoubleColorlessEnergy(),
   new FightingEnergy(),
   new FireEnergy(),
   new GrassEnergy(),

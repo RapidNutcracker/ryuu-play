@@ -74,7 +74,7 @@ export class Blastoise extends PokemonCard {
   public powers = [{
     name: 'Rain Dance',
     useWhenInPlay: true,
-    powerType: PowerType.POKEPOWER,
+    powerType: PowerType.POKEMON_POWER,
     text:
       'As often as you like during your turn (before your attack), ' +
       'you may attach 1 {W} Energy card to 1 of your {W} Pokémon. ' +
