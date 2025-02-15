@@ -86,8 +86,8 @@ export class RankingCalculator {
   }
 
   public async decreaseRanking(): Promise<User[]> {
-    const rankingDecraseRate = config.core.rankingDecraseRate;
-    const oneDay = config.core.rankingDecraseTime;
+    const rankingDecraseRate = config.core.rankingDecreaseRate;
+    const oneDay = config.core.rankingDecreaseTime;
     const today = Date.now();
     const yesterday = today - oneDay;
     const users = await User.find({ where: {

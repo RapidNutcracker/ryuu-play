@@ -41,7 +41,7 @@ Prerequisites:
 * Node.js 8 LTS or higher
 * mysql-5 or sqlite-3
 
-After clonning the repository, go to the directory `ptcg-server` and edit the `config.js` file. All available options and its default values are defined in the `src/config.ts`.
+After cloning the repository, go to the directory `ptcg-server` and edit the `config.js` file. All available options and its default values are defined in the `src/config.ts`.
 
 1. Firstly install all required dependencies.
 
@@ -83,7 +83,7 @@ The client is an Angular application. For more detailed setup information, you m
 npm install
 ```
 
-3. Start the aplication.
+3. Start the application.
 
 ```
 npm start

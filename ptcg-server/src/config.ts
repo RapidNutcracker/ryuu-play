@@ -4,7 +4,7 @@ export const config = {
     address: 'localhost',
     port: 12021,
     serverPassword: '', // Password required to create an account
-    registrationEnabled: true,  // Completly disables/enables registration
+    registrationEnabled: true,  // Completely disables/enables registration
     allowCors: true,
     secret: '!secret!',
     tokenExpire: 86400,
@@ -37,8 +37,8 @@ export const config = {
 
     // Decrease players' ranking every day by 0.95
     // If you wish to disable this feature set IntervalCount to 0
-    rankingDecraseRate: 0.95,
-    rankingDecraseTime: 24 * 60 * 60 * 1000,
+    rankingDecreaseRate: 0.95,
+    rankingDecreaseTime: 24 * 60 * 60 * 1000,
     rankingDecreaseIntervalCount: 4,  // run every X scheduler ticks
 
     // Deletes matches older than `keepMatchTike` from the database, to keep it small.
@@ -56,7 +56,7 @@ export const config = {
     defaultPassword: '',
 
     // Delay between every action that bot is making
-    actionDelay: 250,
+    actionDelay: 1000,
 
     // Simulate matches every X ticks of the scheduler
     // If set to 0, the bot matches are disabled
