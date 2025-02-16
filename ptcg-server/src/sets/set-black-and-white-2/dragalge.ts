@@ -29,14 +29,14 @@ export class Dragalge extends PokemonCard {
   public powers = [{
     name: 'Poison Barrier',
     powerType: PowerType.ABILITY,
-    text: 'Your opponent\'s Poisoned Pokemon can\'t retreat.'
+    text: 'Your opponent\'s Poisoned Pokémon can\'t retreat.'
   }];
 
   public attacks = [{
     name: 'Poison Breath',
     cost: [ CardType.WATER, CardType.PSYCHIC, CardType.COLORLESS ],
     damage: 60,
-    text: 'Flip a coin. If heads, your opponent\'s Active Pokemon ' +
+    text: 'Flip a coin. If heads, your opponent\'s Active Pokémon ' +
       'is now Poisoned.'
   }];
 
@@ -63,7 +63,7 @@ export class Dragalge extends PokemonCard {
       });
     }
 
-    // Block retreat for opponent's poisoned Pokemon.
+    // Block retreat for opponent's poisoned Pokémon.
     if (effect instanceof RetreatEffect) {
       const player = effect.player;
       const opponent = StateUtils.getOpponent(state, player);

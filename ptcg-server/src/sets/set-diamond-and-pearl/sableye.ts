@@ -16,7 +16,7 @@ export class Sableye extends PokemonCard {
 
   public stage: Stage = Stage.BASIC;
 
-  public cardType: CardType = CardType.DARK;
+  public cardType: CardType = CardType.DARKNESS;
 
   public hp: number = 60;
 
@@ -30,8 +30,8 @@ export class Sableye extends PokemonCard {
   public powers = [{
     name: 'Overeager',
     powerType: PowerType.POKEBODY,
-    text: 'If Sableye is your Active Pokemon at the beginning of the game, ' +
-      'you go first. (If each player\'s Active Pokemon has the Overreager ' +
+    text: 'If Sableye is your Active Pokémon at the beginning of the game, ' +
+      'you go first. (If each player\'s Active Pokémon has the Overreager ' +
       'Poke-Body, this power does nothing.)'
   }];
 
@@ -46,9 +46,9 @@ export class Sableye extends PokemonCard {
     },
     {
       name: 'Overconfident',
-      cost: [CardType.DARK],
+      cost: [CardType.DARKNESS],
       damage: 10,
-      text: 'If the Defending Pokemon has fewer remaining HP than Sableye, ' +
+      text: 'If the Defending Pokémon has fewer remaining HP than Sableye, ' +
         'this attack\'s base damage is 40.'
     }
   ];

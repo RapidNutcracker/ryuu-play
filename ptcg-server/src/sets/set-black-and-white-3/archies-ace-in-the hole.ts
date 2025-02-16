@@ -21,7 +21,7 @@ export class ArchiesAceInTheHole extends TrainerCard {
 
   public text: string =
     'You can play this card only when it is the last card in your hand. ' +
-    'Put a W Pokemon from your discard pile onto your Bench. ' +
+    'Put a {W} Pokémon from your discard pile onto your Bench. ' +
     'Then, draw 5 cards.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
@@ -40,7 +40,7 @@ export class ArchiesAceInTheHole extends TrainerCard {
         throw new GameError(GameMessage.CANNOT_PLAY_THIS_CARD);
       }
 
-      // It is not possible to recover Water Pokemon,
+      // It is not possible to recover Water Pokémon,
       // but we can still draw 5 cards
       if (!hasPokemon || slot === undefined) {
         player.deck.moveTo(player.hand, 5);

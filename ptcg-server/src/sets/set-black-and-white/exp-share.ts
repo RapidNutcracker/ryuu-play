@@ -21,9 +21,9 @@ export class ExpShare extends TrainerCard {
   public fullName: string = 'Exp Share SUM';
 
   public text: string =
-    'When your Active Pokemon is Knocked Out by damage from an opponent\'s ' +
+    'When your Active Pokémon is Knocked Out by damage from an opponent\'s ' +
     'attack, you may move 1 basic Energy card that was attached to that ' +
-    'Pokemon to the Pokemon this card is attached to.';
+    'Pokémon to the Pokémon this card is attached to.';
 
   public readonly EXP_SHARE_MARKER: string = 'EXP_SHARE_MARKER';
 

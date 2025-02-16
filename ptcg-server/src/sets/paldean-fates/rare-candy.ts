@@ -28,7 +28,7 @@ function isMatchingStage2(stage1: PokemonCard[], basic: PokemonCard, stage2: Pok
 function* playCard(next: Function, store: StoreLike, state: State, effect: TrainerEffect): IterableIterator<State> {
   const player = effect.player;
 
-  // Create list of non - Pokemon SP slots
+  // Create list of non - Pokémon SP slots
   const blocked: CardTarget[] = [];
   let hasBasicPokemon: boolean = false;
 
@@ -109,7 +109,7 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
       const evolveEffect = new EvolveEffect(player, targets[0], pokemonCard);
       store.reduceEffect(state, evolveEffect);
 
-      // Discard trainer only when user selected a Pokemon
+      // Discard trainer only when user selected a Pokémon
       player.hand.moveCardTo(effect.trainerCard, player.discard);
     }
   });

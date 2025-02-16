@@ -14,7 +14,7 @@ export class Grimer extends PokemonCard {
 
   public stage: Stage = Stage.BASIC;
 
-  public cardType: CardType = CardType.DARK;
+  public cardType: CardType = CardType.DARKNESS;
 
   public hp: number = 80;
 
@@ -28,7 +28,7 @@ export class Grimer extends PokemonCard {
 
   public attacks: Attack[] = [{
     name: 'Gummy Press',
-    cost: [CardType.DARK],
+    cost: [CardType.DARKNESS],
     damage: 10,
     text: 'During your opponent\'s next turn, the Defending Pokémon\'s Retreat Cost is {C} more.'
   }];

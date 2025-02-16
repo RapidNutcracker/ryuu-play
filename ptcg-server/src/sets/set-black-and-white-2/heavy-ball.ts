@@ -66,7 +66,7 @@ export class HeavyBall extends TrainerCard {
   public fullName: string = 'Heavy Ball NXD';
 
   public text: string =
-    'Search your deck for a Pokemon with a Retreat Cost of 3 or more, ' +
+    'Search your deck for a Pokémon with a Retreat Cost of 3 or more, ' +
     'reveal it, and put it into your hand. Shuffle your deck afterward.';
 
 

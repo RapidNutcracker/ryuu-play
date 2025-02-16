@@ -12,7 +12,7 @@ export class Pumpkaboo extends PokemonCard {
 
   public hp: number = 60;
 
-  public weakness = [{ type: CardType.DARK }];
+  public weakness = [{ type: CardType.DARKNESS }];
 
   public resistance = [{ type: CardType.FIGHTING, value: -20 }];
 
@@ -29,7 +29,7 @@ export class Pumpkaboo extends PokemonCard {
       name: 'Night March',
       cost: [ CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS ],
       damage: 20,
-      text: 'This attack does 20 damage times the number of Pokemon ' +
+      text: 'This attack does 20 damage times the number of Pokémon ' +
         'in your discard pile that have the Night March attack.'
     }
   ];

@@ -12,8 +12,7 @@ import { ChooseCardsPrompt } from '../../game/store/prompts/choose-cards-prompt'
 import { EnergyCard } from '../../game/store/card/energy-card';
 import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 
-function* playCard(next: Function, store: StoreLike, state: State,
-  self: SuperRod, effect: TrainerEffect): IterableIterator<State> {
+function* playCard(next: Function, store: StoreLike, state: State, effect: TrainerEffect): IterableIterator<State> {
   const player = effect.player;
 
   let pokemonOrEnergyInDiscard: number = 0;
@@ -35,7 +34,7 @@ function* playCard(next: Function, store: StoreLike, state: State,
 
   // We will discard this card after prompt confirmation
   effect.preventDefault = true;
-  player.hand.moveCardTo(self, player.supporter);
+  player.hand.moveCardTo(effect.trainerCard, player.supporter);
 
   const max = Math.min(3, pokemonOrEnergyInDiscard);
   let cards: Card[] = [];
@@ -55,7 +54,7 @@ function* playCard(next: Function, store: StoreLike, state: State,
     return state;
   }
 
-  player.hand.moveCardTo(self, player.discard);
+  player.supporter.moveCardTo(effect.trainerCard, player.discard);
   player.discard.moveCardsTo(cards, player.deck);
 
   return store.prompt(state, new ShufflePrompt(player.id), order => {
@@ -80,7 +79,7 @@ export class SuperRod extends TrainerCard {
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {
-      const generator = playCard(() => generator.next(), store, state, this, effect);
+      const generator = playCard(() => generator.next(), store, state, effect);
       return generator.next().value;
     }
 

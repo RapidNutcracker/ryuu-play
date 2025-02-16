@@ -21,7 +21,7 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     throw new GameError(GameMessage.CANNOT_PLAY_THIS_CARD);
   }
 
-  // Look through all known cards to find out if Pokemon can evolve
+  // Look through all known cards to find out if Pokémon can evolve
   const cm = CardManager.getInstance();
   const evolutions = cm.getAllCards().filter(c => {
     return c instanceof PokemonCard && c.stage !== Stage.BASIC;
@@ -100,7 +100,7 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     return state; // invalid target?
   }
 
-  // Evolve Pokemon
+  // Evolve Pokémon
   player.deck.moveCardTo(evolution, targets[0]);
   targets[0].clearEffects();
   targets[0].pokemonPlayedTurn = state.turn;
@@ -119,10 +119,10 @@ export class Evosoda extends TrainerCard {
   public fullName: string = 'Evosoda XY';
 
   public text: string =
-    'Search your deck for a card that evolves from 1 of your Pokemon and put ' +
-    'it onto that Pokemon. (This counts as evolving that Pokemon). ' +
+    'Search your deck for a card that evolves from 1 of your Pokémon and put ' +
+    'it onto that Pokémon. (This counts as evolving that Pokémon). ' +
     'Shuffle your deck afterward. You can\'t use this card during your first ' +
-    'turn or on a Pokemon that was put into play this turn.';
+    'turn or on a Pokémon that was put into play this turn.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {

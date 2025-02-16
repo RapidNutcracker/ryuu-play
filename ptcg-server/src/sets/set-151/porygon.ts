@@ -60,7 +60,7 @@ export class Porygon extends PokemonCard {
         { message: 'LABEL_LIGHTNING', value: CardType.LIGHTNING },
         { message: 'LABEL_PSYCHIC', value: CardType.PSYCHIC },
         { message: 'LABEL_FIGHTING', value: CardType.FIGHTING },
-        { message: 'LABEL_DARK', value: CardType.DARK },
+        { message: 'LABEL_DARKNESS', value: CardType.DARKNESS },
         { message: 'LABEL_METAL', value: CardType.METAL },
         { message: 'LABEL_DRAGON', value: CardType.DRAGON },
         // { message: 'LABEL_FAIRY', value: CardType.FAIRY },

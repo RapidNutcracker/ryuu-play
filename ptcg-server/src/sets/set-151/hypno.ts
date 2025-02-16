@@ -17,7 +17,7 @@ export class Hypno extends PokemonCard {
 
   public hp: number = 110;
 
-  public weakness: Weakness[] = [{ type: CardType.DARK }];
+  public weakness: Weakness[] = [{ type: CardType.DARKNESS }];
 
   public resistance: Resistance[] = [{ type: CardType.FIGHTING, value: -30 }];
 

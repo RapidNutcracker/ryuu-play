@@ -24,7 +24,7 @@ function* useDestructiveFlame(next: Function, store: StoreLike, state: State,
   const player = effect.player;
   const opponent = StateUtils.getOpponent(state, player);
 
-  // Defending Pokemon has no energy cards attached
+  // Defending Pokémon has no energy cards attached
   if (!opponent.active.cards.some(c => c instanceof EnergyCard)) {
     return state;
   }
@@ -111,7 +111,7 @@ export class Flareon extends PokemonCard {
       const opponent = StateUtils.getOpponent(state, player);
 
       const defending = opponent.active.getPokemonCard();
-      if (defending && (defending.tags.includes(CardTag.POKEMON_EX) || defending.tags.includes(CardTag.POKEMON_V))) {
+      if (defending && (defending.tags.includes(CardTag.EX) || defending.tags.includes(CardTag.V))) {
         effect.damage += 90;
       }
     }

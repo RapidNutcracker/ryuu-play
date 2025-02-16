@@ -80,7 +80,7 @@ export function playCardReducer(store: StoreLike, state: State, action: Action):
         switch (handCard.trainerType) {
           case TrainerType.SUPPORTER:
             if (state.turn === 1 && !state.rules.firstTurnUseSupporter) {
-              throw new GameError(GameMessage.CANNOT_PLAY_THIS_CARD);
+              throw new GameError(GameMessage.CANNOT_SUPPORTER_FIRST_TURN);
             }
             if (player.supporterPlayedTurn === state.turn) {
               throw new GameError(GameMessage.SUPPORTER_ALREADY_PLAYED);

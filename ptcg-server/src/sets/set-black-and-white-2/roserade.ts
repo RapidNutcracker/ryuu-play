@@ -60,8 +60,8 @@ export class Roserade extends PokemonCard {
   public powers = [{
     name: 'Le Parfum',
     powerType: PowerType.ABILITY,
-    text: 'When you play this Pokemon from your hand to evolve 1 of your ' +
-      'Pokemon, you may search your deck for any card and put it into your ' +
+    text: 'When you play this Pokémon from your hand to evolve 1 of your ' +
+      'Pokémon, you may search your deck for any card and put it into your ' +
       'hand. Shuffle your deck afterward.'
   }];
 
@@ -71,7 +71,7 @@ export class Roserade extends PokemonCard {
       cost: [ CardType.GRASS, CardType.COLORLESS ],
       damage: 30,
       text: 'Flip a coin. If heads, this attack does 20 more damage and ' +
-        'the Defending Pokemon is now Paralyzed.'
+        'the Defending Pokémon is now Paralyzed.'
     }
   ];
 

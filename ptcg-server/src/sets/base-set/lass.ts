@@ -16,7 +16,7 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
   // Do not discard the card yet
   effect.preventDefault = true;
 
-  // Discard trainer only when user selected a Pokemon
+  // Discard trainer only when user selected a Pokémon
   player.hand.moveCardTo(effect.trainerCard, player.discard);
 
   yield store.prompt(state, new ShowCardsPrompt(

@@ -56,8 +56,8 @@ export class CheckPokemonStatsEffect implements Effect {
   constructor(target: PokemonCardList) {
     this.target = target;
     const pokemonCard = target.getPokemonCard();
-    this.weakness = pokemonCard ? [ ...pokemonCard.weakness ] : [];
-    this.resistance = pokemonCard ? [ ...pokemonCard.resistance ] : [];
+    this.weakness = pokemonCard ? [...pokemonCard.weakness] : [];
+    this.resistance = pokemonCard ? [...pokemonCard.resistance] : [];
   }
 }
 
@@ -70,7 +70,7 @@ export class CheckPokemonTypeEffect implements Effect {
   constructor(target: PokemonCardList) {
     this.target = target;
     const pokemonCard = target.getPokemonCard();
-    this.cardTypes = pokemonCard ? [ pokemonCard.cardType ] : [];
+    this.cardTypes = pokemonCard ? [pokemonCard.cardType] : [];
   }
 }
 
@@ -83,7 +83,7 @@ export class CheckRetreatCostEffect implements Effect {
   constructor(player: Player) {
     this.player = player;
     const pokemonCard = player.active.getPokemonCard();
-    this.cost = pokemonCard !== undefined ? [ ...pokemonCard.retreat ] : [];
+    this.cost = pokemonCard !== undefined ? [...pokemonCard.retreat] : [];
   }
 }
 
@@ -97,7 +97,7 @@ export class CheckAttackCostEffect implements Effect {
   constructor(player: Player, attack: Attack) {
     this.player = player;
     this.attack = attack;
-    this.cost = [ ...attack.cost ];
+    this.cost = [...attack.cost];
   }
 }
 
@@ -117,9 +117,9 @@ export class CheckProvidedEnergyEffect implements Effect {
 export class CheckTableStateEffect implements Effect {
   readonly type: string = CheckEffects.CHECK_TABLE_STATE_EFFECT;
   public preventDefault = false;
-  public benchSize: number;
+  public benchSize: number[];
 
   constructor() {
-    this.benchSize = 5;
+    this.benchSize = [5, 5];
   }
 }

@@ -18,8 +18,8 @@ export class PrismEnergy extends EnergyCard {
   public fullName = 'Prism Energy NXD';
 
   public text =
-    'This card provides C Energy. If the Pokemon this card is attached to is ' +
-    'a Basic Pokemon, this card provides every type of Energy but provides ' +
+    'This card provides {C} Energy. If the Pokémon this card is attached to is ' +
+    'a Basic Pokémon, this card provides every type of Energy but provides ' +
     'only 1 Energy at a time.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {

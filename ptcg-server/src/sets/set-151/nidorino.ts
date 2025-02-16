@@ -11,7 +11,7 @@ export class Nidorino extends PokemonCard {
 
   public evolvesFrom: string = 'Nidoran Male';
 
-  public cardType: CardType = CardType.DARK;
+  public cardType: CardType = CardType.DARKNESS;
 
   public hp: number = 90;
 
@@ -24,13 +24,13 @@ export class Nidorino extends PokemonCard {
   public attacks = [
     {
       name: 'Sharp Fang',
-      cost: [CardType.DARK],
+      cost: [CardType.DARKNESS],
       damage: 30,
       text: ''
     },
     {
       name: 'Superpowered Horns',
-      cost: [CardType.DARK, CardType.DARK, CardType.COLORLESS],
+      cost: [CardType.DARKNESS, CardType.DARKNESS, CardType.COLORLESS],
       damage: 100,
       text: ''
     }

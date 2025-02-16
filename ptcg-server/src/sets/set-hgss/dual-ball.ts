@@ -67,7 +67,7 @@ export class DualBall extends TrainerCard {
   public fullName: string = 'Dual Ball UNL';
 
   public text: string =
-    'Flip 2 coins. For each heads, search your deck for a Basic Pokemon ' +
+    'Flip 2 coins. For each heads, search your deck for a Basic Pokémon ' +
     'card, show it to your opponent, and put it into your hand. Shuffle your ' +
     'deck afterward.';
 

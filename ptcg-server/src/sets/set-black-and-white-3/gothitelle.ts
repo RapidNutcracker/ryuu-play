@@ -28,7 +28,7 @@ export class Gothitelle extends PokemonCard {
   public powers = [{
     name: 'Magic Room',
     powerType: PowerType.ABILITY,
-    text: 'As long as this Pokemon is your Active Pokemon, your opponent ' +
+    text: 'As long as this Pokémon is your Active Pokémon, your opponent ' +
       'can\'t play any Item cards from his or her hand.'
   }];
 
@@ -36,7 +36,7 @@ export class Gothitelle extends PokemonCard {
     name: 'Madkinesis',
     cost: [ CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS ],
     damage: 30,
-    text: 'Does 20 more damage for each P Energy attached to this Pokemon.'
+    text: 'Does 20 more damage for each {P} Energy attached to this Pokémon.'
   }];
 
   public set: string = 'BW3';
@@ -69,7 +69,7 @@ export class Gothitelle extends PokemonCard {
       const opponent = StateUtils.getOpponent(state, player);
       const pokemonCard = opponent.active.getPokemonCard();
 
-      // Gothitelle is not Active Pokemon
+      // Gothitelle is not Active Pokémon
       if (pokemonCard !== this) {
         return state;
       }

@@ -32,7 +32,7 @@ export class DeckAnalyser {
     for (let i = 0; i < this.cards.length; i++) {
       const card = this.cards[i];
 
-      // Check if deck has a basic Pokemon card
+      // Check if deck has a basic Pokémon card
       if (card instanceof PokemonCard && card.stage === Stage.BASIC) {
         hasBasicPokemon = true;
       }

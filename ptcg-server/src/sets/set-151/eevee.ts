@@ -30,7 +30,7 @@ function* useColorfulFriends(next: Function, store: StoreLike, state: State,
   });
 
   if (numberOfPokemonWithDifferentTypesInDeck === 0) {
-    /// TODO: Show "No Available Pokemon to Choose" message
+    /// TODO: Show "No Available Pokémon to Choose" message
     return state;
   }
 

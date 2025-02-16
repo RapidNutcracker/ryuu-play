@@ -20,13 +20,13 @@ export class SkyField extends TrainerCard {
   public fullName: string = 'Sky Field ROS';
 
   public text: string =
-    'Each player can have 8 Pokemon on his or her Bench. (When this card ' +
-    'leaves play, each player discards Benched Pokemon until he or she has ' +
-    '5 Pokemon on the Bench. The owner of this card discard first.)';
+    'Each player can have 8 Pokémon on his or her Bench. (When this card ' +
+    'leaves play, each player discards Benched Pokémon until he or she has ' +
+    '5 Pokémon on the Bench. The owner of this card discard first.)';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof CheckTableStateEffect && StateUtils.getStadiumCard(state) === this) {
-      effect.benchSize = 8;
+      effect.benchSize = [8, 8];
     }
 
     if (effect instanceof UseStadiumEffect && StateUtils.getStadiumCard(state) === this) {

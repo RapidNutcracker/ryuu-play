@@ -26,14 +26,14 @@ export class MrMime extends PokemonCard {
   public powers = [{
     name: 'Bench Barrier',
     powerType: PowerType.ABILITY,
-    text: 'Prevent all damage done to your Benched Pokemon by attacks.'
+    text: 'Prevent all damage done to your Benched Pokémon by attacks.'
   }];
 
   public attacks = [{
     name: 'Psy Bolt',
     cost: [ CardType.PSYCHIC, CardType.COLORLESS ],
     damage: 20,
-    text: 'Flip a coin. If heads, the Defending Pokemon is now Paralyzed.'
+    text: 'Flip a coin. If heads, the Defending Pokémon is now Paralyzed.'
   }];
 
   public set: string = 'BW2';

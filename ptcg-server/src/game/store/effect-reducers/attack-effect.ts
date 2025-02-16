@@ -1,5 +1,5 @@
 import { GameError } from '../../game-error';
-import { GameMessage } from '../../game-message';
+import { GameLog, GameMessage } from '../../game-message';
 import { Effect } from '../effects/effect';
 import { State } from '../state/state';
 import { StoreLike } from '../store-like';
@@ -24,11 +24,9 @@ export function attackReducer(store: StoreLike, state: State, effect: Effect): S
     const damage = Math.max(0, effect.damage);
     target.damage += damage;
 
-    // if (damage > 0) {
     const afterDamageEffect = new AfterDamageEffect(effect.attackEffect, damage);
     afterDamageEffect.target = effect.target;
     store.reduceEffect(state, afterDamageEffect);
-    // }
   }
 
   if (effect instanceof DealDamageEffect) {
@@ -43,6 +41,18 @@ export function attackReducer(store: StoreLike, state: State, effect: Effect): S
     const dealDamage = new PutDamageEffect(base, applyWeakness.damage);
     dealDamage.target = effect.target;
     state = store.reduceEffect(state, dealDamage);
+
+    const pokemonCard = effect.target.getPokemonCard();
+    if (pokemonCard === undefined) {
+      throw new GameError(GameMessage.UNKNOWN_CARD);
+    }
+
+    store.log(
+      state,
+      GameLog.LOG_POKEMON_TAKES_DAMAGE, {
+      name: pokemonCard.name,
+      damage: dealDamage.damage.toString()
+    });
 
     return state;
   }

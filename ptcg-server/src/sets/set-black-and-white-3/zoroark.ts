@@ -95,7 +95,7 @@ export class Zoroark extends PokemonCard {
 
   public evolvesFrom: string = 'Zorua';
 
-  public cardType: CardType = CardType.DARK;
+  public cardType: CardType = CardType.DARKNESS;
 
   public hp: number = 100;
 
@@ -107,7 +107,7 @@ export class Zoroark extends PokemonCard {
 
   public attacks = [{
     name: 'Nasty Plot',
-    cost: [ CardType.DARK ],
+    cost: [ CardType.DARKNESS ],
     damage: 0,
     text: 'Search your deck for a card and put it into your hand. ' +
       'Shuffle your deck afterward.'
@@ -115,7 +115,7 @@ export class Zoroark extends PokemonCard {
     name: 'Foul Play',
     cost: [ CardType.COLORLESS, CardType.COLORLESS ],
     damage: 0,
-    text: 'Choose 1 of the Defending Pokemon\'s attacks and use it ' +
+    text: 'Choose 1 of the Defending Pokémon\'s attacks and use it ' +
       'as this attack.'
   }];
 

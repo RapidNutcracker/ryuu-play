@@ -24,7 +24,7 @@ export class Hawlucha extends PokemonCard {
   public powers = [{
     name: 'Shining Spirit',
     powerType: PowerType.ABILITY,
-    text: 'Damage from this Pokemon\'s attacks isn\'t affected by ' +
+    text: 'Damage from this Pokémon\'s attacks isn\'t affected by ' +
       'Weakness or Resistance.'
   }];
 
@@ -32,7 +32,7 @@ export class Hawlucha extends PokemonCard {
     name: 'Flying Press',
     cost: [ CardType.FIGHTING ],
     damage: 60,
-    text: 'If your opponent\'s Active Pokemon isn\'t a Pokemon-EX, ' +
+    text: 'If your opponent\'s Active Pokémon isn\'t a Pokémon-EX, ' +
       'this attack does nothing.'
   }];
 
@@ -49,7 +49,7 @@ export class Hawlucha extends PokemonCard {
       const opponent = StateUtils.getOpponent(state, player);
 
       const defending = opponent.active.getPokemonCard();
-      if (!defending || !defending.tags.includes(CardTag.POKEMON_EX)) {
+      if (!defending || !defending.tags.includes(CardTag.EX)) {
         effect.damage = 0;
         return state;
       }

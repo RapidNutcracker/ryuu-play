@@ -50,7 +50,7 @@ export class Lampent extends PokemonCard {
 
   public hp: number = 70;
 
-  public weakness = [{ type: CardType.DARK }];
+  public weakness = [{ type: CardType.DARKNESS }];
 
   public resistance = [{ type: CardType.FIGHTING, value: -20 }];
 
@@ -61,14 +61,14 @@ export class Lampent extends PokemonCard {
       name: 'Cursed Drop',
       cost: [ CardType.PSYCHIC ],
       damage: 0,
-      text: 'Put 3 damage counters on your opponent\'s Pokemon ' +
+      text: 'Put 3 damage counters on your opponent\'s Pokémon ' +
         'in any way you like.'
     },
     {
       name: 'Night March',
       cost: [ CardType.PSYCHIC, CardType.COLORLESS, CardType.COLORLESS ],
       damage: 20,
-      text: 'This attack does 20 damage times the number of Pokemon ' +
+      text: 'This attack does 20 damage times the number of Pokémon ' +
         'in your discard pile that have the Night March attack.'
     }
   ];

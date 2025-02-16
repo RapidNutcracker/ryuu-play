@@ -17,7 +17,7 @@ export class MrMime extends PokemonCard {
 
   public hp: number = 90;
 
-  public weakness = [{ type: CardType.DARK }];
+  public weakness = [{ type: CardType.DARKNESS }];
 
   public retreat = [CardType.COLORLESS];
 

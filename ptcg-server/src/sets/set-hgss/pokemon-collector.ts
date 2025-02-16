@@ -53,12 +53,12 @@ export class PokemonCollector extends TrainerCard {
 
   public set: string = 'HGSS';
 
-  public name: string = 'Pokemon Collector';
+  public name: string = 'Pokémon Collector';
 
-  public fullName: string = 'Pokemon Collector HGSS';
+  public fullName: string = 'Pokémon Collector HGSS';
 
   public text: string =
-    'Search your deck for up to 3 Basic Pokemon, show them to your opponent, ' +
+    'Search your deck for up to 3 Basic Pokémon, show them to your opponent, ' +
     'and put them into your hand. Shuffle your deck afterward.';
 
 

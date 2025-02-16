@@ -57,7 +57,7 @@ export class Dedenne extends PokemonCard {
       name: 'Entrainment',
       cost: [ CardType.COLORLESS ],
       damage: 0,
-      text: 'Search your deck for up to 2 Basic Pokemon and put them onto ' +
+      text: 'Search your deck for up to 2 Basic Pokémon and put them onto ' +
         'your Bench. Shuffle your deck afterward.'
     },
     {
@@ -65,7 +65,7 @@ export class Dedenne extends PokemonCard {
       cost: [ CardType.COLORLESS ],
       damage: 20,
       text: 'This attack does 20 damage times the amount of Energy attached ' +
-        'to your opponent\'s Active Pokemon.'
+        'to your opponent\'s Active Pokémon.'
     }
   ];
 

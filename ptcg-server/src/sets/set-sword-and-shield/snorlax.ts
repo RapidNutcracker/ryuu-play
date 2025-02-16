@@ -23,7 +23,7 @@ export class Snorlax extends PokemonCard {
     name: 'Gormandize',
     useWhenInPlay: true,
     powerType: PowerType.ABILITY,
-    text: 'Once during your turn, if this Pokemon is in the Active Spot, ' +
+    text: 'Once during your turn, if this Pokémon is in the Active Spot, ' +
       'you may draw cards until you have 7 cards in your hand. ' +
       'If you use this Ability, your turn ends.'
   }];
@@ -33,7 +33,7 @@ export class Snorlax extends PokemonCard {
       name: 'Body Slam',
       cost: [ CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS ],
       damage: 100,
-      text: 'Flip a coin. If heads, your opponent\'s Active Pokemon is now Paralyzed.'
+      text: 'Flip a coin. If heads, your opponent\'s Active Pokémon is now Paralyzed.'
     }
   ];
 
@@ -49,7 +49,7 @@ export class Snorlax extends PokemonCard {
     if (effect instanceof PowerEffect && effect.power === this.powers[0]) {
       const player = effect.player;
 
-      // Snorlax is not active Pokemon
+      // Snorlax is not active Pokémon
       if (player.active.getPokemonCard() !== this) {
         throw new GameError(GameMessage.CANNOT_USE_POWER);
       }

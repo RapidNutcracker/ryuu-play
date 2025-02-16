@@ -59,7 +59,7 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
   });
 
   if (cards.length > 0) {
-    // Discard trainer only when user selected a Pokemon
+    // Discard trainer only when user selected a Pokémon
     player.hand.moveCardTo(effect.trainerCard, player.discard);
     // Discard selected special energy card
     target.moveCardsTo(cards, opponent.discard);
@@ -79,7 +79,7 @@ export class EnhancedHammer extends TrainerCard {
   public fullName: string = 'Enhanced Hammer DEX';
 
   public text: string =
-    'Discard a Special Energy attached to 1 of your opponent\'s Pokemon.';
+    'Discard a Special Energy attached to 1 of your opponent\'s Pokémon.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {

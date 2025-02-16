@@ -25,7 +25,7 @@ export class Skrelp extends PokemonCard {
     name: 'Spit Poison',
     cost: [ CardType.PSYCHIC ],
     damage: 0,
-    text: 'Flip a coin. If heads, your opponent\'s Active Pokemon ' +
+    text: 'Flip a coin. If heads, your opponent\'s Active Pokémon ' +
       'is now Poisoned.'
   }];
 

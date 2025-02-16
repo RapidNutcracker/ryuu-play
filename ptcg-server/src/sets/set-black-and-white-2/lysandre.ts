@@ -39,8 +39,8 @@ export class Lysandre extends TrainerCard {
   public fullName: string = 'Lysandre FLF';
 
   public text: string =
-    'Switch 1 of your opponent\'s Benched Pokemon with his or her ' +
-    'Active Pokemon.';
+    'Switch 1 of your opponent\'s Benched Pokémon with his or her ' +
+    'Active Pokémon.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {

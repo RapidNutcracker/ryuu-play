@@ -28,7 +28,7 @@ export class Hypno extends PokemonCard {
     useWhenInPlay: true,
     powerType: PowerType.POKEPOWER,
     text: 'Once during your turn (before your attack), you may flip a coin. ' +
-      'If heads, the Defending Pokemon is now Asleep. This power can\'t be ' +
+      'If heads, the Defending Pokémon is now Asleep. This power can\'t be ' +
       'used if Hypno is affected by a Special Condition.'
   }];
 
@@ -37,8 +37,8 @@ export class Hypno extends PokemonCard {
       name: 'Psychic Shot',
       cost: [ CardType.PSYCHIC, CardType.COLORLESS, CardType.COLORLESS ],
       damage: 30,
-      text: 'Does 10 damage to 1 of your opponent\'s Benched Pokemon. ' +
-        '(Don\'t apply Weakness and Resistance for Benched Pokemon.)'
+      text: 'Does 10 damage to 1 of your opponent\'s Benched Pokémon. ' +
+        '(Don\'t apply Weakness and Resistance for Benched Pokémon.)'
     }
   ];
 

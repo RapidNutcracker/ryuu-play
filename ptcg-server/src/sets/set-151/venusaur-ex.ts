@@ -46,7 +46,7 @@ function* useTranquilFlower(next: Function, store: StoreLike, state: State, effe
   }
 
   targets.forEach(target => {
-    // Heal Pokemon
+    // Heal Pokémon
     const healEffect = new HealEffect(player, target, 60);
     store.reduceEffect(state, healEffect);
   });
@@ -58,7 +58,7 @@ export class VenusaurEx extends PokemonCard {
 
   public id: number = 3;
 
-  public tags: string[] = [CardTag.POKEMON_EX];
+  public tags: string[] = [CardTag.EX];
 
   public stage: Stage = Stage.STAGE_2;
 

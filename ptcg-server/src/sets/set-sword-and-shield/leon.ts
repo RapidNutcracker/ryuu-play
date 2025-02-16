@@ -18,8 +18,8 @@ export class Leon extends TrainerCard {
   public fullName: string = 'Leon VIV';
 
   public text: string =
-    'During this turn, your Pokemon\'s attacks do 30 more damage to your ' +
-    'opponent\'s Active Pokemon (before applying Weakness and Resistance).';
+    'During this turn, your Pokémon\'s attacks do 30 more damage to your ' +
+    'opponent\'s Active Pokémon (before applying Weakness and Resistance).';
 
   private readonly LEON_MARKER = 'LEON_MARKER';
 

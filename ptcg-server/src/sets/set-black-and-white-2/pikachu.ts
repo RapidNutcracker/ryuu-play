@@ -25,7 +25,7 @@ export class Pikachu extends PokemonCard {
       name: 'Nuzzle',
       cost: [CardType.COLORLESS],
       damage: 0,
-      text: 'Flip a coin. If heads, your opponent\'s Active Pokemon ' +
+      text: 'Flip a coin. If heads, your opponent\'s Active Pokémon ' +
         'is now Paralyzed.'
     },
     {

@@ -53,7 +53,7 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     });
   }
 
-  // Discard trainer only when user selected a Pokemon
+  // Discard trainer only when user selected a Pokémon
   player.hand.moveCardTo(effect.trainerCard, player.discard);
 
   player.switchPokemon(targets[0]);
@@ -73,9 +73,9 @@ export class ScrambleSwitch extends TrainerCard {
   public fullName: string = 'Scramble Switch PS';
 
   public text: string =
-    'Switch your Active Pokemon with 1 of your Benched Pokemon. ' +
-    'Then, you may move as many Energy attached to the old Active Pokemon ' +
-    'to the new Active Pokemon as you like.';
+    'Switch your Active Pokémon with 1 of your Benched Pokémon. ' +
+    'Then, you may move as many Energy attached to the old Active Pokémon ' +
+    'to the new Active Pokémon as you like.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {

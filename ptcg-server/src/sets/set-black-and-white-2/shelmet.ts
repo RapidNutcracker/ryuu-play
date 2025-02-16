@@ -25,7 +25,7 @@ export class Shelmet extends PokemonCard {
     name: 'Body Slam',
     cost: [ CardType.GRASS, CardType.GRASS ],
     damage: 20,
-    text: 'Flip a coin. If heads, the Defending Pokemon is now Paralyzed.'
+    text: 'Flip a coin. If heads, the Defending Pokémon is now Paralyzed.'
   }];
 
   public set: string = 'BW2';

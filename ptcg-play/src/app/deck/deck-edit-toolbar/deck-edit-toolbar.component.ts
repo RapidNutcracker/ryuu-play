@@ -36,7 +36,7 @@ export class DeckEditToolbarComponent {
     { value: CardType.WATER, label: 'LABEL_WATER' },
     { value: CardType.LIGHTNING, label: 'LABEL_LIGHTNING' },
     { value: CardType.METAL, label: 'LABEL_METAL' },
-    { value: CardType.DARK, label: 'LABEL_DARK' },
+    { value: CardType.DARKNESS, label: 'LABEL_DARKNESS' },
     { value: CardType.FIRE, label: 'LABEL_FIRE' },
     { value: CardType.DRAGON, label: 'LABEL_DRAGON' },
     { value: CardType.FAIRY, label: 'LABEL_FAIRY' },
@@ -49,9 +49,28 @@ export class DeckEditToolbarComponent {
   ];
 
   public sets = [
+    { value: 'WBSP', label: 'LABEL_WIZARDS_BLACK_STAR_PROMOS' },
     { value: 'BS', label: 'LABEL_BASE' },
-    { value: 'MEW', label: '151' },
-    { value: 'HGSS', label: 'LABEL_HGSS' }
+    { value: 'JU', label: 'LABEL_JUNGLE' },
+    { value: 'FO', label: 'LABEL_FOSSIL' },
+    { value: 'HGSS', label: 'LABEL_HGSS' },
+    { value: 'BRS', label: 'LABEL_BRILLIANT_STARS' },
+    { value: 'LOR', label: 'LABEL_LOST_ORIGIN' },
+    { value: 'SVP', label: 'LABEL_SCARLET_AND_VIOLET_PROMOS' },
+    { value: 'SVI', label: 'LABEL_SCARLET_AND_VIOLET' },
+    { value: 'SVE', label: 'LABEL_SCARLET_AND_VIOLET_ENERGY' },
+    { value: 'PAL', label: 'LABEL_PALDEA_EVOLVED' },
+    { value: 'OBF', label: 'LABEL_OBSIDIAN_FLAMES' },
+    { value: 'M23', label: 'LABEL_MCDONALDS_MATCH_BATTLE_2023' },
+    { value: 'MEW', label: 'LABEL_151' },
+    { value: 'PAR', label: 'LABEL_PARADOX_RIFT' },
+    { value: 'PAF', label: 'LABEL_PALDEAN_FATES' },
+    { value: 'TEF', label: 'LABEL_TEMPORAL_FORCES' },
+    { value: 'TWM', label: 'LABEL_TWILIGHT_MASQUERADE' },
+    { value: 'SFA', label: 'LABEL_SHROUDED_FABLE' },
+    { value: 'SCR', label: 'LABEL_STELLAR_CROWN' },
+    { value: 'SSP', label: 'LABEL_SURGING_SPARKS' },
+    { value: 'PRE', label: 'LABEL_PRISMATIC_EVOLUTIONS' },
   ];
 
   public filterValue: DeckEditToolbarFilter;

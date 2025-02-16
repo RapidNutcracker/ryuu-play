@@ -22,8 +22,8 @@ export class Unown extends PokemonCard {
     name: 'Farewell Letter',
     useWhenInPlay: true,
     powerType: PowerType.ABILITY,
-    text: 'Once during your turn (before your attack), if this Pokemon is ' +
-      'on your Bench, you may discard this Pokemon and all cards attached ' +
+    text: 'Once during your turn (before your attack), if this Pokémon is ' +
+      'on your Bench, you may discard this Pokémon and all cards attached ' +
       'to it (this does not count as a Knock Out). If you do, draw a card.'
   }];
 

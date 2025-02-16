@@ -39,13 +39,13 @@ export class ArbokEx extends PokemonCard {
 
   public id: number = 24;
 
-  public tags: string[] = [CardTag.POKEMON_EX];
+  public tags: string[] = [CardTag.EX];
 
   public stage: Stage = Stage.STAGE_1;
 
   public evolvesFrom: string = 'Ekans';
 
-  public cardType: CardType = CardType.DARK;
+  public cardType: CardType = CardType.DARKNESS;
 
   public hp: number = 270;
 
@@ -57,12 +57,12 @@ export class ArbokEx extends PokemonCard {
 
   public attacks = [{
     name: 'Bind Down',
-    cost: [CardType.DARK, CardType.DARK],
+    cost: [CardType.DARKNESS, CardType.DARKNESS],
     damage: 70,
     text: 'During your opponent\'s next turn, the Defending Pokémon can\'t retreat.'
   }, {
     name: 'Speed Dive',
-    cost: [CardType.DARK, CardType.DARK, CardType.DARK],
+    cost: [CardType.DARKNESS, CardType.DARKNESS, CardType.DARKNESS],
     damage: 150,
     text: 'Your opponent discards 2 cards from their hand.'
   }];

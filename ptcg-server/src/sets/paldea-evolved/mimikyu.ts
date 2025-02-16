@@ -32,7 +32,7 @@ export class Mimikyu extends PokemonCard {
     name: 'Ghost Eye',
     cost: [CardType.PSYCHIC, CardType.COLORLESS],
     damage: 0,
-    text: ' Put 7 damage counters on your opponent\'s Active Pokémon.'
+    text: 'Put 7 damage counters on your opponent\'s Active Pokémon.'
   }];
 
   public set: string = 'PAL';
@@ -73,7 +73,7 @@ export class Mimikyu extends PokemonCard {
         return state;
       }
 
-      if (sourceCard.tags.includes(CardTag.POKEMON_EX) || sourceCard.tags.includes(CardTag.POKEMON_V)) {
+      if (sourceCard.tags.includes(CardTag.EX) || sourceCard.tags.includes(CardTag.V)) {
         // Try to reduce PowerEffect, to check if something is blocking our ability
         try {
           const powerEffect = new PowerEffect(player, this.powers[0], this);

@@ -17,8 +17,8 @@ export class MuscleBand extends TrainerCard {
   public fullName: string = 'Muscle Band XY';
 
   public text: string =
-    'The attacks of the Pokemon this card is attached to do 20 more ' +
-    'damage to our opponent\'s Active Pokemon (before aplying Weakness ' +
+    'The attacks of the Pokémon this card is attached to do 20 more ' +
+    'damage to our opponent\'s Active Pokémon (before aplying Weakness ' +
     'and Resistance).';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {

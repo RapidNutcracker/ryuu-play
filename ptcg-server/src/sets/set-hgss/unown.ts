@@ -3,9 +3,11 @@ import { Effect } from '../../game/store/effects/effect';
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Stage, CardType, SuperType } from '../../game/store/card/card-types';
 import { PlayPokemonEffect } from '../../game/store/effects/play-card-effects';
-import { PowerType, StoreLike, State, ChoosePokemonPrompt, PlayerType, SlotType,
-  PokemonCardList } from '../../game';
-import {PowerEffect} from '../../game/store/effects/game-effects';
+import {
+  PowerType, StoreLike, State, ChoosePokemonPrompt, PlayerType, SlotType,
+  PokemonCardList
+} from '../../game';
+import { PowerEffect } from '../../game/store/effects/game-effects';
 
 function* useReturn(next: Function, store: StoreLike, state: State,
   self: Unown, effect: PlayPokemonEffect): IterableIterator<State> {
@@ -24,7 +26,7 @@ function* useReturn(next: Function, store: StoreLike, state: State,
     player.id,
     GameMessage.CHOOSE_POKEMON_TO_PICK_UP,
     PlayerType.BOTTOM_PLAYER,
-    [ SlotType.ACTIVE, SlotType.BENCH ],
+    [SlotType.ACTIVE, SlotType.BENCH],
     { allowCancel: true }
   ), selection => {
     targets = selection || [];
@@ -50,24 +52,23 @@ export class Unown extends PokemonCard {
 
   public weakness = [{ type: CardType.PSYCHIC }];
 
-  public retreat = [ CardType.COLORLESS ];
+  public retreat = [CardType.COLORLESS];
 
   public powers = [{
     name: 'Return',
     powerType: PowerType.POKEPOWER,
-    text: 'Once during your turn, when you put Unown from your hand onto ' +
-      'your Bench, you may return all Energy attached to 1 of your Pokemon ' +
+    text:
+      'Once during your turn, when you put Unown from your hand onto ' +
+      'your Bench, you may return all Energy attached to 1 of your Pokémon ' +
       'to your hand.'
   }];
 
-  public attacks = [
-    {
-      name: 'Hidden Power',
-      cost: [ CardType.PSYCHIC ],
-      damage: 10,
-      text: ''
-    }
-  ];
+  public attacks = [{
+    name: 'Hidden Power',
+    cost: [CardType.PSYCHIC],
+    damage: 10,
+    text: ''
+  }];
 
   public set: string = 'HGSS';
 

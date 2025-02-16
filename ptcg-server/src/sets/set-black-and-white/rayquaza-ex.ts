@@ -11,7 +11,7 @@ import { DiscardCardsEffect } from '../../game/store/effects/attack-effects';
 
 export class RayquazaEx extends PokemonCard {
 
-  public tags = [ CardTag.POKEMON_EX ];
+  public tags = [ CardTag.EX ];
 
   public stage: Stage = Stage.BASIC;
 
@@ -29,14 +29,14 @@ export class RayquazaEx extends PokemonCard {
       cost: [ CardType.COLORLESS ],
       damage: 0,
       text: 'Discard the top 3 cards of your deck. If any of those cards ' +
-        'are Energy cards, attach them to this Pokemon.'
+        'are Energy cards, attach them to this Pokémon.'
     },
     {
       name: 'Dragon Burst',
       cost: [CardType.FIRE, CardType.LIGHTNING ],
       damage: 60,
-      text: 'Discard all basic R Energy or all basic L Energy attached to ' +
-        'this Pokemon. This attack does 60 damage times the number of Energy ' +
+      text: 'Discard all basic {R} Energy or all basic {L} Energy attached to ' +
+        'this Pokémon. This attack does 60 damage times the number of Energy ' +
         'cards you discarded.'
     }
   ];

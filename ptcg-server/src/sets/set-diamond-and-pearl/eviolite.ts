@@ -16,8 +16,8 @@ export class Eviolite extends TrainerCard {
   public fullName: string = 'Eviolite NV';
 
   public text: string =
-    'If the Pokemon this card is attached to is a Basic Pokemon, ' +
-    'any damage done to this Pokemon by attacks is reduced by 20 ' +
+    'If the Pokémon this card is attached to is a Basic Pokémon, ' +
+    'any damage done to this Pokémon by attacks is reduced by 20 ' +
     '(after applying Weakness and Resistance).';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {

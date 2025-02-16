@@ -7,6 +7,7 @@ import { Totodile } from './totodile';
 
 import { BuddyBuddyPoffin } from './buddy-buddy-poffin';
 import { PrimeCatcher } from './prime-catcher';
+import { RescueBoard } from './rescue-board';
 
 export const temporalForces: Card[] = [
     new Totodile(),
@@ -16,5 +17,7 @@ export const temporalForces: Card[] = [
 
     new BuddyBuddyPoffin(),
 
+    new RescueBoard(),
+    
     new PrimeCatcher(),
 ];

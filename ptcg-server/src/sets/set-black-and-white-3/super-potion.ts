@@ -62,11 +62,11 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     return state;
   }
 
-  // Discard trainer only when user selected a Pokemon
+  // Discard trainer only when user selected a Pokémon
   player.hand.moveCardTo(effect.trainerCard, player.discard);
   target.moveCardsTo(cards, player.discard);
 
-  // Heal Pokemon
+  // Heal Pokémon
   const healEffect = new HealEffect(player, target, 60);
   store.reduceEffect(state, healEffect);
   return state;
@@ -83,8 +83,8 @@ export class SuperPotion extends TrainerCard {
   public fullName: string = 'Super Potion XY';
 
   public text: string =
-    'Heal 60 damage from 1 of your Pokemon. If you do, discard an Energy ' +
-    'attached to that Pokemon.';
+    'Heal 60 damage from 1 of your Pokémon. If you do, discard an Energy ' +
+    'attached to that Pokémon.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {

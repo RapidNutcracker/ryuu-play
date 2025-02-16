@@ -20,7 +20,7 @@ export class AspertiaCityGym extends TrainerCard {
   public fullName: string = 'Aspertia City Gym BC';
 
   public text: string =
-    'Each C Pokemon in play (both yours and your opponent\'s) gets +20 HP.';
+    'Each {C} Pokémon in play (both yours and your opponent\'s) gets +20 HP.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof CheckHpEffect && StateUtils.getStadiumCard(state) === this) {

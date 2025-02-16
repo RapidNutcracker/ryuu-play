@@ -8,6 +8,8 @@ import { PutDamageEffect, AddSpecialConditionsEffect } from '../../game/store/ef
 
 export class Articuno extends PokemonCard {
 
+  public id: number = 2;
+
   public stage: Stage = Stage.BASIC;
 
   public cardType: CardType = CardType.WATER;
@@ -20,22 +22,19 @@ export class Articuno extends PokemonCard {
 
   public retreat = [CardType.COLORLESS, CardType.COLORLESS];
 
-  public attacks = [
-    {
-      name: 'Freeze Dry',
-      cost: [CardType.WATER, CardType.WATER, CardType.WATER],
-      damage: 30,
-      text: 'Flip a coin. If heads, the Defending Pokémon is now Paralyzed.'
-    },
-    {
-      name: 'Blizzard',
-      cost: [CardType.WATER, CardType.WATER, CardType.WATER, CardType.WATER],
-      damage: 50,
-      text: 'Flip a coin. If heads, this attack does 10 damage to each of your opponent\'s Benched Pokémon. ' +
-        'If tails, this attack does 10 damage to each of your own Benched Pokémon. ' +
-        '(Don\'t apply Weakness and Resistance for Benched Pokémon.)'
-    }
-  ];
+  public attacks = [{
+    name: 'Freeze Dry',
+    cost: [CardType.WATER, CardType.WATER, CardType.WATER],
+    damage: 30,
+    text: 'Flip a coin. If heads, the Defending Pokémon is now Paralyzed.'
+  }, {
+    name: 'Blizzard',
+    cost: [CardType.WATER, CardType.WATER, CardType.WATER, CardType.WATER],
+    damage: 50,
+    text: 'Flip a coin. If heads, this attack does 10 damage to each of your opponent\'s Benched Pokémon. ' +
+      'If tails, this attack does 10 damage to each of your own Benched Pokémon. ' +
+      '(Don\'t apply Weakness and Resistance for Benched Pokémon.)'
+  }];
 
   public set: string = 'FO';
 

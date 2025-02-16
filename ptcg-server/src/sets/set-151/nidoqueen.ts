@@ -23,7 +23,7 @@ export class Nidoqueen extends PokemonCard {
 
   public evolvesFrom: string = 'Nidorina';
 
-  public cardType: CardType = CardType.DARK;
+  public cardType: CardType = CardType.DARKNESS;
 
   public hp: number = 170;
 
@@ -35,14 +35,14 @@ export class Nidoqueen extends PokemonCard {
 
   public attacks: Attack[] = [{
     name: 'Queen Press',
-    cost: [CardType.DARK, CardType.COLORLESS],
+    cost: [CardType.DARKNESS, CardType.COLORLESS],
     damage: 90,
     text:
       'During your opponent\'s next turn, prevent all damage ' +
       'done to this Pokémon by attacks from Basic Pokémon.'
   }, {
     name: 'Lunge Out',
-    cost: [CardType.DARK, CardType.DARK, CardType.COLORLESS],
+    cost: [CardType.DARKNESS, CardType.DARKNESS, CardType.COLORLESS],
     damage: 160,
     text: ''
   }];

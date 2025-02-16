@@ -22,7 +22,7 @@ export class ScoopUpCyclone extends TrainerCard {
   public fullName: string = 'Scoop Up Cyclone PLB';
 
   public text: string =
-    'Put 1 of your Pokemon and all cards attached to it into your hand.';
+    'Put 1 of your Pokémon and all cards attached to it into your hand.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {

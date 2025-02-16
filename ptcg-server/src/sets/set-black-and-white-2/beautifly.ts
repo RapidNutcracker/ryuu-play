@@ -70,16 +70,16 @@ export class Beautifly extends PokemonCard {
   public powers = [{
     name: 'Miraculous Scales',
     powerType: PowerType.ABILITY,
-    text: 'Prevent all damage done to this Pokemon by attacks from your ' +
-      'opponent\'s Pokemon-EX.'
+    text: 'Prevent all damage done to this Pokémon by attacks from your ' +
+      'opponent\'s Pokémon-EX.'
   }];
 
   public attacks = [{
     name: 'Whirlwind',
     cost: [CardType.GRASS, CardType.COLORLESS, CardType.COLORLESS],
     damage: 80,
-    text: 'You may have your opponent switch his or her Active Pokemon ' +
-      'with 1 of his or her Benched Pokemon.'
+    text: 'You may have your opponent switch his or her Active Pokémon ' +
+      'with 1 of his or her Benched Pokémon.'
   }];
 
   public set: string = 'BW2';
@@ -95,7 +95,7 @@ export class Beautifly extends PokemonCard {
       return generator.next().value;
     }
 
-    // Prevent damage from Pokemon-EX
+    // Prevent damage from Pokémon-EX
     if (effect instanceof PutDamageEffect && effect.target.cards.includes(this)) {
       const pokemonCard = effect.target.getPokemonCard();
       const sourceCard = effect.source.getPokemonCard();
@@ -105,7 +105,7 @@ export class Beautifly extends PokemonCard {
         return state;
       }
 
-      // Do not ignore self-damage from Pokemon-Ex
+      // Do not ignore self-damage from Pokémon-Ex
       const player = StateUtils.findOwner(state, effect.target);
       const opponent = StateUtils.findOwner(state, effect.source);
       if (player === opponent) {
@@ -117,7 +117,7 @@ export class Beautifly extends PokemonCard {
         return state;
       }
 
-      if (sourceCard.tags.includes(CardTag.POKEMON_EX)) {
+      if (sourceCard.tags.includes(CardTag.EX)) {
 
         // Try to reduce PowerEffect, to check if something is blocking our ability
         try {

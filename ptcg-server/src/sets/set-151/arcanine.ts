@@ -75,7 +75,7 @@ export class Arcanine extends PokemonCard {
         player.discard,
         PlayerType.BOTTOM_PLAYER,
         [SlotType.ACTIVE],
-        { superType: SuperType.ENERGY, energyType: EnergyType.BASIC, provides: [CardType.FIRE] },
+        { superType: SuperType.ENERGY, energyType: EnergyType.BASIC, name: 'Fire Energy' },
         { min: 1, max: 2, allowCancel: true }
       ), transfers => {
         transfers = transfers || [];

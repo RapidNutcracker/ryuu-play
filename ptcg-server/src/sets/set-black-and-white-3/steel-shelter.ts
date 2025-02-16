@@ -20,9 +20,9 @@ export class SteelShelter extends TrainerCard {
   public fullName: string = 'Steel Shelter PFO';
 
   public text: string =
-    'Each M Pokemon (both yours and your opponent\'s) can\'t be affected ' +
+    'Each M Pokémon (both yours and your opponent\'s) can\'t be affected ' +
     'by any Special Conditions. (Remove any Special Conditions affecting ' +
-    'those Pokemon.)';
+    'those Pokémon.)';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof CheckTableStateEffect && StateUtils.getStadiumCard(state) === this) {

@@ -18,9 +18,9 @@ export class RescueScarf extends TrainerCard {
   public fullName: string = 'Rescue Scarf DGE';
 
   public text: string =
-    'If the Pokemon this card is attached to is Knocked Out by damage from ' +
-    'an attack, put that Pokemon into your hand. (Discard all cards ' +
-    'attached to that Pokemon.)';
+    'If the Pokémon this card is attached to is Knocked Out by damage from ' +
+    'an attack, put that Pokémon into your hand. (Discard all cards ' +
+    'attached to that Pokémon.)';
 
   public readonly RESCUE_SCARF_MARKER = 'RESCUE_SCARF_MARKER';
 

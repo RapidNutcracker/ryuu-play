@@ -74,7 +74,7 @@ export class Haunter extends PokemonCard {
 
   public hp: number = 80;
 
-  public weakness: Weakness[] = [{ type: CardType.DARK }];
+  public weakness: Weakness[] = [{ type: CardType.DARKNESS }];
 
   public resistance: Resistance[] = [{ type: CardType.FIGHTING, value: -30 }];
 

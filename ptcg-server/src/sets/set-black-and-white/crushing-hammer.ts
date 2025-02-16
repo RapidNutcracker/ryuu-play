@@ -81,7 +81,7 @@ export class CrushingHammer extends TrainerCard {
 
   public text: string =
     'Flip a coin. If heads, discard an Energy attached to 1 of your ' +
-    'opponent\'s Pokemon.';
+    'opponent\'s Pokémon.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {

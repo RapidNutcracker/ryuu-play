@@ -11,7 +11,7 @@ import { GameMessage } from '../../game/game-message';
 
 export class RaikouEx extends PokemonCard {
 
-  public tags = [ CardTag.POKEMON_EX ];
+  public tags = [ CardTag.EX ];
 
   public stage: Stage = Stage.BASIC;
 
@@ -28,14 +28,14 @@ export class RaikouEx extends PokemonCard {
       name: 'Thunder Fang',
       cost: [ CardType.LIGHTNING, CardType.COLORLESS ],
       damage: 30,
-      text: 'Flip a coin. If heads, the Defending Pokemon is now Paralyzed.'
+      text: 'Flip a coin. If heads, the Defending Pokémon is now Paralyzed.'
     }, {
       name: 'Volt Bolt',
       cost: [ CardType.LIGHTNING, CardType.LIGHTNING, CardType.COLORLESS ],
       damage: 0,
-      text: 'Discard all L Energy attached to this Pokemon. This attack ' +
-        'does 100 damage to 1 of your opponent\'s Pokemon. ' +
-        '(Don\'t apply Weakness and Resistance for Benched Pokemon.)'
+      text: 'Discard all {L} Energy attached to this Pokémon. This attack ' +
+        'does 100 damage to 1 of your opponent\'s Pokémon. ' +
+        '(Don\'t apply Weakness and Resistance for Benched Pokémon.)'
     },
   ];
 

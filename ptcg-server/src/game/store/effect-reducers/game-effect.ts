@@ -58,6 +58,10 @@ function* useAttack(next: Function, store: StoreLike, state: State, effect: UseA
   const player = effect.player;
   const opponent = StateUtils.getOpponent(state, player);
 
+  if (state.turn === 1 && state.rules.firstTurnAttack === false) {
+    throw new GameError(GameMessage.CANNOT_ATTACK_FIRST_TURN);
+  }
+
   const sp = player.active.specialConditions;
   if (sp.includes(SpecialCondition.PARALYZED) || sp.includes(SpecialCondition.ASLEEP)) {
     throw new GameError(GameMessage.BLOCKED_BY_SPECIAL_CONDITION);
@@ -121,8 +125,8 @@ export function gameReducer(store: StoreLike, state: State, effect: Effect): Sta
     const card = effect.target.getPokemonCard();
     if (card !== undefined) {
 
-      // Pokemon ex rule
-      if (card.tags.includes(CardTag.POKEMON_EX)) {
+      // Pokémon ex rule
+      if ([CardTag.EX, CardTag.V, CardTag.SMALL_EX].some(tag => card.tags.includes(tag))) {
         effect.prizeCount += 1;
       }
 

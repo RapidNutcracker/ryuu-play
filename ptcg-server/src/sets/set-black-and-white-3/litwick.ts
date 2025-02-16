@@ -13,7 +13,7 @@ export class Litwick extends PokemonCard {
 
   public hp: number = 50;
 
-  public weakness = [{ type: CardType.DARK }];
+  public weakness = [{ type: CardType.DARKNESS }];
 
   public resistance = [{ type: CardType.FIGHTING, value: -20 }];
 

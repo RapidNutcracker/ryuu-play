@@ -20,7 +20,7 @@ export class DimensionValley extends TrainerCard {
   public fullName: string = 'Dimension Valley PFO';
 
   public text: string =
-    'Each P Pokemon\'s attacks (both yours and your opponent\'s) cost C less.';
+    'Each {P} Pokémon\'s attacks (both yours and your opponent\'s) cost {C} less.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof CheckAttackCostEffect && StateUtils.getStadiumCard(state) === this) {

@@ -53,7 +53,7 @@ export class ProfessorOaksSetup extends TrainerCard {
   public fullName: string = 'Professor Oak\'s Setup CEC';
 
   public text: string =
-    'Search your deck for up to 3 Basic Pokemon of different types and ' +
+    'Search your deck for up to 3 Basic Pokémon of different types and ' +
     'put them onto your Bench. Then, shuffle your deck.';
 
 

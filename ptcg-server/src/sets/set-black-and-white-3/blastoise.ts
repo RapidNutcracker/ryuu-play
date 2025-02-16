@@ -27,7 +27,7 @@ export class Blastoise extends PokemonCard {
     useWhenInPlay: true,
     powerType: PowerType.ABILITY,
     text: 'As often as you like during your turn (before your attack), ' +
-      'you may attach a W Energy card from your hand to 1 of your Pokemon.'
+      'you may attach a {W} Energy card from your hand to 1 of your Pokémon.'
   }];
 
   public attacks = [
@@ -35,7 +35,7 @@ export class Blastoise extends PokemonCard {
       name: 'Hydro Pump',
       cost: [ CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS ],
       damage: 60,
-      text: 'Does 10 more damage for each W Energy attached to this Pokemon.'
+      text: 'Does 10 more damage for each {W} Energy attached to this Pokémon.'
     }
   ];
 

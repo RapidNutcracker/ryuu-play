@@ -8,7 +8,7 @@ import { CheckProvidedEnergyEffect, CheckAttackCostEffect } from '../../game/sto
 
 export class MewEx extends PokemonCard {
 
-  public tags = [ CardTag.POKEMON_EX ];
+  public tags = [ CardTag.EX ];
 
   public stage: Stage = Stage.BASIC;
 
@@ -24,7 +24,7 @@ export class MewEx extends PokemonCard {
     name: 'Versatile',
     useWhenInPlay: true,
     powerType: PowerType.ABILITY,
-    text: 'This Pokemon can use the attacks of any Pokemon in play ' +
+    text: 'This Pokémon can use the attacks of any Pokémon in play ' +
       '(both yours and your opponent\'s). (You still need the necessary ' +
       'Energy to use each attack.)'
   }];
@@ -34,8 +34,8 @@ export class MewEx extends PokemonCard {
       name: 'Replace',
       cost: [ CardType.PSYCHIC ],
       damage: 0,
-      text: 'Move as many Energy attached to your Pokemon to your other ' +
-        'Pokemon in any way you like.'
+      text: 'Move as many Energy attached to your Pokémon to your other ' +
+        'Pokémon in any way you like.'
     }
   ];
 

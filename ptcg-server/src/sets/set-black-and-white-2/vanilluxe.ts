@@ -21,18 +21,19 @@ export class Vanilluxe extends PokemonCard {
 
   public weakness = [{ type: CardType.METAL }];
 
-  public retreat = [ CardType.COLORLESS, CardType.COLORLESS ];
+  public retreat = [CardType.COLORLESS, CardType.COLORLESS];
 
   public attacks = [{
     name: 'Double Freeze',
-    cost: [ CardType.WATER, CardType.COLORLESS ],
+    cost: [CardType.WATER, CardType.COLORLESS],
     damage: 40,
-    text: 'Flip 2 coins. This attack does 40 damage times the number of heads. ' +
-      'If either of them is heads, the Defending Pokemon is now Paralyzed.'
+    text:
+      'Flip 2 coins. This attack does 40 damage times the number of heads. ' +
+      'If either of them is heads, the Defending Pokémon is now Paralyzed.'
   },
   {
     name: 'Frost Breath',
-    cost: [ CardType.WATER, CardType.WATER ],
+    cost: [CardType.WATER, CardType.WATER],
     damage: 60,
     text: ''
   }];

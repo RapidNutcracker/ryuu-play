@@ -13,7 +13,7 @@ export class Abra extends PokemonCard {
 
   public hp: number = 50;
 
-  public weakness: Weakness[] = [{ type: CardType.DARK }];
+  public weakness: Weakness[] = [{ type: CardType.DARKNESS }];
 
   public resistance: Resistance[] = [{ type: CardType.FIGHTING, value: -30 }];
 

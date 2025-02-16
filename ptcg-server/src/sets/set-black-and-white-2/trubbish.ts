@@ -28,7 +28,7 @@ export class Trubbish extends PokemonCard {
     name: 'Poison Gas',
     cost: [ CardType.PSYCHIC, CardType.COLORLESS, CardType.COLORLESS ],
     damage: 30,
-    text: 'The Defending Pokemon is now Poisoned.'
+    text: 'The Defending Pokémon is now Poisoned.'
   }];
 
   public set: string = 'BW2';

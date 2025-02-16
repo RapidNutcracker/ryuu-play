@@ -34,7 +34,7 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     return state;
   }
 
-  // Discard trainer only when user selected a Pokemon
+  // Discard trainer only when user selected a Pokémon
   player.hand.moveCardTo(effect.trainerCard, player.discard);
 
   player.switchPokemon(targets[0]);
@@ -52,7 +52,7 @@ export class Switch extends TrainerCard {
   public fullName: string = 'Switch BS';
 
   public text: string =
-    'Switch your Active Pokemon with 1 of your Benched Pokemon.';
+    'Switch your Active Pokémon with 1 of your Benched Pokémon.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {

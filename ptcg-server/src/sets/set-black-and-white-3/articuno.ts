@@ -27,15 +27,15 @@ export class Articuno extends PokemonCard {
   public powers = [{
     name: 'Delta Plus',
     powerType: PowerType.ANCIENT_TRAIT,
-    text: 'If your opponent\'s Pokemon is Knocked Out by damage from an ' +
-      'attack of this Pokemon, take 1 more Prize card.'
+    text: 'If your opponent\'s Pokémon is Knocked Out by damage from an ' +
+      'attack of this Pokémon, take 1 more Prize card.'
   }];
 
   public attacks = [{
     name: 'Chilling Sigh',
     cost: [ CardType.WATER ],
     damage: 0,
-    text: 'Your opponent\'s Active Pokemon is now Asleep.'
+    text: 'Your opponent\'s Active Pokémon is now Asleep.'
   }, {
     name: 'Tri Edge',
     cost: [ CardType.WATER, CardType.WATER, CardType.COLORLESS ],

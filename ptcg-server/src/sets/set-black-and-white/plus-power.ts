@@ -18,8 +18,8 @@ export class PlusPower extends TrainerCard {
   public fullName: string = 'PlusPower BW';
 
   public text: string =
-    'During this turn, your Pokemon\'s attacks do 10 more damage to the ' +
-    'Active Pokemon (before applying Weakness and Resistance).';
+    'During this turn, your Pokémon\'s attacks do 10 more damage to the ' +
+    'Active Pokémon (before applying Weakness and Resistance).';
 
   private readonly PLUS_POWER_MARKER = 'PLUS_POWER_MARKER';
 

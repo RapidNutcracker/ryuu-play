@@ -41,7 +41,7 @@ export function playTrainerReducer(store: StoreLike, state: State, effect: Effec
     return state;
   }
 
-  // Play Pokemon Tool card
+  // Play Pokémon Tool card
   if (effect instanceof AttachPokemonToolEffect) {
     const pokemonCard = effect.target.getPokemonCard();
     if (pokemonCard === undefined) {

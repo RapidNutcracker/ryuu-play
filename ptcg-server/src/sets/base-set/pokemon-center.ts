@@ -33,7 +33,7 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
   player.forEachPokemon(PlayerType.BOTTOM_PLAYER, (cardList) => {
 
     if (cardList.damage > 0) {
-      // Heal Pokemon
+      // Heal Pokémon
       const healEffect = new HealEffect(player, cardList, cardList.damage);
       store.reduceEffect(state, healEffect);
 

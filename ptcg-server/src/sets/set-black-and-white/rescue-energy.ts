@@ -22,9 +22,9 @@ export class RescueEnergy extends EnergyCard {
   public readonly RESCUE_ENERGY_MARKER = 'RESCUE_ENERGY_MARKER';
 
   public text =
-    'Rescue Energy provides C Energy. If the Pokemon this card is attached ' +
-    'to is Knocked Out by damage from an attack, put that Pokemon back into ' +
-    'your hand. (Discard all cards attached to that Pokemon.)';
+    'Rescue Energy provides {C} Energy. If the Pokémon this card is attached ' +
+    'to is Knocked Out by damage from an attack, put that Pokémon back into ' +
+    'your hand. (Discard all cards attached to that Pokémon.)';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof KnockOutEffect && effect.target.cards.includes(this)) {

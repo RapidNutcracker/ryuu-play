@@ -77,7 +77,7 @@ export class Korrina extends TrainerCard {
   public fullName: string = 'Korrina FFI';
 
   public text: string =
-    'Search your deck for a {F} Pokemon and an Item card, reveal them, ' +
+    'Search your deck for a {F} Pokémon and an Item card, reveal them, ' +
     'and put them into your hand. Shuffle your deck afterward.';
 
 

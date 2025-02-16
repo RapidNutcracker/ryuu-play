@@ -21,7 +21,7 @@ function* playCard(next: Function, store: StoreLike, state: State,
   const player = effect.player;
   const opponent = StateUtils.getOpponent(state, player);
 
-  // No Pokemon KO last turn
+  // No Pokémon KO last turn
   if (!player.marker.hasMarker(self.ROSA_MARKER)) {
     throw new GameError(GameMessage.CANNOT_PLAY_THIS_CARD);
   }
@@ -88,8 +88,8 @@ export class Rosa extends TrainerCard {
   public fullName: string = 'Rosa CEC';
 
   public text: string =
-    'You can play this card only if 1 of your Pokemon was Knocked Out ' +
-    'during your opponent\'s last turn. Search your deck for a Pokemon, ' +
+    'You can play this card only if 1 of your Pokémon was Knocked Out ' +
+    'during your opponent\'s last turn. Search your deck for a Pokémon, ' +
     'a Trainer card, and a basic Energy card, reveal them, and put them ' +
     'into your hand. Then, shuffle your deck.';
 

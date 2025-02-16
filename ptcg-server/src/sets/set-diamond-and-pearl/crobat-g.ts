@@ -37,7 +37,7 @@ export class CrobatG extends PokemonCard {
 
   public cardType: CardType = CardType.PSYCHIC;
 
-  public tags = [ CardTag.POKEMON_SP ];
+  public tags = [ CardTag.SP ];
 
   public hp: number = 80;
 

@@ -27,15 +27,15 @@ export class MysteryEnergy extends EnergyCard {
   public readonly STRONG_ENERGY_MARKER = 'STRONG_ENERGY_MARKER';
 
   public text =
-    'This card can only be attached to P Pokemon. This card provides P ' +
-    'Energy, but only while this card is attached to a P Pokemon. ' +
-    'The Retreat Cost of the Pokemon this card is attached to is 2 less. ' +
-    '(If this card is attached to anything other than a P Pokemon, discard ' +
+    'This card can only be attached to {P} Pokémon. This card provides P ' +
+    'Energy, but only while this card is attached to a {P} Pokémon. ' +
+    'The Retreat Cost of the Pokémon this card is attached to is 2 less. ' +
+    '(If this card is attached to anything other than a {P} Pokémon, discard ' +
     'this card.)';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
 
-    // Cannot attach to other than Psychic Pokemon
+    // Cannot attach to other than Psychic Pokémon
     if (effect instanceof AttachEnergyEffect && effect.energyCard === this) {
       const checkPokemonType = new CheckPokemonTypeEffect(effect.target);
       store.reduceEffect(state, checkPokemonType);
@@ -45,7 +45,7 @@ export class MysteryEnergy extends EnergyCard {
       return state;
     }
 
-    // Provide energy when attached to Psychic Pokemon
+    // Provide energy when attached to Psychic Pokémon
     if (effect instanceof CheckProvidedEnergyEffect && effect.source.cards.includes(this)) {
       const checkPokemonType = new CheckPokemonTypeEffect(effect.source);
       store.reduceEffect(state, checkPokemonType);
@@ -55,7 +55,7 @@ export class MysteryEnergy extends EnergyCard {
       return state;
     }
 
-    // Discard card when not attached to Psychic Pokemon
+    // Discard card when not attached to Psychic Pokémon
     if (effect instanceof CheckTableStateEffect) {
       state.players.forEach(player => {
         player.forEachPokemon(PlayerType.BOTTOM_PLAYER, cardList => {

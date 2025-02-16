@@ -25,8 +25,8 @@ export class Squirtle extends PokemonCard {
   public powers = [{
     name: 'Shell Shield',
     powerType: PowerType.ABILITY,
-    text: 'As long as this Pokemon is on your Bench, prevent all damage ' +
-      'done to this Pokemon by attacks (both yours and your opponent\'s).'
+    text: 'As long as this Pokémon is on your Bench, prevent all damage ' +
+      'done to this Pokémon by attacks (both yours and your opponent\'s).'
   }];
 
   public attacks = [{

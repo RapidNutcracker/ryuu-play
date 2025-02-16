@@ -16,7 +16,7 @@ export class Muk extends PokemonCard {
 
   public evolvesFrom: string = 'Grimer';
 
-  public cardType: CardType = CardType.DARK;
+  public cardType: CardType = CardType.DARKNESS;
 
   public hp: number = 150;
 
@@ -30,14 +30,14 @@ export class Muk extends PokemonCard {
 
   public attacks: Attack[] = [{
     name: 'Sticky Jail',
-    cost: [CardType.DARK],
+    cost: [CardType.DARKNESS],
     damage: 30,
     text:
       'During your opponent\'s next turn, attacks used by the ' +
       'Defending Pokémon cost {C} more, and its Retreat Cost is {C} more.'
   }, {
     name: 'Sludge Bomb',
-    cost: [CardType.DARK, CardType.DARK, CardType.DARK, CardType.COLORLESS],
+    cost: [CardType.DARKNESS, CardType.DARKNESS, CardType.DARKNESS, CardType.COLORLESS],
     damage: 180,
     text: ''
   }];

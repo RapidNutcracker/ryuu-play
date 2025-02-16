@@ -36,9 +36,9 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     { min: 1, max: 1, allowCancel: true }
   ), selected => {
     if (selected && selected.length > 0) {
-      // Discard trainer only when user selected a Pokemon
+      // Discard trainer only when user selected a Pokémon
       player.hand.moveCardTo(effect.trainerCard, player.discard);
-      // Recover discarded Pokemon
+      // Recover discarded Pokémon
       player.discard.moveCardsTo(selected, slots[0]);
 
       next();

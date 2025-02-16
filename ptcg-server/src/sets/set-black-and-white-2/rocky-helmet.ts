@@ -17,9 +17,9 @@ export class RockyHelmet extends TrainerCard {
   public fullName: string = 'Rocky Helmet BC';
 
   public text: string =
-    'If the Pokemon this card is attached to is your Active Pokemon and is ' +
-    'damaged by an opponent\'s attack (even if that Pokemon is Knocked Out), ' +
-    'put 2 damage counters on the Attacking Pokemon.';
+    'If the Pokémon this card is attached to is your Active Pokémon and is ' +
+    'damaged by an opponent\'s attack (even if that Pokémon is Knocked Out), ' +
+    'put 2 damage counters on the Attacking Pokémon.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof AfterDamageEffect && effect.target.tool === this) {

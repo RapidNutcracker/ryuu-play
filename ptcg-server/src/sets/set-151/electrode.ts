@@ -1,6 +1,6 @@
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Stage, CardType } from '../../game/store/card/card-types';
-import { StoreLike, State, GameError, GameMessage, PokemonCardList, StateUtils, CardTarget, ChoosePokemonPrompt, PlayerType, SlotType } from '../../game';
+import { StoreLike, State, GameError, GameMessage, PokemonCardList, CardTarget, ChoosePokemonPrompt, PlayerType, SlotType } from '../../game';
 import { Effect } from '../../game/store/effects/effect';
 import { AttackEffect } from '../../game/store/effects/game-effects';
 
@@ -18,11 +18,8 @@ function* useBangBoomChain(next: Function, store: StoreLike, state: State, effec
   });
 
   if (pokemonsWithTool === 0) {
-    throw new GameError(GameMessage.CANNOT_PLAY_THIS_CARD);
+    throw new GameError(GameMessage.CANNOT_USE_ATTACK);
   }
-
-  // We will discard this card after prompt confirmation
-  effect.preventDefault = true;
 
   const max = pokemonsWithTool;
   let targets: PokemonCardList[] = [];
@@ -42,10 +39,11 @@ function* useBangBoomChain(next: Function, store: StoreLike, state: State, effec
   }
 
   targets.forEach(target => {
-    const owner = StateUtils.findOwner(state, target);
     if (target.tool !== undefined) {
-      target.moveCardTo(target.tool, owner.discard);
+      target.moveCardTo(target.tool, player.discard);
       target.tool = undefined;
+
+      effect.damage += 40;
     }
   });
 

@@ -10,7 +10,7 @@ export class GolemEx extends PokemonCard {
 
   public id: number = 78;
 
-  public tags: string[] = [CardTag.POKEMON_EX];
+  public tags: string[] = [CardTag.EX];
 
   public stage: Stage = Stage.STAGE_2;
 

@@ -271,16 +271,8 @@ export class BoardComponent implements OnDestroy {
     const slot = SlotType.ACTIVE;
     const target: CardTarget = { player, slot, index: 0 };
 
-    const pokemonCard = this.bottomPlayer.active.getPokemonCard();
-
-    /// TODO: How to just get Attack array to sync from server.
-    //        CardList actions overhaul?
-    if (this.bottomPlayer.active.tool?.name.startsWith('Technical Machine')) {
-      pokemonCard.attacks.push(this.bottomPlayer.active.tool['attack']);
-    }
-
     const options = { enableAbility: { useWhenInPlay: true }, enableAttack: true };
-    this.cardsBaseService.showCardInfo({ card: pokemonCard, cardList, options })
+    this.cardsBaseService.showCardInfo({ card, cardList, options })
       .then(result => {
         if (!result) {
           return;
@@ -309,13 +301,6 @@ export class BoardComponent implements OnDestroy {
     const player = PlayerType.BOTTOM_PLAYER;
     const slot = SlotType.BENCH;
     const target: CardTarget = { player, slot, index };
-
-    const pokemonCard = this.bottomPlayer.bench[index].getPokemonCard();
-
-    /// TODO: CardList actions overhaul?
-    if (this.bottomPlayer.bench[index].tool?.name.startsWith('Technical Machine')) {
-      pokemonCard.attacks.push(this.bottomPlayer.bench[index].tool['attack']);
-    }
 
     const options = { enableAbility: { useWhenInPlay: true }, enableAttack: false };
     this.cardsBaseService.showCardInfo({ card, cardList, options })

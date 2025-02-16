@@ -10,11 +10,16 @@ import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 import { Stage, CardType, SuperType } from '../../game/store/card/card-types';
 import { State } from '../../game/store/state/state';
 import { StoreLike } from '../../game/store/store-like';
+import { GameError } from '../../game';
 
 function* useCallForFamily(next: Function, store: StoreLike, state: State, effect: AttackEffect): IterableIterator<State> {
   const player = effect.player;
   const slots: PokemonCardList[] = player.bench.filter(b => b.cards.length === 0);
   const max = Math.min(slots.length, 2);
+
+  if (slots.length === 0 || effect.player.deck.cards.length === 0) {
+    throw new GameError(GameMessage.CANNOT_USE_ATTACK);
+  }
 
   let cards: Card[] = [];
   yield store.prompt(state, new ChooseCardsPrompt(

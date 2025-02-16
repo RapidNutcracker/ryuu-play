@@ -60,7 +60,7 @@ function* useStellarGuidance(next: Function, store: StoreLike, state: State,
 
 export class JirachiEx extends PokemonCard {
 
-  public tags = [CardTag.POKEMON_EX];
+  public tags = [CardTag.EX];
 
   public stage: Stage = Stage.BASIC;
 
@@ -77,7 +77,7 @@ export class JirachiEx extends PokemonCard {
   public powers = [{
     name: 'Stellar Guidance',
     powerType: PowerType.ABILITY,
-    text: 'When you play this Pokemon from your hand onto your Bench, ' +
+    text: 'When you play this Pokémon from your hand onto your Bench, ' +
       'you may search your deck for a Supporter card, reveal it, and put it ' +
       'into your hand. Shuffle your deck afterward.'
   }];
@@ -87,7 +87,7 @@ export class JirachiEx extends PokemonCard {
       name: 'Hypnostrike',
       cost: [CardType.METAL, CardType.COLORLESS, CardType.COLORLESS],
       damage: 60,
-      text: 'Both this Pokemon and the Defending Pokemon are now Asleep.'
+      text: 'Both this Pokémon and the Defending Pokémon are now Asleep.'
     }
   ];
 

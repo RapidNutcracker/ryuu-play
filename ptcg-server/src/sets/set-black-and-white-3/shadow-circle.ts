@@ -20,7 +20,7 @@ export class ShadowCircle extends TrainerCard {
   public fullName: string = 'Shadow Circle XY';
 
   public text: string =
-    'Each Pokemon that has any D Energy attached to it (both yours ' +
+    'Each Pokémon that has any {D} Energy attached to it (both yours ' +
     'and your opponent\'s) has no Weakness.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
@@ -33,7 +33,7 @@ export class ShadowCircle extends TrainerCard {
       store.reduceEffect(state, checkProvidedEnergyEffect);
 
       const energyMap = checkProvidedEnergyEffect.energyMap;
-      const hasDarknessEnergy = StateUtils.checkEnoughEnergy(energyMap, [ CardType.DARK ]);
+      const hasDarknessEnergy = StateUtils.checkEnoughEnergy(energyMap, [ CardType.DARKNESS ]);
 
       if (hasDarknessEnergy) {
         effect.weakness = [];

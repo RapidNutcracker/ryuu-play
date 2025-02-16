@@ -65,7 +65,7 @@ export class Oddish extends PokemonCard {
     name: 'Find a Friend',
     cost: [CardType.GRASS],
     damage: 0,
-    text: 'Flip a coin. If heads, search your deck for a G Pokemon, ' +
+    text: 'Flip a coin. If heads, search your deck for a {G} Pokémon, ' +
       'show it to your opponent, and put it into your hand. ' +
       'Shuffle your deck afterward.'
   }];

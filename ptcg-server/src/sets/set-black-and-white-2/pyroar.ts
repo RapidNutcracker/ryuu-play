@@ -29,15 +29,15 @@ export class Pyroar extends PokemonCard {
   public powers = [{
     name: 'Intimidating Mane',
     powerType: PowerType.ABILITY,
-    text: 'Prevent all damage done to this Pokemon by attacks from your ' +
-      'opponent\'s Basic Pokemon.'
+    text: 'Prevent all damage done to this Pokémon by attacks from your ' +
+      'opponent\'s Basic Pokémon.'
   }];
 
   public attacks = [{
     name: 'Scorching Fang',
     cost: [ CardType.FIRE, CardType.COLORLESS, CardType.COLORLESS ],
     damage: 60,
-    text: 'You may discard a R Energy attached to this Pokemon. If you do, ' +
+    text: 'You may discard a {R} Energy attached to this Pokémon. If you do, ' +
       'this attack does 30 more damage.'
   }];
 

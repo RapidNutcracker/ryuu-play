@@ -33,7 +33,7 @@ export class EnergyComponent {
       case CardType.METAL:
         this.typeClass = 'metal';
         break;
-      case CardType.DARK:
+      case CardType.DARKNESS:
         this.typeClass = 'darkness';
         break;
       case CardType.FIRE:

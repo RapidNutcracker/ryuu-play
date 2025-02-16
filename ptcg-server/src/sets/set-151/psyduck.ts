@@ -3,7 +3,6 @@ import { Stage, CardType } from '../../game/store/card/card-types';
 import { StoreLike, State, Resistance, Weakness, StateUtils } from '../../game';
 import { Effect } from '../../game/store/effects/effect';
 import { AttackEffect } from '../../game/store/effects/game-effects';
-import { PutDamageEffect } from '../../game/store/effects/attack-effects';
 import { EndTurnEffect } from '../../game/store/effects/game-phase-effects';
 
 export class Psyduck extends PokemonCard {
@@ -51,11 +50,6 @@ export class Psyduck extends PokemonCard {
 
       opponent.marker.addMarker(this.OVERTHINK_MARKER, this);
 
-      return state;
-    }
-
-    if (effect instanceof PutDamageEffect && effect.target.marker.hasMarker(this.OVERTHINK_MARKER)) {
-      effect.preventDefault = true;
       return state;
     }
 

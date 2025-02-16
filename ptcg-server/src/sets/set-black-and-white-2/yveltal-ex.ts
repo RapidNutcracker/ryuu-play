@@ -8,11 +8,11 @@ import { GameMessage } from '../../game/game-message';
 
 export class YveltalEx extends PokemonCard {
 
-  public tags = [ CardTag.POKEMON_EX ];
+  public tags = [ CardTag.EX ];
 
   public stage: Stage = Stage.BASIC;
 
-  public cardType: CardType = CardType.DARK;
+  public cardType: CardType = CardType.DARKNESS;
 
   public hp: number = 170;
 
@@ -25,15 +25,15 @@ export class YveltalEx extends PokemonCard {
   public attacks = [
     {
       name: 'Evil Ball',
-      cost: [ CardType.DARK, CardType.COLORLESS ],
+      cost: [ CardType.DARKNESS, CardType.COLORLESS ],
       damage: 20,
       text: 'This attack does 20 more damage times the amount of Energy ' +
-        'attached to both Active Pokemon.'
+        'attached to both Active Pokémon.'
     }, {
       name: 'Y Cyclone',
-      cost: [ CardType.DARK, CardType.COLORLESS, CardType.COLORLESS ],
+      cost: [ CardType.DARKNESS, CardType.COLORLESS, CardType.COLORLESS ],
       damage: 90,
-      text: 'Move an Energy from this Pokemon to 1 of your Benched Pokemon.'
+      text: 'Move an Energy from this Pokémon to 1 of your Benched Pokémon.'
     },
   ];
 

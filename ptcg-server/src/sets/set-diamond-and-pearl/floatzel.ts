@@ -81,8 +81,8 @@ export class Floatzel extends PokemonCard {
     cost: [CardType.WATER, CardType.WATER, CardType.COLORLESS],
     damage: 60,
     text: 'Flip a coin. If heads, this attack does 10 damage to 1 ' +
-      'of your opponent\'s Benched Pokemon. (Don\'t apply Weakness ' +
-      'and Resistance for Benched Pokemon.)'
+      'of your opponent\'s Benched Pokémon. (Don\'t apply Weakness ' +
+      'and Resistance for Benched Pokémon.)'
   }];
 
   public set: string = 'DP';

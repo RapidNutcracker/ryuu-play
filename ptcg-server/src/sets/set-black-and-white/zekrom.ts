@@ -23,13 +23,13 @@ export class Zekrom extends PokemonCard {
       name: 'Outrage',
       cost: [ CardType.COLORLESS, CardType.COLORLESS ],
       damage: 20,
-      text: 'Does 10 more damage for each damage counter on this Pokemon.'
+      text: 'Does 10 more damage for each damage counter on this Pokémon.'
     },
     {
       name: 'Bolt Strike',
       cost: [ CardType.LIGHTNING, CardType.LIGHTNING, CardType.COLORLESS ],
       damage: 120,
-      text: 'This Pokemon does 40 damage to itself.'
+      text: 'This Pokémon does 40 damage to itself.'
     }
   ];
 

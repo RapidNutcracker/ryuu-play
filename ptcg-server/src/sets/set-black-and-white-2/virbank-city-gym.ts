@@ -20,7 +20,7 @@ export class VirbankCityGym extends TrainerCard {
   public fullName: string = 'Virbank City Gym PLS';
 
   public text: string =
-    'Put 2 more damage counters on Poisoned Pokemon (both yours and your ' +
+    'Put 2 more damage counters on Poisoned Pokémon (both yours and your ' +
     'opponent\'s) between turns.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {

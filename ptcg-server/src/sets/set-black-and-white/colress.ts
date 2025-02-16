@@ -21,7 +21,7 @@ export class Colress extends TrainerCard {
 
   public text: string =
     'Shuffle your hand into your deck. Then, draw a number of cards equal ' +
-    'to the number of Benched Pokemon (both yours and your opponent\'s).';
+    'to the number of Benched Pokémon (both yours and your opponent\'s).';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {

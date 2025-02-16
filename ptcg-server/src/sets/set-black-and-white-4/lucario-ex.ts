@@ -8,7 +8,7 @@ import { GameMessage } from '../../game/game-message';
 
 export class LucarioEx extends PokemonCard {
 
-  public tags = [CardTag.POKEMON_EX];
+  public tags = [CardTag.EX];
 
   public stage: Stage = Stage.BASIC;
 

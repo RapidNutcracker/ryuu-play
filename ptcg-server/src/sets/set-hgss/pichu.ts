@@ -1,7 +1,9 @@
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Stage, CardType, SpecialCondition, SuperType } from '../../game/store/card/card-types';
-import { PowerType, StoreLike, State, ShufflePrompt, StateUtils,
-  PokemonCardList, Card, ChooseCardsPrompt, GameMessage } from '../../game';
+import {
+  PowerType, StoreLike, State, ShufflePrompt, StateUtils,
+  PokemonCardList, Card, ChooseCardsPrompt, GameMessage
+} from '../../game';
 import { AttackEffect, PowerEffect } from '../../game/store/effects/game-effects';
 import { Effect } from '../../game/store/effects/effect';
 import { PutDamageEffect, AddSpecialConditionsEffect } from '../../game/store/effects/attack-effects';
@@ -65,12 +67,14 @@ function* usePlayground(next: Function, store: StoreLike, state: State,
   });
 
   // Shuffle decks
-  store.prompt(state, new ShufflePrompt(player.id), order => {
-    player.deck.applyOrder(order);
-  });
+  yield store.prompt(state, [
+    new ShufflePrompt(player.id),
+    new ShufflePrompt(opponent.id)
+  ], deckOrder => {
+    player.deck.applyOrder(deckOrder[0]);
+    opponent.deck.applyOrder(deckOrder[1]);
 
-  store.prompt(state, new ShufflePrompt(opponent.id), order => {
-    opponent.deck.applyOrder(order);
+    next();
   });
 
   return state;
@@ -84,7 +88,7 @@ export class Pichu extends PokemonCard {
 
   public hp: number = 30;
 
-  public retreat = [ ];
+  public retreat = [];
 
   public powers = [{
     name: 'Sweet Sleeping Face',
@@ -96,11 +100,11 @@ export class Pichu extends PokemonCard {
   public attacks = [
     {
       name: 'Playground',
-      cost: [ ],
+      cost: [],
       damage: 0,
       text: 'Each player may search his or her deck for as many Basic ' +
-        'Pokemon as he or she likes, put them onto his or her Bench, and ' +
-        'shuffle his or her deck afterward. (You put your Pokemon on the ' +
+        'Pokémon as he or she likes, put them onto his or her Bench, and ' +
+        'shuffle his or her deck afterward. (You put your Pokémon on the ' +
         'Bench first.) Pichu is now Asleep.'
     }
   ];

@@ -16,7 +16,7 @@ export class FloatStone extends TrainerCard {
   public fullName: string = 'Float Stone PLF';
 
   public text: string =
-    'The Pokemon this card is attached to has no Retreat Cost.';
+    'The Pokémon this card is attached to has no Retreat Cost.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof CheckRetreatCostEffect && effect.player.active.tool === this) {

@@ -8,7 +8,7 @@ export class KangaskhanEx extends PokemonCard {
 
   public id: number = 115;
 
-  public tags: string[] = [CardTag.POKEMON_EX];
+  public tags: string[] = [CardTag.EX];
 
   public stage: Stage = Stage.BASIC;
 

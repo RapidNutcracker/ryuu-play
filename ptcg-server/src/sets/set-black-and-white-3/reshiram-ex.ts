@@ -9,7 +9,7 @@ import { GameMessage } from '../../game/game-message';
 
 export class ReshiramEx extends PokemonCard {
 
-  public tags = [ CardTag.POKEMON_EX ];
+  public tags = [ CardTag.EX ];
 
   public stage: Stage = Stage.BASIC;
 
@@ -31,7 +31,7 @@ export class ReshiramEx extends PokemonCard {
       name: 'Brave Fire',
       cost: [ CardType.FIRE, CardType.FIRE, CardType.COLORLESS, CardType.COLORLESS ],
       damage: 150,
-      text: 'Flip a coin. If tails, this Pokemon does 50 damage to itself.'
+      text: 'Flip a coin. If tails, this Pokémon does 50 damage to itself.'
     },
   ];
 

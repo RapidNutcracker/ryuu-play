@@ -25,13 +25,13 @@ export class Tornadus extends PokemonCard {
       name: 'Energy Wheel',
       cost: [ CardType.COLORLESS ],
       damage: 0,
-      text: 'Move an Energy from 1 of your Benched Pokemon to this Pokemon.'
+      text: 'Move an Energy from 1 of your Benched Pokémon to this Pokémon.'
     }, {
       name: 'Hurricane',
       cost: [ CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS ],
       damage: 80,
-      text: 'Move a basic Energy from this Pokemon to 1 of your ' +
-        'Benched Pokemon.'
+      text: 'Move a basic Energy from this Pokémon to 1 of your ' +
+        'Benched Pokémon.'
     },
   ];
 

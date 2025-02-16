@@ -18,26 +18,26 @@ function* useEvolution(next: Function, store: StoreLike, state: State, effect: A
     throw new GameError(GameMessage.CANNOT_USE_ATTACK);
   }
 
-  // Check deck for ANY Stage 1 and Stage 2 Pokemon
+  // Check deck for ANY Stage 1 and Stage 2 Pokémon
   const evolvedPokemon: PokemonCard[] = player.deck.cards.filter(card =>
     card instanceof PokemonCard &&
     (card.stage === Stage.STAGE_1 || card.stage === Stage.STAGE_2)
   ) as PokemonCard[];
 
-  // If there are no Evolved Pokemon in the deck, we cannot use Evolution
+  // If there are no Evolved Pokémon in the deck, we cannot use Evolution
   if (evolvedPokemon.length === 0) {
     throw new GameError(GameMessage.CANNOT_USE_STADIUM);
   }
 
-  // Check all Pokemon Slots...
+  // Check all Pokémon Slots...
   const pokemonThatCannotEvolve: CardTarget[] = [];
   let hasPokemonThatCanEvolve: boolean = false;
   player.forEachPokemon(PlayerType.BOTTOM_PLAYER, (slot, card, target) => {
 
-    // If the Slot is a Basic Pokemon and there is a Stage 1 Pokemon in the deck that it can evolve into
+    // If the Slot is a Basic Pokémon and there is a Stage 1 Pokémon in the deck that it can evolve into
     if (evolvedPokemon.some(s => s.evolvesFrom === card.name)) {
 
-      // Check that the Pokemon is eligible to evolve based on the turn it was played
+      // Check that the Pokémon is eligible to evolve based on the turn it was played
       const playedTurnEffect = new CheckPokemonPlayedTurnEffect(player, slot);
       store.reduceEffect(state, playedTurnEffect);
 
@@ -51,12 +51,12 @@ function* useEvolution(next: Function, store: StoreLike, state: State, effect: A
     }
   });
 
-  // If the player has no Basic Pokemon that can evolve
+  // If the player has no Basic Pokémon that can evolve
   if (!hasPokemonThatCanEvolve) {
     throw new GameError(GameMessage.CANNOT_USE_ATTACK);
   }
 
-  // Select the Pokemon Slot of the Basic Pokemon
+  // Select the Pokémon Slot of the Basic Pokémon
   let selectedPokemonSlots: PokemonCardList[] = [];
   yield store.prompt(state, new ChoosePokemonPrompt(
     player.id,
@@ -74,14 +74,14 @@ function* useEvolution(next: Function, store: StoreLike, state: State, effect: A
     return state; // canceled by user
   }
 
-  // For each selected Pokemon...
+  // For each selected Pokémon...
   for (const pokemonSlot of selectedPokemonSlots) {
     const pokemonCard = pokemonSlot.getPokemonCard();
     if (pokemonCard === undefined) {
       return state;
     }
 
-    // Build block list of Pokemon that do not evolve from the selected Pokemon
+    // Build block list of Pokémon that do not evolve from the selected Pokémon
     const pokemonThatDoNotEvolveFromTheSelectedPokemon: number[] = [];
     player.deck.cards.forEach((c, index) => {
       if (c instanceof PokemonCard) {
@@ -106,7 +106,7 @@ function* useEvolution(next: Function, store: StoreLike, state: State, effect: A
 
     if (selectedEvolutionPokemon.length === 0) {
       store.log(state, GameLog.LOG_TEXT, {
-        text: 'Failed to select Evolution Pokemon'
+        text: 'Failed to select Evolution Pokémon'
       });
 
       // player canceled?
@@ -152,13 +152,9 @@ export class TechnicalMachineEvolution extends TrainerCard {
   public text: string =
     'The Pokémon this card is attached to can use the attack on this card. ' +
     '(You still need the necessary Energy to use this attack.) ' +
-    'If this card is attached to 1 of your Pokémon, discard it at the end of your turn.' +
+    'If this card is attached to 1 of your Pokémon, discard it at the end of your turn.';
 
-    'Choose up to 2 of your Benched Pokémon. ' +
-    'For each of those Pokémon, search your deck for a card that evolves from that Pokémon ' +
-    'and put it onto that Pokémon to evolve it. Then, shuffle your deck.';
-
-  public attack: Attack = {
+  public attacks: Attack[] = [{
     name: 'Evolution',
     cost: [CardType.COLORLESS],
     damage: 0,
@@ -166,7 +162,7 @@ export class TechnicalMachineEvolution extends TrainerCard {
       'Choose up to 2 of your Benched Pokémon. ' +
       'For each of those Pokémon, search your deck for a card that evolves from that Pokémon ' +
       'and put it onto that Pokémon to evolve it. Then, shuffle your deck.'
-  };
+  }];
 
   public readonly TM_EVOLUTION_MARKER = 'TM_EVOLUTION_MARKER';
 
@@ -179,31 +175,21 @@ export class TechnicalMachineEvolution extends TrainerCard {
       }
 
       effect.player.marker.addMarker(this.TM_EVOLUTION_MARKER, this);
-
-      // How to get this to sync up on the frontend?
-      pokemonCard.attacks = [...pokemonCard.attacks, this.attack];
     }
 
-    if (effect instanceof AttackEffect && effect.attack === this.attack) {
+    if (effect instanceof AttackEffect && effect.attack === this.attacks[0]) {
       const generator = useEvolution(() => generator.next(), store, state, effect);
       return generator.next().value;
     }
 
-    if (effect instanceof EndTurnEffect && effect.player.marker.hasMarker(this.TM_EVOLUTION_MARKER)) {
-      effect.player.marker.removeMarker(this.TM_EVOLUTION_MARKER);
-      effect.player.forEachPokemon(PlayerType.BOTTOM_PLAYER, (cardList) => {
+    if (effect instanceof EndTurnEffect && effect.player.marker.hasMarker(this.TM_EVOLUTION_MARKER, this)) {
+      const player = effect.player;
+
+      player.marker.removeMarker(this.TM_EVOLUTION_MARKER, this);
+      player.forEachPokemon(PlayerType.BOTTOM_PLAYER, (cardList) => {
         if (cardList.tool === this) {
-          cardList.moveCardTo(this, effect.player.discard);
+          cardList.moveCardTo(this, player.discard);
           cardList.tool = undefined;
-
-          const pokemonCard = cardList.getPokemonCard();
-          if (pokemonCard === undefined) {
-            throw new GameError(GameMessage.UNKNOWN_CARD);
-          }
-
-          pokemonCard.attacks = pokemonCard.attacks.filter(attack =>
-            attack !== this.attack
-          );
         }
       });
     }

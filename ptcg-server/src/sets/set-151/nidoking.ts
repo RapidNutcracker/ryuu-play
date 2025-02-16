@@ -14,7 +14,7 @@ export class Nidoking extends PokemonCard {
 
   public evolvesFrom: string = 'Nidorino';
 
-  public cardType: CardType = CardType.DARK;
+  public cardType: CardType = CardType.DARKNESS;
 
   public hp: number = 170;
 
@@ -30,7 +30,7 @@ export class Nidoking extends PokemonCard {
 
   public attacks = [{
     name: 'Venomous Impact',
-    cost: [CardType.DARK, CardType.DARK, CardType.COLORLESS, CardType.COLORLESS],
+    cost: [CardType.DARKNESS, CardType.DARKNESS, CardType.COLORLESS, CardType.COLORLESS],
     damage: 190,
     text: 'Your opponent\'s Active Pokémon is now Poisoned.'
   }];

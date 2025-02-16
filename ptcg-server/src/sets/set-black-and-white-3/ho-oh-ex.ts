@@ -73,7 +73,7 @@ function* useRebirth(next: Function, store: StoreLike, state: State,
 
 export class HoOhEx extends PokemonCard {
 
-  public tags = [ CardTag.POKEMON_EX ];
+  public tags = [ CardTag.EX ];
 
   public stage: Stage = Stage.BASIC;
 
@@ -91,10 +91,10 @@ export class HoOhEx extends PokemonCard {
     name: 'Rebirth',
     useFromDiscard: true,
     powerType: PowerType.ABILITY,
-    text: 'Once during your turn (before your attack), if this Pokemon is ' +
-      'in your discard pile, you may flip a coin. If heads, put this Pokemon ' +
+    text: 'Once during your turn (before your attack), if this Pokémon is ' +
+      'in your discard pile, you may flip a coin. If heads, put this Pokémon ' +
       'onto your Bench and attach 3 different types of basic Energy cards ' +
-      'from your discard pile to this Pokemon.'
+      'from your discard pile to this Pokémon.'
   }];
 
   public attacks = [
@@ -103,7 +103,7 @@ export class HoOhEx extends PokemonCard {
       cost: [ CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS ],
       damage: 20,
       text: 'Does 20 more damage for each different type of basic Energy ' +
-        'attached to this Pokemon.'
+        'attached to this Pokémon.'
     }
   ];
 

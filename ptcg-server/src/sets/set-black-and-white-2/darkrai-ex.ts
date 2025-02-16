@@ -10,11 +10,11 @@ import { CheckRetreatCostEffect, CheckProvidedEnergyEffect } from '../../game/st
 
 export class DarkraiEx extends PokemonCard {
 
-  public tags = [ CardTag.POKEMON_EX ];
+  public tags = [ CardTag.EX ];
 
   public stage: Stage = Stage.BASIC;
 
-  public cardType: CardType = CardType.DARK;
+  public cardType: CardType = CardType.DARKNESS;
 
   public hp: number = 180;
 
@@ -27,17 +27,17 @@ export class DarkraiEx extends PokemonCard {
   public powers = [{
     name: 'Dark Cloak',
     powerType: PowerType.ABILITY,
-    text: 'Each of your Pokemon that has any D Energy attached to it ' +
+    text: 'Each of your Pokémon that has any {D} Energy attached to it ' +
       'has no Retreat Cost.'
   }];
 
   public attacks = [
     {
       name: 'Night Spear',
-      cost: [ CardType.DARK, CardType.DARK, CardType.COLORLESS ],
+      cost: [ CardType.DARKNESS, CardType.DARKNESS, CardType.COLORLESS ],
       damage: 90,
-      text: 'Does 30 damage to 1 of your opponent\'s Benched Pokemon. ' +
-        '(Don\'t apply Weakness and Resistance for Benched Pokemon.)'
+      text: 'Does 30 damage to 1 of your opponent\'s Benched Pokémon. ' +
+        '(Don\'t apply Weakness and Resistance for Benched Pokémon.)'
     }
   ];
 
@@ -92,7 +92,7 @@ export class DarkraiEx extends PokemonCard {
       store.reduceEffect(state, checkProvidedEnergyEffect);
 
       const energyMap = checkProvidedEnergyEffect.energyMap;
-      const hasDarknessEnergy = StateUtils.checkEnoughEnergy(energyMap, [ CardType.DARK ]);
+      const hasDarknessEnergy = StateUtils.checkEnoughEnergy(energyMap, [ CardType.DARKNESS ]);
 
       if (hasDarknessEnergy) {
         // Try to reduce PowerEffect, to check if something is blocking our ability

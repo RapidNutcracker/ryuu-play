@@ -18,15 +18,15 @@ export class DarkClaw extends TrainerCard {
   public fullName: string = 'Dark Claw DEX';
 
   public text: string =
-    'If this card is attached to a D Pokemon, each of the attacks ' +
-    'of that Pokemon does 20 more damage to the Active Pokemon ' +
+    'If this card is attached to a {D} Pokémon, each of the attacks ' +
+    'of that Pokémon does 20 more damage to the Active Pokémon ' +
     '(before applying Weakness and Resistance).';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof DealDamageEffect && effect.source.tool === this) {
       const opponent = StateUtils.findOwner(state, effect.target);
 
-      // Not active Pokemon
+      // Not active Pokémon
       if (opponent.active !== effect.target) {
         return state;
       }
@@ -34,7 +34,7 @@ export class DarkClaw extends TrainerCard {
       const checkPokemonTypeEffect = new CheckPokemonTypeEffect(effect.source);
       store.reduceEffect(state, checkPokemonTypeEffect);
 
-      if (checkPokemonTypeEffect.cardTypes.includes(CardType.DARK)) {
+      if (checkPokemonTypeEffect.cardTypes.includes(CardType.DARKNESS)) {
         effect.damage += 20;
       }
     }

@@ -27,8 +27,8 @@ export class Garbodor extends PokemonCard {
   public powers = [{
     name: 'Garbotoxin',
     powerType: PowerType.ABILITY,
-    text: 'If this Pokemon has a Pokemon Tool card attached to it, ' +
-      'each Pokemon in play, in each player\'s hand, and in each ' +
+    text: 'If this Pokémon has a Pokémon Tool card attached to it, ' +
+      'each Pokémon in play, in each player\'s hand, and in each ' +
       'player\'s discard pile has no Abilities (except for Garbotoxin).'
   }];
 

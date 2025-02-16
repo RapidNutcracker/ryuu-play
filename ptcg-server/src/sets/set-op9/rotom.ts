@@ -16,7 +16,7 @@ export class Rotom extends PokemonCard {
 
   public hp: number = 70;
 
-  public weakness = [{ type: CardType.DARK, value: 20 }];
+  public weakness = [{ type: CardType.DARKNESS, value: 20 }];
 
   public resistance = [{ type: CardType.COLORLESS, value: -20 }];
 

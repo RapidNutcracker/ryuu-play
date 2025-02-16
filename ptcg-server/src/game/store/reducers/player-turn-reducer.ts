@@ -9,6 +9,8 @@ import { EndTurnEffect } from '../effects/game-phase-effects';
 import { StateUtils } from '../state-utils';
 import { SlotType } from '../actions/play-card-action';
 import { PokemonCard } from '../card/pokemon-card';
+import { Attack, Power } from '../card/pokemon-types';
+import { Card } from '../card/card';
 
 export function playerTurnReducer(store: StoreLike, state: State, action: Action): State {
 
@@ -48,26 +50,38 @@ export function playerTurnReducer(store: StoreLike, state: State, action: Action
 
       const target = StateUtils.getTarget(state, player, action.target);
 
-      const pokemonCard = player.marker.hasMarker('MEMORY_DIVE_MARKER') ?
-        target.getPokemons().find(pokemon => {
-          return pokemon.attacks.some(attack => attack.name === action.name);
-        }) :
-        target.getPokemonCard();
+      let attack: Attack | undefined;
+      const attackSourceCard = target.cards.find((card: any) => {
+        if (card.hasOwnProperty('attacks')) {
+          const cardAttack = card['attacks'].find((a: Attack) => a.name === action.name);
+          if (cardAttack !== undefined) {
+            attack = cardAttack;
+            return true;
+          }
+        }
 
-      if (pokemonCard === undefined) {
+        return false;
+      });
+
+      if (attackSourceCard === undefined) {
         throw new GameError(GameMessage.UNKNOWN_CARD);
       }
 
-      const attack = pokemonCard.attacks.find(a => a.name === action.name);
       if (attack === undefined) {
         throw new GameError(GameMessage.UNKNOWN_ATTACK);
+      }
+
+      if (attackSourceCard instanceof PokemonCard &&
+        target.getPokemonCard() !== attackSourceCard &&
+        !player.marker.hasMarker('MEMORY_DIVE_MARKER')) {
+        throw new GameError(GameMessage.UNKNOWN_CARD);
       }
 
       if (action.target.slot === SlotType.BENCH && !attack.useFromBench) {
         throw new GameError(GameMessage.CANNOT_USE_ATTACK);
       }
 
-      const useAttackEffect = new UseAttackEffect(player, attack, pokemonCard);
+      const useAttackEffect = new UseAttackEffect(player, attack, attackSourceCard);
       state = store.reduceEffect(state, useAttackEffect);
       return state;
     }
@@ -79,36 +93,39 @@ export function playerTurnReducer(store: StoreLike, state: State, action: Action
         throw new GameError(GameMessage.NOT_YOUR_TURN);
       }
 
-      let pokemonCard: PokemonCard | undefined;
+      let abilityCard: Card | undefined;
 
       switch (action.target.slot) {
         case SlotType.ACTIVE:
         case SlotType.BENCH: {
           const target = StateUtils.getTarget(state, player, action.target);
-          pokemonCard = target.getPokemonCard();
+          abilityCard = target.cards.find((card: any) => {
+            return card.hasOwnProperty('powers') &&
+              card['powers'].find((p: Power) => p.name === action.name);
+          });
           break;
         }
         case SlotType.DISCARD: {
           const discardCard = player.discard.cards[action.target.index];
-          if (discardCard instanceof PokemonCard) {
-            pokemonCard = discardCard;
+          if (discardCard.hasOwnProperty('powers')) {
+            abilityCard = discardCard;
           }
           break;
         }
         case SlotType.HAND: {
           const handCard = player.hand.cards[action.target.index];
-          if (handCard instanceof PokemonCard) {
-            pokemonCard = handCard;
+          if (handCard.hasOwnProperty('powers')) {
+            abilityCard = handCard;
           }
           break;
         }
       }
 
-      if (pokemonCard === undefined) {
+      if (abilityCard === undefined) {
         throw new GameError(GameMessage.INVALID_TARGET);
       }
 
-      const power = pokemonCard.powers.find(a => a.name === action.name);
+      const power = (abilityCard as any).powers.find((a: Power) => a.name === action.name);
       if (power === undefined) {
         throw new GameError(GameMessage.UNKNOWN_POWER);
       }
@@ -128,7 +145,7 @@ export function playerTurnReducer(store: StoreLike, state: State, action: Action
         throw new GameError(GameMessage.CANNOT_USE_POWER);
       }
 
-      state = store.reduceEffect(state, new UsePowerEffect(player, power, pokemonCard));
+      state = store.reduceEffect(state, new UsePowerEffect(player, power, abilityCard));
       return state;
     }
 

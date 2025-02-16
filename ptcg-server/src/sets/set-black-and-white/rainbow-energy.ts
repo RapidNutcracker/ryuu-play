@@ -19,10 +19,10 @@ export class RainbowEnergy extends EnergyCard {
   public fullName = 'Rainbow Energy SUM';
 
   public text =
-    'This card provides C Energy. While in play, this card provides every ' +
+    'This card provides {C} Energy. While in play, this card provides every ' +
     'type of Energy but provides only 1 Energy at a time. When you attach ' +
-    'this card from your hand to 1 of your Pokemon, put 1 damage counter ' +
-    'on that Pokemon.';
+    'this card from your hand to 1 of your Pokémon, put 1 damage counter ' +
+    'on that Pokémon.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
 

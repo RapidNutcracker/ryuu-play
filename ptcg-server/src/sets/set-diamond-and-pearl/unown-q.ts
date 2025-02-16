@@ -20,7 +20,7 @@ function* usePower(next: Function, store: StoreLike, state: State, self: UnownQ,
     throw new GameError(GameMessage.ILLEGAL_ACTION);
   }
 
-  // Check if player has a Pokemon without tool, other than UnownQ
+  // Check if player has a Pokémon without tool, other than UnownQ
   let hasPokemonWithoutTool = false;
   const blocked: CardTarget[] = [];
   player.forEachPokemon(PlayerType.BOTTOM_PLAYER, (cardList, card, target) => {
@@ -44,7 +44,7 @@ function* usePower(next: Function, store: StoreLike, state: State, self: UnownQ,
     { allowCancel: true, blocked }
   ), targets => {
     if (targets && targets.length > 0) {
-      // Attach Unown Q as a Pokemon Tool
+      // Attach Unown Q as a Pokémon Tool
       player.bench[benchIndex].moveCardTo(pokemonCard, targets[0]);
       targets[0].tool = pokemonCard;
 
@@ -73,8 +73,8 @@ export class UnownQ extends PokemonCard {
     powerType: PowerType.POKEPOWER,
     text: 'Once during your turn (before your attack), if Unown Q is on your ' +
       'Bench, you may discard all cards attached to Unown Q and attach Unown Q ' +
-      'to 1 of your Pokemon as Pokemon Tool card. As long as Unown Q ' +
-      'is attached to a Pokemon, you pay C less to retreat that Pokemon.'
+      'to 1 of your Pokémon as Pokémon Tool card. As long as Unown Q ' +
+      'is attached to a Pokémon, you pay {C} less to retreat that Pokémon.'
   }];
 
   public attacks = [

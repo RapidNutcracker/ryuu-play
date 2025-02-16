@@ -15,7 +15,7 @@ function* useStadium(next: Function, store: StoreLike, state: State, effect: Use
     throw new GameError(GameMessage.CANNOT_USE_STADIUM);
   }
 
-  // Check deck for ANY Stage 1 and Stage 2 Pokemon
+  // Check deck for ANY Stage 1 and Stage 2 Pokémon
   const stage1: PokemonCard[] = player.deck.cards.filter(card =>
     card instanceof PokemonCard &&
     card.stage === Stage.STAGE_1
@@ -25,17 +25,17 @@ function* useStadium(next: Function, store: StoreLike, state: State, effect: Use
     card.stage === Stage.STAGE_2
   ) as PokemonCard[];
 
-  // If there are no Stage 1 Pokemon in the deck, we cannot use Grand Tree
+  // If there are no Stage 1 Pokémon in the deck, we cannot use Grand Tree
   if (stage1.length === 0) {
     throw new GameError(GameMessage.CANNOT_USE_STADIUM);
   }
 
-  // Check all Pokemon Slots...
+  // Check all Pokémon Slots...
   const basicPokemonThatCannotEvolve: CardTarget[] = [];
   let hasBasicPokemonThatCanEvolve: boolean = false;
   player.forEachPokemon(PlayerType.BOTTOM_PLAYER, (list, card, target) => {
 
-    // If the Slot is a Basic Pokemon and there is a Stage 1 Pokemon in the deck that it can evolve into
+    // If the Slot is a Basic Pokémon and there is a Stage 1 Pokémon in the deck that it can evolve into
     if (card.stage === Stage.BASIC && stage1.some(s => s.evolvesFrom === card.name)) {
 
       // Check that the Basic is eligible to evolve based on turn number
@@ -52,14 +52,14 @@ function* useStadium(next: Function, store: StoreLike, state: State, effect: Use
     }
   });
 
-  // If the player has no Basic Pokemon that can evolve
+  // If the player has no Basic Pokémon that can evolve
   if (!hasBasicPokemonThatCanEvolve) {
     throw new GameError(GameMessage.CANNOT_USE_STADIUM);
   }
 
   player.stadiumUsedTurn = state.turn;
 
-  // Select the Pokemon Slot of the Basic Pokemon
+  // Select the Pokémon Slot of the Basic Pokémon
   let selectedPokemonSlot: PokemonCardList[] = [];
   yield store.prompt(state, new ChoosePokemonPrompt(
     player.id,
@@ -77,7 +77,7 @@ function* useStadium(next: Function, store: StoreLike, state: State, effect: Use
     return state; // canceled by user
   }
 
-  // Get the Basic Pokemon Card from the Slot
+  // Get the Basic Pokémon Card from the Slot
   const basicPokemonCard = selectedPokemonSlot[0].getPokemonCard();
   if (basicPokemonCard === undefined) {
     return state; // invalid target?
@@ -108,7 +108,7 @@ function* useStadium(next: Function, store: StoreLike, state: State, effect: Use
 
   if (selectedStage1Pokemon.length === 0) {
     store.log(state, GameLog.LOG_TEXT, {
-      text: 'Failed to select Stage 1 Pokemon'
+      text: 'Failed to select Stage 1 Pokémon'
     });
 
     // player canceled?
@@ -132,7 +132,7 @@ function* useStadium(next: Function, store: StoreLike, state: State, effect: Use
     yield store.waitPrompt(state, () => next());
   }
 
-  // Find if there are Stage 2 Pokemon in the Deck that are from the same line
+  // Find if there are Stage 2 Pokémon in the Deck that are from the same line
   let hasStage2Pokemon: boolean = stage2.some(s => s.evolvesFrom === stage1PokemonCard.name);
 
   // If not, we're done. Shuffle Deck and return.
@@ -160,7 +160,7 @@ function* useStadium(next: Function, store: StoreLike, state: State, effect: Use
     });
   }
 
-  // Build block list of Stage 2 Pokemon that do not evolve from the Stage 1
+  // Build block list of Stage 2 Pokémon that do not evolve from the Stage 1
   const pokemonThatDoNotEvolvedFromSelectedStage1: number[] = [];
   player.deck.cards.forEach((c, index) => {
     if (c instanceof PokemonCard && c.stage === Stage.STAGE_2) {
@@ -170,7 +170,7 @@ function* useStadium(next: Function, store: StoreLike, state: State, effect: Use
     }
   });
 
-  // Select the Stage 2 Pokemon
+  // Select the Stage 2 Pokémon
   let selectedStage2Pokemon: Card[] = [];
   yield store.prompt(state, new ChooseCardsPrompt(
     player.id,

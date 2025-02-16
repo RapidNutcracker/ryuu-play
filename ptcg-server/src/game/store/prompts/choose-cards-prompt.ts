@@ -49,7 +49,7 @@ export class ChooseCardsPrompt extends Prompt<Card[]> {
       differentTypes: false,
       maxPokemons: undefined,
       maxEnergies: undefined,
-      maxTrainers: undefined
+      maxTrainers: undefined,
     }, options);
   }
 
@@ -82,6 +82,19 @@ export class ChooseCardsPrompt extends Prompt<Card[]> {
       }
     }
 
+    if (this.options.cardMap) {
+      const filters: Partial<FilterType>[] = JSON.parse(JSON.stringify(this.options.cardMap));
+      return result.every(card => {
+        const matchingFilterIndex = filters.findIndex(filter => this.matchesFilter(card, filter));
+        if (matchingFilterIndex > -1) {
+          filters.splice(matchingFilterIndex, 1);
+          return true;
+        } else {
+          return false;
+        }
+      });
+    }
+
     // Check if 'max' restrictions are valid
     const countMap: { [key: number]: number } = {};
     for (const card of result) {
@@ -98,7 +111,7 @@ export class ChooseCardsPrompt extends Prompt<Card[]> {
     const blocked = this.options.blocked;
     return result.every(r => {
       const index = this.cards.cards.indexOf(r);
-      return index !== -1 && !blocked.includes(index) && this.matchesFilter(r);
+      return index !== -1 && !blocked.includes(index) && this.matchesFilter(r, this.filter);
     });
   }
 
@@ -114,10 +127,10 @@ export class ChooseCardsPrompt extends Prompt<Card[]> {
     return CardType.NONE;
   }
 
-  private matchesFilter(card: Card): boolean {
-    for (const key in this.filter) {
-      if (Object.prototype.hasOwnProperty.call(this.filter, key)) {
-        if ((this.filter as any)[key] !== (card as any)[key]) {
+  private matchesFilter(card: Card, filter: FilterType): boolean {
+    for (const key in filter) {
+      if (Object.prototype.hasOwnProperty.call(filter, key)) {
+        if ((filter as any)[key] !== (card as any)[key]) {
           return false;
         }
       }

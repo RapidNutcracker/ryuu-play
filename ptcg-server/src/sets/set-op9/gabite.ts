@@ -27,20 +27,20 @@ export class Gabite extends PokemonCard {
     value: 20
   }];
 
-  public retreat = [ CardType.COLORLESS ];
+  public retreat = [CardType.COLORLESS];
 
   public attacks = [{
     name: 'Burrow',
-    cost: [ CardType.COLORLESS ],
+    cost: [CardType.COLORLESS],
     damage: 0,
     text: 'Flip a coin. If heads, prevent all damage done to Gabite by ' +
       'attacks during your opponent\'s next turn.'
   }, {
     name: 'Distorted Wave',
-    cost: [ CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS ],
+    cost: [CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS],
     damage: 60,
-    text: 'Before doing damage, remove 2 damage counters from the Defending ' +
-      'Pokemon.'
+    text:
+      'Before doing damage, remove 2 damage counters from the Defending Pokémon.'
   }];
 
   public set: string = 'OP9';

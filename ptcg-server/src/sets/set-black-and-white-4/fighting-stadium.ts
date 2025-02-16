@@ -21,8 +21,8 @@ export class FightingStadium extends TrainerCard {
   public fullName: string = 'Fighting Stadium FFI';
 
   public text: string =
-    'The attacks of each F Pokemon in play (both yours and your opponent\'s) ' +
-    'do 20 more damage to the Defending Pokemon-EX (before applying Weakness ' +
+    'The attacks of each {F} Pokémon in play (both yours and your opponent\'s) ' +
+    'do 20 more damage to the Defending Pokémon-EX (before applying Weakness ' +
     'and Resistance).';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
@@ -35,13 +35,13 @@ export class FightingStadium extends TrainerCard {
         return state;
       }
 
-      // Not attacking Pokemon EX
+      // Not attacking Pokémon EX
       const targetCard = effect.target.getPokemonCard();
-      if (!targetCard || !targetCard.tags.includes(CardTag.POKEMON_EX)) {
+      if (!targetCard || !targetCard.tags.includes(CardTag.EX)) {
         return state;
       }
 
-      // Attack not made by the Fighting Pokemon
+      // Attack not made by the Fighting Pokémon
       const checkPokemonType = new CheckPokemonTypeEffect(effect.source);
       store.reduceEffect(state, checkPokemonType);
       if (!checkPokemonType.cardTypes.includes(CardType.FIGHTING)) {

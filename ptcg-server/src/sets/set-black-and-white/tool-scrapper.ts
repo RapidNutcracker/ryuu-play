@@ -53,7 +53,7 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     return state;
   }
 
-  // Discard trainer only when user selected a Pokemon
+  // Discard trainer only when user selected a Pokémon
   player.hand.moveCardTo(effect.trainerCard, player.discard);
 
   targets.forEach(target => {
@@ -78,7 +78,7 @@ export class ToolScrapper extends TrainerCard {
   public fullName: string = 'Tool Scrapper DRX';
 
   public text: string =
-    'Choose up to 2 Pokemon Tool cards attached to Pokemon in play (yours or ' +
+    'Choose up to 2 Pokémon Tool cards attached to Pokémon in play (yours or ' +
     'your opponent\'s) and discard them.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {

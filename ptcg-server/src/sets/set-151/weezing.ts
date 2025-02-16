@@ -14,7 +14,7 @@ export class Weezing extends PokemonCard {
 
   public evolvesFrom: string = 'Koffing';
 
-  public cardType: CardType = CardType.DARK;
+  public cardType: CardType = CardType.DARKNESS;
 
   public hp: number = 60;
 
@@ -52,7 +52,7 @@ export class Weezing extends PokemonCard {
       const player = effect.player;
       const opponent = StateUtils.getOpponent(state, player);
 
-      // Weezing is not active Pokemon
+      // Weezing is not active Pokémon
       if (player.active.getPokemonCard() !== this) {
         return state;
       }

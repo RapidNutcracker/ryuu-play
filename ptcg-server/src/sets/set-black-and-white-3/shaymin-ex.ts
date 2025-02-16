@@ -8,7 +8,7 @@ import { PowerType, StoreLike, State, ConfirmPrompt, GameMessage } from '../../g
 
 export class ShayminEx extends PokemonCard {
 
-  public tags = [ CardTag.POKEMON_EX ];
+  public tags = [ CardTag.EX ];
 
   public stage: Stage = Stage.BASIC;
 
@@ -25,7 +25,7 @@ export class ShayminEx extends PokemonCard {
   public powers = [{
     name: 'Set Up',
     powerType: PowerType.ABILITY,
-    text: 'When you put this Pokemon from your hand onto your Bench, ' +
+    text: 'When you put this Pokémon from your hand onto your Bench, ' +
       'you may draw cards until you have 6 cards in your hand.'
   }];
 
@@ -34,7 +34,7 @@ export class ShayminEx extends PokemonCard {
       name: 'Sky Return',
       cost: [ CardType.COLORLESS, CardType.COLORLESS ],
       damage: 30,
-      text: 'Return this Pokemon and all cards attached to it to your hand.'
+      text: 'Return this Pokémon and all cards attached to it to your hand.'
     }
   ];
 

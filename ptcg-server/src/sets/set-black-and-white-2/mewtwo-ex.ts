@@ -10,7 +10,7 @@ import { GameMessage } from '../../game/game-message';
 
 export class MewtwoEx extends PokemonCard {
 
-  public tags = [ CardTag.POKEMON_EX ];
+  public tags = [ CardTag.EX ];
 
   public stage: Stage = Stage.BASIC;
 
@@ -28,12 +28,12 @@ export class MewtwoEx extends PokemonCard {
       cost: [ CardType.COLORLESS, CardType.COLORLESS ],
       damage: 20,
       text: 'Does 20 damage times the amount of Energy attached to this ' +
-        'Pokemon and the Defending Pokemon.'
+        'Pokémon and the Defending Pokémon.'
     }, {
       name: 'Psydrive',
       cost: [ CardType.PSYCHIC, CardType.PSYCHIC, CardType.COLORLESS ],
       damage: 120,
-      text: 'Discard an Energy attached to this Pokemon.'
+      text: 'Discard an Energy attached to this Pokémon.'
     },
   ];
 

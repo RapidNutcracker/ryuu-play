@@ -58,7 +58,7 @@ function* useEmeraldSlash(next: Function, store: StoreLike, state: State,
 
 export class VirizionEx extends PokemonCard {
 
-  public tags = [ CardTag.POKEMON_EX ];
+  public tags = [ CardTag.EX ];
 
   public stage: Stage = Stage.BASIC;
 
@@ -75,9 +75,9 @@ export class VirizionEx extends PokemonCard {
   public powers = [{
     name: 'Verdant Wind',
     powerType: PowerType.ABILITY,
-    text: 'Each of your Pokemon that has any G Energy attached to it can\'t ' +
+    text: 'Each of your Pokémon that has any {G} Energy attached to it can\'t ' +
     'be affected by any Special Conditions. (Remove any Special Conditions ' +
-    'affecting those Pokemon.)'
+    'affecting those Pokémon.)'
   }];
 
   public attacks = [
@@ -85,8 +85,8 @@ export class VirizionEx extends PokemonCard {
       name: 'Emerald Slash',
       cost: [ CardType.GRASS, CardType.COLORLESS ],
       damage: 50,
-      text: 'You may search your deck for 2 G Energy cards and attach them ' +
-        'to 1 of your Benched Pokemon. Shuffle your deck afterward.'
+      text: 'You may search your deck for 2 {G} Energy cards and attach them ' +
+        'to 1 of your Benched Pokémon. Shuffle your deck afterward.'
     }
   ];
 

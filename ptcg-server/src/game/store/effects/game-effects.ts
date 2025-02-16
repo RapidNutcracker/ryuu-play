@@ -35,9 +35,9 @@ export class UsePowerEffect implements Effect {
   public preventDefault = false;
   public player: Player;
   public power: Power;
-  public card: PokemonCard;
+  public card: Card;
 
-  constructor(player: Player, power: Power, card: PokemonCard) {
+  constructor(player: Player, power: Power, card: Card) {
     this.player = player;
     this.power = power;
     this.card = card;
@@ -49,9 +49,9 @@ export class PowerEffect implements Effect {
   public preventDefault = false;
   public player: Player;
   public power: Power;
-  public card: PokemonCard;
+  public card: Card;
 
-  constructor(player: Player, power: Power, card: PokemonCard) {
+  constructor(player: Player, power: Power, card: Card) {
     this.player = player;
     this.power = power;
     this.card = card;
@@ -63,9 +63,9 @@ export class UseAttackEffect implements Effect {
   public preventDefault = false;
   public player: Player;
   public attack: Attack;
-  public card: PokemonCard;
+  public card: Card;
 
-  constructor(player: Player, attack: Attack, card: PokemonCard) {
+  constructor(player: Player, attack: Attack, card: Card) {
     this.player = player;
     this.attack = attack;
     this.card = card;
@@ -102,7 +102,7 @@ export class AttackEffect implements Effect {
   }
 }
 
-// how many prizes when target Pokemon is KO
+// how many prizes when target Pokémon is KO
 export class KnockOutEffect implements Effect {
   readonly type: string = GameEffects.KNOCK_OUT_EFFECT;
   public preventDefault = false;

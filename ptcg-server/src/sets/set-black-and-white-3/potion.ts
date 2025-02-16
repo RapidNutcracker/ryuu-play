@@ -47,11 +47,11 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     return state;
   }
 
-  // Discard trainer only when user selected a Pokemon
+  // Discard trainer only when user selected a Pokémon
   player.hand.moveCardTo(effect.trainerCard, player.discard);
 
   targets.forEach(target => {
-    // Heal Pokemon
+    // Heal Pokémon
     const healEffect = new HealEffect(player, target, 30);
     store.reduceEffect(state, healEffect);
   });
@@ -70,7 +70,7 @@ export class Potion extends TrainerCard {
   public fullName: string = 'Potion BC';
 
   public text: string =
-    'Heal 30 damage from 1 of your Pokemon.';
+    'Heal 30 damage from 1 of your Pokémon.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {

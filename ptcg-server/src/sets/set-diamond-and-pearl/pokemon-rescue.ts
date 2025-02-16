@@ -27,9 +27,9 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     { min: 1, max: 1, allowCancel: true }
   ), selected => {
     if (selected && selected.length > 0) {
-      // Discard trainer only when user selected a Pokemon
+      // Discard trainer only when user selected a Pokémon
       player.hand.moveCardTo(effect.trainerCard, player.discard);
-      // Recover discarded Pokemon
+      // Recover discarded Pokémon
       player.discard.moveCardsTo(selected, player.hand);
     }
   });
@@ -41,12 +41,12 @@ export class PokemonRescue extends TrainerCard {
 
   public set: string = 'DP';
 
-  public name: string = 'Pokemon Rescue';
+  public name: string = 'Pokémon Rescue';
 
-  public fullName: string = 'Pokemon Rescue PL';
+  public fullName: string = 'Pokémon Rescue PL';
 
   public text: string =
-    'Search your discard pile for a Pokemon, show it to your opponent, ' +
+    'Search your discard pile for a Pokémon, show it to your opponent, ' +
     'and put it into your hand.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {

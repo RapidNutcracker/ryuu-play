@@ -116,7 +116,7 @@ export class Pichu extends PokemonCard {
       name: 'Find a Friend',
       cost: [ ],
       damage: 0,
-      text: 'Flip a coin. If heads, search your deck for a Pokemon, ' +
+      text: 'Flip a coin. If heads, search your deck for a Pokémon, ' +
         'show it to your opponent, and put it into your hand. ' +
         'Shuffle your deck afterward.'
     }

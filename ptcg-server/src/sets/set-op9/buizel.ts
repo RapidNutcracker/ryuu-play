@@ -20,7 +20,7 @@ function* useWhirlpool(next: Function, store: StoreLike, state: State,
   const player = effect.player;
   const opponent = StateUtils.getOpponent(state, player);
 
-  // Defending Pokemon has no energy cards attached
+  // Defending Pokémon has no energy cards attached
   if (!opponent.active.cards.some(c => c instanceof EnergyCard)) {
     return state;
   }
@@ -67,19 +67,20 @@ export class Buizel extends PokemonCard {
     value: 10
   }];
 
-  public retreat = [ CardType.COLORLESS ];
+  public retreat = [CardType.COLORLESS];
 
   public attacks = [{
     name: 'Whirlpool',
-    cost: [ CardType.WATER ],
+    cost: [CardType.WATER],
     damage: 0,
-    text: 'Flip a coin. If heads, discard an Energy attached to ' +
-      'the Defending Pokemon.'
+    text:
+      'Flip a coin. If heads, discard an Energy attached to the Defending Pokémon.'
   }, {
     name: 'Super Fast',
-    cost: [ CardType.WATER, CardType.WATER ],
+    cost: [CardType.WATER, CardType.WATER],
     damage: 30,
-    text: 'If you have Pachirisu in play, flip a coin. If heads, prevent all ' +
+    text:
+      'If you have Pachirisu in play, flip a coin. If heads, prevent all ' +
       'effects of an attack, including damage, done to Buizel during your ' +
       'opponent\'s next turn.'
   }];

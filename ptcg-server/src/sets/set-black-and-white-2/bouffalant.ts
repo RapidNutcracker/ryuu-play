@@ -23,7 +23,7 @@ export class Bouffalant extends PokemonCard {
   public powers = [{
     name: 'Bouffer',
     powerType: PowerType.ABILITY,
-    text: 'Any damage done to this Pokemon by attacks is reduced by 20 ' +
+    text: 'Any damage done to this Pokémon by attacks is reduced by 20 ' +
       '(after applying Weakness and Resistance).'
   }];
 
@@ -31,7 +31,7 @@ export class Bouffalant extends PokemonCard {
     name: 'Gold Breaker',
     cost: [ CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS ],
     damage: 60,
-    text: 'If the Defending Pokemon is a Pokemon-EX, ' +
+    text: 'If the Defending Pokémon is a Pokémon-EX, ' +
       'this attack does 60 more damage.'
   }];
 
@@ -48,7 +48,7 @@ export class Bouffalant extends PokemonCard {
       const opponent = StateUtils.getOpponent(state, player);
 
       const defending = opponent.active.getPokemonCard();
-      if (defending && defending.tags.includes(CardTag.POKEMON_EX)) {
+      if (defending && defending.tags.includes(CardTag.EX)) {
         effect.damage += 60;
       }
     }

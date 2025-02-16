@@ -19,9 +19,9 @@ export class RockGuard extends TrainerCard {
   public fullName: string = 'Rock Guard PLF';
 
   public text: string =
-    'If the Pokemon this card is attached to is your Active Pokemon and is ' +
-    'damaged by an opponent\'s attack (even if that Pokemon is Knocked Out), ' +
-    'put 6 damage counters on the Attacking Pokemon.';
+    'If the Pokémon this card is attached to is your Active Pokémon and is ' +
+    'damaged by an opponent\'s attack (even if that Pokémon is Knocked Out), ' +
+    'put 6 damage counters on the Attacking Pokémon.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof AfterDamageEffect && effect.target.tool === this) {

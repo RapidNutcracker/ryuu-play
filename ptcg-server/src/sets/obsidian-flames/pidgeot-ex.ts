@@ -49,14 +49,6 @@ function* useQuickSearch(next: Function, store: StoreLike, state: State, self: P
 
 export class PidgeotEx extends PokemonCard {
 
-  /**
-   * Ability ⇢ Quick Search
-Once during your turn, you may search your deck for a card and put it into your hand. Then, shuffle your deck. You can’t use more than 1 Quick Search Ability each turn.
-
-{C}{C} → Blustery Wind : 120
-You may discard a Stadium in play.
-
-   */
   public id: number = 164;
 
   public stage: Stage = Stage.STAGE_2;

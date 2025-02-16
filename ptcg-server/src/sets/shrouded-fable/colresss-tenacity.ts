@@ -8,7 +8,7 @@ import { ShufflePrompt } from '../../game/store/prompts/shuffle-prompt';
 import { Card, ChooseCardsPrompt, EnergyCard, GameError, GameMessage, ShowCardsPrompt, StateUtils } from '../../game';
 
 
-function* playCard(next: Function, store: StoreLike, state: State, self: ColresssTenacity, effect: TrainerEffect): IterableIterator<State> {
+function* playCard(next: Function, store: StoreLike, state: State, effect: TrainerEffect): IterableIterator<State> {
   const player = effect.player;
   const opponent = StateUtils.getOpponent(state, player);
 
@@ -31,11 +31,12 @@ function* playCard(next: Function, store: StoreLike, state: State, self: Colress
     {},
     { min: 1, max: 2, allowCancel: false, blocked, maxEnergies: 1, maxTrainers: 1 }
   ), selected => {
-    cards = selected || 0;
+    cards = selected || [];
     next();
   });
 
   if (cards.length === 0) {
+    player.supporter.moveCardTo(effect.trainerCard, player.discard);
     return store.prompt(state, new ShufflePrompt(player.id), order => {
       player.deck.applyOrder(order);
     });
@@ -47,7 +48,7 @@ function* playCard(next: Function, store: StoreLike, state: State, self: Colress
     cards
   ), () => next());
 
-  player.supporter.moveCardTo(self, player.discard);
+  player.supporter.moveCardTo(effect.trainerCard, player.discard);
   player.deck.moveCardsTo(cards, player.hand);
 
   return store.prompt(state, new ShufflePrompt(player.id), order => {
@@ -76,7 +77,7 @@ export class ColresssTenacity extends TrainerCard {
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {
-      const generator = playCard(() => generator.next(), store, state, this, effect);
+      const generator = playCard(() => generator.next(), store, state, effect);
       return generator.next().value;
     }
 

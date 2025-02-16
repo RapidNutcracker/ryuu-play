@@ -29,12 +29,12 @@ export class Cobalion extends PokemonCard {
     cost: [CardType.METAL, CardType.COLORLESS],
     damage: 20,
     text: 'Does 20 more damage for each Energy attached to ' +
-      'the Defending Pokemon.'
+      'the Defending Pokémon.'
   }, {
     name: 'Iron Breaker',
     cost: [CardType.METAL, CardType.METAL, CardType.COLORLESS],
     damage: 80,
-    text: 'The Defending Pokemon can\'t attack during your opponent\'s ' +
+    text: 'The Defending Pokémon can\'t attack during your opponent\'s ' +
       'next turn.'
   }];
 

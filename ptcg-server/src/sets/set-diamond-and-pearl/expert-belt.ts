@@ -19,9 +19,9 @@ export class ExpertBelt extends TrainerCard {
   public fullName: string = 'Expert Belt A';
 
   public text: string =
-    'The Pokemon this card is attached to gets +20 HP and that Pokemon\'s ' +
-    'attacks do 20 more damage to your opponent\'s Active Pokemon (before ' +
-    'applying Weakness and Resistance). When the Pokemon this card is ' +
+    'The Pokémon this card is attached to gets +20 HP and that Pokémon\'s ' +
+    'attacks do 20 more damage to your opponent\'s Active Pokémon (before ' +
+    'applying Weakness and Resistance). When the Pokémon this card is ' +
     'attached to is Knocked Out, your opponent takes 1 more Prize card.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
@@ -36,7 +36,7 @@ export class ExpertBelt extends TrainerCard {
       }
     }
 
-    if (effect instanceof KnockOutEffect && effect.target.cards.includes(this)) {
+    if (effect instanceof KnockOutEffect && effect.target.tool === this) {
       effect.prizeCount += 1;
     }
 

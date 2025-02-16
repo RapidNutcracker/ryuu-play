@@ -34,7 +34,7 @@ export class BoardCardComponent {
     this.isPublic = value.isPublic;
     this.isFaceDown = value.isSecret || (!value.isPublic && !this.isOwner);
 
-    // Pokemon slot, init energies, tool, special conditions, etc.
+    // Pokémon slot, init energies, tool, special conditions, etc.
     if (value instanceof PokemonCardList) {
       this.initPokemonCardList(value);
       return;
@@ -85,6 +85,10 @@ export class BoardCardComponent {
     this.trainerCard = undefined;
     this.mainCard = cardList.getPokemonCard();
     this.trainerCard = cardList.tool;
+
+    if (cardList.energy !== undefined) {
+      this.energyCards.push(cardList.energy);
+    }
 
     for (const card of cardList.cards) {
       switch (card.superType) {

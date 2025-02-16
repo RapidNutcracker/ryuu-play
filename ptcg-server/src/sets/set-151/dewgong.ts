@@ -60,7 +60,7 @@ export class Dewgong extends PokemonCard {
         player.id,
         GameMessage.CHOOSE_POKEMON_TO_DAMAGE,
         PlayerType.TOP_PLAYER,
-        [SlotType.BENCH],
+        [SlotType.ACTIVE, SlotType.BENCH],
         { min: 2, max: 2, allowCancel: false }
       ), targets => {
         if (!targets || targets.length === 0) {

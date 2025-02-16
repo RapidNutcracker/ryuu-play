@@ -27,7 +27,7 @@ export class Chandelure extends PokemonCard {
 
   public hp: number = 130;
 
-  public weakness = [{ type: CardType.DARK }];
+  public weakness = [{ type: CardType.DARKNESS }];
 
   public retreat = [ CardType.COLORLESS, CardType.COLORLESS ];
 
@@ -35,16 +35,16 @@ export class Chandelure extends PokemonCard {
     name: 'Cursed Shadow',
     useWhenInPlay: true,
     powerType: PowerType.ABILITY,
-    text: 'Once during your turn (before attack), if this Pokemon is your ' +
-      'Active Pokemon, you may put 3 damage counters on your opponent\'s ' +
-      'Pokemon in any way you like.'
+    text: 'Once during your turn (before attack), if this Pokémon is your ' +
+      'Active Pokémon, you may put 3 damage counters on your opponent\'s ' +
+      'Pokémon in any way you like.'
   }];
 
   public attacks = [{
     name: 'Eerie Glow',
     cost: [ CardType.PSYCHIC, CardType.PSYCHIC, CardType.COLORLESS ],
     damage: 50,
-    text: 'The Defending Pokemon is now Burned and Confused.'
+    text: 'The Defending Pokémon is now Burned and Confused.'
   }];
 
   public set: string = 'BW3';

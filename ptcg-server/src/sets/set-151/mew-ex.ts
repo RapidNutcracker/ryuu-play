@@ -15,7 +15,7 @@ export class MewEx extends PokemonCard {
 
   public id: number = 151;
 
-  public tags = [CardTag.POKEMON_EX];
+  public tags = [CardTag.EX];
 
   public stage: Stage = Stage.BASIC;
 
@@ -23,7 +23,7 @@ export class MewEx extends PokemonCard {
 
   public hp: number = 180;
 
-  public weakness = [{ type: CardType.DARK }];
+  public weakness = [{ type: CardType.DARKNESS }];
 
   public resistance: Resistance[] = [{ type: CardType.FIGHTING, value: -30 }];
 

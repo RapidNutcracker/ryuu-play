@@ -29,8 +29,8 @@ export class Munna extends PokemonCard {
     useWhenInPlay: true,
     powerType: PowerType.ABILITY,
     text: 'Once during your turn (before your attack), you may flip a coin. ' +
-      'If heads, your opponent\'s Active Pokemon is now Asleep. ' +
-      'If tails, your Active Pokemon is now Asleep.'
+      'If heads, your opponent\'s Active Pokémon is now Asleep. ' +
+      'If tails, your Active Pokémon is now Asleep.'
   }];
 
   public attacks = [{

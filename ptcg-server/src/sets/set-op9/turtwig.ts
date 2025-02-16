@@ -38,7 +38,7 @@ export class Turtwig extends PokemonCard {
     cost: [ CardType.GRASS, CardType.COLORLESS, CardType.COLORLESS ],
     damage: 40,
     text: 'If you have Chimchar in play, this attack does 40 damage plus 20 ' +
-      'more damage and the Defending Pokemon is now Burned.'
+      'more damage and the Defending Pokémon is now Burned.'
   }];
 
   public set: string = 'OP9';

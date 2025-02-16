@@ -30,7 +30,7 @@ function* useAscension(next: Function, store: StoreLike, state: State,
   });
 
   if (cards.length > 0) {
-    // Evolve Pokemon
+    // Evolve Pokémon
     player.deck.moveCardsTo(cards, player.active);
     player.active.clearEffects();
     player.active.pokemonPlayedTurn = state.turn;
@@ -45,7 +45,7 @@ export class Zorua2 extends PokemonCard {
 
   public stage: Stage = Stage.BASIC;
 
-  public cardType: CardType = CardType.DARK;
+  public cardType: CardType = CardType.DARKNESS;
 
   public hp: number = 50;
 
@@ -57,10 +57,10 @@ export class Zorua2 extends PokemonCard {
 
   public attacks = [{
     name: 'Ascension',
-    cost: [ CardType.DARK ],
+    cost: [ CardType.DARKNESS ],
     damage: 0,
-    text: 'Search your deck for a card that evolves from this Pokemon ' +
-      'and put it onto this Pokemon. (This counts as evolving this Pokemon.) ' +
+    text: 'Search your deck for a card that evolves from this Pokémon ' +
+      'and put it onto this Pokémon. (This counts as evolving this Pokémon.) ' +
       'Shuffle your deck afterward.'
   }, {
     name: 'Scratch',

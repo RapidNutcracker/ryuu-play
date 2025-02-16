@@ -25,7 +25,7 @@ import { PlayPokemonEffect } from '../effects/play-card-effects';
 import { PokemonCard } from '../card/pokemon-card';
 
 
-function putStartingPokemonsAndPrizes(player: Player, cards: Card[], store: StoreLike, state: State): void {
+function putStartingPokemonAndPrizes(player: Player, cards: Card[], store: StoreLike, state: State): void {
   if (cards.length === 0) {
     return;
   }
@@ -34,7 +34,7 @@ function putStartingPokemonsAndPrizes(player: Player, cards: Card[], store: Stor
   for (let i = 1; i < cards.length; i++) {
     state = store.reduceEffect(state, new PlayPokemonEffect(player, cards[i] as PokemonCard, player.bench[i - 1]));
   }
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < state.rules.prizeCount; i++) {
     player.deck.moveTo(player.prizes[i], 1);
   }
 }
@@ -99,13 +99,13 @@ function* setupGame(next: Function, store: StoreLike, state: State): IterableIte
   }
 
   yield store.prompt(state, [
-    new ChooseCardsPrompt(player.id, GameMessage.CHOOSE_STARTING_POKEMONS,
+    new ChooseCardsPrompt(player.id, GameMessage.CHOOSE_STARTING_POKEMON,
       player.hand, basicPokemon, chooseCardsOptions),
-    new ChooseCardsPrompt(opponent.id, GameMessage.CHOOSE_STARTING_POKEMONS,
+    new ChooseCardsPrompt(opponent.id, GameMessage.CHOOSE_STARTING_POKEMON,
       opponent.hand, basicPokemon, chooseCardsOptions)
   ], choice => {
-    putStartingPokemonsAndPrizes(player, choice[0], store, state);
-    putStartingPokemonsAndPrizes(opponent, choice[1], store, state);
+    putStartingPokemonAndPrizes(player, choice[0], store, state);
+    putStartingPokemonAndPrizes(opponent, choice[1], store, state);
     next();
   });
 
@@ -122,7 +122,7 @@ function* setupGame(next: Function, store: StoreLike, state: State): IterableIte
     });
   }
 
-  // Set initial Pokemon Played Turn, so players can't evolve during first turn
+  // Set initial Pokémon Played Turn, so players can't evolve during first turn
   const first = state.players[state.activePlayer];
   const second = state.players[state.activePlayer ? 0 : 1];
   first.forEachPokemon(PlayerType.BOTTOM_PLAYER, cardList => { cardList.pokemonPlayedTurn = 1; });
@@ -131,19 +131,19 @@ function* setupGame(next: Function, store: StoreLike, state: State): IterableIte
   return initNextTurn(store, state);
 }
 
-function createPlayer(id: number, name: string): Player {
+function createPlayer(id: number, name: string, prizeCount: number = 6): Player {
   const player = new Player();
   player.id = id;
   player.name = name;
 
-  // Empty prizes, places for 6 cards
-  for (let i = 0; i < 6; i++) {
+  // Empty prizes, places for (default: 6) cards
+  for (let i = 0; i < prizeCount; i++) {
     const prize = new CardList();
     prize.isSecret = true;
     player.prizes.push(prize);
   }
 
-  // Empty bench, places for 5 pokemons
+  // Empty bench, places for 5 pokemon
   for (let i = 0; i < 5; i++) {
     const bench = new PokemonCardList();
     bench.isPublic = true;
@@ -175,7 +175,7 @@ export function setupPhaseReducer(store: StoreLike, state: State, action: Action
         throw new GameError(GameMessage.INVALID_DECK);
       }
 
-      const player = createPlayer(action.clientId, action.name);
+      const player = createPlayer(action.clientId, action.name, state.rules.prizeCount);
       player.deck = CardList.fromList(action.deck);
       player.deck.isSecret = true;
       player.deck.cards.forEach(c => {
@@ -203,7 +203,7 @@ export function setupPhaseReducer(store: StoreLike, state: State, action: Action
         throw new GameError(GameMessage.ALREADY_PLAYING);
       }
 
-      const player = createPlayer(action.clientId, action.name);
+      const player = createPlayer(action.clientId, action.name, state.rules.prizeCount);
       state.players.push(player);
 
       state = store.prompt(state, new InvitePlayerPrompt(

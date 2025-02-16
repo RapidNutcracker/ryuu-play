@@ -11,7 +11,7 @@ import { PlayItemEffect } from '../../game/store/effects/play-card-effects';
 
 export class SeismitoadEx extends PokemonCard {
 
-  public tags = [ CardTag.POKEMON_EX ];
+  public tags = [ CardTag.EX ];
 
   public stage: Stage = Stage.BASIC;
 
@@ -34,8 +34,8 @@ export class SeismitoadEx extends PokemonCard {
       name: 'Grenade Hammer',
       cost: [ CardType.WATER, CardType.WATER, CardType.COLORLESS ],
       damage: 130,
-      text: 'This attack does 30 damage to 2 of your Benched Pokemon. ' +
-        '(Don\'t apply Weakness and Resistance for Benched Pokemon.)'
+      text: 'This attack does 30 damage to 2 of your Benched Pokémon. ' +
+        '(Don\'t apply Weakness and Resistance for Benched Pokémon.)'
     },
   ];
 

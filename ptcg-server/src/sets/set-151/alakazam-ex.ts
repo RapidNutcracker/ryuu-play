@@ -9,7 +9,7 @@ export class AlakazamEx extends PokemonCard {
 
   public id: number = 65;
 
-  public tags: string[] = [CardTag.POKEMON_EX];
+  public tags: string[] = [CardTag.EX];
 
   public stage: Stage = Stage.STAGE_2;
 
@@ -19,7 +19,7 @@ export class AlakazamEx extends PokemonCard {
 
   public hp: number = 310;
 
-  public weakness = [{ type: CardType.DARK }];
+  public weakness = [{ type: CardType.DARKNESS }];
 
   public resistance = [{ type: CardType.FIGHTING, value: -30 }];
 

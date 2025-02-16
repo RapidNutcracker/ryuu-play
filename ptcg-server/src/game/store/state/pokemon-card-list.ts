@@ -22,10 +22,12 @@ export class PokemonCardList extends CardList {
   // we must remember, which card acts as a pokemon tool.
   public tool: Card | undefined;
 
+  public energy: Card | undefined;
+
   public getPokemons(): PokemonCard[] {
     const result: PokemonCard[] = [];
     for (const card of this.cards) {
-      if (card.superType === SuperType.POKEMON && card !== this.tool) {
+      if (card.superType === SuperType.POKEMON && card !== this.tool && card !== this.energy) {
         result.push(card as PokemonCard);
       }
     }
@@ -57,6 +59,9 @@ export class PokemonCardList extends CardList {
     }
     if (this.tool && !this.cards.includes(this.tool)) {
       this.tool = undefined;
+    }
+    if (this.energy && !this.cards.includes(this.energy)) {
+      this.energy = undefined;
     }
   }
 

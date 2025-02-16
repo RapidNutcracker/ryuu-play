@@ -31,8 +31,8 @@ export class Accelgor extends PokemonCard {
     name: 'Deck and Cover',
     cost: [ CardType.COLORLESS, CardType.COLORLESS ],
     damage: 50,
-    text: 'The Defending Pokemon is now Paralyzed and Poisoned. Shuffle this ' +
-      'Pokemon and all cards attached to it into your deck.'
+    text: 'The Defending Pokémon is now Paralyzed and Poisoned. Shuffle this ' +
+      'Pokémon and all cards attached to it into your deck.'
   }];
 
   public set: string = 'BW2';

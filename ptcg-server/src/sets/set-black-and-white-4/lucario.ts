@@ -31,8 +31,8 @@ export class Lucario extends PokemonCard {
       name: 'Fight Alone',
       cost: [ CardType.METAL, CardType.COLORLESS ],
       damage: 30,
-      text: 'If you have fewer Pokemon in play than your opponent, this ' +
-        'attack does 60 more damage for each Pokemon fewer you have in play.'
+      text: 'If you have fewer Pokémon in play than your opponent, this ' +
+        'attack does 60 more damage for each Pokémon fewer you have in play.'
     },
   ];
 

@@ -29,7 +29,7 @@ export class CardList {
     if (this.cards.length !== order.length) {
       return;
     }
-    // Contains all elements exacly one time
+    // Contains all elements exactly one time
     const orderCopy = order.slice();
     orderCopy.sort((a, b) => a - b);
     for (let i = 0; i < orderCopy.length; i++) {
@@ -44,22 +44,30 @@ export class CardList {
     }
   }
 
-  public moveTo(destination: CardList, count?: number): void {
+  public moveTo(destination: CardList, count?: number, toFront: boolean = false): void {
     if (count === undefined) {
       count = this.cards.length;
     }
 
     count = Math.min(count, this.cards.length);
     const cards = this.cards.splice(0, count);
-    destination.cards.push(...cards);
+    if (toFront) {
+      destination.cards.unshift(...cards);
+    } else {
+      destination.cards.push(...cards);
+    }
   }
 
-  public moveCardsTo(cards: Card[], destination: CardList): void {
+  public moveCardsTo(cards: Card[], destination: CardList, toFront: boolean = false): void {
     for (let i = 0; i < cards.length; i++) {
       const index = this.cards.indexOf(cards[i]);
       if (index !== -1) {
         const card = this.cards.splice(index, 1);
-        destination.cards.push(card[0]);
+        if (toFront) {
+          destination.cards.unshift(card[0]);
+        } else {
+          destination.cards.push(card[0]);
+        }
       }
     }
   }

@@ -11,7 +11,7 @@ function* usePowerBlast(next: Function, store: StoreLike, state: State,
   effect: AttackEffect): IterableIterator<State> {
   const player = effect.player;
 
-  // Active Pokemon has no energy cards attached
+  // Active Pokémon has no energy cards attached
   if (!player.active.cards.some(c => c instanceof EnergyCard)) {
     return state;
   }
@@ -48,7 +48,7 @@ function* usePowerBlast(next: Function, store: StoreLike, state: State,
 
 export class TornadusEx extends PokemonCard {
 
-  public tags = [ CardTag.POKEMON_EX ];
+  public tags = [ CardTag.EX ];
 
   public stage: Stage = Stage.BASIC;
 
@@ -73,7 +73,7 @@ export class TornadusEx extends PokemonCard {
       name: 'Power Blast',
       cost: [ CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS ],
       damage: 100,
-      text: 'Flip a coin. If tails, discard an Energy attached to this Pokemon.'
+      text: 'Flip a coin. If tails, discard an Energy attached to this Pokémon.'
     },
   ];
 

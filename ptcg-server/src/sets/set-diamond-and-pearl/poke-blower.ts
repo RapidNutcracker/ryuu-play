@@ -103,9 +103,9 @@ export class PokeBlower extends TrainerCard {
   public text: string =
     'You may play 2 Poke Blower + at the same time. If you play 1 ' +
     'Poke Blower +, flip a coin. If heads, put 1 damage counter on 1 of your ' +
-    'opponent\'s Pokemon. If you play 2 Poke Blower +, choose 1 of your ' +
-    'opponent\'s Benched Pokemon and switch it with 1 of your opponent\'s ' +
-    'Active Pokemon.';
+    'opponent\'s Pokémon. If you play 2 Poke Blower +, choose 1 of your ' +
+    'opponent\'s Benched Pokémon and switch it with 1 of your opponent\'s ' +
+    'Active Pokémon.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {

@@ -9,7 +9,7 @@ export class NidoranMale extends PokemonCard {
 
   public stage: Stage = Stage.BASIC;
 
-  public cardType: CardType = CardType.DARK;
+  public cardType: CardType = CardType.DARKNESS;
 
   public hp: number = 60;
 
@@ -22,7 +22,7 @@ export class NidoranMale extends PokemonCard {
   public attacks = [
     {
       name: 'Horn Attack',
-      cost: [CardType.DARK],
+      cost: [CardType.DARKNESS],
       damage: 20,
       text: ''
     }

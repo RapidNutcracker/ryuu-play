@@ -27,7 +27,7 @@ function* useSinisterHand(next: Function, store: StoreLike, state: State, effect
     effect.player.id,
     GameMessage.MOVE_DAMAGE,
     PlayerType.TOP_PLAYER,
-    [ SlotType.ACTIVE, SlotType.BENCH ],
+    [SlotType.ACTIVE, SlotType.BENCH],
     maxAllowedDamage,
     { allowCancel: true }
   ), transfers => {
@@ -56,22 +56,23 @@ export class Dusknoir extends PokemonCard {
 
   public hp: number = 130;
 
-  public weakness = [{ type: CardType.DARK }];
+  public weakness = [{ type: CardType.DARKNESS }];
 
-  public retreat = [ CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS ];
+  public retreat = [CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS];
 
   public powers = [{
     name: 'Sinister Hand',
     useWhenInPlay: true,
     powerType: PowerType.ABILITY,
-    text: 'As often as you like during your turn (before your attack), ' +
-      'you may move 1 damage counter from 1 of your opponent\'s Pokemon ' +
-      'to another of your opponent\'s Pokemon.'
+    text:
+      'As often as you like during your turn (before your attack), ' +
+      'you may move 1 damage counter from 1 of your opponent\'s Pokémon ' +
+      'to another of your opponent\'s Pokémon.'
   }];
 
   public attacks = [{
     name: 'Shadow Punch',
-    cost: [ CardType.PSYCHIC, CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS ],
+    cost: [CardType.PSYCHIC, CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS],
     damage: 60,
     text: 'This attack\'s damage isn\'t affected by Resistance.'
   }];

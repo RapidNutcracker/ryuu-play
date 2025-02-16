@@ -21,22 +21,22 @@ export class Wobbuffet extends PokemonCard {
 
   public weakness = [{ type: CardType.PSYCHIC }];
 
-  public retreat = [ CardType.COLORLESS, CardType.COLORLESS ];
+  public retreat = [CardType.COLORLESS, CardType.COLORLESS];
 
   public powers = [{
     name: 'Bide Barricade',
     powerType: PowerType.ABILITY,
-    text: 'As long as this Pokemon is your Active Pokemon, each Pokemon in ' +
+    text: 'As long as this Pokémon is your Active Pokémon, each Pokémon in ' +
       'play, in each player\'s hand, and in each player\'s discard pile has ' +
-      'no Abilities (except for P Pokemon).'
+      'no Abilities (except for {P} Pokémon).'
   }];
 
   public attacks = [{
     name: 'Psychic Assault',
-    cost: [ CardType.PSYCHIC, CardType.COLORLESS ],
+    cost: [CardType.PSYCHIC, CardType.COLORLESS],
     damage: 10,
     text: 'This attack does 10 more damage for each damage counter on ' +
-      'your opponent\'s Active Pokemon.'
+      'your opponent\'s Active Pokémon.'
   }];
 
   public set: string = 'BW4';
@@ -56,13 +56,13 @@ export class Wobbuffet extends PokemonCard {
       const player = effect.player;
       const opponent = StateUtils.getOpponent(state, player);
 
-      // Wobbuffet is not active Pokemon
+      // Wobbuffet is not active Pokémon
       if (player.active.getPokemonCard() !== this
         && opponent.active.getPokemonCard() !== this) {
         return state;
       }
 
-      let cardTypes = [ effect.card.cardType ];
+      let cardTypes = [effect.card instanceof PokemonCard && effect.card.cardType];
 
       const cardList = StateUtils.findCardList(state, effect.card);
       if (cardList instanceof PokemonCardList) {
@@ -71,7 +71,7 @@ export class Wobbuffet extends PokemonCard {
         cardTypes = checkPokemonType.cardTypes;
       }
 
-      // We are not blocking the Abilities from Psychic Pokemon
+      // We are not blocking the Abilities from Psychic Pokémon
       if (cardTypes.includes(CardType.PSYCHIC)) {
         return state;
       }

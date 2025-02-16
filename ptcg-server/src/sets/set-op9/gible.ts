@@ -29,8 +29,8 @@ export class Gible extends PokemonCard {
     name: 'Push Down',
     cost: [ CardType.COLORLESS ],
     damage: 10,
-    text: 'Your opponent switches the Defending Pokemon with 1 of his or her ' +
-      'Benched Pokemon.'
+    text: 'Your opponent switches the Defending Pokémon with 1 of his or her ' +
+      'Benched Pokémon.'
   }];
 
   public set: string = 'OP9';

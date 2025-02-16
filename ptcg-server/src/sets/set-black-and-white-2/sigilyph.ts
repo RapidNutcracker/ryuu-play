@@ -26,7 +26,7 @@ export class Sigilyph extends PokemonCard {
     name: 'Safeguard',
     powerType: PowerType.ABILITY,
     text: 'Prevent all effects of attacks, including damage, done to ' +
-      'this Pokemon by Pokemon-EX.'
+      'this Pokémon by Pokémon-EX.'
   }];
 
   public attacks = [{
@@ -34,7 +34,7 @@ export class Sigilyph extends PokemonCard {
     cost: [ CardType.PSYCHIC, CardType.COLORLESS, CardType.COLORLESS ],
     damage: 50,
     text: 'Does 10 more damage for each Energy attached to ' +
-      'the Defending Pokemon.'
+      'the Defending Pokémon.'
   }];
 
   public set: string = 'BW2';
@@ -57,7 +57,7 @@ export class Sigilyph extends PokemonCard {
       effect.damage += energyCount * 10;
     }
 
-    // Prevent damage from Pokemon-EX
+    // Prevent damage from Pokémon-EX
     if (effect instanceof AbstractAttackEffect && effect.target.cards.includes(this)) {
       const pokemonCard = effect.target.getPokemonCard();
       const sourceCard = effect.source.getPokemonCard();
@@ -67,7 +67,7 @@ export class Sigilyph extends PokemonCard {
         return state;
       }
 
-      if (sourceCard && sourceCard.tags.includes(CardTag.POKEMON_EX)) {
+      if (sourceCard && sourceCard.tags.includes(CardTag.EX)) {
 
         // Try to reduce PowerEffect, to check if something is blocking our ability
         try {

@@ -37,7 +37,7 @@ function* useStadium(next: Function, store: StoreLike, state: State, effect: Use
   });
 
   if (cards.length > 0) {
-    player.stadiumUsedTurn = state.turn;
+    // player.stadiumUsedTurn = state.turn;
 
     cards.forEach((card, index) => {
       player.deck.moveCardTo(card, player.hand);

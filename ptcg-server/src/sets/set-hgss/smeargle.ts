@@ -24,7 +24,7 @@ export class Smeargle extends PokemonCard {
     useWhenInPlay: true,
     powerType: PowerType.POKEPOWER,
     text: 'Once during your turn (before your attack), if Smeargle is your ' +
-      'Active Pokemon, you may look at your opponent\'s hand. If you do, ' +
+      'Active Pokémon, you may look at your opponent\'s hand. If you do, ' +
       'choose a Support card you find there and use the effect of that card ' +
       'as the effect of this power. This power can\'t be used if Smeargle ' +
       'is affected by a Special Condition.'

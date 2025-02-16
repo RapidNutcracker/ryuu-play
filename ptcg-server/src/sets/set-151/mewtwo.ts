@@ -16,7 +16,7 @@ export class Mewtwo extends PokemonCard {
 
   public hp: number = 130;
 
-  public weakness = [{ type: CardType.DARK }];
+  public weakness = [{ type: CardType.DARKNESS }];
 
   public resistance: Resistance[] = [{ type: CardType.FIGHTING, value: -30 }];
 

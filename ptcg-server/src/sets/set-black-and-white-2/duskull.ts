@@ -15,7 +15,7 @@ export class Duskull extends PokemonCard {
 
   public hp: number = 50;
 
-  public weakness = [{ type: CardType.DARK }];
+  public weakness = [{ type: CardType.DARKNESS }];
 
   public retreat = [ CardType.COLORLESS ];
 
@@ -23,7 +23,7 @@ export class Duskull extends PokemonCard {
     name: 'Confuse Ray',
     cost: [ CardType.PSYCHIC ],
     damage: 0,
-    text: 'The Defending Pokemon is now Confused.'
+    text: 'The Defending Pokémon is now Confused.'
   }];
 
   public set: string = 'BW2';

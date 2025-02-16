@@ -11,7 +11,7 @@ export class NidoranFemale extends PokemonCard {
 
   public stage: Stage = Stage.BASIC;
 
-  public cardType: CardType = CardType.DARK;
+  public cardType: CardType = CardType.DARKNESS;
 
   public hp: number = 60;
 
@@ -24,7 +24,7 @@ export class NidoranFemale extends PokemonCard {
   public attacks = [
     {
       name: 'Poison Horn',
-      cost: [CardType.DARK, CardType.COLORLESS],
+      cost: [CardType.DARKNESS, CardType.COLORLESS],
       damage: 20,
       text: 'Your opponent\'s Active Pokémon is now Poisoned.'
     }

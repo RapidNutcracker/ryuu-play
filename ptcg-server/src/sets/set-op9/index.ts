@@ -1,6 +1,7 @@
+import { Card } from '../../game/store/card/card';
+
 import { Buizel } from './buizel';
 import { Buneary } from './buneary';
-import { Card } from '../../game/store/card/card';
 import { Chimchar } from './chimchar';
 import { Croagunk } from './croagunk';
 import { Gabite } from './gabite';

@@ -67,9 +67,9 @@ export class EscapeRope extends TrainerCard {
   public fullName: string = 'Escape Rope PLS';
 
   public text: string =
-    'Each player switches his or her Active Pokemon with 1 of his or her ' +
-    'Benched Pokemon. (Your opponent switches first. If a player does not ' +
-    'have a Benched Pokemon, he or she doesn\'t switch Pokemon.)';
+    'Each player switches his or her Active Pokémon with 1 of his or her ' +
+    'Benched Pokémon. (Your opponent switches first. If a player does not ' +
+    'have a Benched Pokémon, he or she doesn\'t switch Pokémon.)';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {

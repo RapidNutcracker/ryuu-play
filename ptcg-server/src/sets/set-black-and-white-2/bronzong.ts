@@ -35,7 +35,7 @@ export class Bronzong extends PokemonCard {
     useWhenInPlay: true,
     powerType: PowerType.ABILITY,
     text: 'Once during your turn (before your attack), you may attach ' +
-    'a M Energy card from your discard pile to 1 of your Benched Pokemon.'
+    'a {M} Energy card from your discard pile to 1 of your Benched Pokémon.'
   }];
 
   public attacks = [{

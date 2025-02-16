@@ -67,7 +67,7 @@ export class Gloom extends PokemonCard {
     cost: [ CardType.GRASS, CardType.COLORLESS ],
     damage: 30,
     text: 'Flip a coin. If heads, choose 1 Special Condition. ' +
-      'The Defending Pokemon is now affected by that Special Condition.'
+      'The Defending Pokémon is now affected by that Special Condition.'
   }];
 
   public set: string = 'BW2';

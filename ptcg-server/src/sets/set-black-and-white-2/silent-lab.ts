@@ -8,6 +8,7 @@ import { TrainerType, Stage } from '../../game/store/card/card-types';
 import { StateUtils } from '../../game/store/state-utils';
 import { UseStadiumEffect, PowerEffect } from '../../game/store/effects/game-effects';
 import { PokemonCardList } from '../../game/store/state/pokemon-card-list';
+import { PokemonCard } from '../../game';
 
 export class SilentLab extends TrainerCard {
 
@@ -20,12 +21,12 @@ export class SilentLab extends TrainerCard {
   public fullName: string = 'Silent Lab PCL';
 
   public text: string =
-    'Each Basic Pokemon in play, in each player\'s hand, ' +
+    'Each Basic Pokémon in play, in each player\'s hand, ' +
     'and in each player\'s discard pile has no Abilities.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof PowerEffect && StateUtils.getStadiumCard(state) === this) {
-      const pokemonCard = effect.card;
+      const pokemonCard = effect.card as PokemonCard;
       const cardList = StateUtils.findCardList(state, pokemonCard);
 
       const isBasic = cardList instanceof PokemonCardList

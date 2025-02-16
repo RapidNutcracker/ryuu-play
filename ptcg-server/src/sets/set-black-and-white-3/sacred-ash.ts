@@ -68,7 +68,7 @@ export class SacredAsh extends TrainerCard {
   public fullName: string = 'Sacred Ash FLF';
 
   public text: string =
-    'Shuffle 5 Pokemon from your discard pile into your deck.';
+    'Shuffle 5 Pokémon from your discard pile into your deck.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {

@@ -44,13 +44,13 @@ export class PokemonCatcher extends TrainerCard {
 
   public set: string = 'BW';
 
-  public name: string = 'Pokemon Catcher';
+  public name: string = 'Pokémon Catcher';
 
-  public fullName: string = 'Pokemon Catcher SSH';
+  public fullName: string = 'Pokémon Catcher SSH';
 
   public text: string =
-    'Flip a coin. If heads, switch 1 of your opponent\'s Benched Pokemon ' +
-    'with their Active Pokemon.';
+    'Flip a coin. If heads, switch 1 of your opponent\'s Benched Pokémon ' +
+    'with their Active Pokémon.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {

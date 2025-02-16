@@ -30,7 +30,7 @@ export class Rayquaza extends PokemonCard {
       cost: [CardType.FIRE, CardType.LIGHTNING, CardType.COLORLESS ],
       damage: 90,
       text: 'This attack\'s damage isn\'t affected by any effects on ' +
-        'the Defending Pokemon.'
+        'the Defending Pokémon.'
     }
   ];
 

@@ -31,7 +31,7 @@ export class Gothorita extends PokemonCard {
       name: 'Psybeam',
       cost: [ CardType.PSYCHIC, CardType.COLORLESS ],
       damage: 20,
-      text: 'The Defending Pokemon is now Confused.'
+      text: 'The Defending Pokémon is now Confused.'
     },
   ];
 

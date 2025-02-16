@@ -12,26 +12,28 @@ function* playCard(next: Function, store: StoreLike, state: State, self: Arven, 
   const player = effect.player;
   const opponent = StateUtils.getOpponent(state, player);
 
+  let blocked: number[] = [];
+  player.deck.cards.forEach((card, index) => {
+    if (!(card instanceof TrainerCard) || !(card.trainerType === TrainerType.ITEM || card.trainerType === TrainerType.TOOL)) {
+      blocked.push(index);
+    }
+  });
+
   let cards: Card[] = [];
   yield store.prompt(state, new ChooseCardsPrompt(
     player.id,
     GameMessage.CHOOSE_ITEM_TO_HAND,
     player.deck,
-    { superType: SuperType.TRAINER, trainerType: TrainerType.ITEM },
-    { min: 0, max: 1, allowCancel: true }
+    { superType: SuperType.TRAINER },
+    {
+      min: 1, max: 2, allowCancel: true, blocked,
+      cardMap: [
+        { trainerType: TrainerType.ITEM },
+        { trainerType: TrainerType.TOOL },
+      ]
+    }
   ), selected => {
-    cards = cards.concat(selected);
-    next();
-  });
-
-  yield store.prompt(state, new ChooseCardsPrompt(
-    player.id,
-    GameMessage.CHOOSE_TOOL_TO_HAND,
-    player.deck,
-    { superType: SuperType.TRAINER, trainerType: TrainerType.TOOL },
-    { min: 0, max: 1, allowCancel: true }
-  ), selected => {
-    cards = cards.concat(selected);
+    cards = selected || [];
     next();
   });
 

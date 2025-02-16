@@ -25,7 +25,7 @@ export class Vanillish extends PokemonCard {
       name: 'Ice Beam',
       cost: [ CardType.WATER, CardType.COLORLESS ],
       damage: 20,
-      text: 'Flip a coin. If heads, the Defending Pokemon is now Paralyzed.'
+      text: 'Flip a coin. If heads, the Defending Pokémon is now Paralyzed.'
     },
     {
       name: 'Frost Breath',

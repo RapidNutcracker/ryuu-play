@@ -40,9 +40,9 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     return;
   }
 
-  // Discard trainer only when user selected a Pokemon
+  // Discard trainer only when user selected a Pokémon
   player.hand.moveCardTo(effect.trainerCard, player.discard);
-  // Put Pokemon from hand into the deck
+  // Put Pokémon from hand into the deck
   player.hand.moveCardsTo(cards, player.deck);
 
   yield store.prompt(state, new ShowCardsPrompt(
@@ -83,13 +83,13 @@ export class PokemonCommunication extends TrainerCard {
 
   public set: string = 'BW';
 
-  public name: string = 'Pokemon Communication';
+  public name: string = 'Pokémon Communication';
 
-  public fullName: string = 'Pokemon Communication TEU';
+  public fullName: string = 'Pokémon Communication TEU';
 
   public text: string =
-    'Reveal a Pokemon from your hand and put it into your deck. If you do, ' +
-    'search your deck for a Pokemon, reveal it, and put it into your hand. ' +
+    'Reveal a Pokémon from your hand and put it into your deck. If you do, ' +
+    'search your deck for a Pokémon, reveal it, and put it into your hand. ' +
     'Then, shuffle your deck.';
 
 

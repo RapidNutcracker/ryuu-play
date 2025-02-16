@@ -41,7 +41,7 @@ export class Musharna extends PokemonCard {
     name: 'Fluffy Dream',
     cost: [ CardType.PSYCHIC, CardType.PSYCHIC ],
     damage: 40,
-    text: 'This Pokemon is now Asleep.'
+    text: 'This Pokémon is now Asleep.'
   }];
 
   public set: string = 'BW2';

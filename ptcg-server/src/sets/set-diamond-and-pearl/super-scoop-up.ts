@@ -45,7 +45,7 @@ export class SuperScoopUp extends TrainerCard {
   public fullName: string = 'Super Scoop Up CES';
 
   public text: string =
-    'Flip a coin. If heads, put 1 of your Pokemon ' +
+    'Flip a coin. If heads, put 1 of your Pokémon ' +
     'and all cards attached to it into your hand.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {

@@ -58,8 +58,8 @@ export class Seeker extends TrainerCard {
   public fullName: string = 'Seeker TRM';
 
   public text: string =
-    'Each player returns 1 of his or her Benched Pokemon and all cards ' +
-    'attached to it to his or her hand. (You return your Pokemon first.)';
+    'Each player returns 1 of his or her Benched Pokémon and all cards ' +
+    'attached to it to his or her hand. (You return your Pokémon first.)';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {

@@ -16,6 +16,8 @@ export class Player {
 
   discard: CardList = new CardList();
 
+  lostZone: CardList = new CardList();
+
   stadium: CardList = new CardList();
 
   supporter: CardList = new CardList();
@@ -31,10 +33,12 @@ export class Player {
   energyPlayedTurn: number = 0;
 
   supporterPlayedTurn: number = 0;
-  
+
   stadiumPlayedTurn: number = 0;
 
   stadiumUsedTurn: number = 0;
+
+  usedVStarPower: boolean = false;
 
   marker = new Marker();
 

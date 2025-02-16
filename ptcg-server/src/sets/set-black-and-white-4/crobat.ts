@@ -28,8 +28,8 @@ export class Crobat extends PokemonCard {
   public powers = [{
     name: 'Surprise Bite',
     powerType: PowerType.ABILITY,
-    text: 'When you play this Pokemon from your hand to evolve 1 of your ' +
-      'Pokemon, you may put 3 damage counters on 1 of your opponent\'s Pokemon.'
+    text: 'When you play this Pokémon from your hand to evolve 1 of your ' +
+      'Pokémon, you may put 3 damage counters on 1 of your opponent\'s Pokémon.'
   }];
 
   public attacks = [
@@ -37,8 +37,8 @@ export class Crobat extends PokemonCard {
       name: 'Skill Dive',
       cost: [ CardType.COLORLESS ],
       damage: 0,
-      text: 'This attack does 30 damage to 1 of your opponent\'s Pokemon. ' +
-        '(Don\'t apply Weakness and Resistance for Benched Pokemon.)'
+      text: 'This attack does 30 damage to 1 of your opponent\'s Pokémon. ' +
+        '(Don\'t apply Weakness and Resistance for Benched Pokémon.)'
     }
   ];
 

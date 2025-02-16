@@ -20,22 +20,23 @@ export class Garchomp extends PokemonCard {
 
   public weakness = [{ type: CardType.COLORLESS, value: 30 }];
 
-  public retreat = [ ];
+  public retreat = [];
 
   public attacks = [
     {
       name: 'Dragon Rage',
-      cost: [ CardType.COLORLESS ],
+      cost: [CardType.COLORLESS],
       damage: 80,
       text: 'Flip 2 coins. If either of them is tails, this attack does nothing.'
     },
     {
       name: 'Jet Sword',
-      cost: [ CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS ],
+      cost: [CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS],
       damage: 100,
-      text: 'Discard 2 Energy attached to Garchomp and this attack does 10 ' +
-        'damage to each of your opponent\'s Benched Pokemon. (Don\'t apply ' +
-        'Weakness and Resistance for Benched Pokemon.)'
+      text:
+        'Discard 2 Energy attached to Garchomp and this attack does 10 ' +
+        'damage to each of your opponent\'s Benched Pokémon. (Don\'t apply ' +
+        'Weakness and Resistance for Benched Pokémon.)'
     }
   ];
 
@@ -69,7 +70,7 @@ export class Garchomp extends PokemonCard {
         player.id,
         GameMessage.CHOOSE_ENERGIES_TO_DISCARD,
         checkProvidedEnergy.energyMap,
-        [ CardType.COLORLESS, CardType.COLORLESS ],
+        [CardType.COLORLESS, CardType.COLORLESS],
         { allowCancel: false }
       ), energy => {
         const cards: Card[] = (energy || []).map(e => e.card);

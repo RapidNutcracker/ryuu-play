@@ -1,12 +1,29 @@
 
 export enum CardTag {
-  POKEMON_SP = 'SP',
-  POKEMON_EX = 'EX',
-  POKEMON_GX = 'GX',
-  POKEMON_LV_X = 'LV_X',
-  POKEMON_V = 'V',
+  SP = 'SP',
+  SMALL_EX = 'ex',
+  GX = 'GX',
+  EX = 'EX',
+  LV_X = 'LV_X',
+  V = 'V',
+  G = 'G',
   TERA = 'TERA',
-  ACE_SPEC = 'ACE_SPEC'
+  FOSSIL = 'FOSSIL',
+  ACE_SPEC = 'ACE_SPEC',
+  BROCKS = 'BROCKS',
+  MISTYS = 'MISTYS',
+  LT_SURGES = 'LT_SURGE',
+  ERIKAS = 'ERIKAS',
+  KOGAS = 'KOGAS',
+  SABRINAS = 'SABRINAS',
+  BLAINES = 'BLAINES',
+  GIOVANNIS = 'GIOVANNIS',
+  
+  TEAM_MAGMAS = 'TEAM_MAGMAS',
+  TEAM_AQUAS = 'TEAM_AQUAS',
+  
+  ANCIENT = 'ANCIENT',
+  FUTURE = 'FUTURE',
 }
 
 export enum SuperType {
@@ -40,22 +57,30 @@ export enum Stage {
   BASIC,
   STAGE_1,
   STAGE_2,
+  VMAX,
+  VSTAR,
+  MEGA,
+  LEVEL_UP,
+  BREAK,
+  V_UNION,
+  BABY,
+  LEGEND,
 }
 
 export enum CardType {
-  ANY,
   NONE,
+  ANY,
   COLORLESS,
-  GRASS,
-  FIGHTING,
-  PSYCHIC,
-  WATER,
-  LIGHTNING,
-  METAL,
-  DARK,
-  FIRE,
+  DARKNESS,
   DRAGON,
   FAIRY,
+  FIGHTING,
+  FIRE,
+  GRASS,
+  LIGHTNING,
+  METAL,
+  PSYCHIC,
+  WATER,
 }
 
 export enum SpecialCondition {

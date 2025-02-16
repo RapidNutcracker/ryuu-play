@@ -34,7 +34,7 @@ export class Roselia extends PokemonCard {
       cost: [ CardType.GRASS ],
       damage: 0,
       text: 'Heal 30 damage and remove all Special Conditions from ' +
-        'this Pokemon.'
+        'this Pokémon.'
     }
   ];
 

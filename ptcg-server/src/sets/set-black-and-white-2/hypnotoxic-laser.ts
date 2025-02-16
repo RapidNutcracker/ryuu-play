@@ -50,8 +50,8 @@ export class HypnotoxicLaser extends TrainerCard {
   public fullName: string = 'Hypnotoxic Laser PS';
 
   public text: string =
-    'Your opponent\'s Active Pokemon is now Poisoned. Flip a coin. ' +
-    'If heads, your opponent\'s Active Pokemon is also Asleep.';
+    'Your opponent\'s Active Pokémon is now Poisoned. Flip a coin. ' +
+    'If heads, your opponent\'s Active Pokémon is also Asleep.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {

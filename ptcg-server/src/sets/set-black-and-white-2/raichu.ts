@@ -27,13 +27,13 @@ export class Raichu extends PokemonCard {
       cost: [ CardType.COLORLESS, CardType.COLORLESS ],
       damage: 20,
       text: 'This attack does 20 damage times the number of your ' +
-        'Benched Pokemon.'
+        'Benched Pokémon.'
     },
     {
       name: 'Thunderbolt',
       cost: [ CardType.LIGHTNING, CardType.LIGHTNING, CardType.COLORLESS ],
       damage: 100,
-      text: 'Discard all Energy attached to this Pokemon.'
+      text: 'Discard all Energy attached to this Pokémon.'
     }
   ];
 

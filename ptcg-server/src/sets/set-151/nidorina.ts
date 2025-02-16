@@ -56,7 +56,7 @@ export class Nidorina extends PokemonCard {
 
   public evolvesFrom: string = 'Nidoran Female';
 
-  public cardType: CardType = CardType.DARK;
+  public cardType: CardType = CardType.DARKNESS;
 
   public hp: number = 90;
 
@@ -69,13 +69,13 @@ export class Nidorina extends PokemonCard {
   public attacks = [
     {
       name: 'Fetch Family',
-      cost: [CardType.DARK],
+      cost: [CardType.DARKNESS],
       damage: 0,
       text: 'Search your deck for up to 3 Pokémon, reveal them, and put them into your hand. Then, shuffle your deck.'
     },
     {
       name: 'Sharp Fang',
-      cost: [CardType.DARK, CardType.COLORLESS],
+      cost: [CardType.DARKNESS, CardType.COLORLESS],
       damage: 50,
       text: ''
     }

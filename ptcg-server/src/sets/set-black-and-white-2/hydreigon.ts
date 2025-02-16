@@ -18,7 +18,7 @@ function* useDarkTrance(next: Function, store: StoreLike, state: State, effect: 
     const blockedCards: Card[] = [];
 
     checkProvidedEnergy.energyMap.forEach(em => {
-      if (!em.provides.includes(CardType.DARK) && !em.provides.includes(CardType.ANY)) {
+      if (!em.provides.includes(CardType.DARKNESS) && !em.provides.includes(CardType.ANY)) {
         blockedCards.push(em.card);
       }
     });
@@ -76,15 +76,15 @@ export class Hydreigon extends PokemonCard {
     useWhenInPlay: true,
     powerType: PowerType.ABILITY,
     text: 'As often as you like during your turn (before your attack), ' +
-      'you may move a D Energy attached to 1 of your Pokemon to another ' +
-      'of your Pokemon.'
+      'you may move a {D} Energy attached to 1 of your Pokémon to another ' +
+      'of your Pokémon.'
   }];
 
   public attacks = [{
     name: 'Dragonblast',
-    cost: [ CardType.PSYCHIC, CardType.DARK, CardType.DARK, CardType.COLORLESS ],
+    cost: [ CardType.PSYCHIC, CardType.DARKNESS, CardType.DARKNESS, CardType.COLORLESS ],
     damage: 140,
-    text: 'Discard 2 D Energy attached to this Pokemon.'
+    text: 'Discard 2 {D} Energy attached to this Pokémon.'
   }];
 
   public set: string = 'BW2';
@@ -110,7 +110,7 @@ export class Hydreigon extends PokemonCard {
         player.id,
         GameMessage.CHOOSE_ENERGIES_TO_DISCARD,
         checkProvidedEnergy.energyMap,
-        [ CardType.DARK, CardType.DARK ],
+        [ CardType.DARKNESS, CardType.DARKNESS ],
         { allowCancel: false }
       ), energy => {
         const cards: Card[] = (energy || []).map(e => e.card);

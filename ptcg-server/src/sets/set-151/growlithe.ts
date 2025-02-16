@@ -17,7 +17,7 @@ function* useVaporize(next: Function, store: StoreLike, state: State,
   const player = effect.player;
   const opponent = StateUtils.getOpponent(state, player);
 
-  // Defending Pokemon has no water energy cards attached
+  // Defending Pokémon has no water energy cards attached
   if (!opponent.active.cards.some(c =>
     c instanceof EnergyCard &&
     c.energyType === EnergyType.BASIC &&

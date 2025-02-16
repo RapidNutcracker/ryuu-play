@@ -57,7 +57,7 @@ export class FireCrystal extends TrainerCard {
   public fullName: string = 'Fire Crystal UNB';
 
   public text: string =
-    'Put 3 R Energy cards from your discard pile into your hand.';
+    'Put 3 {R} Energy cards from your discard pile into your hand.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {

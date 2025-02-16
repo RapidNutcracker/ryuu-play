@@ -10,7 +10,7 @@ export class Sableye extends PokemonCard {
 
   public stage: Stage = Stage.BASIC;
 
-  public cardType: CardType = CardType.DARK;
+  public cardType: CardType = CardType.DARKNESS;
 
   public hp: number = 70;
 
@@ -23,11 +23,11 @@ export class Sableye extends PokemonCard {
       name: 'Confuse Ray',
       cost: [ CardType.COLORLESS ],
       damage: 10,
-      text: 'Flip a coin. If heads, the Defending Pokemon is now Confused.'
+      text: 'Flip a coin. If heads, the Defending Pokémon is now Confused.'
     },
     {
       name: 'Junk Hunt',
-      cost: [ CardType.DARK ],
+      cost: [ CardType.DARKNESS ],
       damage: 0,
       text: 'Put 2 Item cards from your discard pile into your hand.'
     }

@@ -9,7 +9,7 @@ import { AttachEnergyEffect } from '../../game/store/effects/play-card-effects';
 
 export class WailordEx extends PokemonCard {
 
-  public tags = [ CardTag.POKEMON_EX ];
+  public tags = [ CardTag.EX ];
 
   public stage: Stage = Stage.BASIC;
 
@@ -25,7 +25,7 @@ export class WailordEx extends PokemonCard {
     name: 'Water Veil',
     powerType: PowerType.ABILITY,
     text: 'Whenever you attach an Energy card from your hand to this ' +
-      'Pokemon, remove all Special Conditions from it.'
+      'Pokémon, remove all Special Conditions from it.'
   }];
 
   public attacks = [
@@ -33,7 +33,7 @@ export class WailordEx extends PokemonCard {
       name: 'High Breaching',
       cost: [ CardType.WATER, CardType.WATER, CardType.WATER, CardType.WATER, CardType.WATER ],
       damage: 120,
-      text: 'This Pokemon is now Asleep.'
+      text: 'This Pokémon is now Asleep.'
     }
   ];
 

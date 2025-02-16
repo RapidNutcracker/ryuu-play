@@ -27,8 +27,8 @@ export class Celebi extends PokemonCard {
     powerType: PowerType.POKEPOWER,
     useWhenInPlay: true,
     text: 'Once during your turn (before your attack), if Celebi is your ' +
-      'Active Pokemon, you may attach a G Energy card from your hand ' +
-      'to 1 of your Pokemon. This power can\'t be used if Celebi is ' +
+      'Active Pokémon, you may attach a {G} Energy card from your hand ' +
+      'to 1 of your Pokémon. This power can\'t be used if Celebi is ' +
       'affected by a Special Condition.'
   }];
 
@@ -38,7 +38,7 @@ export class Celebi extends PokemonCard {
       cost: [ CardType.GRASS, CardType.PSYCHIC, CardType.COLORLESS ],
       damage: 30,
       text: 'During your opponent\'s next turn, prevent all damage done to ' +
-        'Celebi by attacks from your opponent\'s Stage 1 or Stage 2 Pokemon.'
+        'Celebi by attacks from your opponent\'s Stage 1 or Stage 2 Pokémon.'
     }
   ];
 

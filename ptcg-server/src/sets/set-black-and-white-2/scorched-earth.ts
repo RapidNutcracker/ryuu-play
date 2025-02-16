@@ -22,7 +22,7 @@ export class ScorchedEarth extends TrainerCard {
 
   public text: string =
     'Once during each player\'s turn, that player may discard ' +
-    'a R or F Energy card from his or her hand. If that player does so, ' +
+    'a {R} or {F} Energy card from his or her hand. If that player does so, ' +
     'he or she draws 2 cards.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {

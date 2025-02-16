@@ -60,7 +60,7 @@ export class Dusclops extends PokemonCard {
 
   public hp: number = 80;
 
-  public weakness = [{ type: CardType.DARK }];
+  public weakness = [{ type: CardType.DARKNESS }];
 
   public retreat = [ CardType.COLORLESS, CardType.COLORLESS ];
 

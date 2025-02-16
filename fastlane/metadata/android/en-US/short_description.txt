@@ -1,1 +1,1 @@
-Pokemon Trading Card game with AI.
+Pokémon Trading Card game with AI.

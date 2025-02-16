@@ -85,7 +85,7 @@ export class Munkidori extends PokemonCard {
 
   public hp: number = 110;
 
-  public weakness: Weakness[] = [{ type: CardType.DARK }];
+  public weakness: Weakness[] = [{ type: CardType.DARKNESS }];
 
   public resistance: Resistance[] = [{ type: CardType.FIGHTING, value: -30 }];
 
@@ -131,7 +131,7 @@ export class Munkidori extends PokemonCard {
       store.reduceEffect(state, checkProvidedEnergyEffect);
 
       const energyMap = checkProvidedEnergyEffect.energyMap;
-      const hasDarkEnergyAttached = StateUtils.checkEnoughEnergy(energyMap, [CardType.DARK]);
+      const hasDarkEnergyAttached = StateUtils.checkEnoughEnergy(energyMap, [CardType.DARKNESS]);
 
       if (!hasDarkEnergyAttached) {
         throw new GameError(GameMessage.CANNOT_USE_POWER);

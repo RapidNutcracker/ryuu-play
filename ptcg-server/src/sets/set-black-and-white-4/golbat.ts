@@ -30,8 +30,8 @@ export class Golbat extends PokemonCard {
   public powers = [{
     name: 'Sneaky Bite',
     powerType: PowerType.ABILITY,
-    text: 'When you play this Pokemon from your hand to evolve 1 of your ' +
-      'Pokemon, you may put 2 damage counters on 1 of your opponent\'s Pokemon.'
+    text: 'When you play this Pokémon from your hand to evolve 1 of your ' +
+      'Pokémon, you may put 2 damage counters on 1 of your opponent\'s Pokémon.'
   }];
 
   public attacks = [
@@ -39,8 +39,8 @@ export class Golbat extends PokemonCard {
       name: 'Swoop Across',
       cost: [CardType.COLORLESS],
       damage: 0,
-      text: 'This attack does 10 damage to each of your opponent\'s Pokemon. ' +
-        '(Don\'t apply Weakness and Resistance for Benched Pokemon.)'
+      text: 'This attack does 10 damage to each of your opponent\'s Pokémon. ' +
+        '(Don\'t apply Weakness and Resistance for Benched Pokémon.)'
     }
   ];
 

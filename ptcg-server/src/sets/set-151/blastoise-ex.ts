@@ -9,7 +9,7 @@ export class BlastoiseEx extends PokemonCard {
 
   public id: number = 9;
 
-  public tags: string[] = [CardTag.POKEMON_EX];
+  public tags: string[] = [CardTag.EX];
 
   public stage: Stage = Stage.STAGE_2;
 

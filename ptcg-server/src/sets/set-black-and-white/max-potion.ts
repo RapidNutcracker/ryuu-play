@@ -45,11 +45,11 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     return state;
   }
 
-  // Discard trainer only when user selected a Pokemon
+  // Discard trainer only when user selected a Pokémon
   player.hand.moveCardTo(effect.trainerCard, player.discard);
 
   targets.forEach(target => {
-    // Heal Pokemon
+    // Heal Pokémon
     const healEffect = new HealEffect(player, target, target.damage);
     store.reduceEffect(state, healEffect);
     // Discard its energy cards
@@ -71,8 +71,8 @@ export class MaxPotion extends TrainerCard {
   public fullName: string = 'Max Potion EPO';
 
   public text: string =
-    'Heal all damage from 1 of your Pokemon. Then, discard all Energy ' +
-    'attached to that Pokemon.';
+    'Heal all damage from 1 of your Pokémon. Then, discard all Energy ' +
+    'attached to that Pokémon.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {

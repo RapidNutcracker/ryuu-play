@@ -83,7 +83,7 @@ export class FlowerShopLady extends TrainerCard {
   public fullName: string = 'Flower Shop Lady UND';
 
   public text: string =
-    'Search your discard pile for 3 Pokemon and 3 basic Energy cards. ' +
+    'Search your discard pile for 3 Pokémon and 3 basic Energy cards. ' +
     'Show them to your opponent and shuffle them into your deck.';
 
 

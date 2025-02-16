@@ -13,7 +13,7 @@ function* useWhirlpool(next: Function, store: StoreLike, state: State,
   const player = effect.player;
   const opponent = StateUtils.getOpponent(state, player);
 
-  // Defending Pokemon has no energy cards attached
+  // Defending Pokémon has no energy cards attached
   if (!opponent.active.cards.some(c => c instanceof EnergyCard)) {
     return state;
   }
@@ -67,11 +67,11 @@ export class Zweilous extends PokemonCard {
       cost: [ CardType.COLORLESS, CardType.COLORLESS ],
       damage: 30,
       text: 'Flip a coin. If heads, discard an Energy attached to ' +
-        'the Defending Pokemon.'
+        'the Defending Pokémon.'
     },
     {
       name: 'Dragon Claw',
-      cost: [ CardType.PSYCHIC, CardType.DARK, CardType.DARK ],
+      cost: [ CardType.PSYCHIC, CardType.DARKNESS, CardType.DARKNESS ],
       damage: 80,
       text: ''
     }

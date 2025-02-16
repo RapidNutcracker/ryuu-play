@@ -24,7 +24,7 @@ export class Regigigas extends PokemonCard {
     cost: [ CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS ],
     damage: 80,
     text: 'During your opponent\'s next turn, any damage done by attacks ' +
-      'from the Defending Pokemon is reduced by 40 (before applying ' +
+      'from the Defending Pokémon is reduced by 40 (before applying ' +
       'Weakness and Resistance).'
   }, {
     name: 'Heavy Impact',

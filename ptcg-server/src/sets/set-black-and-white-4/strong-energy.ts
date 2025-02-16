@@ -30,16 +30,16 @@ export class StrongEnergy extends EnergyCard {
   public readonly STRONG_ENERGY_MARKER = 'STRONG_ENERGY_MARKER';
 
   public text =
-    'This card can only be attached to F Pokemon. This card provides F ' +
-    'Energy only while this card is attached to a F Pokemon. The attacks of ' +
-    'the F Pokemon this card is attached to do 20 more damage to your ' +
-    'opponent\'s Active Pokemon (before applying Weakness and Resistance). ' +
-    '(If this card is attached to anything other than a F Pokemon, discard ' +
+    'This card can only be attached to {F} Pokémon. This card provides {F} ' +
+    'Energy only while this card is attached to a {F} Pokémon. The attacks of ' +
+    'the {F} Pokémon this card is attached to do 20 more damage to your ' +
+    'opponent\'s Active Pokémon (before applying Weakness and Resistance). ' +
+    '(If this card is attached to anything other than a {F} Pokémon, discard ' +
     'this card.)';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
 
-    // Cannot attach to other than Fighting Pokemon
+    // Cannot attach to other than Fighting Pokémon
     if (effect instanceof AttachEnergyEffect && effect.energyCard === this) {
       const checkPokemonType = new CheckPokemonTypeEffect(effect.target);
       store.reduceEffect(state, checkPokemonType);
@@ -49,7 +49,7 @@ export class StrongEnergy extends EnergyCard {
       return state;
     }
 
-    // Provide energy when attached to Fighting Pokemon
+    // Provide energy when attached to Fighting Pokémon
     if (effect instanceof CheckProvidedEnergyEffect && effect.source.cards.includes(this)) {
       const checkPokemonType = new CheckPokemonTypeEffect(effect.source);
       store.reduceEffect(state, checkPokemonType);
@@ -59,7 +59,7 @@ export class StrongEnergy extends EnergyCard {
       return state;
     }
 
-    // Discard card when not attached to Fighting Pokemon
+    // Discard card when not attached to Fighting Pokémon
     if (effect instanceof CheckTableStateEffect) {
       state.players.forEach(player => {
         player.forEachPokemon(PlayerType.BOTTOM_PLAYER, cardList => {

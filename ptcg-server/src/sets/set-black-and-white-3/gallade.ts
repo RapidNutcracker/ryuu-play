@@ -26,14 +26,14 @@ export class Gallade extends PokemonCard {
       cost: [ CardType.COLORLESS, CardType.COLORLESS ],
       damage: 20,
       text: 'Does 20 damage times the amount of Energy attached to all of ' +
-        'your Pokemon.'
+        'your Pokémon.'
     },
     {
       name: 'Swift Lunge',
       cost: [ CardType.PSYCHIC, CardType.COLORLESS, CardType.COLORLESS ],
       damage: 80,
-      text: 'Your opponent switches the Defending Pokemon with ' +
-        '1 of his or her Benched Pokemon.'
+      text: 'Your opponent switches the Defending Pokémon with ' +
+        '1 of his or her Benched Pokémon.'
     },
   ];
 

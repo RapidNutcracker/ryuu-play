@@ -10,7 +10,7 @@ import {EndTurnEffect} from '../../game/store/effects/game-phase-effects';
 
 export class KeldeoEx extends PokemonCard {
 
-  public tags = [ CardTag.POKEMON_EX ];
+  public tags = [ CardTag.EX ];
 
   public stage: Stage = Stage.BASIC;
 
@@ -26,8 +26,8 @@ export class KeldeoEx extends PokemonCard {
     name: 'Rush In',
     useWhenInPlay: true,
     powerType: PowerType.ABILITY,
-    text: 'Once during your turn (before your attack), if this Pokemon is ' +
-      'on your Bench, you may switch this Pokemon with your Active Pokemon.'
+    text: 'Once during your turn (before your attack), if this Pokémon is ' +
+      'on your Bench, you may switch this Pokémon with your Active Pokémon.'
   }];
 
   public attacks = [
@@ -35,7 +35,7 @@ export class KeldeoEx extends PokemonCard {
       name: 'Secret Sword',
       cost: [ CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS ],
       damage: 50,
-      text: 'Does 20 more damage for each W Energy attached to this Pokemon.'
+      text: 'Does 20 more damage for each {W} Energy attached to this Pokémon.'
     }
   ];
 

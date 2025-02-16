@@ -22,8 +22,8 @@ export class BlackBelt extends TrainerCard {
 
   public text: string =
     'You may use this card only if you have more Prize cards left than your ' +
-    'opponent. During this turn, each of your Active Pokemon\'s attacks does ' +
-    '40 more damage to your opponent\'s Active Pokemon (before applying ' +
+    'opponent. During this turn, each of your Active Pokémon\'s attacks does ' +
+    '40 more damage to your opponent\'s Active Pokémon (before applying ' +
     'Weakness and Resistance).';
 
   private readonly BLACK_BELT_MARKER = 'BLACK_BELT_MARKER';

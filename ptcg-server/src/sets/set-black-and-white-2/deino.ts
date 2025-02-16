@@ -21,15 +21,15 @@ export class Deino extends PokemonCard {
   public attacks = [
     {
       name: 'Deep Growl',
-      cost: [ CardType.DARK ],
+      cost: [ CardType.DARKNESS ],
       damage: 0,
-      text: 'Flip a coin. If heads, the Defending Pokemon is now Paralyzed.'
+      text: 'Flip a coin. If heads, the Defending Pokémon is now Paralyzed.'
     },
     {
       name: 'Power Breath',
       cost: [ CardType.PSYCHIC, CardType.COLORLESS ],
       damage: 30,
-      text: 'Discard an Energy attached to this Pokemon.'
+      text: 'Discard an Energy attached to this Pokémon.'
     }
   ];
 

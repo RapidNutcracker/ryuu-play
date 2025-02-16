@@ -10,7 +10,7 @@ import { GameMessage } from '../../game/game-message';
 
 export class LandorusEx extends PokemonCard {
 
-  public tags = [ CardTag.POKEMON_EX ];
+  public tags = [CardTag.EX];
 
   public stage: Stage = Stage.BASIC;
 
@@ -22,20 +22,20 @@ export class LandorusEx extends PokemonCard {
 
   public resistance = [{ type: CardType.LIGHTNING, value: -20 }];
 
-  public retreat = [ CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS ];
+  public retreat = [CardType.COLORLESS, CardType.COLORLESS, CardType.COLORLESS];
 
   public attacks = [
     {
       name: 'Hammerhead',
-      cost: [ CardType.FIGHTING ],
+      cost: [CardType.FIGHTING],
       damage: 30,
-      text: 'Does 30 damage to 1 of your opponent\'s Benched Pokemon. ' +
-        '(Don\'t apply Weakness and Resistance for Benched Pokemon.)'
+      text: 'Does 30 damage to 1 of your opponent\'s Benched Pokémon. ' +
+        '(Don\'t apply Weakness and Resistance for Benched Pokémon.)'
     }, {
       name: 'Land\'s Judgment',
-      cost: [ CardType.FIGHTING, CardType.FIGHTING, CardType.COLORLESS ],
+      cost: [CardType.FIGHTING, CardType.FIGHTING, CardType.COLORLESS],
       damage: 80,
-      text: 'You may discard all F Energy attach to this Pokemon. ' +
+      text: 'You may discard all {F} Energy attach to this Pokémon. ' +
         'If you do, this attack does 70 more damage.'
     },
   ];
@@ -61,7 +61,7 @@ export class LandorusEx extends PokemonCard {
         player.id,
         GameMessage.CHOOSE_POKEMON_TO_DAMAGE,
         PlayerType.TOP_PLAYER,
-        [ SlotType.BENCH ],
+        [SlotType.BENCH],
         { allowCancel: false }
       ), targets => {
         if (!targets || targets.length === 0) {
@@ -94,7 +94,7 @@ export class LandorusEx extends PokemonCard {
           effect.damage += 70;
           const discardEnergy = new DiscardCardsEffect(effect, cards);
           discardEnergy.target = player.active;
-          return store.reduceEffect(state, discardEnergy);
+          state = store.reduceEffect(state, discardEnergy);
         }
       });
     }

@@ -27,8 +27,8 @@ export class Exeggcute extends PokemonCard {
     name: 'Propagation',
     useFromDiscard: true,
     powerType: PowerType.ABILITY,
-    text: 'Once during your turn (before your attack), if this Pokemon is in '
-      + 'your discard pile, you may put this Pokemon into your hand.'
+    text: 'Once during your turn (before your attack), if this Pokémon is in '
+      + 'your discard pile, you may put this Pokémon into your hand.'
   }];
 
   public attacks = [{

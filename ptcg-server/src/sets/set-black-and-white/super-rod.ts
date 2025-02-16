@@ -73,7 +73,7 @@ export class SuperRod extends TrainerCard {
   public fullName: string = 'Super Rod NV';
 
   public text: string =
-    'Shuffle 3 in any combination of Pokemon and basic Energy cards from ' +
+    'Shuffle 3 in any combination of Pokémon and basic Energy cards from ' +
     'your discard pile back into your deck.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {

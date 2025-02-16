@@ -81,7 +81,7 @@ describe('ChoosePokemonPromptResolver', () => {
     expect(action).toBeUndefined();
   });
 
-  it('Should choose the strongest Pokemon', () => {
+  it('Should choose the strongest Pokémon', () => {
     // given
     setHp(player.bench[2], 150);
     prompt.options.min = 1;
@@ -96,7 +96,7 @@ describe('ChoosePokemonPromptResolver', () => {
     expect(result).toEqual([player.bench[2]]);
   });
 
-  it('Should choose the weakest Pokemon for the opponent', () => {
+  it('Should choose the weakest Pokémon for the opponent', () => {
     // given
     setHp(opponent.bench[2], 50);
     prompt.playerType = PlayerType.TOP_PLAYER;
@@ -113,7 +113,7 @@ describe('ChoosePokemonPromptResolver', () => {
     expect(result).toEqual([opponent.bench[2]]);
   });
 
-  it('Should choose the weakest Pokemon to deal damage', () => {
+  it('Should choose the weakest Pokémon to deal damage', () => {
     // given
     setHp(player.bench[2], 50);
     prompt.options.min = 1;
@@ -130,7 +130,7 @@ describe('ChoosePokemonPromptResolver', () => {
     expect(result).toEqual([player.bench[2]]);
   });
 
-  it('Should choose the strongest opponent\'s Pokemon to deal damage', () => {
+  it('Should choose the strongest opponent\'s Pokémon to deal damage', () => {
     // given
     setHp(player.bench[2], 200);
     setHp(player.bench[3], 50);
@@ -149,7 +149,7 @@ describe('ChoosePokemonPromptResolver', () => {
     expect(result).toEqual([opponent.bench[2]]);
   });
 
-  it('Should cancel instead of dealing damage to own Pokemon', () => {
+  it('Should cancel instead of dealing damage to own Pokémon', () => {
     // given
     setHp(player.bench[2], 50);
     prompt.options.min = 1;
@@ -164,7 +164,7 @@ describe('ChoosePokemonPromptResolver', () => {
     expect(action.result).toBeNull();
   });
 
-  it('Should not choose blocked Pokemon', () => {
+  it('Should not choose blocked Pokémon', () => {
     // given
     setHp(player.bench[0], 250);
     setHp(player.bench[1], 200);

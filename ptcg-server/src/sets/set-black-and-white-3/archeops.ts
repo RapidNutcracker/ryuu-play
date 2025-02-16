@@ -29,16 +29,16 @@ export class Archeops extends PokemonCard {
   public powers = [{
     name: 'Ancient Power',
     powerType: PowerType.ABILITY,
-    text: 'Each player can\'t play any Pokemon from his or her hand ' +
-      'to evolve his or her Pokemon.'
+    text: 'Each player can\'t play any Pokémon from his or her hand ' +
+      'to evolve his or her Pokémon.'
   }];
 
   public attacks = [{
     name: 'Rock Slide',
     cost: [ CardType.FIGHTING, CardType.FIGHTING, CardType.COLORLESS ],
     damage: 60,
-    text: 'Does 10 damage to 2 of your opponent\'s Benched Pokemon. ' +
-      '(Don\'t apply Weakness and Resistance for Benched Pokemon.)'
+    text: 'Does 10 damage to 2 of your opponent\'s Benched Pokémon. ' +
+      '(Don\'t apply Weakness and Resistance for Benched Pokémon.)'
   }];
 
   public set: string = 'BW3';

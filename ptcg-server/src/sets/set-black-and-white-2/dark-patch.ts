@@ -23,8 +23,8 @@ export class DarkPatch extends TrainerCard {
   public fullName: string = 'Dark Patch DEX';
 
   public text: string =
-    'Attach a basic D Energy card from your discard pile to 1 of your ' +
-    'Benched D Pokemon.';
+    'Attach a basic {D} Energy card from your discard pile to 1 of your ' +
+    'Benched {D} Pokémon.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {
@@ -33,7 +33,7 @@ export class DarkPatch extends TrainerCard {
       const hasEnergyInDiscard = player.discard.cards.some(c => {
         return c instanceof EnergyCard
           && c.energyType === EnergyType.BASIC
-          && c.provides.includes(CardType.DARK);
+          && c.provides.includes(CardType.DARKNESS);
       });
       if (!hasEnergyInDiscard) {
         throw new GameError(GameMessage.CANNOT_PLAY_THIS_CARD);
@@ -48,7 +48,7 @@ export class DarkPatch extends TrainerCard {
         const checkPokemonTypeEffect = new CheckPokemonTypeEffect(bench);
         store.reduceEffect(state, checkPokemonTypeEffect);
 
-        if (checkPokemonTypeEffect.cardTypes.includes(CardType.DARK)) {
+        if (checkPokemonTypeEffect.cardTypes.includes(CardType.DARKNESS)) {
           hasDarkPokemonOnBench = true;
         } else {
           const target: CardTarget = {

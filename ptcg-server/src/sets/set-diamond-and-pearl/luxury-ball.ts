@@ -14,7 +14,7 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
   let cards: Card[] | null = [];
 
   const blocked = player.deck.cards
-    .filter(c => c instanceof PokemonCard && c.tags.includes(CardTag.POKEMON_LV_X))
+    .filter(c => c instanceof PokemonCard && c.tags.includes(CardTag.LV_X))
     .map(c => player.deck.cards.indexOf(c));
 
   yield store.prompt(state, new ChooseCardsPrompt(
@@ -58,7 +58,7 @@ export class LuxuryBall extends TrainerCard {
   public fullName: string = 'Luxury Ball SF';
 
   public text: string =
-    'Search your deck for a Pokemon (excluding Pokemon LV.X), show it to ' +
+    'Search your deck for a Pokémon (excluding Pokémon LV.X), show it to ' +
     'your opponent, and put it into your hand. Shuffle your deck afterward. ' +
     'If any Luxury Ball is in your discard pile, you can\'t play this card.';
 

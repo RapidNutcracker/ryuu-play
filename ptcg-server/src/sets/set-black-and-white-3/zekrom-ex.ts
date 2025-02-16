@@ -9,7 +9,7 @@ import { DiscardCardsEffect } from '../../game/store/effects/attack-effects';
 
 export class ZekromEx extends PokemonCard {
 
-  public tags = [ CardTag.POKEMON_EX ];
+  public tags = [ CardTag.EX ];
 
   public stage: Stage = Stage.BASIC;
 
@@ -31,7 +31,7 @@ export class ZekromEx extends PokemonCard {
       name: 'Strong Volt',
       cost: [ CardType.LIGHTNING, CardType.LIGHTNING, CardType.COLORLESS, CardType.COLORLESS ],
       damage: 150,
-      text: 'Discard 2 Energy attached to this Pokemon.'
+      text: 'Discard 2 Energy attached to this Pokémon.'
     },
   ];
 

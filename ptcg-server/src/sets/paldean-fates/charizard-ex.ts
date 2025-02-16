@@ -6,12 +6,11 @@ import { Effect } from '../../game/store/effects/effect';
 import { GameMessage } from '../../game/game-message';
 import { PokemonCard } from '../../game/store/card/pokemon-card';
 import { Stage, CardType, CardTag, SuperType, EnergyType } from '../../game/store/card/card-types';
-import { State } from '../../game/store/state/state';
+import { GamePhase, State } from '../../game/store/state/state';
 import { StoreLike } from '../../game/store/store-like';
 
 
-function* useInfernalReign(next: Function, store: StoreLike, state: State,
-  self: CharizardEx, effect: PlayPokemonEffect): IterableIterator<State> {
+function* useInfernalReign(next: Function, store: StoreLike, state: State, effect: PlayPokemonEffect): IterableIterator<State> {
   const player = effect.player;
 
   if (player.deck.cards.length === 0) {
@@ -33,7 +32,7 @@ function* useInfernalReign(next: Function, store: StoreLike, state: State,
 
   // Try to reduce PowerEffect, to check if something is blocking our ability
   try {
-    const powerEffect = new PowerEffect(player, self.powers[0], self);
+    const powerEffect = new PowerEffect(player, effect.pokemonCard.powers[0], effect.pokemonCard);
     store.reduceEffect(state, powerEffect);
   } catch {
     return state;
@@ -76,13 +75,13 @@ export class CharizardEx extends PokemonCard {
 
   public id: number = 54;
 
-  public tags: string[] = [CardTag.POKEMON_EX, CardTag.TERA];
+  public tags: string[] = [CardTag.EX, CardTag.TERA];
 
   public stage: Stage = Stage.STAGE_2;
 
   public evolvesFrom = 'Charmeleon';
 
-  public cardType: CardType = CardType.DARK;
+  public cardType: CardType = CardType.DARKNESS;
 
   public hp: number = 330;
 
@@ -117,27 +116,37 @@ export class CharizardEx extends PokemonCard {
   public rules: string[] = [
     'When your Pokémon ex is Knocked Out, your opponent takes 2 Prize cards.',
     'As long as this Pokémon is on your Bench, prevent all damage done to this Pokémon by attacks (both yours and your opponent\'s).'
-  ]
+  ];
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     // Infernal Reign
     if (effect instanceof EvolveEffect && effect.pokemonCard === this) {
-      const generator = useInfernalReign(() => generator.next(), store, state, this, effect);
+      const generator = useInfernalReign(() => generator.next(), store, state, effect);
       return generator.next().value;
     }
 
     // Burning Darkness
     if (effect instanceof AttackEffect && effect.attack === this.attacks[0]) {
       /// TODO: Dynamic Prize Size
-      effect.damage += (6 - effect.player.getPrizeLeft()) * 30;
+      effect.damage += (6 - effect.opponent.getPrizeLeft()) * 30;
       return state;
     }
 
     // Tera Pokémon ex rule
     if (effect instanceof PutDamageEffect && effect.target.getPokemonCard() === this) {
-      if (effect.target !== effect.opponent.active) {
-        effect.preventDefault = true;
+
+      // It's not an attack
+      if (state.phase !== GamePhase.ATTACK) {
+        return state;
       }
+
+      const player = StateUtils.findOwner(state, effect.target);
+      const benchIndex = player.bench.indexOf(effect.target);
+      if (benchIndex === -1) {
+        return state;
+      }
+
+      effect.preventDefault = true;
     }
 
     return state;

@@ -50,7 +50,7 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     return state;
   }
 
-  // Discard trainer only when user selected a Pokemon
+  // Discard trainer only when user selected a Pokémon
   player.hand.moveCardTo(effect.trainerCard, player.discard);
 
   transfers.forEach(transfer => {
@@ -73,7 +73,7 @@ export class EnergySwitch extends TrainerCard {
   public fullName: string = 'Energy Switch LT';
 
   public text: string =
-    'Move a basic Energy from 1 of your Pokemon to another of your Pokemon.';
+    'Move a basic Energy from 1 of your Pokémon to another of your Pokémon.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {

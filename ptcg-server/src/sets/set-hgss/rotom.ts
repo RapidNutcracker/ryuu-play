@@ -17,7 +17,7 @@ export class Rotom extends PokemonCard {
 
   public hp: number = 60;
 
-  public weakness = [{ type: CardType.DARK }];
+  public weakness = [{ type: CardType.DARKNESS }];
 
   public resistance = [{ type: CardType.COLORLESS, value: -20 }];
 
@@ -37,8 +37,8 @@ export class Rotom extends PokemonCard {
       name: 'Plasma Arrow',
       cost: [ CardType.LIGHTNING ],
       damage: 0,
-      text: 'Choose 1 of your opponent\'s Pokemon. This attack does 20 ' +
-        'damage for each Energy attached to that Pokemon. This attack\'s ' +
+      text: 'Choose 1 of your opponent\'s Pokémon. This attack does 20 ' +
+        'damage for each Energy attached to that Pokémon. This attack\'s ' +
         'damage isn\'t affected by Weakness or Resistance.'
     }
   ];

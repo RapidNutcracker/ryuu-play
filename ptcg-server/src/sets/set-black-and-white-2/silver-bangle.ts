@@ -17,8 +17,8 @@ export class SilverBangle extends TrainerCard {
   public fullName: string = 'Silver Bangle PLB';
 
   public text: string =
-    'The attacks of the Pokemon this card is attached to (excluding ' +
-    'Pokemon-EX) do 30 more damage to Active Pokemon-EX (before applying ' +
+    'The attacks of the Pokémon this card is attached to (excluding ' +
+    'Pokémon-EX) do 30 more damage to Active Pokémon-EX (before applying ' +
     'Weakness and Resistance).';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
@@ -31,12 +31,12 @@ export class SilverBangle extends TrainerCard {
       }
 
       const pokemonCard = effect.source.getPokemonCard();
-      if (pokemonCard && pokemonCard.tags.includes(CardTag.POKEMON_EX)) {
+      if (pokemonCard && pokemonCard.tags.includes(CardTag.EX)) {
         return state;
       }
 
       const targetCard = effect.target.getPokemonCard();
-      if (targetCard && targetCard.tags.includes(CardTag.POKEMON_EX)) {
+      if (targetCard && targetCard.tags.includes(CardTag.EX)) {
         effect.damage += 30;
       }
     }

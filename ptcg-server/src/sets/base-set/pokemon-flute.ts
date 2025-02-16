@@ -22,7 +22,7 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     throw new GameError(GameMessage.CANNOT_PLAY_THIS_CARD);
   }
 
-  // Opponent has no basic Pokemon in the discard pile
+  // Opponent has no basic Pokémon in the discard pile
   if (!opponent.discard.cards.some(c => c instanceof PokemonCard && c.stage === Stage.BASIC)) {
     throw new GameError(GameMessage.CANNOT_PLAY_THIS_CARD);
   }
@@ -39,9 +39,9 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     { min: 1, max: 1, allowCancel: true }
   ), selected => {
     if (selected && selected.length > 0) {
-      // Discard trainer only when user selected a Pokemon
+      // Discard trainer only when user selected a Pokémon
       player.supporter.moveCardTo(effect.trainerCard, player.discard);
-      // Recover discarded Pokemon
+      // Recover discarded Pokémon
       opponent.discard.moveCardsTo(selected, slots[0]);
     }
   });

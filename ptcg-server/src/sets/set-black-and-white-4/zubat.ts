@@ -24,7 +24,7 @@ export class Zubat extends PokemonCard {
   public powers = [{
     name: 'Free Flight',
     powerType: PowerType.ABILITY,
-    text: 'If this Pokemon has no Energy attached to it, this Pokemon has no Retreat Cost.'
+    text: 'If this Pokémon has no Energy attached to it, this Pokémon has no Retreat Cost.'
   }];
 
   public attacks = [{

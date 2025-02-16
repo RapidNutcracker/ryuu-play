@@ -13,7 +13,7 @@ export class ZapdosEx extends PokemonCard {
 
   public id: number = 145;
 
-  public tags: string[] = [CardTag.POKEMON_EX];
+  public tags: string[] = [CardTag.EX];
 
   public stage: Stage = Stage.BASIC;
 

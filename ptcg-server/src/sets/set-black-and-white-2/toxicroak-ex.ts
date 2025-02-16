@@ -8,7 +8,7 @@ import { AddSpecialConditionsEffect } from '../../game/store/effects/attack-effe
 
 export class ToxicroakEx extends PokemonCard {
 
-  public tags = [ CardTag.POKEMON_EX ];
+  public tags = [ CardTag.EX ];
 
   public stage: Stage = Stage.BASIC;
 
@@ -25,8 +25,8 @@ export class ToxicroakEx extends PokemonCard {
       name: 'Triple Poison',
       cost: [ CardType.COLORLESS, CardType.COLORLESS ],
       damage: 0,
-      text: 'Your opponent\'s Active Pokemon is now Poisoned. Put 3 damage ' +
-        'counters instead of 1 on that Pokemon between turns.'
+      text: 'Your opponent\'s Active Pokémon is now Poisoned. Put 3 damage ' +
+        'counters instead of 1 on that Pokémon between turns.'
     }, {
       name: 'Smash Uppercut',
       cost: [ CardType.PSYCHIC, CardType.PSYCHIC, CardType.COLORLESS ],

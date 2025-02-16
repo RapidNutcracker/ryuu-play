@@ -56,7 +56,7 @@ export class Emolga extends PokemonCard {
       name: 'Call for Family',
       cost: [ CardType.COLORLESS ],
       damage: 0,
-      text: 'Search your deck for 2 Basic Pokemon and put them onto your ' +
+      text: 'Search your deck for 2 Basic Pokémon and put them onto your ' +
         'Bench. Shuffle your deck afterward.'
     },
     {

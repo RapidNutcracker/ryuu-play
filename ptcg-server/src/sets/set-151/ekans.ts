@@ -23,7 +23,7 @@ function* useAcidSpray(next: Function, store: StoreLike, state: State,
   const player = effect.player;
   const opponent = StateUtils.getOpponent(state, player);
 
-  // Defending Pokemon has no energy cards attached
+  // Defending Pokémon has no energy cards attached
   if (!opponent.active.cards.some(c => c instanceof EnergyCard)) {
     return state;
   }
@@ -62,7 +62,7 @@ export class Ekans extends PokemonCard {
 
   public stage: Stage = Stage.BASIC;
 
-  public cardType: CardType = CardType.DARK;
+  public cardType: CardType = CardType.DARKNESS;
 
   public hp: number = 70;
 
@@ -76,7 +76,7 @@ export class Ekans extends PokemonCard {
 
   public attacks = [{
     name: 'Acid Spray',
-    cost: [CardType.DARK, CardType.DARK],
+    cost: [CardType.DARKNESS, CardType.DARKNESS],
     damage: 30,
     text: 'Flip a coin. If heads, discard an Energy from your opponent\'s Active Pokémon.'
   }];

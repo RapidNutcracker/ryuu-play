@@ -20,7 +20,7 @@ export class TrainingCenter extends TrainerCard {
   public fullName: string = 'Training Center FFI';
 
   public text: string =
-    'Each Stage 1 and Stage 2 Pokemon in play (both yours and your ' +
+    'Each Stage 1 and Stage 2 Pokémon in play (both yours and your ' +
     'opponent\'s) gets +30 HP.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {

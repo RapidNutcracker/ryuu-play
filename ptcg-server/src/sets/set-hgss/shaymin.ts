@@ -28,7 +28,7 @@ export class Shaymin extends PokemonCard {
     powerType: PowerType.POKEPOWER,
     text: 'Once during your turn, when you put Shaymin from your hand onto ' +
       'your Bench, you may move as many Energy cards attached to your ' +
-      'Pokemon as you like to any of your other Pokemon.'
+      'Pokémon as you like to any of your other Pokémon.'
   }];
 
   public attacks = [
@@ -36,7 +36,7 @@ export class Shaymin extends PokemonCard {
       name: 'Energy Bloom',
       cost: [ CardType.GRASS, CardType.COLORLESS ],
       damage: 30,
-      text: 'Remove 3 damage counters from each of your Pokemon that has ' +
+      text: 'Remove 3 damage counters from each of your Pokémon that has ' +
         'any Energy attached to it.'
     }
   ];

@@ -22,7 +22,7 @@ export class Welder extends TrainerCard {
   public fullName: string = 'Welder UNB';
 
   public text: string =
-    'Attach up to 2 R Energy cards from your hand to 1 of your Pokemon. ' +
+    'Attach up to 2 {R} Energy cards from your hand to 1 of your Pokémon. ' +
     'If you do, draw 3 cards.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {

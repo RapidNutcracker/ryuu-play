@@ -19,8 +19,8 @@ export class AZ extends TrainerCard {
   public fullName: string = 'AZ PFO';
 
   public text: string =
-    'Put 1 of your Pokemon into your hand. (Discard all cards attached ' +
-    'to that Pokemon.)';
+    'Put 1 of your Pokémon into your hand. (Discard all cards attached ' +
+    'to that Pokémon.)';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {

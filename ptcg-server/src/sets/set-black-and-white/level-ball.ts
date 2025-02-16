@@ -66,7 +66,7 @@ export class LevelBall extends TrainerCard {
   public fullName: string = 'Level Ball NXD';
 
   public text: string =
-    'Search your deck for a Pokemon with 90 HP or less, reveal it, ' +
+    'Search your deck for a Pokémon with 90 HP or less, reveal it, ' +
     'and put it into your hand. Shuffle your deck afterward.';
 
 

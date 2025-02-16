@@ -35,9 +35,9 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     { min: 1, max: 1, allowCancel: true }
   ), selected => {
     if (selected && selected.length > 0) {
-      // Discard trainer only when user selected a Pokemon
+      // Discard trainer only when user selected a Pokémon
       player.hand.moveCardTo(effect.trainerCard, player.discard);
-      // Recover discarded Pokemon
+      // Recover discarded Pokémon
       player.discard.moveCardsTo(selected, slots[0]);
     }
   });
@@ -54,7 +54,7 @@ export class Revive extends TrainerCard {
   public fullName: string = 'Revive BW';
 
   public text: string =
-    'Put a Basic Pokemon from your discard pile onto your Bench.';
+    'Put a Basic Pokémon from your discard pile onto your Bench.';
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
     if (effect instanceof TrainerEffect && effect.trainerCard === this) {
