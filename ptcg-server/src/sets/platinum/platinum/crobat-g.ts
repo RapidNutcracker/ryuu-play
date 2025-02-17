@@ -37,7 +37,7 @@ export class CrobatG extends PokemonCard {
 
   public stage: Stage = Stage.BASIC;
 
-  public cardType: CardType = CardType.PSYCHIC;
+  public cardTypes: CardType[] = [CardType.PSYCHIC];
 
   public tags = [CardTag.SP];
 

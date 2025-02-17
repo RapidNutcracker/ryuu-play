@@ -14,7 +14,7 @@ export class Rhydon extends PokemonCard {
 
   public evolvesFrom: string = 'Rhyhorn';
 
-  public cardType: CardType = CardType.FIGHTING;
+  public cardTypes: CardType[] = [CardType.FIGHTING];
 
   public hp: number = 120;
 

@@ -50,7 +50,7 @@ export class DragapultEx extends PokemonCard {
 
   public evolvesFrom: string = 'Drakloak';
 
-  public cardType: CardType = CardType.DRAGON;
+  public cardTypes: CardType[] = [CardType.DRAGON];
 
   public hp: number = 320;
 

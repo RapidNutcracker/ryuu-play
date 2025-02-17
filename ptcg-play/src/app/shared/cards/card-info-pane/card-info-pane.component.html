@@ -28,7 +28,7 @@
         <span class="subtitle-hp-value">{{card.hp}}</span>
       </div>
       <div class="subtitle-card-type">
-        <ptcg-energy [type]="card.cardType"></ptcg-energy>
+        <ptcg-energy *ngFor="let cardType of card.cardTypes" [type]="cardType"></ptcg-energy>
       </div>
     </div>
 

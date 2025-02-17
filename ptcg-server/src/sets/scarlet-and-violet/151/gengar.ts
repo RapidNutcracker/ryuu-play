@@ -27,7 +27,7 @@ export class Gengar extends PokemonCard {
 
   public evolvesFrom: string = 'Haunter';
 
-  public cardType: CardType = CardType.PSYCHIC;
+  public cardTypes: CardType[] = [CardType.PSYCHIC];
 
   public hp: number = 130;
 

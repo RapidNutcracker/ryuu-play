@@ -23,7 +23,7 @@ export class Nidoqueen extends PokemonCard {
 
   public evolvesFrom: string = 'Nidorina';
 
-  public cardType: CardType = CardType.DARKNESS;
+  public cardTypes: CardType[] = [CardType.DARKNESS];
 
   public hp: number = 170;
 

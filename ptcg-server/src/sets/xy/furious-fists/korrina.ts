@@ -24,7 +24,7 @@ function* playCard(next: Function, store: StoreLike, state: State,
   player.deck.cards.forEach((c, index) => {
     if (c instanceof TrainerCard && c.trainerType === TrainerType.ITEM) {
       trainers += 1;
-    } else if (c instanceof PokemonCard && c.cardType === CardType.FIGHTING) {
+    } else if (c instanceof PokemonCard && c.cardTypes.includes(CardType.FIGHTING)) {
       pokemons += 1;
     } else {
       blocked.push(index);
@@ -43,7 +43,7 @@ function* playCard(next: Function, store: StoreLike, state: State,
     player.id,
     GameMessage.CHOOSE_CARD_TO_HAND,
     player.deck,
-    { },
+    {},
     { min: 0, max: count, allowCancel: false, blocked, maxPokemons, maxTrainers }
   ), selected => {
     cards = selected || [];

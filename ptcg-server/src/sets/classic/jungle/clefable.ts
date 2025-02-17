@@ -62,7 +62,7 @@ export class Clefable extends PokemonCard {
 
   public stage: Stage = Stage.STAGE_1;
 
-  public cardType: CardType = CardType.COLORLESS;
+  public cardTypes: CardType[] = [CardType.COLORLESS];
 
   public hp: number = 70;
 

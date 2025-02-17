@@ -27,7 +27,7 @@ export class Omastar extends PokemonCard {
 
   public evolvesFrom: string = 'Omanyte';
 
-  public cardType: CardType = CardType.WATER;
+  public cardTypes: CardType[] = [CardType.WATER];
 
   public hp: number = 150;
 

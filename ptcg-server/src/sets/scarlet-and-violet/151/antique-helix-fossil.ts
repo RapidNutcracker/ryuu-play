@@ -32,7 +32,7 @@ export class AntiqueHelixFossil extends TrainerCard implements PokemonCard {
 
   public evolvesFrom: string = '';
 
-  public cardType: CardType = CardType.COLORLESS;
+  public cardTypes: CardType[] = [CardType.COLORLESS];
 
   public hp: number = 60;
 

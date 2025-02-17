@@ -14,7 +14,7 @@ export class Nidoking extends PokemonCard {
 
   public evolvesFrom: string = 'Nidorino';
 
-  public cardType: CardType = CardType.GRASS;
+  public cardTypes: CardType[] = [CardType.GRASS];
 
   public hp: number = 90;
 

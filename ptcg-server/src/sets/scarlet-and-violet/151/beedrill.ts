@@ -13,7 +13,7 @@ export class Beedrill extends PokemonCard {
 
   public evolvesFrom: string = 'Kakuna';
 
-  public cardType: CardType = CardType.GRASS;
+  public cardTypes: CardType[] = [CardType.GRASS];
 
   public hp: number = 130;
 

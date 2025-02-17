@@ -4,7 +4,7 @@ import { CardType } from 'ptcg-server';
 export interface DeckListEntry {
   id: number;
   name: string;
-  cardType: CardType[];
+  cardTypes: CardType[];
   isValid: boolean;
 }
 
@@ -15,7 +15,7 @@ export interface DeckListResponse extends Response {
 export interface Deck {
   id: number;
   name: string;
-  cardType: CardType[];
+  cardTypes: CardType[];
   isValid: boolean;
   cards: string[];
 }

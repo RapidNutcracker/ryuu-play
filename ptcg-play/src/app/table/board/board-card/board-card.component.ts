@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { PokemonCardList, Card, CardList, SuperType, SpecialCondition } from 'ptcg-server';
+import { PokemonCardList, Card, CardList, SuperType, SpecialCondition, PokemonCard } from 'ptcg-server';
 
 const MAX_ENERGY_CARDS = 4;
 
@@ -15,6 +15,7 @@ export class BoardCardComponent {
 
   @Input() set cardList(value: CardList | PokemonCardList) {
     this.mainCard = undefined;
+    this.breakCard = undefined;
     this.energyCards = [];
     this.trainerCard = undefined;
     this.moreEnergies = 0;
@@ -65,6 +66,7 @@ export class BoardCardComponent {
 
   public isEmpty = true;
   public mainCard: Card;
+  public breakCard: PokemonCard;
   public moreEnergies = 0;
   public cardCount = 0;
   public energyCards: Card[] = [];

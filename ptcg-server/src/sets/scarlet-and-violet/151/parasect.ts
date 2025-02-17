@@ -36,7 +36,7 @@ function* useSpreadFilaments(next: Function, store: StoreLike, state: State,
     player.id,
     GameMessage.CHOOSE_CARD_TO_PUT_ONTO_BENCH,
     player.deck,
-    { superType: SuperType.POKEMON, stage: Stage.BASIC, cardType: CardType.GRASS },
+    { superType: SuperType.POKEMON, stage: Stage.BASIC, cardTypes: [CardType.GRASS] },
     { min: 0, max, allowCancel: true }
   ), selected => {
     cards = selected || [];
@@ -65,7 +65,7 @@ export class Parasect extends PokemonCard {
 
   public evolvesFrom: string = 'Paras';
 
-  public cardType: CardType = CardType.GRASS;
+  public cardTypes: CardType[] = [CardType.GRASS];
 
   public hp: number = 120;
 

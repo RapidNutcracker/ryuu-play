@@ -15,7 +15,7 @@ function* useCallForFriend(next: Function, store: StoreLike, state: State, effec
 
   const blocked: number[] = [];
   player.discard.cards.forEach((card, index) => {
-    if (!(card instanceof PokemonCard) || (card.stage !== Stage.BASIC && card.cardType !== CardType.FIGHTING)) {
+    if (!(card instanceof PokemonCard) || (card.stage !== Stage.BASIC && !card.cardTypes.includes(CardType.FIGHTING))) {
       blocked.push(index);
     }
   });
@@ -54,7 +54,7 @@ export class Marowak extends PokemonCard {
 
   public evolvesFrom: string = 'Cubone';
 
-  public cardType: CardType = CardType.FIGHTING;
+  public cardTypes: CardType[] = [CardType.FIGHTING];
 
   public hp: number = 60;
 

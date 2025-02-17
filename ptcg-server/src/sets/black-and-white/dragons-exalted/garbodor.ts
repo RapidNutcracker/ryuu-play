@@ -16,7 +16,7 @@ export class Garbodor extends PokemonCard {
 
   public evolvesFrom = 'Trubbish';
 
-  public cardType: CardType = CardType.PSYCHIC;
+  public cardTypes: CardType[] = [CardType.PSYCHIC];
 
   public hp: number = 100;
 

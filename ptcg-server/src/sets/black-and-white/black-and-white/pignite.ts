@@ -11,7 +11,7 @@ export class Pignite extends PokemonCard {
 
   public evolvesFrom = 'Tepig';
 
-  public cardType: CardType = CardType.FIRE;
+  public cardTypes: CardType[] = [CardType.FIRE];
 
   public hp: number = 100;
 

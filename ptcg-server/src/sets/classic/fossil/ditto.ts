@@ -53,7 +53,7 @@ export class Ditto extends PokemonCard {
 
   public stage: Stage = Stage.BASIC;
 
-  public cardType: CardType = CardType.COLORLESS;
+  public cardTypes: CardType[] = [CardType.COLORLESS];
 
   public hp: number = 50;
 
@@ -109,7 +109,7 @@ export class Ditto extends PokemonCard {
       const opponent = StateUtils.getOpponent(state, owner);
 
       if (owner.active.getPokemonCard() === this) {
-        effect.cardTypes = [opponent.active.getPokemonCard()?.cardType || this.cardType];
+        effect.cardTypes = opponent.active.getPokemonCard()?.cardTypes || this.cardTypes;
       }
     }
 

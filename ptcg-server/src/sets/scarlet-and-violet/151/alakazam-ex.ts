@@ -15,7 +15,7 @@ export class AlakazamEx extends PokemonCard {
 
   public evolvesFrom = 'Kadabra';
 
-  public cardType: CardType = CardType.PSYCHIC;
+  public cardTypes: CardType[] = [CardType.PSYCHIC];
 
   public hp: number = 310;
 

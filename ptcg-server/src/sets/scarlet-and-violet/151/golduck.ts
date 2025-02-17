@@ -12,7 +12,7 @@ export class Golduck extends PokemonCard {
 
   public evolvesFrom: string = 'Psyduck'
 
-  public cardType: CardType = CardType.WATER;
+  public cardTypes: CardType[] = [CardType.WATER];
 
   public hp: number = 110;
 

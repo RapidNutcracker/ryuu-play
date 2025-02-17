@@ -15,7 +15,7 @@ export class Wobbuffet extends PokemonCard {
 
   public stage: Stage = Stage.BASIC;
 
-  public cardType: CardType = CardType.PSYCHIC;
+  public cardTypes: CardType[] = [CardType.PSYCHIC];
 
   public hp: number = 110;
 
@@ -62,7 +62,7 @@ export class Wobbuffet extends PokemonCard {
         return state;
       }
 
-      let cardTypes = [effect.card instanceof PokemonCard && effect.card.cardType];
+      let cardTypes: CardType[] = effect.card instanceof PokemonCard && effect.card.cardTypes || [];
 
       const cardList = StateUtils.findCardList(state, effect.card);
       if (cardList instanceof PokemonCardList) {

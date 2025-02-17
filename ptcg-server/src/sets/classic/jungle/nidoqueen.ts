@@ -10,7 +10,7 @@ export class Nidoqueen extends PokemonCard {
 
   public stage: Stage = Stage.STAGE_2;
 
-  public cardType: CardType = CardType.GRASS;
+  public cardTypes: CardType[] = [CardType.GRASS];
 
   public hp: number = 90;
 

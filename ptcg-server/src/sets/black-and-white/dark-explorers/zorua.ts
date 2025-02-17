@@ -45,7 +45,7 @@ export class Zorua extends PokemonCard {
 
   public stage: Stage = Stage.BASIC;
 
-  public cardType: CardType = CardType.DARKNESS;
+  public cardTypes: CardType[] = [CardType.DARKNESS];
 
   public hp: number = 50;
 

@@ -13,7 +13,7 @@ export class Machoke extends PokemonCard {
 
   public evolvesFrom: string = 'Machop';
 
-  public cardType: CardType = CardType.FIGHTING;
+  public cardTypes: CardType[] = [CardType.FIGHTING];
 
   public hp: number = 80;
 

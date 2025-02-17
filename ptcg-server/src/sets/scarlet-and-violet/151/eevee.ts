@@ -21,11 +21,13 @@ function* useColorfulFriends(next: Function, store: StoreLike, state: State,
   const typeMap: { [key: number]: boolean } = {};
   player.deck.cards.forEach(c => {
     if (c instanceof PokemonCard) {
-      const cardType = c.cardType;
-      if (typeMap[cardType] === undefined) {
-        numberOfPokemonWithDifferentTypesInDeck += 1;
-        typeMap[cardType] = true;
-      }
+      const cardTypes = c.cardTypes;
+      cardTypes.forEach(cardType => {
+        if (typeMap[cardType] === undefined) {
+          numberOfPokemonWithDifferentTypesInDeck += 1;
+          typeMap[cardType] = true;
+        }
+      });
     }
   });
 
@@ -68,7 +70,7 @@ export class Eevee extends PokemonCard {
 
   public stage: Stage = Stage.BASIC;
 
-  public cardType: CardType = CardType.COLORLESS;
+  public cardTypes: CardType[] = [CardType.COLORLESS];
 
   public hp: number = 70;
 

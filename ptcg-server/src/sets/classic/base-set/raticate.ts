@@ -13,7 +13,7 @@ export class Raticate extends PokemonCard {
 
   public evolvesFrom: string = 'Rattata';
 
-  public cardType: CardType = CardType.COLORLESS;
+  public cardTypes: CardType[] = [CardType.COLORLESS];
 
   public hp: number = 60;
 

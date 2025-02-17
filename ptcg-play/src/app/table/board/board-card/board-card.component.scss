@@ -14,8 +14,8 @@ $ptcg-energy-card-offset: 15%;
     padding-bottom: $card-aspect-ratio * 100%;
   }
 
-  &.face-down > div:not(.ptcg-card-counts),
-  &.face-down > ptcg-card {
+  &.face-down>div:not(.ptcg-card-counts),
+  &.face-down>ptcg-card {
     display: none;
   }
 
@@ -60,6 +60,12 @@ $ptcg-energy-card-offset: 15%;
   width: 100%;
 }
 
+.ptcg-pokemon-break-card {
+  position: absolute;
+  transform: rotate(90deg);
+  width: 100%;
+}
+
 .ptcg-card-counts {
   bottom: 0;
   padding: $ptcg-board-tiny-padding 0;
@@ -89,7 +95,7 @@ $ptcg-energy-card-offset: 15%;
   top: 0;
   transform: translateX(-100%);
 
-  & > div {
+  &>div {
     padding-bottom: $ptcg-board-tiny-padding;
   }
 

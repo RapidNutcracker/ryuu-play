@@ -13,7 +13,7 @@ export class Dugtrio extends PokemonCard {
 
   public evolvesFrom: string = 'Diglett';
 
-  public cardType: CardType = CardType.FIGHTING;
+  public cardTypes: CardType[] = [CardType.FIGHTING];
 
   public hp: number = 70;
 

@@ -20,7 +20,7 @@ export class CharizardEx extends PokemonCard {
 
   public evolvesFrom = 'Charmeleon';
 
-  public cardType: CardType = CardType.FIRE;
+  public cardTypes: CardType[] = [CardType.FIRE];
 
   public hp: number = 330;
 

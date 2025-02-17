@@ -26,7 +26,7 @@ export class ClefairyDoll extends TrainerCard implements PokemonCard {
 
   public stage: Stage = Stage.NONE;
 
-  public cardType: CardType = CardType.NONE;
+  public cardTypes: CardType[] = [CardType.NONE];
 
   public hp: number = 10;
 

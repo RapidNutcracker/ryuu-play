@@ -12,7 +12,7 @@ export class Zapdos extends PokemonCard {
 
   public stage: Stage = Stage.BASIC;
 
-  public cardType: CardType = CardType.LIGHTNING;
+  public cardTypes: CardType[] = [CardType.LIGHTNING];
 
   public hp: number = 90;
 

@@ -47,7 +47,7 @@ export class Butterfree extends PokemonCard {
 
   public evolvesFrom: string = 'Metapod';
 
-  public cardType: CardType = CardType.GRASS;
+  public cardTypes: CardType[] = [CardType.GRASS];
 
   public hp: number = 70;
 

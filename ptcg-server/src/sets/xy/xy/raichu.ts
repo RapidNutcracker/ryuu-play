@@ -11,7 +11,7 @@ export class Raichu extends PokemonCard {
 
   public evolvesFrom = 'Pikachu';
 
-  public cardType: CardType = CardType.LIGHTNING;
+  public cardTypes: CardType[] = [CardType.LIGHTNING];
 
   public hp: number = 90;
 

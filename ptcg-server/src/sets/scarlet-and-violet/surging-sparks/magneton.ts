@@ -25,7 +25,7 @@ function* useOvervoltDischarge(next: Function, store: StoreLike, state: State,
   player.forEachPokemon(PlayerType.BOTTOM_PLAYER, (cardList, card, target) => {
     if (cardList.cards.length > 0) {
       const pokemonCard = cardList.getPokemonCard();
-      if (pokemonCard !== undefined && pokemonCard.cardType === CardType.LIGHTNING) {
+      if (pokemonCard !== undefined && pokemonCard.cardTypes.includes(CardType.LIGHTNING)) {
         if (pokemonCard === self) {
           blocked.push(target);
           magnetonSlot = cardList;
@@ -83,7 +83,7 @@ export class Magneton extends PokemonCard {
 
   public evolvesFrom: string = 'Magnemite';
 
-  public cardType: CardType = CardType.LIGHTNING;
+  public cardTypes: CardType[] = [CardType.LIGHTNING];
 
   public hp: number = 100;
 

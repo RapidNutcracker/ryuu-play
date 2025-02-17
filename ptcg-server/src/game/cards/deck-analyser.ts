@@ -21,7 +21,7 @@ export class DeckAnalyser {
   }
 
   public isValid(): boolean {
-    const countMap: { [name: string]: number } = { };
+    const countMap: { [name: string]: number } = {};
     let hasBasicPokemon: boolean = false;
     let hasAceSpec: boolean = false;
 
@@ -61,20 +61,18 @@ export class DeckAnalyser {
 
     for (let i = 0; i < this.cards.length; i++) {
       const card = this.cards[i];
-      let cardType = CardType.NONE;
-
       if (card instanceof PokemonCard) {
-        cardType = card.cardType;
-        if (cardType !== CardType.NONE && cardTypes.indexOf(cardType) === -1) {
-          cardTypes.push(cardType);
-        }
-      } else if (card instanceof EnergyCard) {
-        for (let j = 0; j < card.provides.length; j++) {
-          cardType = card.provides[j];
+        card.cardTypes.forEach(cardType => {
           if (cardType !== CardType.NONE && cardTypes.indexOf(cardType) === -1) {
             cardTypes.push(cardType);
           }
-        }
+        });
+      } else if (card instanceof EnergyCard) {
+        card.provides.forEach(cardType => {
+          if (cardType !== CardType.NONE && cardTypes.indexOf(cardType) === -1) {
+            cardTypes.push(cardType);
+          }
+        });
       }
     }
 

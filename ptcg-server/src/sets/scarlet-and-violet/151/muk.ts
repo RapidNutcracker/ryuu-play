@@ -16,7 +16,7 @@ export class Muk extends PokemonCard {
 
   public evolvesFrom: string = 'Grimer';
 
-  public cardType: CardType = CardType.DARKNESS;
+  public cardTypes: CardType[] = [CardType.DARKNESS];
 
   public hp: number = 150;
 

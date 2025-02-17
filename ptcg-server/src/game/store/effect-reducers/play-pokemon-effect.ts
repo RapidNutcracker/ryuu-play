@@ -6,7 +6,7 @@ import { Stage } from '../card/card-types';
 import { State } from '../state/state';
 import { StoreLike } from '../store-like';
 import { CheckPokemonPlayedTurnEffect } from '../effects/check-effects';
-import {EvolveEffect} from '../effects/game-effects';
+import { EvolveEffect } from '../effects/game-effects';
 
 
 export function playPokemonReducer(store: StoreLike, state: State, effect: Effect): State {
@@ -26,7 +26,7 @@ export function playPokemonReducer(store: StoreLike, state: State, effect: Effec
       return state;
     }
 
-    const isEvolved = stage === Stage.STAGE_1 || Stage.STAGE_2;
+    const isEvolved = stage === Stage.STAGE_1 || Stage.STAGE_2 || Stage.BREAK;
     const evolvesFrom = effect.pokemonCard.evolvesFrom;
     const pokemonCard = effect.target.getPokemonCard();
     if (pokemonCard === undefined) {

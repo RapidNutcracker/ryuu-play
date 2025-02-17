@@ -13,7 +13,7 @@ export class Wigglytuff extends PokemonCard {
 
   public evolvesFrom: string = 'Jigglypuff';
 
-  public cardType: CardType = CardType.COLORLESS;
+  public cardTypes: CardType[] = [CardType.COLORLESS];
 
   public hp: number = 80;
 

@@ -13,7 +13,7 @@ export class Exeggutor extends PokemonCard {
 
   public evolvesFrom: string = 'Exeggcute';
 
-  public cardType: CardType = CardType.GRASS;
+  public cardTypes: CardType[] = [CardType.GRASS];
 
   public hp: number = 140;
 

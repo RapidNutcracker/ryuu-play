@@ -14,7 +14,7 @@ export class Garchomp extends PokemonCard {
 
   public evolvesFrom = 'Gabite';
 
-  public cardType: CardType = CardType.COLORLESS;
+  public cardTypes: CardType[] = [CardType.COLORLESS];
 
   public hp: number = 130;
 

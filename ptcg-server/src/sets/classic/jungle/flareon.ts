@@ -14,7 +14,7 @@ export class Flareon extends PokemonCard {
 
   public evolvesFrom: string = 'Eevee';
 
-  public cardType: CardType = CardType.FIRE;
+  public cardTypes: CardType[] = [CardType.FIRE];
 
   public hp: number = 70;
 

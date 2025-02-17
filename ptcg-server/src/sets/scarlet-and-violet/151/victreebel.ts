@@ -13,7 +13,7 @@ export class Victreebel extends PokemonCard {
 
   public evolvesFrom: string = 'Weepinbell';
 
-  public cardType: CardType = CardType.GRASS;
+  public cardTypes: CardType[] = [CardType.GRASS];
 
   public hp: number = 150;
 

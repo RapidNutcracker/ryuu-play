@@ -10,7 +10,7 @@ export class Deino extends PokemonCard {
 
   public stage: Stage = Stage.BASIC;
 
-  public cardType: CardType = CardType.DRAGON;
+  public cardTypes: CardType[] = [CardType.DRAGON];
 
   public hp: number = 60;
 

@@ -15,7 +15,7 @@ export class Gyarados extends PokemonCard {
 
   public evolvesFrom: string = 'Magikarp';
 
-  public cardType: CardType = CardType.WATER;
+  public cardTypes: CardType[] = [CardType.WATER];
 
   public hp: number = 190;
 

@@ -12,7 +12,7 @@ export class Electrode extends PokemonCard {
 
   public stage: Stage = Stage.STAGE_1;
 
-  public cardType: CardType = CardType.LIGHTNING;
+  public cardTypes: CardType[] = [CardType.LIGHTNING];
 
   public hp: number = 90;
 
@@ -48,11 +48,11 @@ export class Electrode extends PokemonCard {
       const checkPokemonStatsEffect = new CheckPokemonStatsEffect(opponent.active);
       state = store.reduceEffect(state, checkPokemonStatsEffect);
 
-      const targetCardType = opponent.active.getPokemonCard()?.cardType;
+      const targetCardTypes = opponent.active.getPokemonCard()?.cardTypes;
 
-      if (targetCardType !== CardType.COLORLESS) {
+      if (!targetCardTypes?.includes(CardType.COLORLESS)) {
         player.bench.forEach(b => {
-          if (b.cards.length > 0 && b.getPokemonCard()?.cardType === targetCardType) {
+          if (b.cards.length > 0 && b.getPokemonCard()?.cardTypes === targetCardTypes) {
             const damageEffect = new PutDamageEffect(effect, 10);
             damageEffect.target = b;
             state = store.reduceEffect(state, damageEffect);

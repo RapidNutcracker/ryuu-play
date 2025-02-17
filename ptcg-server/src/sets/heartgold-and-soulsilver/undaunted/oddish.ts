@@ -22,7 +22,7 @@ function* useFindAFriend(next: Function, store: StoreLike, state: State,
     player.id,
     GameMessage.CHOOSE_CARD_TO_HAND,
     player.deck,
-    { superType: SuperType.POKEMON, cardType: CardType.GRASS },
+    { superType: SuperType.POKEMON, cardTypes: [CardType.GRASS] },
     { min: 1, max: 1, allowCancel: true }
   ), selected => {
     cards = selected || [];
@@ -48,7 +48,7 @@ export class Oddish extends PokemonCard {
 
   public stage: Stage = Stage.BASIC;
 
-  public cardType: CardType = CardType.GRASS;
+  public cardTypes: CardType[] = [CardType.GRASS];
 
   public hp: number = 40;
 

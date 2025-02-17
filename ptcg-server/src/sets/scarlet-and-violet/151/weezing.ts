@@ -14,7 +14,7 @@ export class Weezing extends PokemonCard {
 
   public evolvesFrom: string = 'Koffing';
 
-  public cardType: CardType = CardType.DARKNESS;
+  public cardTypes: CardType[] = [CardType.DARKNESS];
 
   public hp: number = 60;
 

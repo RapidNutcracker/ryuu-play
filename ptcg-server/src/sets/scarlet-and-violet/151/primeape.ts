@@ -13,7 +13,7 @@ export class Primeape extends PokemonCard {
 
   public evolvesFrom: string = 'Mankey';
 
-  public cardType: CardType = CardType.FIGHTING;
+  public cardTypes: CardType[] = [CardType.FIGHTING];
 
   public hp: number = 120;
 

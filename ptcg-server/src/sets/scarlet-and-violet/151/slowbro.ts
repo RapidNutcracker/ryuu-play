@@ -13,7 +13,7 @@ export class Slowbro extends PokemonCard {
 
   public evolvesFrom: string = 'Slowpoke';
 
-  public cardType: CardType = CardType.PSYCHIC;
+  public cardTypes: CardType[] = [CardType.PSYCHIC];
 
   public hp: number = 130;
 

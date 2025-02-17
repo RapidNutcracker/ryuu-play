@@ -30,7 +30,7 @@ export class MaxiesHiddenBallTrick extends TrainerCard {
       const cards = player.hand.cards.filter(c => c !== this);
 
       const hasPokemon = player.discard.cards.some(c => {
-        return c instanceof PokemonCard && c.cardType === CardType.FIGHTING;
+        return c instanceof PokemonCard && c.cardTypes.includes(CardType.FIGHTING);
       });
 
       const slot = player.bench.find(b => b.cards.length === 0);
@@ -51,7 +51,7 @@ export class MaxiesHiddenBallTrick extends TrainerCard {
         player.id,
         GameMessage.CHOOSE_CARD_TO_PUT_ONTO_BENCH,
         player.discard,
-        { superType: SuperType.POKEMON, cardType: CardType.FIGHTING },
+        { superType: SuperType.POKEMON, cardTypes: [CardType.FIGHTING] },
         { min: 1, max: 1, allowCancel: false }
       ), selected => {
         const cards = selected || [];

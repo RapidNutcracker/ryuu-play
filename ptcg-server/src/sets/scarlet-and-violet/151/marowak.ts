@@ -14,7 +14,7 @@ export class Marowak extends PokemonCard {
 
   public evolvesFrom: string = 'Cubone';
 
-  public cardType: CardType = CardType.FIGHTING;
+  public cardTypes: CardType[] = [CardType.FIGHTING];
 
   public hp: number = 120;
 

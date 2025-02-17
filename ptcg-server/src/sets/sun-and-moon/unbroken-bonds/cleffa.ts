@@ -39,7 +39,7 @@ export class Cleffa extends PokemonCard {
 
   public stage: Stage = Stage.BASIC;
 
-  public cardType: CardType = CardType.FAIRY;
+  public cardTypes: CardType[] = [CardType.FAIRY];
 
   public hp: number = 60;
 

@@ -12,7 +12,7 @@ export class Kingler extends PokemonCard {
 
   public evolvesFrom: string = 'Krabby';
 
-  public cardType: CardType = CardType.WATER;
+  public cardTypes: CardType[] = [CardType.WATER];
 
   public hp: number = 140;
 

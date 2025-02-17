@@ -22,7 +22,7 @@ export class Seadra extends PokemonCard {
 
   public evolvesFrom: string = 'Horsea';
 
-  public cardType: CardType = CardType.WATER;
+  public cardTypes: CardType[] = [CardType.WATER];
 
   public hp: number = 80;
 

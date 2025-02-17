@@ -13,7 +13,7 @@ export class Vaporeon extends PokemonCard {
 
   public evolvesFrom: string = 'Eevee';
 
-  public cardType: CardType = CardType.WATER;
+  public cardTypes: CardType[] = [CardType.WATER];
 
   public hp: number = 130;
 

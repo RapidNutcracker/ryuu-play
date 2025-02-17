@@ -27,7 +27,7 @@ export class Feraligatr extends PokemonCard {
 
   public evolvesFrom: string = 'Croconaw';
 
-  public cardType: CardType = CardType.WATER;
+  public cardTypes: CardType[] = [CardType.WATER];
 
   public hp: number = 180;
 

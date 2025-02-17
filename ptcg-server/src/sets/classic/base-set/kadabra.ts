@@ -15,7 +15,7 @@ export class Kadabra extends PokemonCard {
 
   public evolvesFrom: string = 'Abra';
 
-  public cardType: CardType = CardType.PSYCHIC;
+  public cardTypes: CardType[] = [CardType.PSYCHIC];
 
   public hp: number = 60;
 

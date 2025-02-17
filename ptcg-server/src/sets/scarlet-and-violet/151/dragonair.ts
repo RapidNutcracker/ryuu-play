@@ -14,7 +14,7 @@ export class Dragonair extends PokemonCard {
 
   public evolvesFrom: string = 'Dratini';
 
-  public cardType: CardType = CardType.DRAGON;
+  public cardTypes: CardType[] = [CardType.DRAGON];
 
   public hp: number = 100;
 

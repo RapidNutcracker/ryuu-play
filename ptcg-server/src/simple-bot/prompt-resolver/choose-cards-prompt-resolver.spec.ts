@@ -1,5 +1,13 @@
-import { State, Player, ResolvePromptAction, GameMessage, ChooseCardsPrompt,
-  PokemonCard, Card, CardType } from '../../game';
+import {
+  Card,
+  CardType,
+  ChooseCardsPrompt,
+  GameMessage,
+  Player,
+  PokemonCard,
+  ResolvePromptAction,
+  State,
+} from '../../game';
 import { ChooseCardsPromptResolver } from './choose-cards-prompt-resolver';
 import {
   allSimpleTactics,
@@ -12,7 +20,7 @@ class TestCard extends PokemonCard {
   name = 'energy';
   fullName = 'energy';
   set = 'test';
-  constructor (name: string) {
+  constructor(name: string) {
     super();
     this.name = name;
   }
@@ -40,7 +48,7 @@ describe('ChooseCardsPromptResolver', () => {
     opponent.id = 2;
 
     state = new State();
-    state.players = [ player, opponent ];
+    state.players = [player, opponent];
 
     prompt = new ChooseCardsPrompt(
       player.id,
@@ -52,7 +60,7 @@ describe('ChooseCardsPromptResolver', () => {
 
   it('Should return undefined when other prompt type', () => {
     // given
-    const other: any = { };
+    const other: any = {};
     // when
     const action = resolver.resolvePrompt(state, player, other);
     // then
@@ -71,15 +79,15 @@ describe('ChooseCardsPromptResolver', () => {
 
     // then
     expect(action instanceof ResolvePromptAction).toBeTruthy();
-    expect(result).toEqual([ card ]);
+    expect(result).toEqual([card]);
   });
 
   it('Should not choose blocked cards', () => {
     // given
-    const cards = [ new TestCard('a'), new TestCard('b'), new TestCard('c') ];
+    const cards = [new TestCard('a'), new TestCard('b'), new TestCard('c')];
     player.deck.cards = cards;
     prompt.options.max = cards.length;
-    prompt.options.blocked = [ 0, 2 ];
+    prompt.options.blocked = [0, 2];
 
     // when
     const action = resolver.resolvePrompt(state, player, prompt) as ResolvePromptAction;
@@ -87,21 +95,21 @@ describe('ChooseCardsPromptResolver', () => {
 
     // then
     expect(action instanceof ResolvePromptAction).toBeTruthy();
-    expect(result).toEqual([ new TestCard('b') ]);
+    expect(result).toEqual([new TestCard('b')]);
   });
 
   it('Should choose cards with different types', () => {
     // given
     const w = new TestCard('w');
-    w.cardType = CardType.WATER;
+    w.cardTypes = [CardType.WATER];
     const r = new TestCard('r');
-    r.cardType = CardType.FIRE;
+    r.cardTypes = [CardType.FIRE];
     const p = new TestCard('p');
-    p.cardType = CardType.PSYCHIC;
+    p.cardTypes = [CardType.PSYCHIC];
     const p2 = new TestCard('p2');
-    p2.cardType = CardType.PSYCHIC;
+    p2.cardTypes = [CardType.PSYCHIC];
 
-    const cards = [ w, p, p2, r ];
+    const cards = [w, p, p2, r];
     player.deck.cards = cards;
     prompt.options.max = cards.length;
     prompt.options.differentTypes = true;

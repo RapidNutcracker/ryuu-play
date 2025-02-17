@@ -22,7 +22,7 @@ export class Rapidash extends PokemonCard {
 
   public evolvesFrom: string = 'Ponyta';
 
-  public cardType: CardType = CardType.FIRE;
+  public cardTypes: CardType[] = [CardType.FIRE];
 
   public hp: number = 100;
 

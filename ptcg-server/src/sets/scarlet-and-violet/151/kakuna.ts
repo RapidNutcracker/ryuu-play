@@ -12,7 +12,7 @@ export class Kakuna extends PokemonCard {
 
   public evolvesFrom: string = 'Weedle';
 
-  public cardType: CardType = CardType.GRASS;
+  public cardTypes: CardType[] = [CardType.GRASS];
 
   public hp: number = 80;
 

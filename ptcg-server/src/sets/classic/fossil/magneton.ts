@@ -13,7 +13,7 @@ export class Magneton extends PokemonCard {
 
   public evolvesFrom: string = 'Magnemite';
 
-  public cardType: CardType = CardType.LIGHTNING;
+  public cardTypes: CardType[] = [CardType.LIGHTNING];
 
   public hp: number = 80;
 

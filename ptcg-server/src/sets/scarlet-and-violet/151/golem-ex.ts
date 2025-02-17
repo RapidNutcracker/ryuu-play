@@ -16,7 +16,7 @@ export class GolemEx extends PokemonCard {
 
   public evolvesFrom: string = 'Graveler';
 
-  public cardType: CardType = CardType.FIGHTING;
+  public cardTypes: CardType[] = [CardType.FIGHTING];
 
   public hp: number = 330;
 

@@ -13,7 +13,7 @@ export class Aerodactyl extends PokemonCard {
 
   public evolvesFrom: string = 'Mysterious Fossil';
 
-  public cardType: CardType = CardType.FIGHTING;
+  public cardTypes: CardType[] = [CardType.FIGHTING];
 
   public hp: number = 60;
 

@@ -32,7 +32,7 @@ export class FilterCardsPipe implements PipeTransform {
         return false;
       }
 
-      if (filter.cardTypes.length && !filter.cardTypes.includes(this.getCardType(card))) {
+      if (filter.cardTypes.length && !filter.cardTypes.some(cardType => this.getCardTypes(card).includes(cardType))) {
         return false;
       }
 
@@ -44,17 +44,15 @@ export class FilterCardsPipe implements PipeTransform {
     });
   }
 
-  private getCardType(card: Card): CardType {
+  private getCardTypes(card: Card): CardType[] {
     if (card.superType === SuperType.POKEMON) {
-      return (card as PokemonCard).cardType;
+      return (card as PokemonCard).cardTypes;
     }
     if (card.superType === SuperType.ENERGY) {
       const energyCard = card as EnergyCard;
-      if (energyCard.provides.length > 0) {
-        return energyCard.provides[0];
-      }
+      return energyCard.provides;
     }
-    return CardType.NONE;
+    return [CardType.NONE];
   }
 
 }

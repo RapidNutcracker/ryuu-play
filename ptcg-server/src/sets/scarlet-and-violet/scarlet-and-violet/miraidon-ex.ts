@@ -25,7 +25,7 @@ function* useTandemUnit(next: Function, store: StoreLike, state: State, self: Mi
     player.id,
     GameMessage.CHOOSE_CARD_TO_PUT_ONTO_BENCH,
     player.deck,
-    { superType: SuperType.POKEMON, stage: Stage.BASIC, cardType: CardType.LIGHTNING },
+    { superType: SuperType.POKEMON, stage: Stage.BASIC, cardTypes: [CardType.LIGHTNING] },
     { min: 0, max, allowCancel: true }
   ), selected => {
     cards = selected || [];
@@ -56,7 +56,7 @@ export class MiraidonEx extends PokemonCard {
 
   public stage: Stage = Stage.BASIC
 
-  public cardType: CardType = CardType.LIGHTNING;
+  public cardTypes: CardType[] = [CardType.LIGHTNING];
 
   public hp: number = 220;
 

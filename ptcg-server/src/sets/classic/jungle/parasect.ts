@@ -15,7 +15,7 @@ export class Parasect extends PokemonCard {
 
   public evolvesFrom: string = 'Paras';
 
-  public cardType: CardType = CardType.GRASS;
+  public cardTypes: CardType[] = [CardType.GRASS];
 
   public hp: number = 60;
 

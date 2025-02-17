@@ -21,7 +21,7 @@ export class Charmeleon extends PokemonCard {
 
   public evolvesFrom: string = 'Charmander';
 
-  public cardType: CardType = CardType.FIRE;
+  public cardTypes: CardType[] = [CardType.FIRE];
 
   public hp: number = 90;
 

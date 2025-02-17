@@ -14,7 +14,7 @@ export class Cloyster extends PokemonCard {
 
   public evolvesFrom: string = 'Shellder';
 
-  public cardType: CardType = CardType.WATER;
+  public cardTypes: CardType[] = [CardType.WATER];
 
   public hp: number = 130;
 

@@ -20,7 +20,7 @@ export class Pidgeot extends PokemonCard {
 
   public evolvesFrom: string = 'Pidgeotto';
 
-  public cardType: CardType = CardType.COLORLESS;
+  public cardTypes: CardType[] = [CardType.COLORLESS];
 
   public hp: number = 130;
 

@@ -14,7 +14,7 @@ export class Cobalion extends PokemonCard {
 
   public stage: Stage = Stage.BASIC;
 
-  public cardType: CardType = CardType.METAL;
+  public cardTypes: CardType[] = [CardType.METAL];
 
   public hp: number = 120;
 

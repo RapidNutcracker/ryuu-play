@@ -15,7 +15,7 @@ export class Poliwrath extends PokemonCard {
 
   public evolvesFrom: string = 'Poliwhirl';
 
-  public cardType: CardType = CardType.WATER;
+  public cardTypes: CardType[] = [CardType.WATER];
 
   public hp: number = 90;
 

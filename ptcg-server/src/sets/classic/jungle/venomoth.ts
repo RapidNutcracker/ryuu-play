@@ -14,7 +14,7 @@ export class Venomoth extends PokemonCard {
 
   public evolvesFrom: string = 'Venonat';
 
-  public cardType: CardType = CardType.GRASS;
+  public cardTypes: CardType[] = [CardType.GRASS];
 
   public hp: number = 70;
 
@@ -50,7 +50,7 @@ export class Venomoth extends PokemonCard {
 
   private shiftUsedTurn: number = 0;
 
-  private SHIFTED_TYPE: CardType = CardType.NONE;
+  private SHIFTED_TYPE: CardType[] = [CardType.NONE];
 
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
@@ -69,8 +69,10 @@ export class Venomoth extends PokemonCard {
       player.forEachPokemon(PlayerType.BOTTOM_PLAYER, (cardList) => {
         if (cardList.cards.length > 0) {
           const pokemonCard = cardList.getPokemonCard();
-          if (pokemonCard !== undefined && pokemonCard.cardType !== CardType.COLORLESS) {
-            typeMap[pokemonCard.cardType] = true;
+          if (pokemonCard !== undefined && !pokemonCard.cardTypes.includes(CardType.COLORLESS)) {
+            pokemonCard.cardTypes.forEach(cardType => {
+              typeMap[cardType] = true;
+            });
           }
         }
       });
@@ -78,8 +80,10 @@ export class Venomoth extends PokemonCard {
       opponent.forEachPokemon(PlayerType.BOTTOM_PLAYER, (cardList) => {
         if (cardList.cards.length > 0) {
           const pokemonCard = cardList.getPokemonCard();
-          if (pokemonCard !== undefined && pokemonCard.cardType !== CardType.COLORLESS) {
-            typeMap[pokemonCard.cardType] = true;
+          if (pokemonCard !== undefined && !pokemonCard.cardTypes.includes(CardType.COLORLESS)) {
+            pokemonCard.cardTypes.forEach(cardType => {
+              typeMap[cardType] = true;
+            });
           }
         }
       });
@@ -98,13 +102,13 @@ export class Venomoth extends PokemonCard {
         const selected = options[choice];
 
         this.shiftUsedTurn = state.turn;
-        this.SHIFTED_TYPE = selected.value;
+        this.SHIFTED_TYPE = [selected.value];
       });
     }
 
     // Shift is active
     if (effect instanceof CheckPokemonTypeEffect && effect.target.getPokemonCard() === this && this.shiftUsedTurn > 0) {
-      effect.cardTypes = [this.SHIFTED_TYPE];
+      effect.cardTypes = this.SHIFTED_TYPE;
       return state;
     }
 

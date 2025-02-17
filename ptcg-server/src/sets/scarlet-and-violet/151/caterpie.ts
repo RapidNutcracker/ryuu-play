@@ -10,7 +10,7 @@ export class Caterpie extends PokemonCard {
 
   public stage: Stage = Stage.BASIC;
 
-  public cardType: CardType = CardType.GRASS;
+  public cardTypes: CardType[] = [CardType.GRASS];
 
   public hp: number = 50;
 
@@ -43,7 +43,7 @@ export class Caterpie extends PokemonCard {
       const opponent = StateUtils.getOpponent(state, player);
 
       const defending = opponent.active.getPokemonCard();
-      if (defending && defending.cardType == CardType.GRASS) {
+      if (defending && defending.cardTypes.includes(CardType.GRASS)) {
         effect.damage += 30;
       }
     }

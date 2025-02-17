@@ -64,7 +64,7 @@ export class VenusaurEx extends PokemonCard {
 
   public evolvesFrom = 'Ivysaur';
 
-  public cardType: CardType = CardType.GRASS;
+  public cardTypes: CardType[] = [CardType.GRASS];
 
   public hp: number = 340;
 

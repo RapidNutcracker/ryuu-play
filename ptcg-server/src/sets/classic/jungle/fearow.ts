@@ -23,7 +23,7 @@ export class Fearow extends PokemonCard {
 
   public evolvesFrom: string = 'Spearow';
 
-  public cardType: CardType = CardType.COLORLESS;
+  public cardTypes: CardType[] = [CardType.COLORLESS];
 
   public hp: number = 70;
 
