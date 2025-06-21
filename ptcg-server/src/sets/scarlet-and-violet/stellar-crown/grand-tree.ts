@@ -25,11 +25,6 @@ function* useStadium(next: Function, store: StoreLike, state: State, effect: Use
     card.stage === Stage.STAGE_2
   ) as PokemonCard[];
 
-  // If there are no Stage 1 Pokémon in the deck, we cannot use Grand Tree
-  if (stage1.length === 0) {
-    throw new GameError(GameMessage.CANNOT_USE_STADIUM);
-  }
-
   // Check all Pokémon Slots...
   const basicPokemonThatCannotEvolve: CardTarget[] = [];
   let hasBasicPokemonThatCanEvolve: boolean = false;

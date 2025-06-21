@@ -1,5 +1,5 @@
 import { TrainerCard } from '../../../game/store/card/trainer-card';
-import { Stage, SuperType, TrainerType } from '../../../game/store/card/card-types';
+import { CardTag, Stage, SuperType, TrainerType } from '../../../game/store/card/card-types';
 import { StoreLike } from '../../../game/store/store-like';
 import { State } from '../../../game/store/state/state';
 import { Effect } from '../../../game/store/effects/effect';
@@ -19,7 +19,20 @@ function* useStadium(next: Function, store: StoreLike, state: State, effect: Use
 
   const blocked: number[] = [];
   player.deck.cards.forEach((card, index) => {
-    if (!(card instanceof PokemonCard && card.tags.length === 0)) {
+    const hasRuleBox = [
+      CardTag.EX,
+      CardTag.SMALL_EX,
+      CardTag.V,
+      CardTag.GX,
+      CardTag.RADIANT,
+    ].some(tag => card.tags.includes(tag)) || [
+      Stage.BREAK,
+      Stage.MEGA,
+      Stage.VMAX,
+      Stage.VSTAR,
+    ].some(stage => card instanceof PokemonCard && card.stage === stage);
+
+    if (hasRuleBox) {
       blocked.push(index);
     }
   });

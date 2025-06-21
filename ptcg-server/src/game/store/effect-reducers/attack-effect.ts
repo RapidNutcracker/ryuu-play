@@ -11,6 +11,7 @@ import {
 } from '../effects/attack-effects';
 import { HealEffect } from '../effects/game-effects';
 import { StateUtils } from '../state-utils';
+import { CardTag } from '../card/card-types';
 
 export function attackReducer(store: StoreLike, state: State, effect: Effect): State {
 
@@ -19,6 +20,15 @@ export function attackReducer(store: StoreLike, state: State, effect: Effect): S
     const pokemonCard = target.getPokemonCard();
     if (pokemonCard === undefined) {
       throw new GameError(GameMessage.ILLEGAL_ACTION);
+    }
+
+    if (pokemonCard.tags.includes(CardTag.TERA)) {
+      const player = StateUtils.findOwner(state, effect.target);
+      const benchIndex = player.bench.indexOf(effect.target);
+      if (benchIndex > -1) {
+        effect.preventDefault = true;
+        return state;
+      }
     }
 
     const damage = Math.max(0, effect.damage);

@@ -1,12 +1,14 @@
 import { PokemonCard } from '../../../game/store/card/pokemon-card';
 import { Stage, CardType, EnergyType, SuperType } from '../../../game/store/card/card-types';
-import { PowerType, StoreLike, State, StateUtils,
-  GameError, GameMessage, EnergyCard, PlayerType, SlotType } from '../../../game';
+import {
+  PowerType, StoreLike, State, StateUtils,
+  GameError, GameMessage, EnergyCard, PlayerType, SlotType
+} from '../../../game';
 import { Effect } from '../../../game/store/effects/effect';
 import { PowerEffect } from '../../../game/store/effects/game-effects';
 import { PlayPokemonEffect } from '../../../game/store/effects/play-card-effects';
 import { EndTurnEffect } from '../../../game/store/effects/game-phase-effects';
-import {AttachEnergyPrompt} from '../../../game/store/prompts/attach-energy-prompt';
+import { AttachEnergyPrompt } from '../../../game/store/prompts/attach-energy-prompt';
 
 export class Eelektrik extends PokemonCard {
 
@@ -20,20 +22,21 @@ export class Eelektrik extends PokemonCard {
 
   public weakness = [{ type: CardType.FIGHTING }];
 
-  public retreat = [ CardType.COLORLESS, CardType.COLORLESS ];
+  public retreat = [CardType.COLORLESS, CardType.COLORLESS];
 
   public powers = [{
     name: 'Dynamotor',
     powerType: PowerType.ABILITY,
     useWhenInPlay: true,
-    text: 'Once during your turn (before your attack), you may attach a {L} ' +
+    text:
+      'Once during your turn (before your attack), you may attach a {L} ' +
       'Energy card from your discard pile to 1 of your Benched Pokémon.'
   }];
 
   public attacks = [
     {
       name: 'Electric Ball',
-      cost: [ CardType.LIGHTNING, CardType.LIGHTNING, CardType.COLORLESS ],
+      cost: [CardType.LIGHTNING, CardType.LIGHTNING, CardType.COLORLESS],
       damage: 50,
       text: ''
     }
@@ -77,7 +80,7 @@ export class Eelektrik extends PokemonCard {
         GameMessage.ATTACH_ENERGY_TO_BENCH,
         player.discard,
         PlayerType.BOTTOM_PLAYER,
-        [ SlotType.BENCH ],
+        [SlotType.BENCH],
         { superType: SuperType.ENERGY, energyType: EnergyType.BASIC, name: 'Lightning Energy' },
         { allowCancel: true, min: 1, max: 1 }
       ), transfers => {

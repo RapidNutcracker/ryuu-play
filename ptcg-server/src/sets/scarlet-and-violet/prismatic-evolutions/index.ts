@@ -1,4 +1,13 @@
 import { Card } from '../../../game/store/card/card';
 
+import { Duraludon } from './duraludon';
 
-export const prismaticEvolutions: Card[] = []
+import { Raifort } from './raifort';
+
+
+export const prismaticEvolutions: Card[] = [
+
+  new Duraludon(),
+
+  new Raifort(),
+];

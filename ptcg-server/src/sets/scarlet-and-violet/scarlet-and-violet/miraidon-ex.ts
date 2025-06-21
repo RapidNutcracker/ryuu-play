@@ -12,12 +12,12 @@ function* useTandemUnit(next: Function, store: StoreLike, state: State, self: Mi
   const slots: PokemonCardList[] = player.bench.filter(b => b.cards.length === 0);
   const max = Math.min(slots.length, 2);
 
-  if (slots.length === 0 || effect.player.deck.cards.length === 0) {
-    throw new GameError(GameMessage.CANNOT_USE_ATTACK);
-  }
-
   if (self.tandemUnitUsedTurn === state.turn) {
     throw new GameError(GameMessage.POWER_ALREADY_USED);
+  }
+  
+  if (slots.length === 0 || effect.player.deck.cards.length === 0) {
+    throw new GameError(GameMessage.CANNOT_USE_POWER);
   }
 
   let cards: Card[] = [];

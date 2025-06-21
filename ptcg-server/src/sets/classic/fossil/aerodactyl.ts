@@ -49,46 +49,38 @@ export class Aerodactyl extends PokemonCard {
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
 
     // Prehistoric Power
-    if (effect instanceof PlayPokemonEffect || effect instanceof EvolveEffect) {
-      if (effect.player.marker.hasMarker(this.PREHISTORIC_POWER_MARKER)) {
-
-        const cardList = StateUtils.findCardList(state, this);
-        const owner = StateUtils.findOwner(state, cardList);
-
-        // Try to reduce PowerEffect, to check if something is blocking our ability
-        try {
-          const powerEffect = new PowerEffect(owner, this.powers[0], this);
-          state = store.reduceEffect(state, powerEffect);
-        } catch {
-          return state;
-        }
-
-
-        effect.preventDefault = true;
-        throw new GameError(GameMessage.BLOCKED_BY_ABILITY);
-      }
-
+    if (effect instanceof PlayPokemonEffect && effect.pokemonCard === this) {
       const player = effect.player;
+      const opponent = StateUtils.getOpponent(state, player);
 
-      if (effect.pokemonCard === this) {
-        const opponent = StateUtils.getOpponent(state, player);
-        player.marker.addMarker(this.PREHISTORIC_POWER_MARKER, this);
-        opponent.marker.addMarker(this.PREHISTORIC_POWER_MARKER, this);
+      player.marker.addMarker(this.PREHISTORIC_POWER_MARKER, this);
+      opponent.marker.addMarker(this.PREHISTORIC_POWER_MARKER, this);
+    }
+
+    // Aerodactyl in play
+    if (effect instanceof EvolveEffect && effect.pokemonCard !== this && effect.player.marker.hasMarker(this.PREHISTORIC_POWER_MARKER, this)) {
+      const cardList = StateUtils.findCardList(state, this);
+      const owner = StateUtils.findOwner(state, cardList);
+
+      // Try to reduce PowerEffect, to check if something is blocking our ability
+      try {
+        const powerEffect = new PowerEffect(owner, this.powers[0], this);
+        state = store.reduceEffect(state, powerEffect);
+      } catch {
+        return state;
       }
 
-      return state;
+      effect.preventDefault = true;
+      throw new GameError(GameMessage.BLOCKED_BY_ABILITY);
     }
 
     // Remove Prehistoric Power Marker when Aerodactyl is Knocked Out
     if (effect instanceof KnockOutEffect && effect.target.getPokemonCard() === this) {
       const player = effect.player;
+      const opponent = StateUtils.getOpponent(state, player);
 
-      if (player.marker.hasMarker(this.PREHISTORIC_POWER_MARKER, this)) {
-        player.marker.removeMarker(this.PREHISTORIC_POWER_MARKER, this);
-
-        const opponent = StateUtils.getOpponent(state, player);
-        opponent.marker.removeMarker(this.PREHISTORIC_POWER_MARKER, this);
-      }
+      player.marker.removeMarker(this.PREHISTORIC_POWER_MARKER, this);
+      opponent.marker.removeMarker(this.PREHISTORIC_POWER_MARKER, this);
     }
 
     return state;

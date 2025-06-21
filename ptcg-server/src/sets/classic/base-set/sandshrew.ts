@@ -23,14 +23,12 @@ export class Sandshrew extends PokemonCard {
 
   public retreat = [CardType.COLORLESS];
 
-  public attacks = [
-    {
-      name: 'Sand Attack',
-      cost: [CardType.FIGHTING],
-      damage: 10,
-      text: 'If the Defending Pokémon tries to attack during your opponent\'s next turn, your opponent flips a coin. If tails, that attack does nothing.'
-    }
-  ];
+  public attacks = [{
+    name: 'Sand Attack',
+    cost: [CardType.FIGHTING],
+    damage: 10,
+    text: 'If the Defending Pokémon tries to attack during your opponent\'s next turn, your opponent flips a coin. If tails, that attack does nothing.'
+  }];
 
   public set: string = 'BS';
 

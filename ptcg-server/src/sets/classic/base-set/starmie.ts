@@ -28,7 +28,9 @@ export class Starmie extends PokemonCard {
       name: 'Recover',
       cost: [CardType.WATER, CardType.WATER],
       damage: 0,
-      text: 'Discard 1 {W} Energy card attached to Starmie in order to use this attack. Remove all damage counters from Starmie.'
+      text:
+        'Discard 1 {W} Energy card attached to Starmie in order to use this attack. ' +
+        'Remove all damage counters from Starmie.'
     },
     {
       name: 'Star Freeze',

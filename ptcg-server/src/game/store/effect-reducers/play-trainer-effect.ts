@@ -1,5 +1,8 @@
-import { AttachPokemonToolEffect, TrainerEffect, PlaySupporterEffect,
-  PlayItemEffect, PlayStadiumEffect } from '../effects/play-card-effects';
+import {
+  AttachPokemonToolEffect, TrainerEffect, PlaySupporterEffect,
+  PlayItemEffect, PlayStadiumEffect,
+  PlayFossilEffect
+} from '../effects/play-card-effects';
 import { GameError } from '../../game-error';
 import { GameMessage, GameLog } from '../../game-message';
 import { Effect } from '../effects/effect';
@@ -73,6 +76,20 @@ export function playTrainerReducer(store: StoreLike, state: State, effect: Effec
       name: effect.player.name,
       card: effect.trainerCard.name
     });
+    return state;
+  }
+
+  if (effect instanceof PlayFossilEffect) {
+    if (effect.target.cards.length === 0) {
+      store.log(state, GameLog.LOG_PLAYER_PLAYS_BASIC_POKEMON, {
+        name: effect.player.name,
+        card: effect.trainerCard.name,
+      });
+      effect.player.hand.moveCardTo(effect.trainerCard, effect.target);
+      effect.target.pokemonPlayedTurn = state.turn;
+      return state;
+    }
+
     return state;
   }
 

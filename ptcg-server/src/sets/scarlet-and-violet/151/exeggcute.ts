@@ -25,7 +25,7 @@ function* useBallRoll(next: Function, store: StoreLike, state: State,
     );
   } while (!!currentFlipResult);
 
-  effect.damage += 30 * flippedHeadsTotal;
+  effect.damage = 30 * flippedHeadsTotal;
 
   return state;
 }
@@ -49,7 +49,7 @@ export class Exeggcute extends PokemonCard {
   public attacks = [{
     name: 'Ball Roll',
     cost: [CardType.GRASS],
-    damage: 0,
+    damage: 30,
     text: 'Flip a coin until you get tails. This attack does 30 damage for each heads.'
   }];
 

@@ -146,6 +146,12 @@ export function gamePhaseReducer(store: StoreLike, state: State, effect: Effect)
         return;
       }
 
+      if (player.marker.hasMarker('TAKE_ANOTHER_TURN')) {
+        state.phase = GamePhase.SETUP;
+        player.marker.removeMarker('TAKE_ANOTHER_TURN');
+        return initNextTurn(store, state);
+      }
+
       return startNextTurn(store, state);
     });
 

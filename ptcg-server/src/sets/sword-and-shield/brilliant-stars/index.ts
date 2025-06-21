@@ -7,10 +7,12 @@ import { RaikouV } from './raikou-v';
 
 
 import { DoubleTurboEnergy } from './double-turbo-energy';
+import { Manaphy } from './manaphy';
 
 export const brilliantStars: Card[] = [
 
   new LumineonV(), // 40
+  new Manaphy(),
 
   new RaichuV(), // 45
 

@@ -7,6 +7,9 @@ export enum CardTag {
   LV_X = 'LV_X',
   V = 'V',
   G = 'G',
+  DYNAMAX = 'DYNAMAX',
+  GIGANTAMAX = 'GIGANTAMAX',
+  RADIANT = 'RADIANT',
   TERA = 'TERA',
   FOSSIL = 'FOSSIL',
   ACE_SPEC = 'ACE_SPEC',
@@ -43,6 +46,7 @@ export enum TrainerType {
   SUPPORTER,
   STADIUM,
   TOOL,
+  FOSSIL,
 }
 
 export enum PokemonType {

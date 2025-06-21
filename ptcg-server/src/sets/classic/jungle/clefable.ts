@@ -112,7 +112,6 @@ export class Clefable extends PokemonCard {
       return generator.next().value;
     }
 
-
     // Minimize
     if (effect instanceof AttackEffect && effect.attack === this.attacks[1]) {
       const player = effect.player;

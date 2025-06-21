@@ -12,9 +12,10 @@ export enum PlayCardEffects {
   PLAY_SUPPORTER_EFFECT = 'PLAY_SUPPORTER_EFFECT',
   PLAY_STADIUM_EFFECT = 'PLAY_STADIUM_EFFECT',
   PLAY_POKEMON_TOOL_EFFECT = 'PLAY_POKEMON_TOOL_EFFECT',
+  PLAY_FOSSIL_EFFECT = 'PLAY_FOSSIL_EFFECT',
   PLAY_ITEM_EFFECT = 'PLAY_ITEM_EFFECT',
   TRAINER_EFFECT = 'TRAINER_EFFECT'
-}
+};
 
 export class AttachEnergyEffect implements Effect {
   readonly type: string = PlayCardEffects.ATTACH_ENERGY_EFFECT;
@@ -75,6 +76,20 @@ export class PlayStadiumEffect implements Effect {
 
 export class AttachPokemonToolEffect implements Effect {
   readonly type: string = PlayCardEffects.PLAY_POKEMON_TOOL_EFFECT;
+  public preventDefault = false;
+  public player: Player;
+  public trainerCard: TrainerCard;
+  public target: PokemonCardList;
+
+  constructor(player: Player, trainerCard: TrainerCard, target: PokemonCardList) {
+    this.player = player;
+    this.trainerCard = trainerCard;
+    this.target = target;
+  }
+}
+
+export class PlayFossilEffect implements Effect {
+  readonly type: string = PlayCardEffects.PLAY_FOSSIL_EFFECT;
   public preventDefault = false;
   public player: Player;
   public trainerCard: TrainerCard;

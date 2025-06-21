@@ -2,6 +2,7 @@ import { Card } from '../../../game/store/card/card';
 import { Artazon } from './artazon';
 import { BosssOrders } from './bosss-orders';
 import { BraveryCharm } from './bravery-charm';
+import { CalamitousWasteland } from './calamitous-wasteland';
 import { Iono } from './iono';
 import { LuminousEnergy } from './luminous-energy';
 import { Magnemite } from './magnemite';
@@ -18,6 +19,7 @@ export const paldeaEvolved: Card[] = [
     new SquawkabillyEx(), // 169
 
     new Artazon(),
+    new CalamitousWasteland(),
     new BraveryCharm(),
     new Iono(),
     new BosssOrders(),

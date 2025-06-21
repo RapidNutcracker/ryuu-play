@@ -43,7 +43,7 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
     GameMessage.CHOOSE_CARD_TO_HAND,
     player.deck,
     { superType: SuperType.ENERGY, energyType: EnergyType.BASIC },
-    { min: 1, max: 2, allowCancel: false }
+    { min: 1, max: 2, allowCancel: true }
   ), selected => {
     cards = selected || [];
     next();

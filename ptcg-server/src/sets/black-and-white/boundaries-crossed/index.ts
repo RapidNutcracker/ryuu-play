@@ -12,6 +12,7 @@ import { Wartortle } from './wartortle';
 
 import { AspertiaCityGym } from './aspertia-city-gym';
 import { ComputerSearch } from './computer-search';
+import { GreatBall } from './great-ball';
 import { Potion } from './potion';
 import { RockyHelmet } from './rocky-helmet';
 import { Skyla } from './skyla';
@@ -19,7 +20,6 @@ import { Skyla } from './skyla';
 
 export const boundariesCrossed: Card[] = [
   new Blastoise(),
-  new ComputerSearch(),
   new Dusclops(),
   new Dusknoir(),
   new Duskull(),
@@ -30,6 +30,8 @@ export const boundariesCrossed: Card[] = [
   new Wartortle(),
 
   new AspertiaCityGym(),
+  new ComputerSearch(),
+  new GreatBall(),
   new Potion(),
   new RockyHelmet(),
   new Skyla(),

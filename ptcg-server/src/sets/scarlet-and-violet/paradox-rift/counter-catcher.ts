@@ -11,7 +11,7 @@ function* playCard(next: Function, store: StoreLike, state: State, effect: Train
   const player = effect.player;
   const opponent = StateUtils.getOpponent(state, player);
 
-  if (player.getPrizeLeft() < opponent.getPrizeLeft()) {
+  if (player.getPrizeLeft() <= opponent.getPrizeLeft()) {
     throw new GameError(GameMessage.CANNOT_PLAY_THIS_CARD);
   }
 

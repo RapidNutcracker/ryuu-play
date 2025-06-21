@@ -26,7 +26,7 @@ export function playPokemonReducer(store: StoreLike, state: State, effect: Effec
       return state;
     }
 
-    const isEvolved = stage === Stage.STAGE_1 || Stage.STAGE_2 || Stage.BREAK;
+    const isEvolved = [Stage.STAGE_1, Stage.STAGE_2, Stage.BREAK, Stage.VSTAR].includes(stage);
     const evolvesFrom = effect.pokemonCard.evolvesFrom;
     const pokemonCard = effect.target.getPokemonCard();
     if (pokemonCard === undefined) {

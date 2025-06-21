@@ -5,7 +5,8 @@ import {
   PlayStadiumEffect,
   PlaySupporterEffect,
   AttachPokemonToolEffect,
-  PlayItemEffect
+  PlayItemEffect,
+  PlayFossilEffect
 } from '../effects/play-card-effects';
 import { CardList } from '../state/card-list';
 import { EnergyCard } from '../card/energy-card';
@@ -105,6 +106,12 @@ export function playCardReducer(store: StoreLike, state: State, action: Action):
               throw new GameError(GameMessage.INVALID_TARGET);
             }
             effect = new AttachPokemonToolEffect(player, handCard, target);
+            break;
+          case TrainerType.FOSSIL:
+            if (!(target instanceof PokemonCardList)) {
+              throw new GameError(GameMessage.INVALID_TARGET);
+            }
+            effect = new PlayFossilEffect(player, handCard, target);
             break;
           default:
             effect = new PlayItemEffect(player, handCard, target);

@@ -1,12 +1,11 @@
 import { AttachEnergyEffect, PlayPokemonEffect } from '../../../game/store/effects/play-card-effects';
 import { AttachEnergyPrompt, CardList, ConfirmPrompt, EnergyCard, GameError, PlayerType, Power, PowerType, ShufflePrompt, SlotType, StateUtils } from '../../../game';
 import { AttackEffect, EvolveEffect, PowerEffect } from '../../../game/store/effects/game-effects';
-import { PutDamageEffect } from '../../../game/store/effects/attack-effects';
 import { Effect } from '../../../game/store/effects/effect';
 import { GameMessage } from '../../../game/game-message';
 import { PokemonCard } from '../../../game/store/card/pokemon-card';
 import { Stage, CardType, CardTag, SuperType, EnergyType } from '../../../game/store/card/card-types';
-import { GamePhase, State } from '../../../game/store/state/state';
+import { State } from '../../../game/store/state/state';
 import { StoreLike } from '../../../game/store/store-like';
 
 
@@ -130,23 +129,6 @@ export class CharizardEx extends PokemonCard {
       /// TODO: Dynamic Prize Size
       effect.damage += (6 - effect.opponent.getPrizeLeft()) * 30;
       return state;
-    }
-
-    // Tera Pokémon ex rule
-    if (effect instanceof PutDamageEffect && effect.target.getPokemonCard() === this) {
-
-      // It's not an attack
-      if (state.phase !== GamePhase.ATTACK) {
-        return state;
-      }
-
-      const player = StateUtils.findOwner(state, effect.target);
-      const benchIndex = player.bench.indexOf(effect.target);
-      if (benchIndex === -1) {
-        return state;
-      }
-
-      effect.preventDefault = true;
     }
 
     return state;

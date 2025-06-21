@@ -63,8 +63,8 @@ export class Feraligatr extends PokemonCard {
   public readonly TORRENTIAL_HEART_MARKER = 'TORRENTIAL_HEART_MARKER';
 
   public readonly GIANT_WAVE_MARKER = 'GIANT_WAVE_MARKER';
-
-  private GIANT_WAVE_MARKER_USED_TURN_NUMBER = 0;
+  
+  private GIANT_WAVE_USED_TURN_NUMBER = 0;
 
 
   public reduceEffect(store: StoreLike, state: State, effect: Effect): State {
@@ -107,16 +107,18 @@ export class Feraligatr extends PokemonCard {
       const player = effect.player;
 
       player.active.marker.addMarker(this.GIANT_WAVE_MARKER, this);
-      this.GIANT_WAVE_MARKER_USED_TURN_NUMBER = state.turn;
+      this.GIANT_WAVE_USED_TURN_NUMBER = state.turn;
 
       return state;
     }
 
     // Clear Markers
-    if (effect instanceof EndTurnEffect && state.turn > this.GIANT_WAVE_MARKER_USED_TURN_NUMBER) {
+    if (effect instanceof EndTurnEffect) {
       effect.player.forEachPokemon(PlayerType.BOTTOM_PLAYER, (cardList) => {
         cardList.marker.removeMarker(this.TORRENTIAL_HEART_MARKER, this);
-        cardList.marker.removeMarker(this.GIANT_WAVE_MARKER, this);
+        if (state.turn > this.GIANT_WAVE_USED_TURN_NUMBER) {
+          cardList.marker.removeMarker(this.GIANT_WAVE_MARKER, this);
+        }
       });
     }
 

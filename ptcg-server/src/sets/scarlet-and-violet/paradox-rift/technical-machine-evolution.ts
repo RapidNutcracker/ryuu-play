@@ -3,7 +3,6 @@ import { CardType, Stage, SuperType, TrainerType } from '../../../game/store/car
 import { StoreLike } from '../../../game/store/store-like';
 import { State } from '../../../game/store/state/state';
 import { Effect } from '../../../game/store/effects/effect';
-import { CheckPokemonPlayedTurnEffect } from '../../../game/store/effects/check-effects';
 import { EndTurnEffect } from '../../../game/store/effects/game-phase-effects';
 import { Attack, Card, CardTarget, ChooseCardsPrompt, ChoosePokemonPrompt, GameError, GameLog, GameMessage, PlayerType, PokemonCard, PokemonCardList, ShufflePrompt, SlotType } from '../../../game';
 import { AttachPokemonToolEffect } from '../../../game/store/effects/play-card-effects';
@@ -34,19 +33,8 @@ function* useEvolution(next: Function, store: StoreLike, state: State, effect: A
   let hasPokemonThatCanEvolve: boolean = false;
   player.forEachPokemon(PlayerType.BOTTOM_PLAYER, (slot, card, target) => {
 
-    // If the Slot is a Basic Pokémon and there is a Stage 1 Pokémon in the deck that it can evolve into
+    // If there is a Pokémon in the deck that this can evolve into
     if (evolvedPokemon.some(s => s.evolvesFrom === card.name)) {
-
-      // Check that the Pokémon is eligible to evolve based on the turn it was played
-      const playedTurnEffect = new CheckPokemonPlayedTurnEffect(player, slot);
-      store.reduceEffect(state, playedTurnEffect);
-
-      if (playedTurnEffect.pokemonPlayedTurn < state.turn) {
-        hasPokemonThatCanEvolve = true;
-      } else {
-        pokemonThatCannotEvolve.push(target);
-      }
-    } else {
       pokemonThatCannotEvolve.push(target);
     }
   });

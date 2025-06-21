@@ -48,6 +48,16 @@ export class DeckEditToolbarComponent {
     { value: SuperType.ENERGY, label: 'LABEL_ENERGY' },
   ];
 
+  public series = [
+    {
+      value: 'Classic',
+      label: 'LABEL_CLASSIC',
+      sets: [
+
+      ]
+    }
+  ];
+
   public sets = [
     { value: 'WBSP', label: 'LABEL_WIZARDS_BLACK_STAR_PROMOS' },
     { value: 'BS', label: 'LABEL_BASE' },
